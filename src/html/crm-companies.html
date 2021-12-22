@@ -1,0 +1,3785 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> partials/head title="Dashkit"}}
+  </head>
+  <body>
+
+    <!-- MODALS -->
+    {{> partials/modals}}
+
+    <!-- NAVIGATION -->
+    {{> partials/navs category="pages" subcategory="crm" page="crm-companies.html"}}
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+      {{#if demoMode}}{{> navs/topbar}}{{/if}}
+      {{#is navPosition 'combo'}}{{> navs/topbar}}{{/is}}
+
+      <div class="{{#is navPosition 'sidenav || combo'}}container-fluid{{/is}}{{#is navPosition 'topnav'}}container{{/is}}">
+        <div class="row justify-content-center">
+          <div class="col-12">
+
+            <!-- Header -->
+            <div class="header">
+              <div class="header-body">
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Pretitle -->
+                    <h6 class="header-pretitle">
+                      Overview
+                    </h6>
+
+                    <!-- Title -->
+                    <h1 class="header-title text-truncate">
+                      Companies
+                    </h1>
+
+                  </div>
+                  <div class="col-auto">
+
+                    <!-- Navigation (button group) -->
+                    <div class="nav btn-group d-inline-flex" role="tablist">
+                      <button class="btn btn-white active" id="companiesListTab" data-toggle="tab" data-target="#companiesListPane" role="tab" aria-controls="companiesListPane" aria-selected="true">
+                        <span class="fe fe-list"></span>
+                      </button>
+                      <button class="btn btn-white" id="companiesCardsTab" data-toggle="tab" data-target="#companiesCardsPane" role="tab" aria-controls="companiesCardsPane" aria-selected="false">
+                        <span class="fe fe-grid"></span>
+                      </button>
+                    </div> <!-- / .nav -->
+
+                    <!-- Buttons -->
+                    <a href="#!" class="btn btn-primary ml-2">
+                      Add company
+                    </a>
+
+                  </div>
+                </div> <!-- / .row -->
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Nav -->
+                    <ul class="nav nav-tabs nav-overflow header-tabs">
+                      <li class="nav-item">
+                        <a href="#!" class="nav-link text-nowrap active">
+                          All companies <span class="badge rounded-pill bg-soft-secondary">627</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#!" class="nav-link text-nowrap">
+                          Your companies <span class="badge rounded-pill bg-soft-secondary">198</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#!" class="nav-link text-nowrap">
+                          Deleted <span class="badge rounded-pill bg-soft-secondary">29</span>
+                        </a>
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab content -->
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="companiesListPane" role="tabpanel" aria-labelledby="companiesListTab">
+
+                <!-- Card -->
+                <div class="card" data-list='{"valueNames": ["item-name", "item-industry", "item-location", "item-owner", "item-created"], "page": 10, "pagination": {"paginationClass": "list-pagination"}}' id="companiesList">
+                  <div class="card-header">
+                    <div class="row align-items-center">
+                      <div class="col">
+
+                        <!-- Form -->
+                        <form>
+                          <div class="input-group input-group-flush input-group-merge input-group-reverse">
+                            <input class="form-control list-search" type="search" placeholder="Search">
+                            <span class="input-group-text">
+                              <i class="fe fe-search"></i>
+                            </span>
+                          </div>
+                        </form>
+
+                      </div>
+                      <div class="col-auto mr-n3">
+
+                        <!-- Select -->
+                        <form>
+                          <select class="form-select form-select-sm form-control-flush" data-choices='{"searchEnabled": false}'>
+                            <option selected>5 per page</option>
+                            <option>10 per page</option>
+                            <option>All</option>
+                          </select>
+                        </form>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Dropdown -->
+                        <div class="dropdown">
+
+                          <!-- Toggle -->
+                          <button class="btn btn-sm btn-white" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fe fe-sliders mr-1"></i> Filter <span class="badge bg-primary ml-1">1</span>
+                          </button>
+
+                          <!-- Menu -->
+                          <form class="dropdown-menu dropdown-menu-right dropdown-menu-card">
+                            <div class="card-header">
+
+                              <!-- Title -->
+                              <h4 class="card-header-title">
+                                Filters
+                              </h4>
+
+                              <!-- Link -->
+                              <button class="btn btn-sm btn-link text-reset" type="reset">
+                                <small>Clear filters</small>
+                              </button>
+
+                            </div>
+                            <div class="card-body">
+
+                              <!-- List group -->
+                              <div class="list-group list-group-flush mt-n4 mb-4">
+                                <div class="list-group-item">
+                                  <div class="row">
+                                    <div class="col">
+
+                                      <!-- Text -->
+                                      <small>Title</small>
+
+                                    </div>
+                                    <div class="col-auto">
+
+                                      <!-- Select -->
+                                      <select class="form-select form-select-sm" name="item-title" data-choices='{"searchEnabled": false}'>
+                                        <option value="*">Any</option>
+                                        <option value="Designer" selected>Designer</option>
+                                        <option value="Developer">Developer</option>
+                                        <option value="Owner">Owner</option>
+                                        <option value="Founder">Founder</option>
+                                      </select>
+
+                                    </div>
+                                  </div> <!-- / .row -->
+                                </div>
+                                <div class="list-group-item">
+                                  <div class="row">
+                                    <div class="col">
+
+                                      <!-- Text -->
+                                      <small>Lead scrore</small>
+
+                                    </div>
+                                    <div class="col-auto">
+
+                                      <!-- Select -->
+                                      <select class="form-select form-select-sm" name="item-score" data-choices='{"searchEnabled": false}'>
+                                        <option value="*" selected>Any</option>
+                                        <option value="1/10">1+</option>
+                                        <option value="2/10">2+</option>
+                                        <option value="3/10">3+</option>
+                                        <option value="4/10">4+</option>
+                                        <option value="5/10">5+</option>
+                                        <option value="6/10">6+</option>
+                                        <option value="7/10">7+</option>
+                                        <option value="8/10">8+</option>
+                                        <option value="9/10">9+</option>
+                                        <option value="10/10">10</option>
+                                      </select>
+
+                                    </div>
+                                  </div> <!-- / .row -->
+                                </div>
+                              </div>
+
+                              <!-- Button -->
+                              <button class="btn btn-block btn-primary" type="submit">
+                                Apply filter
+                              </button>
+
+                            </div>
+                          </form>
+
+                        </div>
+
+                      </div>
+                    </div> <!-- / .row -->
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-sm table-hover table-nowrap card-table">
+                      <thead>
+                        <tr>
+                          <th>
+
+                            <!-- Checkbox -->
+                            <div class="form-check mb-n2">
+                              <input class="form-check-input list-checkbox-all" type="checkbox" id="listCheckboxAll">
+                              <label class="form-check-label" for="listCheckboxAll"></label>
+                            </div>
+
+                          </th>
+                          <th>
+                            <a class="list-sort text-muted" data-sort="item-name" href="#">Name</a>
+                          </th>
+                          <th>
+                            <a class="list-sort text-muted" data-sort="item-industry" href="#">Industry</a>
+                          </th>
+                          <th>
+                            <a class="list-sort text-muted" data-sort="item-location" href="#">Location</a>
+                          </th>
+                          <th>
+                            <a class="list-sort text-muted" data-sort="item-owner" href="#">Owner</a>
+                          </th>
+                          <th colspan="2">
+                            <a class="list-sort text-muted" data-sort="item-created" href="#">Created at</a>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody class="list font-size-base">
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxOne">
+                              <label class="form-check-label" for="listCheckboxOne"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-1.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Launchday</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Web design</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">Los Angeles, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Dianna Smiley</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-01-14">Jan 14, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTwo">
+                              <label class="form-check-label" for="listCheckboxTwo"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-2.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Medium Corporation</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Publishing</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">San Francisco, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-2.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Ab Hadley</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-03-22">Mar 22, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxThree">
+                              <label class="form-check-label" for="listCheckboxThree"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-3.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Lyft</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Transportation</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">San Francisco, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-3.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Adolfo Hess</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-04-01">Apr 01, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxFour">
+                              <label class="form-check-label" for="listCheckboxFour"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-4.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">PayPal</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Finance</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">San Jose, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-4.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Daniela Dewitt</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-05-09">May 09, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxFive">
+                              <label class="form-check-label" for="listCheckboxFive"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-5.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Dropbox Inc.</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">File hosting</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">San Francisco, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-5.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Miyah Myles</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-06-16">Jun 16, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxSix">
+                              <label class="form-check-label" for="listCheckboxSix"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-6.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Squarespace</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Hosting</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">New York City</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-6.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Ryu Duke</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-08-22">Aug 22, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxSeven">
+                              <label class="form-check-label" for="listCheckboxSeven"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-7.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Github</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Hosting</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">Redmond, WA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-7.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Glen Rouse</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-03-05">Mar 05, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxEight">
+                              <label class="form-check-label" for="listCheckboxEight"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-8.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Slack</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Messaging</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">San Francisco, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-5.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Miyah Myles</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-04-30">Apr 30, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxNine">
+                              <label class="form-check-label" for="listCheckboxNine"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-1.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Launchday</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Web design</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">Los Angeles, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Dianna Smiley</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-01-14">Jan 14, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTen">
+                              <label class="form-check-label" for="listCheckboxTen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-2.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Medium Corporation</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Publishing</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">San Francisco, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-2.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Ab Hadley</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-03-22">Mar 22, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxEleven">
+                              <label class="form-check-label" for="listCheckboxEleven"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-3.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Lyft</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Transportation</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">San Francisco, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-3.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Adolfo Hess</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-04-01">Apr 01, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTwelve">
+                              <label class="form-check-label" for="listCheckboxTwelve"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-4.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">PayPal</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Finance</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">San Jose, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-4.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Daniela Dewitt</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-05-09">May 09, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxThirteen">
+                              <label class="form-check-label" for="listCheckboxThirteen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-5.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Dropbox Inc.</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">File hosting</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">San Francisco, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-5.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Miyah Myles</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-06-16">Jun 16, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxFourteen">
+                              <label class="form-check-label" for="listCheckboxFourteen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-6.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Squarespace</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Hosting</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">New York City</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-6.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Ryu Duke</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-08-22">Aug 22, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxFifteen">
+                              <label class="form-check-label" for="listCheckboxFifteen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-7.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Github</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Hosting</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">Redmond, WA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-7.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Glen Rouse</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-03-05">Mar 05, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxSixteen">
+                              <label class="form-check-label" for="listCheckboxSixteen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-8.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Slack</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Messaging</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">San Francisco, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-5.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Miyah Myles</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-04-30">Apr 30, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxSeventeen">
+                              <label class="form-check-label" for="listCheckboxSeventeen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-1.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Launchday</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Web design</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">Los Angeles, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Dianna Smiley</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-01-14">Jan 14, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxEighteen">
+                              <label class="form-check-label" for="listCheckboxEighteen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-2.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Medium Corporation</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Publishing</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">San Francisco, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-2.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Ab Hadley</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-03-22">Mar 22, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxNineteen">
+                              <label class="form-check-label" for="listCheckboxNineteen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-3.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Lyft</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Transportation</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">San Francisco, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-3.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Adolfo Hess</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-04-01">Apr 01, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTwenty">
+                              <label class="form-check-label" for="listCheckboxTwenty"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-4.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">PayPal</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Finance</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">San Jose, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-4.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Daniela Dewitt</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-05-09">May 09, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTwentyOne">
+                              <label class="form-check-label" for="listCheckboxTwentyOne"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-5.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Dropbox Inc.</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">File hosting</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">San Francisco, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-5.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Miyah Myles</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-06-16">Jun 16, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTwentyTwo">
+                              <label class="form-check-label" for="listCheckboxTwentyTwo"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-6.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Squarespace</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Hosting</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">New York City</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-6.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Ryu Duke</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-08-22">Aug 22, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTwentyThree">
+                              <label class="form-check-label" for="listCheckboxTwentyThree"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-7.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Github</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Hosting</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">Redmond, WA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-7.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Glen Rouse</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-03-05">Mar 05, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTwentyFour">
+                              <label class="form-check-label" for="listCheckboxTwentyFour"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/teams/team-logo-8.jpg" alt="...">
+                            </div> <a class="item-name text-reset" href="team-overview.html">Slack</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-industry">Messaging</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-location">San Francisco, CA</span>
+
+                          </td>
+                          <td class="item-phone">
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-5.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Miyah Myles</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Badge -->
+                            <time class="item-created" datetime="2020-04-30">Apr 30, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="card-footer d-flex justify-content-between">
+
+                    <!-- Pagination (prev) -->
+                    <ul class="list-pagination-prev pagination pagination-tabs card-pagination">
+                      <li class="page-item">
+                        <a class="page-link pl-0 pr-4 border-right" href="#">
+                          <i class="fe fe-arrow-left mr-1"></i> Prev
+                        </a>
+                      </li>
+                    </ul>
+
+                    <!-- Pagination -->
+                    <ul class="list-pagination pagination pagination-tabs card-pagination"></ul>
+
+                    <!-- Pagination (next) -->
+                    <ul class="list-pagination-next pagination pagination-tabs card-pagination">
+                      <li class="page-item">
+                        <a class="page-link pl-4 pr-0 border-left" href="#">
+                          Next <i class="fe fe-arrow-right ml-1"></i>
+                        </a>
+                      </li>
+                    </ul>
+
+                    <!-- Alert -->
+                    <div class="list-alert alert alert-dark alert-dismissible border fade" role="alert">
+
+                      <!-- Content -->
+                      <div class="row align-items-center">
+                        <div class="col">
+
+                          <!-- Checkbox -->
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="cardAlertCheckbox" checked disabled>
+                            <label class="form-check-label text-white" for="cardAlertCheckbox">
+                              <span class="list-alert-count">0</span> deal(s)
+                            </label>
+                          </div>
+
+                        </div>
+                        <div class="col-auto mr-n3">
+
+                          <!-- Button -->
+                          <button class="btn btn-sm btn-white-20">
+                            Edit
+                          </button>
+
+                          <!-- Button -->
+                          <button class="btn btn-sm btn-white-20">
+                            Delete
+                          </button>
+
+                        </div>
+                      </div> <!-- / .row -->
+
+                      <!-- Close -->
+                      <button type="button" class="list-alert-close close" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+              <div class="tab-pane fade" id="companiesCardsPane" role="tabpanel" aria-labelledby="companiesCardsTab">
+
+                <!-- Cards -->
+                <div data-list='{"valueNames": ["item-name", "item-industry", "item-location", "item-owner", "item-created"], "page": 9, "pagination": {"paginationClass": "list-pagination"}}' id="companiesCards">
+
+                  <!-- Header -->
+                  <div class="row align-items-center mb-4">
+                    <div class="col">
+
+                      <!-- Form -->
+                      <form>
+                        <div class="input-group input-group-lg input-group-merge input-group-reverse">
+                          <input class="form-control list-search" type="search" placeholder="Search">
+                          <div class="input-group-text">
+                            <span class="fe fe-search"></span>
+                          </div>
+                        </div>
+                      </form>
+
+                    </div>
+                    <div class="col-auto mr-n3">
+
+                      <!-- Select -->
+                      <form>
+                        <select class="form-select form-select-sm form-control-flush" data-choices='{"searchEnabled": false}'>
+                          <option selected>9 per page</option>
+                          <option>All</option>
+                        </select>
+                      </form>
+
+                    </div>
+                    <div class="col-auto">
+
+                      <!-- Dropdown -->
+                      <div class="dropdown">
+
+                        <!-- Toggle -->
+                        <button class="btn btn-sm btn-white" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fe fe-sliders mr-1"></i> Filter <span class="badge bg-primary ml-1">1</span>
+                        </button>
+
+                        <!-- Menu -->
+                        <form class="dropdown-menu dropdown-menu-right dropdown-menu-card">
+                          <div class="card-header">
+
+                            <!-- Title -->
+                            <h4 class="card-header-title">
+                              Filters
+                            </h4>
+
+                            <!-- Link -->
+                            <button class="btn btn-sm btn-link text-reset" type="reset">
+                              <small>Clear filters</small>
+                            </button>
+
+                          </div>
+                          <div class="card-body">
+
+                            <!-- List group -->
+                            <div class="list-group list-group-flush mt-n4 mb-4">
+                              <div class="list-group-item">
+                                <div class="row">
+                                  <div class="col">
+
+                                    <!-- Text -->
+                                    <small>Title</small>
+
+                                  </div>
+                                  <div class="col-auto">
+
+                                    <!-- Select -->
+                                    <select class="form-select form-select-sm" name="item-title" data-choices='{"searchEnabled": false}'>
+                                      <option value="*">Any</option>
+                                      <option value="Designer" selected>Designer</option>
+                                      <option value="Developer">Developer</option>
+                                      <option value="Owner">Owner</option>
+                                      <option value="Founder">Founder</option>
+                                    </select>
+
+                                  </div>
+                                </div> <!-- / .row -->
+                              </div>
+                              <div class="list-group-item">
+                                <div class="row">
+                                  <div class="col">
+
+                                    <!-- Text -->
+                                    <small>Lead scrore</small>
+
+                                  </div>
+                                  <div class="col-auto">
+
+                                    <!-- Select -->
+                                    <select class="form-select form-select-sm" name="item-score" data-choices='{"searchEnabled": false}'>
+                                      <option value="*" selected>Any</option>
+                                      <option value="1/10">1+</option>
+                                      <option value="2/10">2+</option>
+                                      <option value="3/10">3+</option>
+                                      <option value="4/10">4+</option>
+                                      <option value="5/10">5+</option>
+                                      <option value="6/10">6+</option>
+                                      <option value="7/10">7+</option>
+                                      <option value="8/10">8+</option>
+                                      <option value="9/10">9+</option>
+                                      <option value="10/10">10</option>
+                                    </select>
+
+                                  </div>
+                                </div> <!-- / .row -->
+                              </div>
+                            </div>
+
+                            <!-- Button -->
+                            <button class="btn btn-block btn-primary" type="submit">
+                              Apply filter
+                            </button>
+
+                          </div>
+                        </form>
+
+                      </div>
+
+                    </div>
+                  </div> <!-- / .row -->
+
+                  <!-- Body -->
+                  <div class="list row">
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxOne">
+                                <label class="form-check-label" for="cardsCheckboxOne"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-1.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">Launchday</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              Launchday is a SaaS website builder with a focus on quality, easy to build product sites.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Contact</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Dianna Smiley</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">Web design</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxTwo">
+                                <label class="form-check-label" for="cardsCheckboxTwo"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-2.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">Medium Corporation</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              Medium is an online publishing platform developed by Evan Williams, and launched in August 2012.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Contact</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Ab Hadley</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">Publishing</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxThree">
+                                <label class="form-check-label" for="cardsCheckboxThree"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-3.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">Lyft</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              Lyft is an on-demand transportation company based in San Francisco, California.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Contact</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Adolfo Hess</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">Transportation</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxFour">
+                                <label class="form-check-label" for="cardsCheckboxFour"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-4.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">PayPal</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              PayPal is a worldwide online payments system that supports online money transfers and services.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Contact</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Daniela Dewitt</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">Finance</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxFive">
+                                <label class="form-check-label" for="cardsCheckboxFive"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-5.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">Dropbox Inc.</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              Dropbox is a file hosting service that offers cloud storage, file synchronization, a personal cloud.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Contact</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Miyah Myles</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">File hosting</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxSix">
+                                <label class="form-check-label" for="cardsCheckboxSix"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-6.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">Squarespace</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              Squarespace provides software as a service for website building and hosting. Headquartered in NYC.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Contact</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Ryu Duke</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">Hosting</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxSeven">
+                                <label class="form-check-label" for="cardsCheckboxSeven"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-7.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">Github</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              GitHub is a web-based hosting service for version control of code using Git.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Contact</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Glen Rouse</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">Hosting</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxEight">
+                                <label class="form-check-label" for="cardsCheckboxEight"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-8.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">Slack</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              Slack is a cloud-based set of team collaboration tools and services, founded by Stewart Butterfield.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Messaging</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Miyah Myles</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">Messaging</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxNine">
+                                <label class="form-check-label" for="cardsCheckboxNine"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-1.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">Launchday</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              Launchday is a SaaS website builder with a focus on quality, easy to build product sites.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Contact</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Dianna Smiley</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">Web design</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxTen">
+                                <label class="form-check-label" for="cardsCheckboxTen"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-2.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">Medium Corporation</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              Medium is an online publishing platform developed by Evan Williams, and launched in August 2012.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Contact</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Ab Hadley</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">Publishing</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxEleven">
+                                <label class="form-check-label" for="cardsCheckboxEleven"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-3.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">Lyft</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              Lyft is an on-demand transportation company based in San Francisco, California.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Contact</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Adolfo Hess</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">Transportation</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxTwelve">
+                                <label class="form-check-label" for="cardsCheckboxTwelve"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-4.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">PayPal</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              PayPal is a worldwide online payments system that supports online money transfers and services.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Contact</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Daniela Dewitt</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">Finance</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxThirteen">
+                                <label class="form-check-label" for="cardsCheckboxThirteen"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-5.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">Dropbox Inc.</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              Dropbox is a file hosting service that offers cloud storage, file synchronization, a personal cloud.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Contact</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Miyah Myles</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">File hosting</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxFourteen">
+                                <label class="form-check-label" for="cardsCheckboxFourteen"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-6.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">Squarespace</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              Squarespace provides software as a service for website building and hosting. Headquartered in NYC.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Contact</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Ryu Duke</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">Hosting</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxFifteen">
+                                <label class="form-check-label" for="cardsCheckboxFifteen"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-7.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">Github</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              GitHub is a web-based hosting service for version control of code using Git.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Contact</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Glen Rouse</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">Hosting</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="col-12 col-md-6 col-xl-4">
+
+                      <!-- Card -->
+                      <div class="card">
+                        <div class="card-body">
+
+                          <!-- Header -->
+                          <div class="row align-items-center">
+                            <div class="col">
+
+                              <!-- Checkbox -->
+                              <div class="form-check form-check-circle">
+                                <input class="form-check-input list-checkbox" type="checkbox" id="cardsCheckboxSixteen">
+                                <label class="form-check-label" for="cardsCheckboxSixteen"></label>
+                              </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                              <!-- Dropdown -->
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  <i class="fe fe-more-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                  <a href="#!" class="dropdown-item">
+                                    Action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Another action
+                                  </a>
+                                  <a href="#!" class="dropdown-item">
+                                    Something else here
+                                  </a>
+                                </div>
+                              </div>
+
+                            </div>
+                          </div> <!-- / .row -->
+
+                          <!-- Image -->
+                          <a href="team-overview.html" class="avatar avatar-xl card-avatar">
+                            <img src="../assets/img/avatars/teams/team-logo-8.jpg" class="avatar-img rounded" alt="...">
+                          </a>
+
+                          <!-- Body -->
+                          <div class="text-center mb-5">
+
+                            <!-- Heading -->
+                            <h2 class="card-title">
+                              <a class="item-name" href="team-overview.html">Slack</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="small text-muted mb-0">
+                              Slack is a cloud-based set of team collaboration tools and services, founded by Stewart Butterfield.
+                            </p>
+
+                          </div>
+
+                          <!-- Divider -->
+                          <hr class="card-divider mb-0">
+
+                          <!-- List group -->
+                          <div class="list-group list-group-flush mb-n3">
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Messaging</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Link -->
+                                  <a href="profile-posts.html">
+                                    <small class="item-owner">Miyah Myles</small>
+                                  </a>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                            <div class="list-group-item">
+                              <div class="row">
+                                <div class="col">
+
+                                  <!-- Text -->
+                                  <small>Industry</small>
+
+                                </div>
+                                <div class="col-auto">
+
+                                  <!-- Text -->
+                                  <small class="item-industry">Messaging</small>
+
+                                </div>
+                              </div> <!-- / .row -->
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <!-- Pagination -->
+                  <div class="row g-0">
+
+                    <!-- Pagination (prev) -->
+                    <ul class="col list-pagination-prev pagination pagination-tabs justify-content-start">
+                      <li class="page-item">
+                        <a class="page-link" href="#">
+                          <i class="fe fe-arrow-left mr-1"></i> Prev
+                        </a>
+                      </li>
+                    </ul>
+
+                    <!-- Pagination -->
+                    <ul class="col list-pagination pagination pagination-tabs justify-content-center"></ul>
+
+                    <!-- Pagination (next) -->
+                    <ul class="col list-pagination-next pagination pagination-tabs justify-content-end">
+                      <li class="page-item">
+                        <a class="page-link" href="#">
+                          Next <i class="fe fe-arrow-right ml-1"></i>
+                        </a>
+                      </li>
+                    </ul>
+
+                  </div>
+
+                  <!-- Alert -->
+                  <div class="list-alert alert alert-dark alert-dismissible border fade" role="alert">
+
+                    <!-- Content -->
+                    <div class="row align-items-center">
+                      <div class="col">
+
+                        <!-- Checkbox -->
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="listAlertCheckbox" checked disabled>
+                          <label class="form-check-label text-white" for="listAlertCheckbox">
+                            <span class="list-alert-count">0</span> deal(s)
+                          </label>
+                        </div>
+
+                      </div>
+                      <div class="col-auto mr-n3">
+
+                        <!-- Button -->
+                        <button class="btn btn-sm btn-white-20">
+                          Edit
+                        </button>
+
+                        <!-- Button -->
+                        <button class="btn btn-sm btn-white-20">
+                          Delete
+                        </button>
+
+                      </div>
+                    </div> <!-- / .row -->
+
+                    <!-- Close -->
+                    <button type="button" class="list-alert-close close" aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div> <!-- / .row -->
+      </div>
+
+    </div> <!-- / .main-content -->
+
+    <!-- JAVASCRIPT -->
+    {{> partials/scripts}}
+
+  </body>
+</html>

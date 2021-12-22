@@ -1,0 +1,405 @@
+<nav class="navbar navbar-vertical navbar-vertical-sm fixed-left navbar-expand-md {{#unless demoMode}}{{#is navColor 'default'}}navbar-light{{/is}}{{#is navColor 'inverted'}}navbar-dark{{/is}}{{#is navColor 'vibrant'}}navbar-dark navbar-vibrant{{/is}}{{/unless}}" id="sidebarSmall">
+  <div class="container-fluid">
+
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarSmallCollapse" aria-controls="sidebarSmallCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Brand -->
+    <a class="navbar-brand" href="{{webRoot}}/index.html">
+      <img src="{{webRoot}}/assets/img/logo.svg" class="navbar-brand-img 
+      mx-auto" alt="...">
+    </a>
+
+    <!-- User (xs) -->
+    <div class="navbar-user d-md-none">
+
+      <!-- Dropdown -->
+      <div class="dropdown">
+
+        <!-- Toggle -->
+        <a href="#" id="sidebarSmallIcon" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="avatar avatar-sm avatar-online">
+            <img src="{{webRoot}}/assets/img/avatars/profiles/avatar-1.jpg" class="avatar-img rounded-circle" alt="...">
+          </div>
+        </a>
+
+        <!-- Menu -->
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sidebarSmallIcon">
+          <a href="{{webRoot}}/profile-posts.html" class="dropdown-item">Profile</a>
+          <a href="{{webRoot}}/account-general.html" class="dropdown-item">Settings</a>
+          <hr class="dropdown-divider">
+          <a href="{{webRoot}}/sign-in.html" class="dropdown-item">Logout</a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Collapse -->
+    <div class="collapse navbar-collapse" id="sidebarSmallCollapse">
+
+      <!-- Form -->
+      <form class="mt-4 mb-3 d-md-none">
+        <div class="input-group input-group-rounded input-group-merge input-group-reverse">
+          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-text">
+            <span class="fe fe-search"></span>
+          </div>
+        </div>
+      </form>
+
+      <!-- Divider -->
+      <hr class="navbar-divider d-none d-md-block mt-0 mb-3">
+
+      <!-- Navigation -->
+      <ul class="navbar-nav">
+        <li class="nav-item dropright">
+          <a class="nav-link dropdown-toggle {{#is category 'dashboards'}}active{{/is}}" id="sidebarSmallDashboards" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="{{#is category 'dashboards'}}true{{else}}false{{/is}}" title="Dashboards">
+            <i class="fe fe-home"></i> <span class="d-md-none">Dashboards</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="sidebarSmallDashboards">
+            <li class="dropdown-header d-none d-md-block">
+              <h6 class="text-uppercase mb-0">Dashboards</h6>
+            </li>
+            <li>
+              <a href="{{webRoot}}/index.html" class="dropdown-item {{#is page 'index.html'}}active{{/is}}">
+                Default
+              </a>
+            </li>
+            <li>
+              <a href="{{webRoot}}/dashboard-project-management.html" class="dropdown-item {{#is page 'dashboard-project-management.html'}}active{{/is}}">
+                Project Management
+              </a>
+            </li>
+            <li>
+              <a href="{{webRoot}}/dashboard-ecommerce.html" class="dropdown-item {{#is page 'dashboard-ecommerce.html'}}active{{/is}}">
+                E-Commerce
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropright">
+          <a class="nav-link dropdown-toggle {{#is category 'pages'}}active{{/is}}" id="sidebarSmallPages" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="{{#is category 'pages'}}true{{else}}false{{/is}}">
+            <i class="fe fe-file"></i> <span class="d-md-none">Pages</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="sidebarSmallPages">
+            <li class="dropdown-header d-none d-md-block">
+              <h6 class="text-uppercase mb-0">Pages</h6>
+            </li>
+            <li class="dropright">
+              <a class="dropdown-item dropdown-toggle {{#is subcategory 'account'}}active{{/is}}" href="#" id="sidebarSmallAccount" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{#is subcategory 'account'}}true{{else}}false{{/is}}">
+                Account
+              </a>
+              <div class="dropdown-menu" aria-labelledby="sidebarSmallAccount">
+                <a class="dropdown-item {{#is page 'account-general.html'}}active{{/is}}" href="{{webRoot}}/account-general.html">
+                  General
+                </a>
+                <a class="dropdown-item {{#is page 'account-billing.html'}}active{{/is}}" href="{{webRoot}}/account-billing.html">
+                  Billing
+                </a>
+                <a class="dropdown-item {{#is page 'account-members.html'}}active{{/is}}" href="{{webRoot}}/account-members.html">
+                  Members
+                </a>
+                <a class="dropdown-item {{#is page 'account-security.html'}}active{{/is}}" href="{{webRoot}}/account-security.html">
+                  Security
+                </a>
+                <a class="dropdown-item {{#is page 'account-notifications.html'}}active{{/is}}" href="{{webRoot}}/account-notifications.html">
+                  Notifications
+                </a>
+              </div>
+            </li>
+            <li class="dropright">
+              <a class="dropdown-item dropdown-toggle {{#is subcategory 'crm'}}active{{/is}}" href="#" id="sidebarSmallCrm" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{#is subcategory 'crm'}}true{{else}}false{{/is}}">
+                CRM
+              </a>
+              <div class="dropdown-menu" aria-labelledby="sidebarSmallCrm">
+                <a class="dropdown-item {{#is page 'crm-contacts.html'}}active{{/is}}" href="{{webRoot}}/crm-contacts.html">
+                  Contacts
+                </a>
+                <a class="dropdown-item {{#is page 'crm-companies.html'}}active{{/is}}" href="{{webRoot}}/crm-companies.html">
+                  Companies
+                </a>
+                <a class="dropdown-item {{#is page 'crm-deals.html'}}active{{/is}}" href="{{webRoot}}/crm-deals.html">
+                  Deals
+                </a>
+              </div>
+            </li>
+            <li class="dropright">
+              <a class="dropdown-item dropdown-toggle {{#is subcategory 'profile'}}active{{/is}}" href="#" id="sidebarSmallProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{#is subcategory 'profile'}}true{{else}}false{{/is}}">
+                Profile
+              </a>
+              <div class="dropdown-menu" aria-labelledby="sidebarSmallProfile">
+                <a class="dropdown-item {{#is page 'profile-posts.html'}}active{{/is}}" href="{{webRoot}}/profile-posts.html">
+                  Posts
+                </a>
+                <a class="dropdown-item {{#is page 'profile-groups.html'}}active{{/is}}" href="{{webRoot}}/profile-groups.html">
+                  Groups
+                </a>
+                <a class="dropdown-item {{#is page 'profile-projects.html'}}active{{/is}}" href="{{webRoot}}/profile-projects.html">
+                  Projects
+                </a>
+                <a class="dropdown-item {{#is page 'profile-files.html'}}active{{/is}}" href="{{webRoot}}/profile-files.html">
+                  Files
+                </a>
+                <a class="dropdown-item {{#is page 'profile-subscribers.html'}}active{{/is}}" href="{{webRoot}}/profile-subscribers.html">
+                  Subscribers
+                </a>
+              </div>
+            </li>
+            <li class="dropright">
+              <a class="dropdown-item dropdown-toggle {{#is subcategory 'project'}}active{{/is}}" href="#" id="sidebarSmallProject" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{#is subcategory 'project'}}true{{else}}false{{/is}}">
+                Project
+              </a>
+              <div class="dropdown-menu" aria-labelledby="sidebarSmallProject">
+                <a class="dropdown-item {{#is page 'project-overview.html'}}active{{/is}}" href="{{webRoot}}/project-overview.html">
+                  Overview
+                </a>
+                <a class="dropdown-item {{#is page 'project-files.html'}}active{{/is}}" href="{{webRoot}}/project-files.html">
+                  Files
+                </a>
+                <a class="dropdown-item {{#is page 'project-reports.html'}}active{{/is}}" href="{{webRoot}}/project-reports.html">
+                  Reports
+                </a>
+                <a class="dropdown-item {{#is page 'project-new.html'}}active{{/is}}" href="{{webRoot}}/project-new.html">
+                  New project
+                </a>
+              </div>
+            </li>
+            <li class="dropright">
+              <a class="dropdown-item dropdown-toggle {{#is subcategory 'team'}}active{{/is}}" href="#" id="sidebarSmallTeam" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{#is subcategory 'team'}}true{{else}}false{{/is}}">
+                Team
+              </a>
+              <div class="dropdown-menu" aria-labelledby="sidebarSmallTeam">
+                <a class="dropdown-item {{#is page 'team-overview.html'}}active{{/is}}" href="{{webRoot}}/team-overview.html">
+                  Overview
+                </a>
+                <a class="dropdown-item {{#is page 'team-projects.html'}}active{{/is}}" href="{{webRoot}}/team-projects.html">
+                  Projects
+                </a>
+                <a class="dropdown-item {{#is page 'team-members.html'}}active{{/is}}" href="{{webRoot}}/team-members.html">
+                  Members
+                </a>
+                <a class="dropdown-item {{#is page 'team-new.html'}}active{{/is}}" href="{{webRoot}}/team-new.html">
+                  New team
+                </a>
+              </div>
+            </li>
+            <li class="dropright">
+              <a class="dropdown-item dropdown-toggle {{#is subcategory 'feed'}}active{{/is}}" href="#" id="sidebarSmallFeed" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="{{#is subcategory 'feed'}}true{{else}}false{{/is}}">
+                Feed
+              </a>
+              <div class="dropdown-menu" aria-labelledby="sidebarSmallFeed">
+                <a class="dropdown-item {{#is page 'feed.html'}}active{{/is}}" href="{{webRoot}}/feed.html">
+                  Platform
+                </a>
+                <a class="dropdown-item {{#is page 'social-feed.html'}}active{{/is}}" href="{{webRoot}}/social-feed.html">
+                  Social
+                </a>
+              </div>
+            </li>
+            <li>
+              <a class="dropdown-item {{#is page 'wizard.html'}}active{{/is}}" href="{{webRoot}}/wizard.html">
+                Wizard
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item {{#is page 'kanban.html'}}active{{/is}}" href="{{webRoot}}/kanban.html">
+                Kanban
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item {{#is page 'orders.html'}}active{{/is}}" href="{{webRoot}}/orders.html">
+                Orders
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item {{#is page 'invoice.html'}}active{{/is}}" href="{{webRoot}}/invoice.html">
+                Invoice
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item {{#is page 'pricing.html'}}active{{/is}}" href="{{webRoot}}/pricing.html">
+                Pricing
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" data-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' title="Widgets">
+          <a class="nav-link {{#is page 'widgets.html'}}active{{/is}}" href="{{webRoot}}/widgets.html">
+            <i class="fe fe-grid"></i> <span class="d-md-none">Widgets</span>
+          </a>
+        </li>
+        <li class="nav-item dropright">
+          <a class="nav-link dropdown-toggle" id="sidebarSmallAuth" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fe fe-user"></i> <span class="d-md-none">Auth</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="sidebarSmallAuth">
+            <li class="dropdown-header d-none d-md-block">
+              <h6 class="text-uppercase mb-0">Authentication</h6>
+            </li>
+            <li class="dropright">
+              <a class="dropdown-item dropdown-toggle" href="#" id="sidebarSmallSignIn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sign in
+              </a>
+              <div class="dropdown-menu" aria-labelledby="sidebarSmallSignIn">
+                <a class="dropdown-item" href="{{webRoot}}/sign-in-cover.html">
+                  Cover
+                </a>
+                <a class="dropdown-item" href="{{webRoot}}/sign-in-illustration.html">
+                  Illustration
+                </a>
+                <a class="dropdown-item" href="{{webRoot}}/sign-in-basics.html">
+                  Basic
+                </a>
+              </div>
+            </li>
+            <li class="dropright">
+              <a class="dropdown-item dropdown-toggle" href="#" id="sidebarSmallSignUp" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Sign up
+              </a>
+              <div class="dropdown-menu" aria-labelledby="sidebarSmallSignUp">
+                <a class="dropdown-item" href="{{webRoot}}/sign-up-cover.html">
+                  Cover
+                </a>
+                <a class="dropdown-item" href="{{webRoot}}/sign-up-illustration.html">
+                  Illustration
+                </a>
+                <a class="dropdown-item" href="{{webRoot}}/sign-up.html">
+                  Basic
+                </a>
+              </div>
+            </li>
+            <li class="dropright">
+              <a class="dropdown-item dropdown-toggle" href="#" id="sidebarSmallPassword" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Password reset
+              </a>
+              <div class="dropdown-menu" aria-labelledby="sidebarSmallPassword">
+                <a class="dropdown-item" href="{{webRoot}}/password-reset-cover.html">
+                  Cover
+                </a>
+                <a class="dropdown-item" href="{{webRoot}}/password-reset-illustration.html">
+                  Illustration
+                </a>
+                <a class="dropdown-item" href="{{webRoot}}/password-reset.html">
+                  Basic
+                </a>
+              </div>
+            </li>
+            <li class="dropright">
+              <a class="dropdown-item dropdown-toggle" href="#" id="sidebarSmallError" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Error
+              </a>
+              <div class="dropdown-menu" aria-labelledby="sidebarSmallError">
+                <a class="dropdown-item" href="{{webRoot}}/error-illustration.html">
+                  Illustration
+                </a>
+                <a class="dropdown-item" href="{{webRoot}}/error.html">
+                  Basic
+                </a>
+              </div>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item d-md-none">
+          <a class="nav-link" href="#sidebarModalActivity" data-toggle="modal">
+            <span class="fe fe-bell"></span> Notifications
+          </a>
+        </li>
+      </ul>
+
+      <!-- Divider -->
+      <hr class="navbar-divider my-3">
+
+      <!-- Navigation -->
+      <ul class="navbar-nav mb-md-4">
+        <li class="nav-item dropright">
+          <a class="nav-link dropdown-toggle {{#is category 'basics'}}active{{/is}}" id="sidebarSmallBasics" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="{{#is category 'basics'}}true{{else}}false{{/is}}" title="Basics">
+            <i class="fe fe-clipboard"></i> <span class="d-md-none">Basics</span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="sidebarSmallBasics">
+            <li class="dropdown-header d-none d-md-block">
+              <h6 class="text-uppercase mb-0">Basics</h6>
+            </li>
+            <li>
+              <a href="{{webRoot}}/docs/getting-started.html" class="dropdown-item {{#is page 'getting-started.html'}}active{{/is}}">
+                Getting Started
+              </a>
+            </li>
+            <li>
+              <a href="{{webRoot}}/docs/design-file.html" class="dropdown-item {{#is page 'design-file.html'}}active{{/is}}">
+                Design File
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{#is page 'components.html'}}active{{/is}}" href="{{webRoot}}/docs/components.html" data-toggle="tooltip" data-placement="right" data-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' title="Components">
+            <i class="fe fe-book-open"></i> <span class="d-md-none">Components</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{#is page 'changelog.html'}}active{{/is}}" href="{{webRoot}}/docs/changelog.html" data-toggle="tooltip" data-placement="right" data-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' title="Changelog">
+            <i class="fe fe-git-branch"></i> <span class="d-md-none">Changelog</span> <span class="badge bg-primary ml-auto d-md-none">v2.0.0-alpha</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Push content down -->
+      <div class="mt-auto"></div>
+
+      {{#if demoMode}}
+        <!-- Customize -->
+        <div class="mb-4" data-toggle="tooltip" data-placement="right" data-template='<div class="tooltip d-none d-md-block" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>' title="Customize">
+          <a href="#modalDemo" class="btn btn-block btn-primary" data-toggle="modal">
+            <i class="fe fe-sliders"></i> <span class="d-md-none ml-2">Customize</span>
+          </a>
+        </div>
+      {{/if}}
+
+      {{#is navPosition 'sidenav'}}
+        <!-- User (md) -->
+        <div class="navbar-user d-none d-md-flex flex-column" id="sidebarSmallUser">
+
+          <!-- Icon -->
+          <a href="#sidebarModalSearch" class="navbar-user-link mb-3" data-toggle="modal">
+            <span class="icon">
+              <i class="fe fe-search"></i>
+            </span>
+          </a>
+
+          <!-- Icon -->
+          <a href="#sidebarModalActivity" class="navbar-user-link mb-3" data-toggle="modal">
+            <span class="icon">
+              <i class="fe fe-bell"></i>
+            </span>
+          </a>
+
+          <!-- Dropup -->
+          <div class="dropright">
+
+            <!-- Toggle -->
+            <a href="#" id="sidebarSmallIconCopy" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="avatar avatar-sm avatar-online">
+                <img src="{{webRoot}}/assets/img/avatars/profiles/avatar-1.jpg" class="avatar-img rounded-circle" alt="...">
+              </div>
+            </a>
+
+            <!-- Menu -->
+            <div class="dropdown-menu" aria-labelledby="sidebarSmallIconCopy">
+              <a href="{{webRoot}}/profile-posts.html" class="dropdown-item">Profile</a>
+              <a href="{{webRoot}}/account-general.html" class="dropdown-item">Settings</a>
+              <hr class="dropdown-divider">
+              <a href="{{webRoot}}/sign-in.html" class="dropdown-item">Logout</a>
+            </div>
+
+          </div>
+
+        </div>
+      {{/is}}
+
+    </div> <!-- / .navbar-collapse -->
+
+  </div>
+</nav>

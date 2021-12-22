@@ -1,0 +1,5 @@
+
+					<br><div class="alert alert-success" role="alert">
+							Student Added Successfully 
+						</div>
+

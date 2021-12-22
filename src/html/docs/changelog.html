@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> partials/head title="Dashkit"}}
+  </head>
+  <body>
+
+    <!-- MODALS -->
+    {{> partials/modals}}
+
+    <!-- NAVIGATION -->
+    {{> partials/navs page="changelog.html"}}
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+      {{#if demoMode}}{{> navs/topbar}}{{/if}}
+      {{#is navPosition 'combo'}}{{> navs/topbar}}{{/is}}
+
+      <div class="{{#is navPosition 'sidenav || combo'}}container-fluid{{/is}}{{#is navPosition 'topnav'}}container{{/is}}">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10 col-xl-8">
+
+            <!-- Header -->
+            <div class="header mt-md-5">
+              <div class="header-body">
+
+                <!-- Pretitle -->
+                <h6 class="header-pretitle">
+                  Documentation
+                </h6>
+
+                <!-- Title -->
+                <h1 class="header-title">
+                  Changelog
+                </h1>
+
+              </div>
+            </div>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v2.0.0-alpha</span></h2> <span class="text-muted"> – August 24th, 2020</span>
+
+            <!-- List -->
+            <ul>
+              <li>Updated to Bootstrap v5.0.0-alpha1.</li>
+              <li>Improved folder structure.</li>
+              <li>Replaced Gulp with Webpack & npm-scripts.</li>
+              <li>Replaced Gulp File Include with Handlebars Webpack Plugin.</li>
+              <li>Replaced Select2 with Choices.js.</li>
+              <li>Replaced jQuery Mask Plugin with Inputmask.</li>
+              <li>Removed jQuery dependency.</li>
+              <li>Moved all JavaScript to ES6 modules.</li>
+              <li>Other small changes.</li>
+            </ul>
+
+            <!-- Text -->
+            <p>
+              <strong>Known issues:</strong>
+            </p>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>Tooltips won't work with avatars.</li>
+              <li>Choices.js won't work in dropdown menus.</li>
+              <li>Collapse containers with nested expanded collapse containers collapse awkwardly.</li>
+              <li>Bundled plugins are not available globally (might be a problem for those who work with compiled files only).</li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.6.1</span></h2> <span class="text-muted"> – August 24th, 2020</span>
+
+            <!-- List -->
+            <ul>
+              <li>Updated to Bootstrap v4.5.2.</li>
+              <li>Updated other dependencies.</li>
+            </ul>
+
+            <!-- Text -->
+            <p>
+              <strong>Updated files:</strong>
+            </p>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>
+                <code>package.json</code>
+              </li>
+              <li>
+                <code>package-lock.json</code>
+              </li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.6.0</span></h2> <span class="text-muted"> – May 5th, 2020</span>
+
+            <!-- List -->
+            <ul>
+              <li>Added account pages.</li>
+              <li>Added CRM pages.</li>
+              <li>Removed <code>settings.html</code>.</li>
+              <li>Improved custom select styles.</li>
+              <li>Changed custom <code>List.js</code> initialization API.</li>
+              <li>Added <code>.pagination-tabs</code> modifier.</li>
+              <li>Added <code>.list-group-focus</code> modifier.</li>
+              <li>Fixed broken links to the documentation.</li>
+              <li>Updated dependencies.</li>
+            </ul>
+
+            <!-- Text -->
+            <p>
+              <strong>New files:</strong>
+            </p>
+
+            <!-- List -->
+            <ul>
+              <li>
+                <code>src/account-billing.html</code>
+              </li>
+              <li>
+                <code>src/account-general.html</code>
+              </li>
+              <li>
+                <code>src/account-members.html</code>
+              </li>
+              <li>
+                <code>src/account-members.html</code>
+              </li>
+              <li>
+                <code>src/account-notifications.html</code>
+              </li>
+              <li>
+                <code>src/account-security.html</code>
+              </li>
+              <li>
+                <code>src/crm-companies.html</code>
+              </li>
+              <li>
+                <code>src/crm-contacts.html</code>
+              </li>
+              <li>
+                <code>src/crm-deals.html</code>
+              </li>
+              <li>
+                <code>src/assets/scss/dashkit/_pagination.scss</code>
+              </li>
+              <li>
+                <code>src/assets/img/payment-methods/</code>
+              </li>
+            </ul>
+
+            <!-- Text -->
+            <p>
+              <strong>Updated files:</strong>
+            </p>
+
+            <!-- List -->
+            <ul>
+              <li>
+                <code>README.md</code>
+              </li>
+              <li>
+                <code>gulpfile.js</code>
+              </li>
+              <li>
+                <code>package-lock.json</code>
+              </li>
+              <li>
+                <code>package.json</code>
+              </li>
+              <li>
+                <code>src/dashboard-ecommerce.html</code>
+              </li>
+              <li>
+                <code>src/dashboard-project-management.html</code>
+              </li>
+              <li>
+                <code>src/index.html</code>
+              </li>
+              <li>
+                <code>src/orders.html</code>
+              </li>
+              <li>
+                <code>src/profile-files.html</code>
+              </li>
+              <li>
+                <code>src/profile-projects.html</code>
+              </li>
+              <li>
+                <code>src/project-files.html</code>
+              </li>
+              <li>
+                <code>src/team-projects.html</code>
+              </li>
+              <li>
+                <code>src/widgets.html</code>
+              </li>
+              <li>
+                <code>src/partials/modal-members.html</code>
+              </li>
+              <li>
+                <code>src/partials/modal-search.html</code>
+              </li>
+              <li>
+                <code>src/partials/sidebar-sm.html</code>
+              </li>
+              <li>
+                <code>src/partials/sidebar.html</code>
+              </li>
+              <li>
+                <code>src/partials/topbar.html</code>
+              </li>
+              <li>
+                <code>src/partials/topnav.html</code>
+              </li>
+              <li>
+                <code>src/partials/docs/cards.html</code>
+              </li>
+              <li>
+                <code>src/partials/docs/lists.html</code>
+              </li>
+              <li>
+                <code>src/partials/docs/tables.html</code>
+              </li>
+              <li>
+                <code>src/assets/scss/dashkit/_alert.scss</code>
+              </li>
+              <li>
+                <code>src/assets/scss/dashkit/_buttons.scss</code>
+              </li>
+              <li>
+                <code>src/assets/scss/dashkit/_card.scss</code>
+              </li>
+              <li>
+                <code>src/assets/scss/dashkit/_custom-forms.scss</code>
+              </li>
+              <li>
+                <code>src/assets/scss/dashkit/_dashkit.scss</code>
+              </li>
+              <li>
+                <code>src/assets/scss/dashkit/_forms.scss</code>
+              </li>
+              <li>
+                <code>src/assets/scss/dashkit/_list-group.scss</code>
+              </li>
+              <li>
+                <code>src/assets/scss/dashkit/_tables.scss</code>
+              </li>
+              <li>
+                <code>src/assets/scss/dashkit/_variables.scss</code>
+              </li>
+              <li>
+                <code>src/assets/scss/dashkit/vendors/_dropzone.scss</code>
+              </li>
+              <li>
+                <code>src/assets/scss/dashkit/vendors/_list.scss</code>
+              </li>
+              <li>
+                <code>src/assets/scss/dashkit/dark/_variables-dark.scss</code>
+              </li>
+              <li>
+                <code>src/assets/scss/dashkit/utilities/_borders.scss</code>
+              </li>
+              <li>
+                <code>src/assets/js/dropdowns.js</code>
+              </li>
+              <li>
+                <code>src/assets/js/list.js</code>
+              </li>
+              <li>
+                <code>src/assets/js/select2.js</code>
+              </li>
+            </ul>
+
+            <!-- Text -->
+            <p>
+              <strong>Removed files:</strong>
+            </p>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>
+                <code>src/settings.html</code>
+              </li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.5.1</span></h2> <span class="text-muted"> – March 31th, 2020</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>Disabled demo mode by default.</li>
+              <li>Updated dependencies.</li>
+              <li>Fixed Select 2 results max height issue.</li>
+              <li>Added styles for <code>.list-group-item-action</code>.</li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.5.0</span></h2> <span class="text-muted"> – January 24th, 2020</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>Added new dashboard variations.</li>
+              <li>Added <code>widgets.html</code>.</li>
+              <li>Added <code>wizard.html</code>.</li>
+              <li>Added checklist component.</li>
+              <li>Added timeline/activity component.</li>
+              <li>Improved charts toggling API.</li>
+              <li>Improved <code>gulpfile.js</code>.</li>
+              <li>Included Figma design file.</li>
+              <li>Updated to Bootstrap v4.4.1.</li>
+              <li>Updated other dependencies.</li>
+              <li>Other small changes and improvements.</li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.4.2</span></h2><span class="text-muted"> – May 24th, 2019</span>
+
+            <!-- List -->
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>Fixed navigation issues.</li>
+              <li>Added <code>$navbar-dropdown-toggle-on-hover</code> SCSS variable to enable/disable toggling navbar dropdowns on hover.</li>
+              <li>Replaced <code>$font-path</code> SCSS variable with <code>$path-to-fonts</code>. Changed its value to <code>../fonts</code> to allow specifying paths to different fonts.</li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.4.1</span></h2><span class="text-muted"> – May 23th, 2019</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>Fixed SCSS compilation issues.</li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.4.0</span></h2><span class="text-muted"> – May 23th, 2019</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>Added collapsed sidebar.</li>
+              <li>Added inverted navigation color.</li>
+              <li>Added Kanban board page.</li>
+              <li>Added Social feed page.</li>
+              <li>Added Lift utility.</li>
+              <li>Added Autosize plugin.</li>
+              <li>Added Mapbox plugin.</li>
+              <li>Added <code>charts-dark.js</code> to enable dark mode for charts.</li>
+              <li>Changed the way we pass options to third-party plugins if initialized via <code>data</code> attributes.</li>
+              <li>Got rid of jQuery dependency where possible.</li>
+              <li>Updated dependencies.</li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.3.4</span></h2><span class="text-muted"> – March 12th, 2019</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>Updated to Bootstrap v4.3.1.</li>
+              <li>Updated to Flatpickr v4.5.7.</li>
+              <li>Updated to Highlight.js 9.15.6.</li>
+              <li>Fixed Select2 search issue.</li>
+              <li>Fixed <code>.dropleft</code> icon issue.</li>
+              <li>Fixed <code>.icon</code> sizing issue.</li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.3.3</span></h2><span class="text-muted"> – February 12th, 2019</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>Updated to Bootstrap v4.3.0.</li>
+              <li>Updated to Gulp v4.</li>
+              <li>Updated other plugins and dependencies.</li>
+              <li>Rewritten <code>gulpfile.js</code> from scratch.</li>
+              <li>Removed deprecated packages.</li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.3.2</span></h2><span class="text-muted"> – January 21st, 2019</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>Updated to Bootstrap v4.2.1.</li>
+              <li>Replaced custom spacing utilities with Bootstrap ones.</li>
+              <li>Replaced Loaders with Spinners.</li>
+              <li>Replaced Toggles with Switches.</li>
+              <li>Cleaned up gulpfile.js and package.json.</li>
+              <li>Other small changes and improvements.</li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.3.1</span></h2><span class="text-muted"> – December 19th, 2018</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>Added URL parser to set global preferences via query parameters.</li>
+              <li>Added SASS variable for image path.</li>
+              <li>Fixed <code>gulp build</code> task errors.</li>
+              <li>Replaced logo image.</li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.3.0</span></h2><span class="text-muted"> – October 16th, 2018</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>Added layout builder.</li>
+              <li>Added <code>dashboard-alt.html</code> page.</li>
+              <li>Added <code>.bg-vibrant</code> class for sidebar.</li>
+              <li>Added custom styles for <code>.navbar-dark</code> class.</li>
+              <li>Added alternative positioning for vertical modal.</li>
+              <li>Fixed dropdown issues when positioned inside responsive table.</li>
+              <li>Moved Highlight.js inside <code>/node_modules</code>.</li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.2.1</span></h2><span class="text-muted"> – September 8th, 2018</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>Fixed light mode dropdown border color.</li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.2.0</span></h2><span class="text-muted"> – September 1st, 2018</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>Added dark mode.</li>
+              <li>Fixed Select2 dropdown list search when using inside a modal window.</li>
+              <li>Improved the <code>.avatar</code> component SCSS by replacing contextual borders with masks to be able to use avatar groups and status indicators on any background. Please make sure to remove any <code>.border</code> classes from avatar groups markup.</li>
+              <li>Optimized <code>gulpfile.js</code> to perform <strong class="badge bg-soft-primary"><code>gulp build</code></strong> faster.</li>
+              <li>Split <code>theme.js</code> into modules.</li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.1.2</span></h2><span class="text-muted"> – August 17th, 2018</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>Added <code>$font-path</code> SCSS variable.</li>
+              <li>Updated to Bootstrap v4.1.3.</li>
+              <li>Improved SCSS of the Select2 plugin styles overrides.</li>
+              <li>Fixed radio button issue.</li>
+              <li>Fixed card tables border radius issue.</li>
+              <li>Fixed validation styles for <code>.input-group-merge</code>.</li>
+              <li>Fixed Select2 dropdown items highlighting when using keyboard navigation.</li>
+              <li>Made Select2 dropdowns respect <code>.form-control-sm</code> and <code>.form-control-lg</code>.</li>
+              <li>Made Select2 searchbox optional.</li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.1.1</span></h2><span class="text-muted"> – July 31st, 2018</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>Specified the exact Bootstrap version in <code>package.json</code> since latest Bootstrap update (v4.1.3) made change to input height that caused issues. Interim solution until we integrate 4.1.3 properly to Dashkit.</li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.1.0</span></h2><span class="text-muted"> – July 24th, 2018</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>
+                New/Extended components:
+                <ul>
+                  <li>Universal loading component with <code>.is-loading</code> convenience helper</li>
+                  <li>WYSIWYG editor powered by Quill.js</li>
+                  <li>Drag and drop file handling powered by Dropzone.js</li>
+                  <li>Rich select/multi-select powered by Select2</li>
+                  <li>Icon buttons</li>
+                </ul>
+              </li>
+              <li>
+                New example pages:
+                <ul>
+                  <li>Orders page</li>
+                  <li>Invoice page</li>
+                  <li>Pricing page</li>
+                  <li>Create a project page</li>
+                  <li>Create a team page</li>
+                </ul>
+              </li>
+              <li>
+                Moved all plugin related styles into their own SCSS files.
+              </li>
+              <li>
+                Small improvements to variable importing and modal animations.
+              </li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.0.2</span></h2><span class="text-muted"> – July 20th, 2018</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>
+                Updated to Bootstrap v4.1.2.
+              </li>
+              <li>
+                Fixed border utilities.
+              </li>
+              <li>
+                Fixed an issue where tabs didn't get toggled while charts did.
+              </li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.0.1</span></h2><span class="text-muted"> – July 18th, 2018</span>
+
+            <!-- List -->
+            <ul class="mb-5">
+              <li>
+                Removed page header from the topnav version.
+              </li>
+              <li>
+                Changed variables import order. Added <code>!default</code> flag to custom variables.
+              </li>
+              <li>
+                Fixed scrolling issue on authentication pages.
+              </li>
+              <li>
+                Fixed Chart.js issue causing errors on pages with no charts.
+              </li>
+            </ul>
+
+            <!-- Heading -->
+            <h2 class="d-inline-block"><span class="badge bg-soft-primary mt-n1">v1.0.0</span></h2><span class="text-muted"> – June 25th, 2018</span>
+
+            <!-- List -->
+            <ul>
+              <li>
+                Initial release of Dashkit! Lots more coming soon though 😁
+              </li>
+            </ul>
+
+          </div>
+        </div> <!-- / .row -->
+      </div>
+
+    </div> <!-- / .main-content -->
+
+    <!-- JAVASCRIPT -->
+    {{> partials/scripts}}
+
+  </body>
+</html>

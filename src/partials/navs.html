@@ -1,0 +1,15 @@
+{{#if demoMode}}
+{{> navs/sidebar category=category subcategory=subcategory page=page}}
+{{> navs/sidebar-sm category=category subcategory=subcategory page="index.html"}}
+{{> navs/topnav category=category subcategory=subcategory page=page}}
+{{else}}
+{{#is navPosition 'sidenav || combo'}}
+{{#is sidebarSize 'base'}}
+{{> navs/sidebar category=category subcategory=subcategory page=page}}
+{{else is sidebarSize 'small'}}
+{{> navs/sidebar-sm category=category subcategory=subcategory page="index.html"}}
+{{/is}}
+{{else is navPosition 'topnav'}}
+{{> navs/topnav category=category subcategory=subcategory page=page}}
+{{/is}}
+{{/if}}

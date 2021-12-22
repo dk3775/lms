@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> partials/head title="Dashkit"}}
+  </head>
+  <body>
+
+    <!-- MODALS -->
+    {{> partials/modals}}
+
+    <!-- NAVIGATION -->
+    {{> partials/navs category="pages" subcategory="account" page="account-members.html"}}
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+      {{#if demoMode}}{{> navs/topbar}}{{/if}}
+      {{#is navPosition 'combo'}}{{> navs/topbar}}{{/is}}
+
+      <div class="{{#is navPosition 'sidenav || combo'}}container-fluid{{/is}}{{#is navPosition 'topnav'}}container{{/is}}">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10 col-xl-8">
+
+            <!-- Header -->
+            <div class="header mt-md-5">
+              <div class="header-body">
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Pretitle -->
+                    <h6 class="header-pretitle">
+                      Overview
+                    </h6>
+
+                    <!-- Title -->
+                    <h1 class="header-title">
+                      Account
+                    </h1>
+
+                  </div>
+                </div> <!-- / .row -->
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Nav -->
+                    <ul class="nav nav-tabs nav-overflow header-tabs">
+                      <li class="nav-item">
+                        <a href="account-general.html" class="nav-link">
+                          General
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="account-billing.html" class="nav-link">
+                          Billing
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="account-members.html" class="nav-link active">
+                          Members
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="account-security.html" class="nav-link">
+                          Security
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="account-notifications.html" class="nav-link">
+                          Notifications
+                        </a>
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-md-6">
+
+                <!-- Card -->
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col">
+
+                        <!-- Title -->
+                        <h6 class="text-uppercase text-muted mb-2">
+                          Seats used
+                        </h6>
+
+                        <!-- Heading -->
+                        <span class="h2 mb-0">
+                          4 out of 6
+                        </span>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Icon -->
+                        <a class="btn btn-sm btn-outline-primary" href="#!">Upgrade</a>
+
+                      </div>
+                    </div> <!-- / .row -->
+
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-12 col-md-6">
+
+                <!-- Card -->
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row align-items-center">
+                      <div class="col">
+
+                        <!-- Title -->
+                        <h6 class="text-uppercase text-muted mb-2">
+                          Default role
+                        </h6>
+
+                        <!-- Heading -->
+                        <span class="h2 mb-0">
+                          Staff
+                        </span>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Icon -->
+                        <a class="btn btn-sm btn-white" href="#!">Change</a>
+
+                      </div>
+                    </div> <!-- / .row -->
+
+                  </div>
+                </div>
+
+              </div>
+            </div> <!-- / .row -->
+
+            <!-- Card -->
+            <div class="card">
+              <div class="card-header">
+
+                <!-- Title -->
+                <h4 class="card-header-title">
+                  Members
+                </h4>
+
+                <!-- Dropdown -->
+                <div class="dropdown">
+                  <button class="btn btn-sm btn-primary" type="button" id="inviteMember" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Invite member
+                  </button>
+                  <form class="dropdown-menu dropdown-menu-right dropdown-menu-card" aria-labelledby="inviteMember">
+                    <div class="card-header">
+
+                      <!-- Title -->
+                      <h4 class="card-header-title">
+                        Invite a member
+                      </h4>
+
+                      <!-- Badge -->
+                      <span class="badge bg-soft-primary">2 seats left</span>
+
+                    </div>
+                    <div class="card-header">
+                      <div class="row g-0 align-items-center">
+                        <div class="col-3">
+
+                          <!-- Label -->
+                          <label class="mb-0" for="inviteMemberName">
+                            Name
+                          </label>
+
+                        </div>
+                        <div class="col">
+
+                          <!-- Input -->
+                          <input class="form-control form-control-flush" id="inviteMemberName" type="text" placeholder="Full name">
+
+                        </div>
+                      </div> <!-- / .row -->
+                    </div>
+                    <div class="card-header">
+                      <div class="row g-0 align-items-center">
+                        <div class="col-3">
+
+                          <!-- Label -->
+                          <label class="mb-0" for="inviteMemberEmail">
+                            Email
+                          </label>
+
+                        </div>
+                        <div class="col">
+
+                          <!-- Input -->
+                          <input class="form-control form-control-flush" id="inviteMemberEmail" type="text" placeholder="Email address">
+
+                        </div>
+                      </div> <!-- / .row -->
+                    </div>
+                    <div class="card-footer">
+
+                      <!-- Button -->
+                      <button class="btn btn-block btn-primary" type="submit">
+                        Invite member
+                      </button>
+
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+              <div class="card-body">
+
+                <!-- List group -->
+                <div class="list-group list-group-flush my-n3">
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col-auto">
+
+                        <!-- Avatar -->
+                        <a href="profile-posts.html" class="avatar">
+                          <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+
+                      </div>
+                      <div class="col-5 ml-n2">
+
+                        <!-- Title -->
+                        <h4 class="mb-1">
+                          <a href="profile-posts.html">Dianna Smiley</a>
+                        </h4>
+
+                        <!-- Email -->
+                        <p class="small text-muted mb-0">
+                          <a class="d-block text-reset text-truncate" href="mailt:dianna.smiley@company.com">dianna.smiley@company.com</a>
+                        </p>
+
+                      </div>
+                      <div class="col-auto ml-auto mr-n3">
+
+                        <!-- Select -->
+                        <select class="form-select form-select-sm" data-choices='{"searchEnabled": false}'>
+                          <option>Admin</option>
+                          <option>Staff</option>
+                          <option>Custom</option>
+                        </select>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Dropdown -->
+                        <div class="dropdown">
+                          <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fe fe-more-vertical"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#!">
+                              Action
+                            </a>
+                            <a class="dropdown-item" href="#!">
+                              Another action
+                            </a>
+                            <a class="dropdown-item" href="#!">
+                              Something else here
+                            </a>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div> <!-- / .row -->
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col-auto">
+
+                        <!-- Avatar -->
+                        <a href="profile-posts.html" class="avatar">
+                          <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+
+                      </div>
+                      <div class="col-5 ml-n2">
+
+                        <!-- Title -->
+                        <h4 class="mb-1">
+                          <a href="profile-posts.html">Ab Hadley</a>
+                        </h4>
+
+                        <!-- Email -->
+                        <p class="small text-muted mb-0">
+                          <a class="d-block text-reset text-truncate" href="mailt:ab.hadley@company.com">ab.hadleyompany.com</a>
+                        </p>
+
+                      </div>
+                      <div class="col-auto ml-auto mr-n3">
+
+                        <!-- Select -->
+                        <select class="form-select form-select-sm" data-choices='{"searchEnabled": false}'>
+                          <option>Admin</option>
+                          <option>Staff</option>
+                          <option>Custom</option>
+                        </select>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Dropdown -->
+                        <div class="dropdown">
+                          <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fe fe-more-vertical"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#!">
+                              Action
+                            </a>
+                            <a class="dropdown-item" href="#!">
+                              Another action
+                            </a>
+                            <a class="dropdown-item" href="#!">
+                              Something else here
+                            </a>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div> <!-- / .row -->
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col-auto">
+
+                        <!-- Avatar -->
+                        <a href="profile-posts.html" class="avatar">
+                          <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+
+                      </div>
+                      <div class="col-5 ml-n2">
+
+                        <!-- Title -->
+                        <h4 class="mb-1">
+                          <a href="profile-posts.html">Adolfo Hess</a>
+                        </h4>
+
+                        <!-- Email -->
+                        <p class="small text-muted mb-0">
+                          <a class="d-block text-reset text-truncate" href="mailt:adolfo.hess@company.com">adolfo.hess@company.com</a>
+                        </p>
+
+                      </div>
+                      <div class="col-auto ml-auto mr-n3">
+
+                        <!-- Select -->
+                        <select class="form-select form-select-sm" data-choices='{"searchEnabled": false}'>
+                          <option>Admin</option>
+                          <option>Staff</option>
+                          <option>Custom</option>
+                        </select>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Dropdown -->
+                        <div class="dropdown">
+                          <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fe fe-more-vertical"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#!">
+                              Action
+                            </a>
+                            <a class="dropdown-item" href="#!">
+                              Another action
+                            </a>
+                            <a class="dropdown-item" href="#!">
+                              Something else here
+                            </a>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div> <!-- / .row -->
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col-auto">
+
+                        <!-- Avatar -->
+                        <a href="profile-posts.html" class="avatar">
+                          <img src="assets/img/avatars/profiles/avatar-4.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+
+                      </div>
+                      <div class="col-5 ml-n2">
+
+                        <!-- Title -->
+                        <h4 class="mb-1">
+                          <a href="profile-posts.html">Daniela Dewitt</a>
+                        </h4>
+
+                        <!-- Email -->
+                        <p class="small text-muted mb-0">
+                          <a class="d-block text-reset text-truncate" href="mailt:daniela.dewitt@company.com">daniela.dewitt@company.com</a>
+                        </p>
+
+                      </div>
+                      <div class="col-auto ml-auto mr-n3">
+
+                        <!-- Select -->
+                        <select class="form-select form-select-sm" data-choices='{"searchEnabled": false}'>
+                          <option>Admin</option>
+                          <option>Staff</option>
+                          <option>Custom</option>
+                        </select>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Dropdown -->
+                        <div class="dropdown">
+                          <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fe fe-more-vertical"></i>
+                          </a>
+                          <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#!">
+                              Action
+                            </a>
+                            <a class="dropdown-item" href="#!">
+                              Another action
+                            </a>
+                            <a class="dropdown-item" href="#!">
+                              Something else here
+                            </a>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div> <!-- / .row -->
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <br>
+
+          </div>
+        </div> <!-- / .row -->
+      </div>
+
+    </div> <!-- / .main-content -->
+
+    <!-- JAVASCRIPT -->
+    {{> partials/scripts}}
+
+  </body>
+</html>

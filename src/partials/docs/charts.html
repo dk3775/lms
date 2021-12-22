@@ -1,0 +1,342 @@
+<div id="charts">
+
+  <!-- Header -->
+  <div class="header mt-md-5">
+    <div class="header-body">
+
+      <!-- Title -->
+      <h1 class="header-title">
+        Charts <span class="badge bg-soft-primary ml-1 mt-n1">Dashkit only</span> <span class="badge bg-soft-warning ml-1 mt-n1">Plugin</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="header-subtitle">
+        Create beautiful charts with a simple, but powerful and flexible JavaScript Chart.js plugin. Please read the <a target="_blank" href="https://www.chartjs.org/">official documentation</a> for a full list of options.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- Heading -->
+  <h2 class="mb-2">
+    Line
+  </h2>
+
+  <!-- Subheading -->
+  <p class="text-muted mb-4">
+    A line chart is a way of plotting data points on a line. Often, it is used to show trend data, or the comparison of two data sets.
+  </p>
+
+  <!-- Card -->
+  <div class="card">
+    <div class="card-body">
+
+      <!-- Chart -->
+      <div class="chart">
+        <canvas id="overviewChart" class="chart-canvas"></canvas>
+      </div>
+
+    </div>
+    <div class="card-footer bg-dark">
+      <code class="highlight html bg-dark">
+        &lt;div&nbsp;class=&quot;chart&quot;&gt;<br />&nbsp;&nbsp;&lt;canvas&nbsp;class=&quot;chart-canvas&quot;&nbsp;id=&quot;overviewChart&quot;&gt;&lt;/canvas&gt;<br />&lt;/div&gt;<br /><br />&lt;script&gt;<br />&nbsp;&nbsp;new&nbsp;Chart('overviewChart',&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;'line',<br />&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scales:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxes:&nbsp;[{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ticks:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callback:&nbsp;function(value)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;'$'&nbsp;+&nbsp;value&nbsp;+&nbsp;'k';<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;labels:&nbsp;['Jan',&nbsp;'Feb',&nbsp;'Mar',&nbsp;'Apr',&nbsp;'May',&nbsp;'Jun',&nbsp;'Jul',&nbsp;'Aug',&nbsp;'Sep',&nbsp;'Oct',&nbsp;'Nov',&nbsp;'Dec'],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;datasets:&nbsp;[{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label:&nbsp;'Earned',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;[0,&nbsp;10,&nbsp;5,&nbsp;15,&nbsp;10,&nbsp;20,&nbsp;15,&nbsp;25,&nbsp;20,&nbsp;30,&nbsp;25,&nbsp;40]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;});<br />&lt;/script&gt;<br />
+      </code>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <hr class="my-5">
+
+  <!-- Heading -->
+  <h2 class="mb-2">
+    Bar
+  </h2>
+
+  <!-- Subheading -->
+  <p class="text-muted mb-4">
+    A bar chart provides a way of showing data values represented as vertical bars. It is sometimes used to show trend data, and the comparison of multiple data sets side by side.
+  </p>
+
+  <!-- Card -->
+  <div class="card">
+    <div class="card-body">
+
+      <!-- Chart -->
+      <div class="chart">
+        <canvas id="feedChart" class="chart-canvas"></canvas>
+      </div>
+
+    </div>
+    <div class="card-footer bg-dark">
+      <code class="highlight html bg-dark">
+        &lt;div&nbsp;class=&quot;chart&quot;&gt;<br />&nbsp;&nbsp;&lt;canvas&nbsp;class=&quot;chart-canvas&quot;&nbsp;id=&quot;feedChart&quot;&gt;&lt;/canvas&gt;<br />&lt;/div&gt;<br /><br />&lt;script&gt;<br />&nbsp;&nbsp;new&nbsp;Chart('feedChart',&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;'bar',<br />&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scales:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxes:&nbsp;[{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ticks:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callback:&nbsp;function(value)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;'$'&nbsp;+&nbsp;value&nbsp;+&nbsp;'k';<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;labels:&nbsp;['Jan',&nbsp;'Feb',&nbsp;'Mar',&nbsp;'Apr',&nbsp;'May',&nbsp;'Jun',&nbsp;'Jul',&nbsp;'Aug',&nbsp;'Sep',&nbsp;'Oct',&nbsp;'Nov',&nbsp;'Dec'],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;datasets:&nbsp;[{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label:&nbsp;'Sales',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;[25,&nbsp;20,&nbsp;30,&nbsp;22,&nbsp;17,&nbsp;10,&nbsp;18,&nbsp;26,&nbsp;28,&nbsp;26,&nbsp;20,&nbsp;32]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;});<br />&lt;/script&gt;<br />
+      </code>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <hr class="my-5">
+
+  <!-- Heading -->
+  <h2 class="mb-2">
+    Doughnut
+  </h2>
+
+  <!-- Subheading -->
+  <p class="text-muted mb-4">
+    Excellent at showing the relational proportions between data.
+  </p>
+
+  <!-- Card -->
+  <div class="card">
+    <div class="card-body">
+
+      <!-- Chart -->
+      <div class="chart">
+        <canvas id="trafficChart" class="chart-canvas" data-toggle="legend" data-target="#trafficChartLegend"></canvas>
+      </div>
+
+      <!-- Legend -->
+      <div id="trafficChartLegend" class="chart-legend"></div>
+
+    </div>
+    <div class="card-footer bg-dark">
+      <code class="highlight html bg-dark">
+        &lt;div&nbsp;class=&quot;chart&nbsp;chart-appended&quot;&gt;<br />&nbsp;&nbsp;&lt;canvas&nbsp;class=&quot;chart-canvas&quot;&nbsp;id=&quot;trafficChart&quot;&nbsp;data-toggle=&quot;legend&quot;&nbsp;data-target=&quot;#trafficChartLegend&quot;&gt;&lt;/canvas&gt;<br />&lt;/div&gt;<br /><br />&lt;div&nbsp;class=&quot;chart-legend&quot;&nbsp;id=&quot;trafficChartLegend&quot;&gt;&lt;/div&gt;<br /><br />&lt;script&gt;<br />&nbsp;&nbsp;new&nbsp;Chart('trafficChart',&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;'doughnut',<br />&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tooltips:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callbacks:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;afterLabel:&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;'%'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;labels:&nbsp;['Direct',&nbsp;'Organic',&nbsp;'Referral'],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;datasets:&nbsp;[{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;[60,&nbsp;25,&nbsp;15],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;backgroundColor:&nbsp;['#2C7BE5',&nbsp;'#A6C5F7',&nbsp;'#D2DDEC']<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;});<br />&lt;/script&gt;<br />
+      </code>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <hr class="my-5">
+
+  <!-- Heading -->
+  <h2 class="mb-2">
+    Sparkline
+  </h2>
+
+  <!-- Subheading -->
+  <p class="text-muted mb-4">
+    A simple little line chart with disabled interactions.
+  </p>
+
+  <!-- Card -->
+  <div class="card">
+    <div class="card-body">
+
+      <!-- Chart -->
+      <div class="chart chart-sparkline">
+        <canvas class="chart-canvas" id="sparklineChartSocialOne"></canvas>
+      </div>
+
+    </div>
+    <div class="card-footer bg-dark">
+      <code class="highlight html bg-dark">
+        &lt;div&nbsp;class=&quot;chart&nbsp;chart-sparkline&quot;&gt;<br />&nbsp;&nbsp;&lt;canvas&nbsp;class=&quot;chart-canvas&quot;&nbsp;id=&quot;sparklineChartSocialOne&quot;&gt;&lt;/canvas&gt;<br />&lt;/div&gt;<br /><br />&lt;script&gt;<br />&nbsp;&nbsp;new&nbsp;Chart(chart,&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;'line',<br />&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scales:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxes:&nbsp;[{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display:&nbsp;false<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xAxes:&nbsp;[{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display:&nbsp;false<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;elements:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;borderWidth:&nbsp;2,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;borderColor:&nbsp;'#D2DDEC'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;point:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hoverRadius:&nbsp;0<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tooltips:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;custom:&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;labels:&nbsp;new&nbsp;Array(12),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;datasets:&nbsp;[{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;[0,&nbsp;15,&nbsp;10,&nbsp;25,&nbsp;30,&nbsp;15,&nbsp;40,&nbsp;50,&nbsp;80,&nbsp;60,&nbsp;55,&nbsp;65]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;});<br /><br />&lt;/script&gt;<br />
+      </code>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <hr class="my-5">
+
+  <!-- Heading -->
+  <h2 class="mb-2">
+    Toggle chart data
+  </h2>
+
+  <!-- Subheading -->
+  <p class="text-muted mb-4">
+    Easily toggle hidden datasets with a simple interface based on the <code>data</code> attributes.
+  </p>
+
+  <!-- Table -->
+  <div class="card">
+    <div class="card-header">
+
+      <!-- Title -->
+      <h4 class="card-header-title">
+        Options
+      </h4>
+
+    </div>
+    <div class="table-responsive">
+      <table class="table table-sm card-table">
+        <thead>
+          <tr>
+            <th>
+              Name
+            </th>
+            <th>
+              Type
+            </th>
+            <th>
+              Default
+            </th>
+            <th>
+              Description
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <code>data-toggle</code>
+            </td>
+            <td>
+              string
+            </td>
+            <td>
+              chart
+            </td>
+            <td>
+              Activates the toggle functionality.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>data-target</code>
+            </td>
+            <td>
+              string
+            </td>
+            <td>
+              -
+            </td>
+            <td>
+              The selector of a chart the new set of data will be applied to.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>data-trigger</code>
+            </td>
+            <td>
+              string
+            </td>
+            <td>
+              -
+            </td>
+            <td>
+              How datasets are triggered. Should be a valid JavaScript event.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>data-action</code>
+            </td>
+            <td>
+              string
+            </td>
+            <td>
+              -
+            </td>
+            <td>
+              Use <code>toggle</code> to replace an active dataset, or <code>add</code> to add a new one.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <code>data-dataset</code>
+            </td>
+            <td>
+              number
+            </td>
+            <td>
+              -
+            </td>
+            <td>
+              The order of the dataset in the <code>datasets</code> array to toggle.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Card -->
+  <div class="card">
+    <div class="card-header">
+
+      <!-- Title -->
+      <h4 class="card-header-title">
+        Conversions
+      </h4>
+
+      <!-- Caption -->
+      <span class="text-muted mr-3">
+        Last year comparision:
+      </span>
+
+      <!-- Switch -->
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="cardToggle" data-toggle="chart" data-target="#conversionsChart" data-trigger="change" data-action="add" data-dataset="1">
+        <label class="form-check-label" for="cardToggle"></label>
+      </div>
+
+    </div>
+    <div class="card-body">
+
+      <!-- Chart -->
+      <div class="chart">
+        <canvas id="conversionsChart" class="chart-canvas"></canvas>
+      </div>
+
+    </div>
+    <div class="card-footer bg-dark">
+      <code class="highlight html bg-dark">
+        &lt;div&nbsp;class=&quot;form-check&nbsp;form-switch&quot;&gt;<br />&nbsp;&nbsp;&lt;input&nbsp;class=&quot;form-check-input&quot;&nbsp;type=&quot;checkbox&quot;&nbsp;id=&quot;cardToggle&quot;&nbsp;data-toggle=&quot;chart&quot;&nbsp;data-target=&quot;#conversionsChart&quot;&nbsp;data-trigger=&quot;change&quot;&nbsp;data-action=&quot;add&quot;&nbsp;data-dataset=&quot;1&quot;&gt;<br />&nbsp;&nbsp;&lt;label&nbsp;class=&quot;form-check-label&quot;&nbsp;for=&quot;cardToggle&quot;&gt;&lt;/label&gt;<br />&lt;/div&gt;<br /><br />&lt;div&nbsp;class=&quot;chart&quot;&gt;<br />&nbsp;&nbsp;&lt;canvas&nbsp;id=&quot;conversionsChart&quot;&nbsp;class=&quot;chart-canvas&quot;&gt;&lt;/canvas&gt;<br />&lt;/div&gt;<br /><br />&lt;script&gt;<br />&nbsp;&nbsp;new&nbsp;Chart('conversionsChart',&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;'bar',<br />&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scales:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxes:&nbsp;[{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ticks:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callback:&nbsp;function(value)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;value&nbsp;+&nbsp;'%';<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;labels:&nbsp;['Oct&nbsp;1',&nbsp;'Oct&nbsp;2',&nbsp;'Oct&nbsp;3',&nbsp;'Oct&nbsp;4',&nbsp;'Oct&nbsp;5',&nbsp;'Oct&nbsp;6',&nbsp;'Oct&nbsp;7',&nbsp;'Oct&nbsp;8',&nbsp;'Oct&nbsp;9',&nbsp;'Oct&nbsp;10',&nbsp;'Oct&nbsp;11',&nbsp;'Oct&nbsp;12'],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;datasets:&nbsp;[{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label:&nbsp;'2020',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;[25,&nbsp;20,&nbsp;30,&nbsp;22,&nbsp;17,&nbsp;10,&nbsp;18,&nbsp;26,&nbsp;28,&nbsp;26,&nbsp;20,&nbsp;32]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label:&nbsp;'2019',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;[15,&nbsp;10,&nbsp;20,&nbsp;12,&nbsp;7,&nbsp;0,&nbsp;8,&nbsp;16,&nbsp;18,&nbsp;16,&nbsp;10,&nbsp;22],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;backgroundColor:&nbsp;'#d2ddec',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hidden:&nbsp;true<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;});<br />&lt;/script&gt;<br />
+      </code>
+    </div>
+  </div>
+
+  <!-- Card -->
+  <div class="card">
+    <div class="card-header">
+
+      <!-- Title -->
+      <h4 class="card-header-title">
+        Sales
+      </h4>
+
+      <!-- Nav -->
+      <ul class="nav nav-tabs nav-tabs-sm card-header-tabs">
+        <li class="nav-item" data-toggle="chart" data-target="#salesChart" data-trigger="click" data-action="toggle" data-dataset="0">
+          <a class="nav-link active" href="#" data-toggle="tab">
+            All
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="chart" data-target="#salesChart" data-trigger="click" data-action="toggle" data-dataset="1">
+          <a class="nav-link" href="#" data-toggle="tab">
+            Direct
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="chart" data-target="#salesChart" data-trigger="click" data-action="toggle" data-dataset="2">
+          <a class="nav-link" href="#" data-toggle="tab">
+            Organic
+          </a>
+        </li>
+      </ul>
+
+    </div>
+    <div class="card-body">
+
+      <!-- Chart -->
+      <div class="chart">
+        <canvas id="salesChart" class="chart-canvas"></canvas>
+      </div>
+
+    </div>
+    <div class="card-footer bg-dark">
+      <code class="highlight html bg-dark">
+        &lt;ul&nbsp;class=&quot;nav&nbsp;nav-tabs&nbsp;nav-tabs-sm&nbsp;card-header-tabs&quot;&gt;<br />&nbsp;&nbsp;&lt;li&nbsp;class=&quot;nav-item&quot;&nbsp;data-toggle=&quot;chart&quot;&nbsp;data-target=&quot;#salesChart&quot;&nbsp;data-trigger=&quot;click&quot;&nbsp;data-action=&quot;toggle&quot;&nbsp;data-dataset=&quot;0&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;nav-link&nbsp;active&quot;&nbsp;href=&quot;#&quot;&nbsp;data-toggle=&quot;tab&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />&nbsp;&nbsp;&lt;/li&gt;<br />&nbsp;&nbsp;&lt;li&nbsp;class=&quot;nav-item&quot;&nbsp;data-toggle=&quot;chart&quot;&nbsp;data-target=&quot;#salesChart&quot;&nbsp;data-trigger=&quot;click&quot;&nbsp;data-action=&quot;toggle&quot;&nbsp;data-dataset=&quot;1&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;nav-link&quot;&nbsp;href=&quot;#&quot;&nbsp;data-toggle=&quot;tab&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Direct<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />&nbsp;&nbsp;&lt;/li&gt;<br />&nbsp;&nbsp;&lt;li&nbsp;class=&quot;nav-item&quot;&nbsp;data-toggle=&quot;chart&quot;&nbsp;data-target=&quot;#salesChart&quot;&nbsp;data-trigger=&quot;click&quot;&nbsp;data-action=&quot;toggle&quot;&nbsp;data-dataset=&quot;2&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;nav-link&quot;&nbsp;href=&quot;#&quot;&nbsp;data-toggle=&quot;tab&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Organic<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />&nbsp;&nbsp;&lt;/li&gt;<br />&lt;/ul&gt;<br /><br />&lt;div&nbsp;class=&quot;chart&quot;&gt;<br />&nbsp;&nbsp;&lt;canvas&nbsp;id=&quot;salesChart&quot;&nbsp;class=&quot;chart-canvas&quot;&gt;&lt;/canvas&gt;<br />&lt;/div&gt;<br /><br />&lt;script&gt;<br />&nbsp;&nbsp;new&nbsp;Chart('salesChart',&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;type:&nbsp;'line',<br />&nbsp;&nbsp;&nbsp;&nbsp;options:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scales:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yAxes:&nbsp;[{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ticks:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callback:&nbsp;function(value)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;'$'&nbsp;+&nbsp;value&nbsp;+&nbsp;'k';<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;labels:&nbsp;['Oct&nbsp;1',&nbsp;'Oct&nbsp;3',&nbsp;'Oct&nbsp;6',&nbsp;'Oct&nbsp;9',&nbsp;'Oct&nbsp;12',&nbsp;'Oct&nbsp;5',&nbsp;'Oct&nbsp;18',&nbsp;'Oct&nbsp;21',&nbsp;'Oct&nbsp;24',&nbsp;'Oct&nbsp;27',&nbsp;'Oct&nbsp;30'],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;datasets:&nbsp;[{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label:&nbsp;'All',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;[0,&nbsp;10,&nbsp;5,&nbsp;15,&nbsp;10,&nbsp;20,&nbsp;15,&nbsp;25,&nbsp;20,&nbsp;30,&nbsp;25]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label:&nbsp;'Direct',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;[7,&nbsp;40,&nbsp;12,&nbsp;27,&nbsp;34,&nbsp;17,&nbsp;19,&nbsp;30,&nbsp;28,&nbsp;32,&nbsp;24],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hidden:&nbsp;true<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label:&nbsp;'Organic',<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data:&nbsp;[2,&nbsp;12,&nbsp;35,&nbsp;25,&nbsp;36,&nbsp;25,&nbsp;34,&nbsp;16,&nbsp;4,&nbsp;14,&nbsp;15],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hidden:&nbsp;true<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}]<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;});<br />&lt;/script&gt;<br />
+      </code>
+    </div>
+  </div>
+
+  <!-- Text -->
+  <p>
+    Please refer to <code>src/assets/js/dashkit.js</code> for more examples.
+  </p>
+
+</div>

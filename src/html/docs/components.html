@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> partials/head title="Dashkit"}}
+  </head>
+  <body>
+
+    <!-- MODALS -->
+    {{> partials/modals}}
+
+    <!-- NAVIGATION -->
+    {{> partials/navs page="components.html"}}
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+      {{#if demoMode}}{{> navs/topbar}}{{/if}}
+      {{#is navPosition 'combo'}}{{> navs/topbar}}{{/is}}
+
+      <div class="{{#is navPosition 'sidenav || combo'}}container-fluid{{/is}}{{#is navPosition 'topnav'}}container{{/is}}">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10 col-xl-8">
+
+            {{> docs/alerts}}
+            {{> docs/autosize}}
+            {{> docs/avatars}}
+            {{> docs/badges}}
+            {{> docs/breadcrumb}}
+            {{> docs/button-group}}
+            {{> docs/buttons}}
+            {{> docs/cards}}
+            {{> docs/charts}}
+            {{> docs/checklist}}
+            {{> docs/dropdowns}}
+            {{> docs/forms}}
+            {{> docs/icons}}
+            {{> docs/kanban}}
+            {{> docs/lists}}
+            {{> docs/map}}
+            {{> docs/modals}}
+            {{> docs/navbar}}
+            {{> docs/navs}}
+            {{> docs/page-headers}}
+            {{> docs/pagination}}
+            {{> docs/popovers}}
+            {{> docs/progress}}
+            {{> docs/social-posts}}
+            {{> docs/spinners}}
+            {{> docs/tables}}
+            {{> docs/toasts}}
+            {{> docs/tooltips}}
+            {{> docs/typography}}
+            {{> docs/utilities}}
+
+          </div>
+        </div> <!-- / .row -->
+      </div>
+
+    </div> <!-- / .main-content -->
+
+    <!-- JAVASCRIPT -->
+    {{> partials/scripts}}
+
+  </body>
+</html>

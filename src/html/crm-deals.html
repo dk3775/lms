@@ -1,0 +1,3168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> partials/head title="Dashkit"}}
+  </head>
+  <body>
+
+    <!-- MODALS -->
+    {{> partials/modals}}
+
+    <!-- NAVIGATION -->
+    {{> partials/navs category="pages" subcategory="crm" page="crm-deals.html"}}
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+      {{#if demoMode}}{{> navs/topbar}}{{/if}}
+      {{#is navPosition 'combo'}}{{> navs/topbar}}{{/is}}
+
+      <div class="{{#is navPosition 'sidenav || combo'}}container-fluid{{/is}}{{#is navPosition 'topnav'}}container{{/is}}">
+        <div class="row justify-content-center">
+          <div class="col-12">
+
+            <!-- Header -->
+            <div class="header">
+              <div class="header-body">
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Pretitle -->
+                    <h6 class="header-pretitle">
+                      Overview
+                    </h6>
+
+                    <!-- Title -->
+                    <h1 class="header-title text-truncate">
+                      Deals
+                    </h1>
+
+                  </div>
+                  <div class="col-auto">
+
+                    <!-- Navigation (button group) -->
+                    <div class="nav btn-group d-inline-flex" role="tablist">
+                      <button class="btn btn-white active" id="dealsListTab" data-toggle="tab" data-target="#dealsListPane" role="tab" aria-controls="dealsListPane" aria-selected="true">
+                        <span class="fe fe-list"></span>
+                      </button>
+                      <button class="btn btn-white" id="dealsCardsTab" data-toggle="tab" data-target="#dealsCardsPane" role="tab" aria-controls="dealsCardsPane" aria-selected="false">
+                        <span class="fe fe-sidebar"></span>
+                      </button>
+                    </div> <!-- / .nav -->
+
+                    <!-- Buttons -->
+                    <a href="#!" class="btn btn-primary ml-2">
+                      Add deal
+                    </a>
+
+                  </div>
+                </div> <!-- / .row -->
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Nav -->
+                    <ul class="nav nav-tabs nav-overflow header-tabs">
+                      <li class="nav-item">
+                        <a href="#!" class="nav-link text-nowrap active">
+                          All deals <span class="badge rounded-pill bg-soft-secondary">943</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#!" class="nav-link text-nowrap">
+                          Your deals <span class="badge rounded-pill bg-soft-secondary">379</span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#!" class="nav-link text-nowrap">
+                          Deleted <span class="badge rounded-pill bg-soft-secondary">127</span>
+                        </a>
+                      </li>
+                    </ul>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div> <!-- / .row -->
+      </div>
+
+      <!-- Tab content -->
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="dealsListPane" role="tabpanel" aria-labelledby="dealsListTab">
+          <div class="{{#is navPosition 'sidenav || combo'}}container-fluid{{/is}}{{#is navPosition 'topnav'}}container{{/is}}">
+            <div class="row justify-content-center">
+              <div class="col-12">
+
+                <!-- Card -->
+                <div class="card" data-list='{"valueNames": ["item-name", "item-stage", "item-amount", "item-owner", "item-contacted"], "page": 10, "pagination": {"paginationClass": "list-pagination"}}' id="dealsList">
+                  <div class="card-header">
+                    <div class="row align-items-center">
+                      <div class="col">
+
+                        <!-- Form -->
+                        <form>
+                          <div class="input-group input-group-flush input-group-merge input-group-reverse">
+                            <input class="form-control list-search" type="search" placeholder="Search">
+                            <span class="input-group-text">
+                              <i class="fe fe-search"></i>
+                            </span>
+                          </div>
+                        </form>
+
+                      </div>
+                      <div class="col-auto mr-n3">
+
+                        <!-- Select -->
+                        <form>
+                          <select class="form-select form-select-sm form-control-flush" data-choices='{"searchEnabled": false}'>
+                            <option selected>5 per page</option>
+                            <option>10 per page</option>
+                            <option>All</option>
+                          </select>
+                        </form>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Dropdown -->
+                        <div class="dropdown">
+
+                          <!-- Toggle -->
+                          <button class="btn btn-sm btn-white" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fe fe-sliders mr-1"></i> Filter <span class="badge bg-primary ml-1 d-none">0</span>
+                          </button>
+
+                          <!-- Menu -->
+                          <form class="dropdown-menu dropdown-menu-right dropdown-menu-card">
+                            <div class="card-header">
+
+                              <!-- Title -->
+                              <h4 class="card-header-title">
+                                Filters
+                              </h4>
+
+                              <!-- Link -->
+                              <button class="btn btn-sm btn-link text-reset d-none" type="reset">
+                                <small>Clear filters</small>
+                              </button>
+
+                            </div>
+                            <div class="card-body">
+
+                              <!-- List group -->
+                              <div class="list-group list-group-flush mt-n4 mb-4">
+                                <div class="list-group-item">
+                                  <div class="row">
+                                    <div class="col">
+
+                                      <!-- Text -->
+                                      <small>Stage</small>
+
+                                    </div>
+                                    <div class="col-auto">
+
+                                      <!-- Select -->
+                                      <select class="form-select form-select-sm" name="item-title" data-choices='{"searchEnabled": false}'>
+                                        <option value="*" selected>Any</option>
+                                        <option value="Appointment scheduled">Appointment scheduled</option>
+                                        <option value="Kickoff call">Kickoff call</option>
+                                        <option value="Quote accepted">Quote accepted</option>
+                                        <option value="Project in progress">Project in progress</option>
+                                        <option value="Initial review">Initial review</option>
+                                        <option value="Final review">Final review</option>
+                                        <option value="Completed">Completed</option>
+                                      </select>
+
+                                    </div>
+                                  </div> <!-- / .row -->
+                                </div>
+                                <div class="list-group-item">
+                                  <div class="row">
+                                    <div class="col">
+
+                                      <!-- Text -->
+                                      <small>Owner</small>
+
+                                    </div>
+                                    <div class="col-auto">
+
+                                      <!-- Select -->
+                                      <select class="form-select form-select-sm" name="item-score" data-choices='{"searchEnabled": false}'>
+                                        <option value="*" selected>Any</option>
+                                        <option value="Dianna Smiley">Dianna Smiley</option>
+                                        <option value="Ab Hadley">Ab Hadley</option>
+                                        <option value="Adolfo Hess">Adolfo Hess</option>
+                                        <option value="Daniela Dewitt">Daniela Dewitt</option>
+                                        <option value="Miyah Myles">Miyah Myles</option>
+                                        <option value="Ryu Duke">Ryu Duke</option>
+                                        <option value="Glen Rouse">Glen Rouse</option>
+                                      </select>
+
+                                    </div>
+                                  </div> <!-- / .row -->
+                                </div>
+                              </div>
+
+                              <!-- Button -->
+                              <button class="btn btn-block btn-primary" type="submit">
+                                Apply filter
+                              </button>
+
+                            </div>
+                          </form>
+
+                        </div>
+
+                      </div>
+                    </div> <!-- / .row -->
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-sm table-hover table-nowrap card-table">
+                      <thead>
+                        <tr>
+                          <th>
+
+                            <!-- Checkbox -->
+                            <div class="form-check mb-n2">
+                              <input class="form-check-input list-checkbox-all" type="checkbox" id="listCheckboxAll">
+                              <label class="form-check-label" for="listCheckboxAll"></label>
+                            </div>
+
+                          </th>
+                          <th>
+                            <a class="list-sort text-muted" data-sort="item-name" href="#">Name</a>
+                          </th>
+                          <th>
+                            <a class="list-sort text-muted" data-sort="item-stage" href="#">Stage</a>
+                          </th>
+                          <th>
+                            <a class="list-sort text-muted" data-sort="item-amount" href="#">Amount</a>
+                          </th>
+                          <th>
+                            <a class="list-sort text-muted" data-sort="item-owner" href="#">Owner</a>
+                          </th>
+                          <th colspan="2">
+                            <a class="list-sort text-muted" data-sort="item-contacted" href="#">Last contacted</a>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody class="list font-size-base">
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxOne">
+                              <label class="form-check-label" for="listCheckboxOne"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Lyft brand redesign
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Quote accepted</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$16,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Dianna Smiley</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-01-14">Jan 14, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTwo">
+                              <label class="form-check-label" for="listCheckboxTwo"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Slack SEO audit
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Completed</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$29,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-2.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Ab Hadley</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-04-18">Apr 18, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxThree">
+                              <label class="form-check-label" for="listCheckboxThree"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Airbnb React development
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Kickoff call</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$8,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-3.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Adolfo Hess</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-05-30">May 30, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxFour">
+                              <label class="form-check-label" for="listCheckboxFour"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              PayPal microsite update
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Project in progress</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$68,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-4.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Daniela Dewitt</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-06-05">Jun 05, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxFive">
+                              <label class="form-check-label" for="listCheckboxFive"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Uber Vue code review
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Final review</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$11,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-5.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Miyah Myles</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-04-16">Aug 16, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxSix">
+                              <label class="form-check-label" for="listCheckboxSix"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Slack React development
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Final review</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$89,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-6.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Ryu Duke</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-08-12">Aug 12, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxSeven">
+                              <label class="form-check-label" for="listCheckboxSeven"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Uber Vue code review
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Kickoff call</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$5,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-7.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Glen Rouse</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-03-01">Mar 01, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxEight">
+                              <label class="form-check-label" for="listCheckboxEight"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Github product update
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Initial review</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$18,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Dianna Smiley</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-04-12">Apr 12, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxNine">
+                              <label class="form-check-label" for="listCheckboxNine"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Uber SEO audit
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Kickoff call</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$32,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-2.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Ab Hadley</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-09-28">Sep 28, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTen">
+                              <label class="form-check-label" for="listCheckboxTen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              PayPal brand redesign
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Completed</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$69,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-3.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Adolfo Hess</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-10-20">Oct 20, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxEleven">
+                              <label class="form-check-label" for="listCheckboxEleven"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Squarespace Vue update
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Quote accepted</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$32,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-4.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Daniela Dewitt</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-12-05">Dec 05, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTwelve">
+                              <label class="form-check-label" for="listCheckboxTwelve"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Stripe microsite partnership
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Project in progress</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$43,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-5.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Miyah Myles</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-01-06">Jan 06, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxThirteen">
+                              <label class="form-check-label" for="listCheckboxThirteen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Medium product code review
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Completed</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$89,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-6.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Ryu Duke</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-12-12">Dec 12, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxFourteen">
+                              <label class="form-check-label" for="listCheckboxFourteen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Stripe React code review
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Final review</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$46,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-7.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Glen Rouse</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-09-15">Sep 15, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxFifteen">
+                              <label class="form-check-label" for="listCheckboxFifteen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Github SEO audit
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Appointment scheduled</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$22,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Dianna Smiley</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-05-05">May 05, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxSixteen">
+                              <label class="form-check-label" for="listCheckboxSixteen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Medium SEO audit
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Final review</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$12,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-2.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Ab Hadley</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-04-28">Apr 28, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxSeventeen">
+                              <label class="form-check-label" for="listCheckboxSeventeen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Stripe Vue development
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Completed</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$18,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-3.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Adolfo Hess</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-07-06">Jul 06, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxEighteen">
+                              <label class="form-check-label" for="listCheckboxEighteen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Dropbox brand audit
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Kickoff call</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$64,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-4.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Daniela Dewitt</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-11-06">Nov 06, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxNineteen">
+                              <label class="form-check-label" for="listCheckboxNineteen"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Uber microsite update
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Final review</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$36,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-5.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Miyah Myles</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-09-01">Sep 01, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTwenty">
+                              <label class="form-check-label" for="listCheckboxTwenty"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Airbnb product development
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Initial review</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$15,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-6.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Ryu Duke</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-12-12">Dec 12, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTwentyOne">
+                              <label class="form-check-label" for="listCheckboxTwentyOne"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              SQuarespace Vue code review
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Kickoff call</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$15,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-7.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Glen Rouse</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-04-01">Apr 01, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTwentyTwo">
+                              <label class="form-check-label" for="listCheckboxTwentyTwo"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Lyft product audit
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Appointment scheduled</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$98,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Dianna Smiley</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-04-16">Apr 16, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTwentyThree">
+                              <label class="form-check-label" for="listCheckboxTwentyThree"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              PayPal SEO audit
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Final review</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$99,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-2.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Ab Hadley</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-05-18">May 18, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+
+                            <!-- Checkbox -->
+                            <div class="form-check">
+                              <input class="form-check-input list-checkbox" type="checkbox" id="listCheckboxTwentyFour">
+                              <label class="form-check-label" for="listCheckboxTwentyFour"></label>
+                            </div>
+
+                          </td>
+                          <td>
+
+                            <!-- Link -->
+                            <a class="item-name text-reset" href="project-overview.html">
+                              Airbnb Vue code review
+                            </a>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-stage">Completed</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Text -->
+                            <span class="item-amount">$18,000</span>
+
+                          </td>
+                          <td>
+
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs align-middle mr-2">
+                              <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-3.jpg" alt="...">
+                            </div> <a class="item-owner text-reset" href="profile-posts.html">Adolfo Hess</a>
+
+                          </td>
+                          <td>
+
+                            <!-- Date -->
+                            <time class="item-contacted" datetime="2020-05-06">May 06, 2020</time>
+
+                          </td>
+                          <td class="text-right">
+
+                            <!-- Dropdown -->
+                            <div class="dropdown">
+                              <a class="dropdown-ellipses dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fe fe-more-vertical"></i>
+                              </a>
+                              <div class="dropdown-menu dropdown-menu-right">
+                                <a href="#!" class="dropdown-item">
+                                  Action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Another action
+                                </a>
+                                <a href="#!" class="dropdown-item">
+                                  Something else here
+                                </a>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="card-footer d-flex justify-content-between">
+
+                    <!-- Pagination (prev) -->
+                    <ul class="list-pagination-prev pagination pagination-tabs card-pagination">
+                      <li class="page-item">
+                        <a class="page-link pl-0 pr-4 border-right" href="#">
+                          <i class="fe fe-arrow-left mr-1"></i> Prev
+                        </a>
+                      </li>
+                    </ul>
+
+                    <!-- Pagination -->
+                    <ul class="list-pagination pagination pagination-tabs card-pagination"></ul>
+
+                    <!-- Pagination (next) -->
+                    <ul class="list-pagination-next pagination pagination-tabs card-pagination">
+                      <li class="page-item">
+                        <a class="page-link pl-4 pr-0 border-left" href="#">
+                          Next <i class="fe fe-arrow-right ml-1"></i>
+                        </a>
+                      </li>
+                    </ul>
+
+                    <!-- Alert -->
+                    <div class="list-alert alert alert-dark alert-dismissible border fade" role="alert">
+
+                      <!-- Content -->
+                      <div class="row align-items-center">
+                        <div class="col">
+
+                          <!-- Checkbox -->
+                          <div class="form-check">
+                            <input class="form-check-input" id="listAlertCheckbox" type="checkbox" checked disabled>
+                            <label class="form-check-label text-white" for="listAlertCheckbox">
+                              <span class="list-alert-count">0</span> deal(s)
+                            </label>
+                          </div>
+
+                        </div>
+                        <div class="col-auto mr-n3">
+
+                          <!-- Button -->
+                          <button class="btn btn-sm btn-white-20">
+                            Edit
+                          </button>
+
+                          <!-- Button -->
+                          <button class="btn btn-sm btn-white-20">
+                            Delete
+                          </button>
+
+                        </div>
+                      </div> <!-- / .row -->
+
+                      <!-- Close -->
+                      <button type="button" class="list-alert-close close" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div> <!-- / .row -->
+          </div>
+        </div>
+        <div class="tab-pane fade" id="dealsCardsPane" role="tabpanel" aria-labelledby="dealsCardsTab">
+          <div class="{{#is navPosition 'sidenav || combo'}}container-fluid{{else is navPosition 'topnav'}}container{{/is}} kanban-container">
+            <div class="row">
+              <div class="col-12">
+
+                <!-- Card -->
+                <div class="card">
+                  <div class="card-header card-header-flush">
+
+                    <!-- Title -->
+                    <h4 class="card-header-title">
+                      Appointment scheduled
+                    </h4>
+
+                    <!-- Dropdown -->
+                    <div class="dropdown">
+                      <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fe fe-more-vertical"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#!" class="dropdown-item">
+                          Action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Another action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Something else here
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="card-body">
+
+                    <!-- Category -->
+                    <div class="kanban-category">
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxOne">
+                                  <label class="form-check-label" for="cardCheckboxOne"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Lyft product audit
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $25,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxTwo">
+                                  <label class="form-check-label" for="cardCheckboxTwo"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Uber React development
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $86,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-2.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxThree">
+                                  <label class="form-check-label" for="cardCheckboxThree"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Squarespace SEO audit
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $16,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-3.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxFour">
+                                  <label class="form-check-label" for="cardCheckboxFour"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Dropbox microsite development
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $58,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-4.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxFive">
+                                  <label class="form-check-label" for="cardCheckboxFive"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Airbnb brand update
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $63,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-5.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-12">
+
+                <!-- Card -->
+                <div class="card">
+                  <div class="card-header card-header-flush">
+
+                    <!-- Title -->
+                    <h4 class="card-header-title">
+                      Kickoff call
+                    </h4>
+
+                    <!-- Dropdown -->
+                    <div class="dropdown">
+                      <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fe fe-more-vertical"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#!" class="dropdown-item">
+                          Action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Another action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Something else here
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="card-body">
+
+                    <!-- Category -->
+                    <div class="kanban-category">
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxSix">
+                                  <label class="form-check-label" for="cardCheckboxSix"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Uber Vue development
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $45,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-6.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxSeven">
+                                  <label class="form-check-label" for="cardCheckboxSeven"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Airbnb React code review
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $40,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-7.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxEight">
+                                  <label class="form-check-label" for="cardCheckboxEight"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Stripe brand redesign
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $69,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-12">
+
+                <!-- Card -->
+                <div class="card">
+                  <div class="card-header card-header-flush">
+
+                    <!-- Title -->
+                    <h4 class="card-header-title">
+                      Quote accepted
+                    </h4>
+
+                    <!-- Dropdown -->
+                    <div class="dropdown">
+                      <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fe fe-more-vertical"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#!" class="dropdown-item">
+                          Action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Another action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Something else here
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="card-body">
+
+                    <!-- Category -->
+                    <div class="kanban-category">
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxNine">
+                                  <label class="form-check-label" for="cardCheckboxNine"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Slack SEO audit
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $12,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-5.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxTen">
+                                  <label class="form-check-label" for="cardCheckboxTen"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Lyft microsite development
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $89,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-7.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxEleven">
+                                  <label class="form-check-label" for="cardCheckboxEleven"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Github product update
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $65,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-2.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxTwelve">
+                                  <label class="form-check-label" for="cardCheckboxTwelve"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Squarespace brand redesign
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $25,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-12">
+
+                <!-- Card -->
+                <div class="card">
+                  <div class="card-header card-header-flush">
+
+                    <!-- Title -->
+                    <h4 class="card-header-title">
+                      Project in progress
+                    </h4>
+
+                    <!-- Dropdown -->
+                    <div class="dropdown">
+                      <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fe fe-more-vertical"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#!" class="dropdown-item">
+                          Action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Another action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Something else here
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="card-body">
+
+                    <!-- Category -->
+                    <div class="kanban-category">
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxThirteen">
+                                  <label class="form-check-label" for="cardCheckboxThirteen"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Slack microsite update
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $25,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-6.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxFourteen">
+                                  <label class="form-check-label" for="cardCheckboxFourteen"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Medium Vue code audit
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $63,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-2.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-12">
+
+                <!-- Card -->
+                <div class="card">
+                  <div class="card-header card-header-flush">
+
+                    <!-- Title -->
+                    <h4 class="card-header-title">
+                      Initial review
+                    </h4>
+
+                    <!-- Dropdown -->
+                    <div class="dropdown">
+                      <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fe fe-more-vertical"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#!" class="dropdown-item">
+                          Action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Another action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Something else here
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="card-body">
+
+                    <!-- Category -->
+                    <div class="kanban-category">
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxFifteen">
+                                  <label class="form-check-label" for="cardCheckboxFifteen"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Dropbox brand audit
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $64,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-7.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxSixteen">
+                                  <label class="form-check-label" for="cardCheckboxSixteen"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Slack SEO partnership
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $76,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-5.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxSeventeen">
+                                  <label class="form-check-label" for="cardCheckboxSeventeen"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Lyft Vue system
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $96,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-4.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxEighteen">
+                                  <label class="form-check-label" for="cardCheckboxEighteen"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Uber microsite redesign
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $80,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-12">
+
+                <!-- Card -->
+                <div class="card">
+                  <div class="card-header card-header-flush">
+
+                    <!-- Title -->
+                    <h4 class="card-header-title">
+                      Final review
+                    </h4>
+
+                    <!-- Dropdown -->
+                    <div class="dropdown">
+                      <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fe fe-more-vertical"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#!" class="dropdown-item">
+                          Action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Another action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Something else here
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="card-body">
+
+                    <!-- Category -->
+                    <div class="kanban-category">
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxNineteen">
+                                  <label class="form-check-label" for="cardCheckboxNineteen"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Slack product update
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $90,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-3.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxTwenty">
+                                  <label class="form-check-label" for="cardCheckboxTwenty"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Uber SEO audit
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $90,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-6.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxTwentyOne">
+                                  <label class="form-check-label" for="cardCheckboxTwentyOne"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  PayPal Vue code review
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $60,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-12">
+
+                <!-- Card -->
+                <div class="card">
+                  <div class="card-header card-header-flush">
+
+                    <!-- Title -->
+                    <h4 class="card-header-title">
+                      Completed
+                    </h4>
+
+                    <!-- Dropdown -->
+                    <div class="dropdown">
+                      <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fe fe-more-vertical"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#!" class="dropdown-item">
+                          Action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Another action
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                          Something else here
+                        </a>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="card-body">
+
+                    <!-- Category -->
+                    <div class="kanban-category">
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxTwentyTwo">
+                                  <label class="form-check-label" for="cardCheckboxTwentyTwo"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Github React development
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $60,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-1.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxTwentyThree">
+                                  <label class="form-check-label" for="cardCheckboxTwentyThree"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Medium brand redesign
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $52,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-2.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Card -->
+                      <div class="kanban-item">
+                        <div class="card card-sm mb-3">
+                          <div class="card-body">
+                            <div class="row align-items-center">
+                              <div class="col-auto">
+
+                                <!-- Checkbox -->
+                                <div class="form-check">
+                                  <input class="form-check-input list-checkbox" type="checkbox" id="cardCheckboxTwentyFour">
+                                  <label class="form-check-label" for="cardCheckboxTwentyFour"></label>
+                                </div>
+
+                              </div>
+                              <div class="col ml-n3">
+
+                                <!-- Heading -->
+                                <h4 class="mb-1">
+                                  Airbnb React system
+                                </h4>
+
+                                <!-- Text -->
+                                <small class="text-muted">
+                                  $16,000
+                                </small>
+
+                              </div>
+                              <div class="col-auto">
+
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xs">
+                                  <img class="avatar-img rounded-circle" src="assets/img/avatars/profiles/avatar-6.jpg" alt="...">
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div> <!-- / .row -->
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- / .main-content -->
+
+    <!-- JAVASCRIPT -->
+    {{> partials/scripts}}
+
+  </body>
+</html>

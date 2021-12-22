@@ -1,0 +1,29 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc." />
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="{{webRoot}}/assets/favicon/favicon.ico" type="image/x-icon"/>
+
+<!-- Map CSS -->
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" />
+
+<!-- Libs CSS -->
+<link rel="stylesheet" href="{{webRoot}}/assets/css/libs.bundle.css" />
+
+<!-- Theme CSS -->
+{{#if demoMode}}
+<link rel="stylesheet" href="{{webRoot}}/assets/css/theme.bundle.css" id="stylesheetLight" />
+<link rel="stylesheet" href="{{webRoot}}/assets/css/theme-dark.bundle.css" id="stylesheetDark" />
+
+<style>body { display: none; }</style>
+{{else}}
+{{#is colorScheme 'light'}}
+<link rel="stylesheet" href="{{webRoot}}/assets/css/theme.bundle.css" />
+{{else is colorScheme 'dark'}}
+<link rel="stylesheet" href="{{webRoot}}/assets/css/theme-dark.bundle.css" />
+{{/is}}
+{{/if}}
+
+<!-- Title -->
+<title>{{title}}</title>

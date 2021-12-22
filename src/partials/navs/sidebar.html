@@ -1,0 +1,644 @@
+<nav class="navbar navbar-vertical fixed-left navbar-expand-md {{#unless demoMode}}{{#is navColor 'default'}}navbar-light{{/is}}{{#is navColor 'inverted'}}navbar-dark{{/is}}{{#is navColor 'vibrant'}}navbar-dark navbar-vibrant{{/is}}{{/unless}}" id="sidebar">
+  <div class="container-fluid">
+
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Brand -->
+    <a class="navbar-brand" href="{{webRoot}}/index.html">
+      <img src="{{webRoot}}/assets/img/logo.svg" class="navbar-brand-img mx-auto" alt="...">
+    </a>
+
+    <!-- User (xs) -->
+    <div class="navbar-user d-md-none">
+
+      <!-- Dropdown -->
+      <div class="dropdown">
+
+        <!-- Toggle -->
+        <a href="#" id="sidebarIcon" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="avatar avatar-sm avatar-online">
+            <img src="{{webRoot}}/assets/img/avatars/profiles/avatar-1.jpg" class="avatar-img rounded-circle" alt="...">
+          </div>
+        </a>
+
+        <!-- Menu -->
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sidebarIcon">
+          <a href="{{webRoot}}/profile-posts.html" class="dropdown-item">Profile</a>
+          <a href="{{webRoot}}/account-general.html" class="dropdown-item">Settings</a>
+          <hr class="dropdown-divider">
+          <a href="{{webRoot}}/sign-in.html" class="dropdown-item">Logout</a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Collapse -->
+    <div class="collapse navbar-collapse" id="sidebarCollapse">
+
+      <!-- Form -->
+      <form class="mt-4 mb-3 d-md-none">
+        <div class="input-group input-group-rounded input-group-merge input-group-reverse">
+          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-text">
+            <span class="fe fe-search"></span>
+          </div>
+        </div>
+      </form>
+
+      <!-- Navigation -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#sidebarDashboards" data-toggle="collapse" role="button" aria-expanded="{{#is category 'dashboards'}}true{{else}}false{{/is}}" aria-controls="sidebarDashboards">
+            <i class="fe fe-home"></i> Dashboards
+          </a>
+          <div class="collapse {{#is category 'dashboards'}}show{{/is}}" id="sidebarDashboards">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a href="{{webRoot}}/index.html" class="nav-link {{#is page 'index.html'}}active{{/is}}">
+                  Default
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{webRoot}}/dashboard-project-management.html" class="nav-link {{#is page 'dashboard-project-management.html'}}active{{/is}}">
+                  Project Management
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{webRoot}}/dashboard-ecommerce.html" class="nav-link {{#is page 'dashboard-ecommerce.html'}}active{{/is}}">
+                  E-Commerce
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#sidebarPages" data-toggle="collapse" role="button" aria-expanded="{{#is category 'pages'}}true{{else}}false{{/is}}" aria-controls="sidebarPages">
+            <i class="fe fe-file"></i> Pages
+          </a>
+          <div class="collapse {{#is category 'pages'}}show{{/is}}" id="sidebarPages">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a href="#sidebarAccount" class="nav-link" data-toggle="collapse" role="button" aria-expanded="{{#is subcategory 'account'}}true{{else}}false{{/is}}" aria-controls="sidebarAccount">
+                  Account
+                </a>
+                <div class="collapse {{#is subcategory 'account'}}show{{/is}}" id="sidebarAccount">
+                  <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/account-general.html" class="nav-link {{#is page 'account-general.html'}}active{{/is}}">
+                        General
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/account-billing.html" class="nav-link {{#is page 'account-billing.html'}}active{{/is}}">
+                        Billing
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/account-members.html" class="nav-link {{#is page 'account-members.html'}}active{{/is}}">
+                        Members
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/account-security.html" class="nav-link {{#is page 'account-security.html'}}active{{/is}}">
+                        Security
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/account-notifications.html" class="nav-link {{#is page 'account-notifications.html'}}active{{/is}}">
+                        Notifications
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="#sidebarCrm" class="nav-link" data-toggle="collapse" role="button" aria-expanded="{{#is subcategory 'crm'}}true{{else}}false{{/is}}" aria-controls="sidebarCrm">
+                  CRM
+                </a>
+                <div class="collapse {{#is subcategory 'crm'}}show{{/is}}" id="sidebarCrm">
+                  <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/crm-contacts.html" class="nav-link {{#is page 'crm-contacts.html'}}active{{/is}}">
+                        Contacts
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/crm-companies.html" class="nav-link {{#is page 'crm-companies.html'}}active{{/is}}">
+                        Companies
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/crm-deals.html" class="nav-link {{#is page 'crm-deals.html'}}active{{/is}}">
+                        Deals
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="#sidebarProfile" class="nav-link" data-toggle="collapse" role="button" aria-expanded="{{#is subcategory 'profile'}}true{{else}}false{{/is}}" aria-controls="sidebarProfile">
+                  Profile
+                </a>
+                <div class="collapse {{#is subcategory 'profile'}}show{{/is}}" id="sidebarProfile">
+                  <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/profile-posts.html" class="nav-link {{#is page 'profile-posts.html'}}active{{/is}}">
+                        Posts
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/profile-groups.html" class="nav-link {{#is page 'profile-groups.html'}}active{{/is}}">
+                        Groups
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/profile-projects.html" class="nav-link {{#is page 'profile-projects.html'}}active{{/is}}">
+                        Projects
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/profile-files.html" class="nav-link {{#is page 'profile-files.html'}}active{{/is}}">
+                        Files
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/profile-subscribers.html" class="nav-link {{#is page 'profile-subscribers.html'}}active{{/is}}">
+                        Subscribers
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="#sidebarProject" class="nav-link" data-toggle="collapse" role="button" aria-expanded="{{#is subcategory 'project'}}true{{else}}false{{/is}}" aria-controls="sidebarProject">
+                  Project
+                </a>
+                <div class="collapse {{#is subcategory 'project'}}show{{/is}}" id="sidebarProject">
+                  <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/project-overview.html" class="nav-link {{#is page 'project-overview.html'}}active{{/is}}">
+                        Overview
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/project-files.html" class="nav-link {{#is page 'project-files.html'}}active{{/is}}">
+                        Files
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/project-reports.html" class="nav-link {{#is page 'project-reports.html'}}active{{/is}}">
+                        Reports
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/project-new.html" class="nav-link {{#is page 'project-new.html'}}active{{/is}}">
+                        New project
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="#sidebarTeam" class="nav-link" data-toggle="collapse" role="button" aria-expanded="{{#is subcategory 'team'}}true{{else}}false{{/is}}" aria-controls="sidebarTeam">
+                  Team
+                </a>
+                <div class="collapse {{#is subcategory 'team'}}show{{/is}}" id="sidebarTeam">
+                  <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/team-overview.html" class="nav-link {{#is page 'team-overview.html'}}active{{/is}}">
+                        Overview
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/team-projects.html" class="nav-link {{#is page 'team-projects.html'}}active{{/is}}">
+                        Projects
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/team-members.html" class="nav-link {{#is page 'team-members.html'}}active{{/is}}">
+                        Members
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/team-new.html" class="nav-link {{#is page 'team-new.html'}}active{{/is}}">
+                        New team
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="#sidebarFeed" class="nav-link" data-toggle="collapse" role="button" aria-expanded="{{#is subcategory 'feed'}}true{{else}}false{{/is}}" aria-controls="sidebarFeed">
+                  Feed
+                </a>
+                <div class="collapse {{#is subcategory 'feed'}}show{{/is}}" id="sidebarFeed">
+                  <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/feed.html" class="nav-link {{#is page 'feed.html'}}active{{/is}}">
+                        Platform
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/social-feed.html" class="nav-link {{#is page 'social-feed.html'}}active{{/is}}">
+                        Social
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="{{webRoot}}/wizard.html" class="nav-link {{#is page 'wizard.html'}}active{{/is}}">
+                  Wizard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{webRoot}}/kanban.html" class="nav-link {{#is page 'kanban.html'}}active{{/is}}">
+                  Kanban
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{webRoot}}/orders.html" class="nav-link {{#is page 'orders.html'}}active{{/is}}">
+                  Orders
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{webRoot}}/invoice.html" class="nav-link {{#is page 'invoice.html'}}active{{/is}}">
+                  Invoice
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{webRoot}}/pricing.html" class="nav-link {{#is page 'pricing.html'}}active{{/is}}">
+                  Pricing
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{#is page 'widgets.html'}}active{{/is}}" href="{{webRoot}}/widgets.html">
+            <i class="fe fe-grid"></i> Widgets
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#sidebarAuth" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
+            <i class="fe fe-user"></i> Authentication
+          </a>
+          <div class="collapse" id="sidebarAuth">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a href="#sidebarSignIn" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSignIn">
+                  Sign in
+                </a>
+                <div class="collapse" id="sidebarSignIn">
+                  <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/sign-in-cover.html" class="nav-link">
+                        Cover
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/sign-in-illustration.html" class="nav-link">
+                        Illustration
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/sign-in.html" class="nav-link">
+                        Basic
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="#sidebarSignUp" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSignUp">
+                  Sign up
+                </a>
+                <div class="collapse" id="sidebarSignUp">
+                  <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/sign-up-cover.html" class="nav-link">
+                        Cover
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/sign-up-illustration.html" class="nav-link">
+                        Illustration
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/sign-up.html" class="nav-link">
+                        Basic
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="#sidebarPassword" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarPassword">
+                  Password reset
+                </a>
+                <div class="collapse" id="sidebarPassword">
+                  <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/password-reset-cover.html" class="nav-link">
+                        Cover
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/password-reset-illustration.html" class="nav-link">
+                        Illustration
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/password-reset.html" class="nav-link">
+                        Basic
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a href="#sidebarError" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarError">
+                  Error
+                </a>
+                <div class="collapse" id="sidebarError">
+                  <ul class="nav nav-sm flex-column">
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/error-illustration.html" class="nav-link">
+                        Illustration
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{webRoot}}/error.html" class="nav-link">
+                        Basic
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item d-md-none">
+          <a class="nav-link" href="#sidebarModalActivity" data-toggle="modal">
+            <span class="fe fe-bell"></span> Notifications
+          </a>
+        </li>
+      </ul>
+
+      <!-- Divider -->
+      <hr class="navbar-divider my-3">
+
+      <!-- Heading -->
+      <h6 class="navbar-heading">
+        Documentation
+      </h6>
+
+      <!-- Navigation -->
+      <ul class="navbar-nav mb-md-4">
+        <li class="nav-item">
+          <a class="nav-link" href="#sidebarBasics" data-toggle="collapse" role="button" aria-expanded="{{#is category 'basics'}}true{{else}}false{{/is}}" aria-controls="sidebarBasics">
+            <i class="fe fe-clipboard"></i> Basics
+          </a>
+          <div class="collapse {{#is category 'basics'}}show{{/is}}" id="sidebarBasics">
+            <ul class="nav nav-sm flex-column">
+              <li class="nav-item">
+                <a href="{{webRoot}}/docs/getting-started.html" class="nav-link {{#is page 'getting-started.html'}}active{{/is}}">
+                  Getting Started
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{webRoot}}/docs/design-file.html" class="nav-link {{#is page 'design-file.html'}}active{{/is}}">
+                  Design File
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#sidebarComponents" data-toggle="collapse" role="button" aria-expanded="{{#is category 'components'}}true{{else}}false{{/is}}" aria-controls="sidebarComponents">
+            <i class="fe fe-book-open"></i> Components
+          </a>
+          <div class="collapse {{#is page 'components.html'}}show{{/is}}" id="sidebarComponents">
+            <ul class="nav nav-sm flex-column">
+              <li>
+                <a href="{{webRoot}}/docs/components.html#alerts" class="nav-link">
+                  Alerts
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#autosize" class="nav-link">
+                  Autosize
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#avatars" class="nav-link">
+                  Avatars
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#badges" class="nav-link">
+                  Badges
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#breadcrumb" class="nav-link">
+                  Breadcrumb
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#buttons" class="nav-link">
+                  Buttons
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#buttonGroup" class="nav-link">
+                  Button group
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#cards" class="nav-link">
+                  Cards
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#charts" class="nav-link">
+                  Charts
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#checklist" class="nav-link">
+                  Checklist
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#dropdowns" class="nav-link">
+                  Dropdowns
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#forms" class="nav-link">
+                  Forms
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#icons" class="nav-link">
+                  Icons
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#kanban" class="nav-link">
+                  Kanban
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#lists" class="nav-link">
+                  Lists
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#map" class="nav-link">
+                  Map
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#modals" class="nav-link">
+                  Modal
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#navs" class="nav-link">
+                  Navs
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#navbarDocs" class="nav-link">
+                  Navbar
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#pageHeaders" class="nav-link">
+                  Page headers
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#pagination" class="nav-link">
+                  Pagination
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#popovers" class="nav-link">
+                  Popovers
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#progress" class="nav-link">
+                  Progress
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#socialPosts" class="nav-link">
+                  Social post
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#spinners" class="nav-link">
+                  Spinners
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#tables" class="nav-link">
+                  Tables
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#toasts" class="nav-link">
+                  Toasts
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#tooltips" class="nav-link">
+                  Tooltips
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#typography" class="nav-link">
+                  Typography
+                </a>
+              </li>
+              <li>
+                <a href="{{webRoot}}/docs/components.html#utilities" class="nav-link">
+                  Utilities
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{#is page 'changelog.html'}}active{{/is}}" href="{{webRoot}}/docs/changelog.html">
+            <i class="fe fe-git-branch"></i> Changelog <span class="badge bg-primary ml-auto">v2.0.0-alpha</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Push content down -->
+      <div class="mt-auto"></div>
+
+      {{#if demoMode}}
+        <!-- Customize -->
+        <div id="popoverDemo" data-content="Switch the demo to Dark Mode or adjust the navigation layout, icons, and colors!" title="Make Dashkit Your Own!">
+          <a class="btn btn-block btn-primary mb-4" data-toggle="modal" href="#modalDemo">
+            <i class="fe fe-sliders mr-2"></i> Customize
+          </a>
+        </div>
+      {{/if}}
+
+      {{#is navPosition 'sidenav'}}
+        <!-- User (md) -->
+        <div class="navbar-user d-none d-md-flex" id="sidebarUser">
+
+          <!-- Icon -->
+          <a href="#sidebarModalActivity" class="navbar-user-link" data-toggle="modal">
+            <span class="icon">
+              <i class="fe fe-bell"></i>
+            </span>
+          </a>
+
+          <!-- Dropup -->
+          <div class="dropup">
+
+            <!-- Toggle -->
+            <a href="#" id="sidebarIconCopy" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="avatar avatar-sm avatar-online">
+                <img src="{{webRoot}}/assets/img/avatars/profiles/avatar-1.jpg" class="avatar-img rounded-circle" alt="...">
+              </div>
+            </a>
+
+            <!-- Menu -->
+            <div class="dropdown-menu" aria-labelledby="sidebarIconCopy">
+              <a href="{{webRoot}}/profile-posts.html" class="dropdown-item">Profile</a>
+              <a href="{{webRoot}}/account-general.html" class="dropdown-item">Settings</a>
+              <hr class="dropdown-divider">
+              <a href="{{webRoot}}/sign-in.html" class="dropdown-item">Logout</a>
+            </div>
+
+          </div>
+
+          <!-- Icon -->
+          <a href="#sidebarModalSearch" class="navbar-user-link" data-toggle="modal">
+            <span class="icon">
+              <i class="fe fe-search"></i>
+            </span>
+          </a>
+
+        </div>
+      {{/is}}
+
+    </div> <!-- / .navbar-collapse -->
+
+  </div>
+</nav>

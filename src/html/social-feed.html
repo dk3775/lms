@@ -1,0 +1,1003 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{> partials/head title="Dashkit"}}
+  </head>
+  <body>
+
+    <!-- MODALS -->
+    {{> partials/modals}}
+
+    <!-- NAVIGATION -->
+    {{> partials/navs category="pages" subcategory="feed" page="social-feed.html"}}
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+      {{#if demoMode}}{{> navs/topbar}}{{/if}}
+      {{#is navPosition 'combo'}}{{> navs/topbar}}{{/is}}
+
+      <div class="{{#is navPosition 'sidenav || combo'}}container-fluid{{/is}}{{#is navPosition 'topnav'}}container{{/is}}">
+        <div class="row mt-4 mt-md-5">
+          <div class="col-12 col-xl-8">
+
+            <!-- Card -->
+            <div class="card">
+              <div class="card-body">
+
+                <!-- Form -->
+                <form>
+                  <div class="form-group">
+                    <textarea class="form-control form-control-flush form-control-auto" data-autosize rows="3" placeholder="Start a post..."></textarea>
+                  </div>
+                </form>
+
+                <!-- Footer -->
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Symbols -->
+                    <small class="text-muted">
+                      0/500
+                    </small>
+
+                  </div>
+                  <div class="col-auto">
+
+                    <!-- Icons -->
+                    <div class="text-muted">
+                      <a class="text-reset mr-3" href="#" data-toggle="tooltip" title="Add photo">
+                        <i class="fe fe-camera"></i>
+                      </a>
+                      <a class="text-reset mr-3" href="#" data-toggle="tooltip" title="Attach file">
+                        <i class="fe fe-paperclip"></i>
+                      </a>
+                      <a class="text-reset" href="#" data-toggle="tooltip" title="Record audio">
+                        <i class="fe fe-mic"></i>
+                      </a>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div class="card">
+              <div class="card-body">
+
+                <!-- Header -->
+                <div class="mb-3">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+
+                      <!-- Avatar -->
+                      <a href="#!" class="avatar">
+                        <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                      </a>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Title -->
+                      <h4 class="mb-1">
+                        Dianna Smiley
+                      </h4>
+
+                      <!-- Time -->
+                      <p class="card-text small text-muted">
+                        <span class="fe fe-clock"></span> <time datetime="2018-05-24">4hr ago</time>
+                      </p>
+
+                    </div>
+                    <div class="col-auto">
+
+                      <!-- Dropdown -->
+                      <div class="dropdown">
+
+                        <!-- Toggle -->
+                        <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fe fe-more-vertical"></i>
+                        </a>
+
+                        <!-- Menu -->
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <a href="#!" class="dropdown-item">
+                            Action
+                          </a>
+                          <a href="#!" class="dropdown-item">
+                            Another action
+                          </a>
+                          <a href="#!" class="dropdown-item">
+                            Something else here
+                          </a>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+
+                <!-- Text -->
+                <p class="mb-3">
+                  I've been working on shipping the latest version of Launchday. The story I'm trying to focus on is something like "You're launching soon and need to be 100% focused on your product. Don't lose precious days designing, coding, and testing a product site. Instead, build one in minutes."
+                </p>
+
+                <p class="mb-4">
+                  What do you y'all think? Would love some feedback from <a href="#!" class="badge bg-soft-primary">@Ab</a> or <a href="#!" class="badge bg-soft-primary">@Adolfo</a>?
+                </p>
+
+                <!-- Image -->
+                <p class="text-center mb-3">
+                  <img src="assets/img/posts/post-1.jpg" alt="..." class="img-fluid rounded">
+                </p>
+
+                <!-- Buttons -->
+                <div class="mb-3">
+                  <div class="row">
+                    <div class="col">
+
+                      <!-- Reaction -->
+                      <a href="#!" class="btn btn-sm btn-white">
+                        😬 1
+                      </a>
+                      <a href="#!" class="btn btn-sm btn-white">
+                        👍 2
+                      </a>
+                      <a href="#!" class="btn btn-sm btn-white">
+                        Add Reaction
+                      </a>
+
+                    </div>
+                    <div class="col-auto mr-n3">
+
+                      <!-- Avatar group -->
+                      <div class="avatar-group d-none d-sm-flex">
+                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Ab Hadley">
+                          <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Adolfo Hess">
+                          <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Daniela Dewitt">
+                          <img src="assets/img/avatars/profiles/avatar-4.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Miyah Myles">
+                          <img src="assets/img/avatars/profiles/avatar-5.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+                      </div>
+
+                    </div>
+                    <div class="col-auto">
+
+                      <!-- Button -->
+                      <a href="#!" class="btn btn-sm btn-white">
+                        Share
+                      </a>
+
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+
+                <!-- Divider -->
+                <hr>
+
+                <!-- Comments -->
+                <div class="comment mb-3">
+                  <div class="row">
+                    <div class="col-auto">
+
+                      <!-- Avatar -->
+                      <a class="avatar avatar-sm" href="profile-posts.html">
+                        <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                      </a>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Body -->
+                      <div class="comment-body">
+
+                        <div class="row">
+                          <div class="col">
+
+                            <!-- Title -->
+                            <h5 class="comment-title">
+                              Ab Hadley
+                            </h5>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <!-- Time -->
+                            <time class="comment-time">
+                              11:12
+                            </time>
+
+                          </div>
+                        </div> <!-- / .row -->
+
+                        <!-- Text -->
+                        <p class="comment-text">
+                          Looking good Dianna! I like the image grid on the left, but it feels like a lot to process and doesn't really <em>show</em> me what the product does? I think using a short looping video or something similar demo'ing the product might be better?
+                        </p>
+
+                      </div>
+
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+
+                <div class="comment mb-3">
+                  <div class="row">
+                    <div class="col-auto">
+
+                      <!-- Avatar -->
+                      <a class="avatar avatar-sm" href="profile-posts.html">
+                        <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
+                      </a>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Body -->
+                      <div class="comment-body">
+
+                        <div class="row">
+                          <div class="col">
+
+                            <!-- Title -->
+                            <h5 class="comment-title">
+                              Adolfo Hess
+                            </h5>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <!-- Time -->
+                            <time class="comment-time">
+                              11:12
+                            </time>
+
+                          </div>
+                        </div> <!-- / .row -->
+
+                        <!-- Text -->
+                        <p class="comment-text">
+                          Any chance you're going to link the grid up to a public gallery of sites built with Launchday?
+                        </p>
+
+                      </div>
+
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+
+                <!-- Divider -->
+                <hr>
+
+                <!-- Form -->
+                <div class="row">
+                  <div class="col-auto">
+
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+
+                    <!-- Form -->
+                    <form class="mt-1">
+                      <label class="sr-only">Leave a comment...</label>
+                      <textarea class="form-control form-control-flush" data-autosize rows="1" placeholder="Leave a comment"></textarea>
+                    </form>
+
+                  </div>
+                  <div class="col-auto align-self-end">
+
+                    <!-- Icons -->
+                    <div class="text-muted mb-2">
+                      <a class="text-reset mr-3" href="#" data-toggle="tooltip" title="Add photo">
+                        <i class="fe fe-camera"></i>
+                      </a>
+                      <a class="text-reset mr-3" href="#" data-toggle="tooltip" title="Attach file">
+                        <i class="fe fe-paperclip"></i>
+                      </a>
+                      <a class="text-reset" href="#" data-toggle="tooltip" title="Record audio">
+                        <i class="fe fe-mic"></i>
+                      </a>
+                    </div>
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div class="card">
+              <div class="card-body">
+
+                <!-- Header -->
+                <div class="mb-3">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+
+                      <!-- Avatar -->
+                      <a href="#!" class="avatar">
+                        <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                      </a>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Title -->
+                      <h4 class="mb-1">
+                        Dianna Smiley
+                      </h4>
+
+                      <!-- Time -->
+                      <p class="card-text small text-muted">
+                        <span class="fe fe-clock"></span> <time datetime="2018-05-24">4hr ago</time>
+                      </p>
+
+                    </div>
+                    <div class="col-auto">
+
+                      <!-- Dropdown -->
+                      <div class="dropdown">
+                        <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fe fe-more-vertical"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <a href="#!" class="dropdown-item">
+                            Action
+                          </a>
+                          <a href="#!" class="dropdown-item">
+                            Another action
+                          </a>
+                          <a href="#!" class="dropdown-item">
+                            Something else here
+                          </a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+
+                <!-- Text -->
+                <p>
+                  I've been working on shipping the latest version of Launchday. The story I'm trying to focus on is something like "You're launching soon and need to be 100% focused on your product. Don't lose precious days designing, coding, and testing a product site. Instead, build one in minutes."
+                </p>
+
+                <!-- Divider -->
+                <hr>
+
+                <!-- Buttons -->
+                <div class="mb-3">
+                  <div class="row">
+                    <div class="col">
+
+                      <!-- Reaction -->
+                      <a href="#!" class="btn btn-sm btn-white">
+                        😬 1
+                      </a>
+                      <a href="#!" class="btn btn-sm btn-white">
+                        👍 2
+                      </a>
+                      <a href="#!" class="btn btn-sm btn-white">
+                        Add Reaction
+                      </a>
+
+                    </div>
+                    <div class="col-auto mr-n3">
+
+                      <!-- Avatar group -->
+                      <div class="avatar-group d-none d-sm-flex">
+                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Ab Hadley">
+                          <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Adolfo Hess">
+                          <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Daniela Dewitt">
+                          <img src="assets/img/avatars/profiles/avatar-4.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Miyah Myles">
+                          <img src="assets/img/avatars/profiles/avatar-5.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+                      </div>
+
+                    </div>
+                    <div class="col-auto">
+
+                      <!-- Button -->
+                      <a href="#!" class="btn btn-sm btn-white">
+                        Share
+                      </a>
+
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+
+                <!-- Divider -->
+                <hr>
+
+                <!-- Form -->
+                <div class="row">
+                  <div class="col-auto">
+
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+
+                    <!-- Input -->
+                    <form class="mt-1">
+                      <label class="sr-only">Leave a comment...</label>
+                      <textarea class="form-control form-control-flush" data-autosize rows="1" placeholder="Leave a comment"></textarea>
+                    </form>
+
+                  </div>
+                  <div class="col-auto align-self-end">
+
+                    <!-- Icons -->
+                    <div class="text-muted mb-2">
+                      <a class="text-reset mr-3" href="#" data-toggle="tooltip" title="Add photo">
+                        <i class="fe fe-camera"></i>
+                      </a>
+                      <a class="text-reset mr-3" href="#" data-toggle="tooltip" title="Attach file">
+                        <i class="fe fe-paperclip"></i>
+                      </a>
+                      <a class="text-reset" href="#" data-toggle="tooltip" title="Record audio">
+                        <i class="fe fe-mic"></i>
+                      </a>
+                    </div>
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div class="card">
+              <div class="card-body">
+
+                <!-- Header -->
+                <div class="mb-3">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+
+                      <!-- Avatar -->
+                      <a href="#!" class="avatar">
+                        <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                      </a>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Title -->
+                      <h4 class="mb-1">
+                        Dianna Smiley
+                      </h4>
+
+                      <!-- Time -->
+                      <p class="card-text small text-muted">
+                        <span class="fe fe-clock"></span> <time datetime="2018-05-24">4hr ago</time>
+                      </p>
+
+                    </div>
+                    <div class="col-auto">
+
+                      <!-- Dropdown -->
+                      <div class="dropdown">
+                        <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="fe fe-more-vertical"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <a href="#!" class="dropdown-item">
+                            Action
+                          </a>
+                          <a href="#!" class="dropdown-item">
+                            Another action
+                          </a>
+                          <a href="#!" class="dropdown-item">
+                            Something else here
+                          </a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+
+                <!-- Text -->
+                <p class="mb-3">
+                  I've been working on shipping the latest version of Launchday. The story I'm trying to focus on is something like "You're launching soon and need to be 100% focused on your product. Don't lose precious days designing, coding, and testing a product site. Instead, build one in minutes."
+                </p>
+
+                <!-- Text -->
+                <p class="mb-4">
+                  What do you y'all think? Would love some feedback from <a href="#!" class="badge bg-soft-primary">@Ab</a> or <a href="#!" class="badge bg-soft-primary">@Adolfo</a>?
+                </p>
+
+                <!-- Map -->
+                <div class="embed-responsive embed-responsive-21by9 overflow-hidden rounded mb-3">
+                  <div class="embed-responsive-item" data-map='{"center": [-118.244615, 34.052979], "zoom": 12}'></div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="mb-3">
+                  <div class="row">
+                    <div class="col">
+
+                      <!-- Reaction -->
+                      <a href="#!" class="btn btn-sm btn-white">
+                        🎉 5
+                      </a>
+                      <a href="#!" class="btn btn-sm btn-white">
+                        Add Reaction
+                      </a>
+
+                    </div>
+                    <div class="col-auto mr-n3">
+
+                      <!-- Avatar group -->
+                      <div class="avatar-group d-none d-sm-flex">
+                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Glen Rouse">
+                          <img src="assets/img/avatars/profiles/avatar-7.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+                        <a href="profile-posts.html" class="avatar avatar-xs" data-toggle="tooltip" title="Ab Hadley">
+                          <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+                      </div>
+
+                    </div>
+                    <div class="col-auto">
+
+                      <!-- Button -->
+                      <a href="#!" class="btn btn-sm btn-white">
+                        Share
+                      </a>
+
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+
+                <!-- Divider -->
+                <hr>
+
+                <!-- Comments -->
+                <div class="comment mb-3">
+                  <div class="row">
+                    <div class="col-auto">
+
+                      <!-- Avatar -->
+                      <a class="avatar avatar-sm" href="profile-posts.html">
+                        <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
+                      </a>
+
+                    </div>
+                    <div class="col ml-n2">
+
+                      <!-- Body -->
+                      <div class="comment-body">
+
+                        <div class="row">
+                          <div class="col">
+
+                            <!-- Title -->
+                            <h5 class="comment-title">
+                              Adolfo Hess
+                            </h5>
+
+                          </div>
+                          <div class="col-auto">
+
+                            <!-- Time -->
+                            <time class="comment-time">
+                              11:12
+                            </time>
+
+                          </div>
+                        </div> <!-- / .row -->
+
+                        <!-- Text -->
+                        <p class="comment-text">
+                          Any chance you're going to link the grid up to a public gallery of sites built with Launchday?
+                        </p>
+
+                      </div>
+
+                    </div>
+                  </div> <!-- / .row -->
+                </div>
+
+                <!-- Divider -->
+                <hr>
+
+                <!-- Form -->
+                <div class="row">
+                  <div class="col-auto">
+
+                    <!-- Avatar -->
+                    <div class="avatar avatar-sm">
+                      <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                    </div>
+
+                  </div>
+                  <div class="col ml-n2">
+
+                    <!-- Input -->
+                    <form class="mt-1">
+                      <label class="sr-only">Leave a comment...</label>
+                      <textarea class="form-control form-control-flush" data-autosize rows="1" placeholder="Leave a comment"></textarea>
+                    </form>
+
+                  </div>
+                  <div class="col-auto align-self-end">
+
+                    <!-- Icons -->
+                    <div class="text-muted mb-2">
+                      <a class="text-reset mr-3" href="#" data-toggle="tooltip" title="Add photo">
+                        <i class="fe fe-camera"></i>
+                      </a>
+                      <a class="text-reset mr-3" href="#" data-toggle="tooltip" title="Attach file">
+                        <i class="fe fe-paperclip"></i>
+                      </a>
+                      <a class="text-reset" href="#" data-toggle="tooltip" title="Record audio">
+                        <i class="fe fe-mic"></i>
+                      </a>
+                    </div>
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </div>
+            </div>
+
+          </div>
+          <div class="col-12 col-xl-4">
+
+            <!-- Card -->
+            <div class="card">
+              <div class="card-header">
+
+                <!-- Title -->
+                <h4 class="card-header-title">
+                  Who to follow
+                </h4>
+
+                <!-- Link -->
+                <a class="small" href="#!">
+                  View all
+                </a>
+
+              </div>
+              <div class="card-body">
+
+                <!-- List group -->
+                <div class="list-group list-group-flush my-n3">
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col-auto">
+
+                        <!-- Avatar -->
+                        <a href="profile-posts.html" class="avatar">
+                          <img src="assets/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+
+                      </div>
+                      <div class="col ml-n2">
+
+                        <!-- Title -->
+                        <h4 class="mb-1">
+                          <a href="profile-posts.html">Dianna Smiley</a>
+                        </h4>
+
+                        <!-- Status -->
+                        <p class="card-text small">
+                          <span class="text-success">●</span> Online
+                        </p>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Button -->
+                        <a href="#!" class="btn btn-sm btn-white">
+                          Follow
+                        </a>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col-auto">
+
+                        <!-- Avatar -->
+                        <a href="profile-posts.html" class="avatar">
+                          <img src="assets/img/avatars/profiles/avatar-2.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+
+                      </div>
+                      <div class="col ml-n2">
+
+                        <!-- Title -->
+                        <h4 class="mb-1">
+                          <a href="profile-posts.html">Ab Hadley</a>
+                        </h4>
+
+                        <!-- Status -->
+                        <p class="card-text small">
+                          <span class="text-success">●</span> Online
+                        </p>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Button -->
+                        <a href="#!" class="btn btn-sm btn-white">
+                          Follow
+                        </a>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col-auto">
+
+                        <!-- Avatar -->
+                        <a href="profile-posts.html" class="avatar">
+                          <img src="assets/img/avatars/profiles/avatar-3.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+
+                      </div>
+                      <div class="col ml-n2">
+
+                        <!-- Title -->
+                        <h4 class="mb-1">
+                          <a href="profile-posts.html">Adolfo Hess</a>
+                        </h4>
+
+                        <!-- Status -->
+                        <p class="card-text small">
+                          <span class="text-success">●</span> Online
+                        </p>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Button -->
+                        <a href="#!" class="btn btn-sm btn-white">
+                          Follow
+                        </a>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col-auto">
+
+                        <!-- Avatar -->
+                        <a href="profile-posts.html" class="avatar">
+                          <img src="assets/img/avatars/profiles/avatar-4.jpg" alt="..." class="avatar-img rounded-circle">
+                        </a>
+
+                      </div>
+                      <div class="col ml-n2">
+
+                        <!-- Title -->
+                        <h4 class="mb-1">
+                          <a href="profile-posts.html">Daniela Dewitt</a>
+                        </h4>
+
+                        <!-- Status -->
+                        <p class="card-text small">
+                          <span class="text-warning">●</span> Busy
+                        </p>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Button -->
+                        <a href="#!" class="btn btn-sm btn-white">
+                          Follow
+                        </a>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div class="card">
+              <div class="card-header">
+
+                <!-- Title -->
+                <h4 class="card-header-title">
+                  Trending Topics
+                </h4>
+
+                <!-- Link -->
+                <a class="small" href="#!">
+                  View all
+                </a>
+
+              </div>
+              <div class="card-body">
+
+                <!-- List group -->
+                <div class="list-group list-group-flush my-n3">
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col">
+
+                        <!-- Title -->
+                        <h4 class="mb-1">
+                          <a href="#!">Landkit Update</a>
+                        </h4>
+
+                        <!-- Subtitle -->
+                        <small class="text-muted">
+                          2.45k posts
+                        </small>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Chart -->
+                        <div class="chart chart-sparkline">
+                          <canvas class="chart-canvas" id="sparklineChartSocialOne"></canvas>
+                        </div>
+
+                      </div>
+                    </div> <!-- / .row -->
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col">
+
+                        <!-- Title -->
+                        <h4 class="mb-1">
+                          <a href="#!">Stripe API</a>
+                        </h4>
+
+                        <!-- Subtitle -->
+                        <small class="text-muted">
+                          1.1k posts
+                        </small>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Chart -->
+                        <div class="chart chart-sparkline">
+                          <canvas class="chart-canvas" id="sparklineChartSocialTwo"></canvas>
+                        </div>
+
+                      </div>
+                    </div> <!-- / .row -->
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col">
+
+                        <!-- Title -->
+                        <h4 class="mb-1">
+                          <a href="#!">Oki Doki</a>
+                        </h4>
+
+                        <!-- Subtitle -->
+                        <small class="text-muted">
+                          9.2k posts
+                        </small>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Chart -->
+                        <div class="chart chart-sparkline">
+                          <canvas class="chart-canvas" id="sparklineChartSocialThree"></canvas>
+                        </div>
+
+                      </div>
+                    </div> <!-- / .row -->
+                  </div>
+                  <div class="list-group-item">
+                    <div class="row align-items-center">
+                      <div class="col">
+
+                        <!-- Title -->
+                        <h4 class="mb-1">
+                          <a href="#!">Bootstrap</a>
+                        </h4>
+
+                        <!-- Subtitle -->
+                        <small class="text-muted">
+                          6.87k posts
+                        </small>
+
+                      </div>
+                      <div class="col-auto">
+
+                        <!-- Chart -->
+                        <div class="chart chart-sparkline">
+                          <canvas class="chart-canvas" id="sparklineChartSocialFour"></canvas>
+                        </div>
+
+                      </div>
+                    </div> <!-- / .row -->
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Card -->
+            <div class="card">
+
+              <!-- Image  -->
+              <a class="" href="https://themes.getbootstrap.com/preview/?theme_id=23273">
+                <img class="card-img-top" src="assets/img/kanban/kanban-2.jpg" alt="...">
+              </a>
+
+              <!-- Body -->
+              <div class="card-body">
+                <div class="row align-items-center">
+                  <div class="col">
+
+                    <!-- Title -->
+                    <h4 class="mb-1">
+                      Get Landkit theme!
+                    </h4>
+
+                    <!-- Badge -->
+                    <span class="badge bg-soft-success">
+                      Ad
+                    </span>
+
+                    <!-- Price -->
+                    <small class="text-muted">
+                      $49.99
+                    </small>
+
+                  </div>
+                  <div class="col-auto">
+
+                    <!-- Button -->
+                    <a class="btn btn-sm btn-white" href="https://themes.getbootstrap.com/preview/?theme_id=23273">
+                      Buy now
+                    </a>
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- / .main-content -->
+
+    <!-- JAVASCRIPT -->
+    {{> partials/scripts}}
+
+  </body>
+</html>

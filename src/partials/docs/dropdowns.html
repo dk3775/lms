@@ -1,0 +1,213 @@
+<div id="dropdowns">
+
+  <!-- Header -->
+  <div class="header mt-md-5">
+    <div class="header-body">
+
+      <!-- Title -->
+      <h1 class="header-title">
+        Dropdowns
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="header-subtitle">
+        Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin. Please read the <a target="_blank" href="https://getbootstrap.com/docs/4.0/components/dropdowns/">official Bootstrap documentation</a> for a full list of options.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- Card -->
+  <div class="card">
+    <div class="card-body d-flex flex-wrap">
+
+      <!-- Dropdown -->
+      <div class="dropdown mb-2 mr-2">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#!">Action</a>
+          <a class="dropdown-item" href="#!">Another action</a>
+          <a class="dropdown-item" href="#!">Something else here</a>
+        </div>
+      </div>
+
+      <!-- Dropdown -->
+      <div class="dropdown mb-2 mr-2">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButtonTwo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown button
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonTwo">
+          <a class="dropdown-item" href="#!">Action</a>
+          <a class="dropdown-item" href="#!">Another action</a>
+          <a class="dropdown-item" href="#!">Something else here</a>
+        </div>
+      </div>
+
+      <!-- Dropdown -->
+      <div class="btn-group mb-2">
+        <button type="button" class="btn btn-danger">Action</button>
+        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <hr class="my-5">
+
+  <!-- Heading -->
+  <h2 class="mb-2">
+    Dropdown ellipsis <span class="badge bg-soft-primary ml-1 mt-n1">Dashkit only</span>
+  </h2>
+
+  <!-- Subheading -->
+  <p class="text-muted mb-4">
+    Creates a compact dropdown toggler with a Feather icon.
+  </p>
+
+  <!-- Card -->
+  <div class="card">
+    <div class="card-header">
+
+      <!-- Heading -->
+      <h4 class="card-header-title">
+        Latest orders
+      </h4>
+
+      <!-- Dropdown -->
+      <div class="dropdown">
+        <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fe fe-more-vertical"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="#!" class="dropdown-item">
+            Action
+          </a>
+          <a href="#!" class="dropdown-item">
+            Another action
+          </a>
+          <a href="#!" class="dropdown-item">
+            Something else here
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <div class="card-footer bg-dark">
+      <code class="highlight html bg-dark">
+        &lt;div&nbsp;class=&quot;dropdown&quot;&gt;<br /><br />&nbsp;&nbsp;&lt;a&nbsp;href=&quot;#&quot;&nbsp;class=&quot;dropdown-ellipses&nbsp;dropdown-toggle&quot;&nbsp;role=&quot;button&quot;&nbsp;data-toggle=&quot;dropdown&quot;&nbsp;aria-haspopup=&quot;true&quot;&nbsp;aria-expanded=&quot;false&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;i&nbsp;class=&quot;fe&nbsp;fe-more-vertical&quot;&gt;&lt;/i&gt;<br />&nbsp;&nbsp;&lt;/a&gt;<br /><br />&nbsp;&nbsp;&lt;div&nbsp;class=&quot;dropdown-menu&nbsp;dropdown-menu-right&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;#!&quot;&nbsp;class=&quot;dropdown-item&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Action<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;#!&quot;&nbsp;class=&quot;dropdown-item&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Another&nbsp;action<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;href=&quot;#!&quot;&nbsp;class=&quot;dropdown-item&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Something&nbsp;else&nbsp;here<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/a&gt;<br />&nbsp;&nbsp;&lt;/div&gt;<br />&nbsp;&nbsp;<br />&lt;/div&gt;
+      </code>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <hr class="my-5">
+
+  <!-- Heading -->
+  <h2 class="mb-2">
+    Dropdown card <span class="badge bg-soft-primary ml-1 mt-n1">Dashkit only</span>
+  </h2>
+
+  <!-- Subheading -->
+  <p class="text-muted mb-4">
+    Turns the default Bootstrap dropdown menu into a fully functional <code>.card</code> component. The height of the <code>.card-body</code> container will be limited and a scrolling bar will appear once this height is exceeded.
+  </p>
+
+  <!-- Card -->
+  <div class="card">
+    <div class="card-body">
+
+      <!-- Dropdown -->
+      <div class="dropdown">
+
+        <!-- Button -->
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Card dropdown
+        </button>
+
+        <!-- Menu -->
+        <div class="dropdown-menu dropdown-menu-card">
+          <div class="card-body">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat recusandae rem autem impedit ad odio, enim tempore possimus non minus quod dignissimos ipsum eveniet odit, ratione molestiae, velit a dolorem!
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="card-footer bg-dark">
+      <code class="highlight html bg-dark">
+        &lt;div&nbsp;class=&quot;dropdown&quot;&gt;<br /><br />&nbsp;&nbsp;&lt;button&nbsp;class=&quot;btn&nbsp;btn-primary&nbsp;dropdown-toggle&quot;&nbsp;type=&quot;button&quot;&nbsp;data-toggle=&quot;dropdown&quot;&nbsp;aria-haspopup=&quot;true&quot;&nbsp;aria-expanded=&quot;false&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;Card&nbsp;dropdown<br />&nbsp;&nbsp;&lt;/button&gt;<br /><br />&nbsp;&nbsp;&lt;div&nbsp;class=&quot;dropdown-menu&nbsp;dropdown-menu-card&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;card-body&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet,&nbsp;consectetur&nbsp;adipisicing&nbsp;elit.&nbsp;Quaerat&nbsp;recusandae&nbsp;rem&nbsp;autem&nbsp;impedit&nbsp;ad&nbsp;odio,&nbsp;enim&nbsp;tempore&nbsp;possimus&nbsp;non&nbsp;minus&nbsp;quod&nbsp;dignissimos&nbsp;ipsum&nbsp;eveniet&nbsp;odit,&nbsp;ratione&nbsp;molestiae,&nbsp;velit&nbsp;a&nbsp;dolorem!<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />&nbsp;&nbsp;&lt;/div&gt;<br /><br />&lt;/div&gt;<br />
+      </code>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <hr class="my-5">
+
+  <!-- Heading -->
+  <h2 class="mb-2">
+    Dropdown multilevel <span class="badge bg-soft-primary ml-1 mt-n1">Dashkit only</span>
+  </h2>
+
+  <!-- Subheading -->
+  <p class="text-muted mb-4">
+    Create nested dropdowns with the default Bootstrap markup.
+  </p>
+
+  <!-- Card -->
+  <div class="card">
+    <div class="card-body">
+
+      <!-- Dropdown -->
+      <div class="dropdown">
+
+        <!-- Button -->
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonAlias" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown button
+        </button>
+
+        <!-- List -->
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonAlias">
+          <li>
+            <a class="dropdown-item" href="#!">Action</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#!">Another action</a>
+          </li>
+          <li class="dropright">
+
+            <!-- Toggle -->
+            <a class="dropdown-item dropdown-toggle" href="#" id="dropdownSubmenuButton" data-toggle="dropdown">Something else here</a>
+
+            <!-- Menu -->
+            <div class="dropdown-menu" aria-labelledby="dropdownSubmenuButton">
+              <a class="dropdown-item" href="#!">Action</a>
+              <a class="dropdown-item" href="#!">Another action</a>
+              <a class="dropdown-item" href="#!">Something else here</a>
+            </div>
+
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="card-footer bg-dark">
+      <code class="highlight html bg-dark">
+        &lt;div&nbsp;class=&quot;dropdown&quot;&gt;<br /><br />&nbsp;&nbsp;&lt;button&nbsp;class=&quot;btn&nbsp;btn-secondary&nbsp;dropdown-toggle&quot;&nbsp;type=&quot;button&quot;&nbsp;id=&quot;dropdownMenuButtonAlias&quot;&nbsp;data-toggle=&quot;dropdown&quot;&nbsp;aria-haspopup=&quot;true&quot;&nbsp;aria-expanded=&quot;false&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;Dropdown&nbsp;button<br />&nbsp;&nbsp;&lt;/button&gt;<br /><br />&nbsp;&nbsp;&lt;ul&nbsp;class=&quot;dropdown-menu&quot;&nbsp;aria-labelledby=&quot;dropdownMenuButtonAlias&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;dropdown-item&quot;&nbsp;href=&quot;#!&quot;&gt;Action&lt;/a&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;dropdown-item&quot;&nbsp;href=&quot;#!&quot;&gt;Another&nbsp;action&lt;/a&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&nbsp;class=&quot;dropright&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;dropdown-item&nbsp;dropdown-toggle&quot;&nbsp;href=&quot;#&quot;&nbsp;id=&quot;dropdownSubmenuButton&quot;&nbsp;data-toggle=&quot;dropdown&quot;&gt;Something&nbsp;else&nbsp;here&lt;/a&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&nbsp;class=&quot;dropdown-menu&quot;&nbsp;aria-labelledby=&quot;dropdownSubmenuButton&quot;&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;dropdown-item&quot;&nbsp;href=&quot;#!&quot;&gt;Action&lt;/a&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;dropdown-item&quot;&nbsp;href=&quot;#!&quot;&gt;Another&nbsp;action&lt;/a&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;a&nbsp;class=&quot;dropdown-item&quot;&nbsp;href=&quot;#!&quot;&gt;Something&nbsp;else&nbsp;here&lt;/a&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/li&gt;<br />&nbsp;&nbsp;&lt;/ul&gt;<br />&nbsp;&nbsp;<br />&lt;/div&gt;
+      </code>
+    </div>
+  </div>
+
+</div>

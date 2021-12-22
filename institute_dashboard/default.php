@@ -1,0 +1,356 @@
+<?php
+session_start();
+if ($_SESSION['role'] != "Texas") {
+	header("Location: ../default.php");
+} else {
+	include_once("../config.php");
+	$_SESSION["userrole"] = "Institute";
+	$qur = "SELECT * FROM `studentmaster` WHERE ``='Abuja'";
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<?php include_once("../head.php"); ?>
+</head>
+
+<body>
+	<!-- NAVIGATION -->
+	<nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light" id="sidebar">
+		<div class="container-fluid">
+			<!-- Toggler -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!-- Brand -->
+			<a class="navbar-brand" href="../institute_dashboard/">
+				<img src="../assets/img/logo.svg" class="navbar-brand-img mx-auto" alt="...">
+			</a>
+			<!-- User (xs) -->
+			<div class="navbar-user d-md-none">
+				<!-- Dropdown -->
+				<div class="dropdown">
+				</div>
+			</div>
+			<!-- Collapse -->
+			<div class="collapse navbar-collapse" id="sidebarCollapse">
+				<!-- Form -->
+				<form class="mt-4 mb-3 d-md-none">
+					<div class="input-group input-group-rounded input-group-merge input-group-reverse">
+						<input class="form-control" type="search" placeholder="Search" aria-label="Search">
+						<div class="input-group-text">
+							<span class="fe fe-search"></span>
+						</div>
+					</div>
+				</form>
+				<!-- Navigation -->
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a href="../institute_dashboard" class="nav-link active">
+							<i class="fe fe-home"></i> Dashboard
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="#sidebarProfile" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProfile">
+						<i class="fe uil-user"></i>Student
+						</a>
+						<div class="collapse" id="sidebarProfile">
+							<ul class="nav nav-sm flex-column">
+								<li class="nav-item">
+									<a href="student_list.php" class="nav-link ">
+										View Student List
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="add_student.php" class="nav-link">
+										Add New Student
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="edit_student.php" class="nav-link">
+										Edit Student Details
+									</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+
+					<li class="nav-item">
+						<a href="#sidebarPages" class="nav-link " data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarPages">
+						<i class="fe uil-graduation-cap"></i>Faculty
+						</a>
+						<div class="collapse" id="sidebarPages">
+							<ul class="nav nav-sm flex-column">
+								<li class="nav-item">
+									<a href="faculty_list.php" class="nav-link ">
+										View Faculty List
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="add_faculty.php" class="nav-link ">
+										Add New Faculty
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="edit_faculty.php" class="nav-link">
+										Edit Faculty Details
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="faculty_profile.php" class="nav-link ">
+										Faculty Profile
+									</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a href="#sidebarCrm" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCrm">
+						<i class="fe uil-book"></i>Branch/subject
+						</a>
+						<div class="collapse" id="sidebarCrm">
+							<ul class="nav nav-sm flex-column">
+								<li class="nav-item">
+									<a href="branch_list.php" class="nav-link">
+										View Branch List
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="add_branch.php" class="nav-link">
+										Add New Branch
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="edit_branch.php" class="nav-link">
+										Edit Branch
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="subject_list.php" class="nav-link">
+										View Subject List
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="add_subject.php" class="nav-link">
+										Add New Subject
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="edit_subject.php" class="nav-link">
+										Edit Subject
+									</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+
+					<li class="nav-item">
+						<a href="#" class="nav-link ">
+							<i class="fe fe-percent"></i> Marksheet
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="update.php" class="nav-link ">
+							<i class="fe fe-bell"></i>Updates
+						</a>
+					</li>
+					<li class="nav-item d-md-none">
+						<a class="nav-link" href="#" data-toggle="modal">
+							<span class="fe fe-bell"></span> Notifications
+						</a>
+					</li>
+				</ul>
+				<!-- Divider -->
+				<hr class="navbar-divider my-3">
+				<!-- Heading -->
+				<h6 class="navbar-heading">
+					Help Center
+				</h6>
+				<!-- Navigation -->
+				<ul class="navbar-nav mb-md-4">
+					<li class="nav-item">
+						<a href="#" class="nav-link ">
+							<i class="fe fe-user"></i>Account related Details
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="#" class="nav-link ">
+							<i class="fe fe-book"></i>Study related querys
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- MAIN CONTENT -->
+	<div class="main-content">
+		<!-- HEADER -->
+		<div class="header">
+			<div class="container-fluid">
+				<!-- Body -->
+				<div class="header-body">
+					<div class="row align-items-end">
+						<div class="col">
+							<!-- Pretitle -->
+							<h6 class="header-pretitle">
+								<?php echo $_SESSION['userrole']; ?>
+							</h6>
+							<!-- Title -->
+							<h1 class="header-title">
+								Dashboard
+							</h1>
+						</div>
+						<div class="col-auto">
+							<!-- Button -->
+							<a href="#!" class="btn btn-primary lift">
+								logout
+							</a>
+						</div>
+					</div>
+					<!-- / .row -->
+				</div>
+				<!-- / .header-body -->
+			</div>
+		</div>
+		<!-- / .header -->
+		<br><br>
+		<div class="container-fluid">
+			<div class="page-header min-height-100 border-radius-xl mt-4">
+			</div>
+			<div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
+				<div class="row gx-4">
+					<div class="col-auto">
+						<div class="avatar avatar-xl position-relative">
+							<img src="../assets/test1.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+						</div>
+					</div>
+					<div class="col-auto my-auto">
+						<div class="h-100">
+							<h3 class="mb-1 font-weight-bold text-sm">
+								Computer
+							</h3>
+							<h1 class="mb-0 font-weight-bold text-sm">
+								Alec Thompson
+							</h1>
+							<p class="mb-0 font-weight-bold text-sm">
+								Sem - 5
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- CARDS -->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12 col-lg-6 col-xl">
+					<!-- Value  -->
+					<div class="card">
+						<div class="card-body">
+							<div class="row align-items-center">
+								<div class="col">
+									<!-- Title -->
+									<h6 class="text-uppercase text-muted mb-2">
+										SPI
+									</h6>
+									<!-- Heading -->
+									<span class="h2 mb-0">
+										9.58
+									</span>
+								</div>
+								<div class="col-auto">
+									<!-- Icon -->
+									<span></span>
+								</div>
+							</div>
+							<!-- / .row -->
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-6 col-xl">
+					<!-- Hours -->
+					<div class="card">
+						<div class="card-body">
+							<div class="row align-items-center">
+								<div class="col">
+									<!-- Title -->
+									<h6 class="text-uppercase text-muted mb-2">
+										Attendance
+									</h6>
+									<!-- Heading -->
+									<span class="h2 mb-0">
+										55%
+									</span>
+								</div>
+								<div class="col-auto">
+									<!-- Icon -->
+									<span class="h2 fe fe-briefcase text-muted mb-0"></span>
+								</div>
+							</div>
+							<!-- / .row -->
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-6 col-xl">
+					<!-- Exit -->
+					<div class="card">
+						<div class="card-body">
+							<div class="row align-items-center">
+								<div class="col">
+									<!-- Title -->
+									<h6 class="text-uppercase text-muted mb-2">
+										assignment
+									</h6>
+									<!-- Heading -->
+									<span class="h2 mb-0">
+										10/40
+									</span>
+								</div>
+								<div class="col-auto">
+								</div>
+							</div>
+							<!-- / .row -->
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-6 col-xl">
+					<!-- Time -->
+					<div class="card">
+						<div class="card-body">
+							<div class="row align-items-center">
+								<div class="col">
+									<!-- Title -->
+									<h6 class="text-uppercase text-muted mb-2">
+										Avg. Time
+									</h6>
+									<!-- Heading -->
+									<span class="h2 mb-0">
+										2:37
+									</span>
+								</div>
+								<div class="col-auto">
+									<!-- Icon -->
+									<span class="h2 fe fe-clock text-muted mb-0"></span>
+								</div>
+							</div>
+							<!-- / .row -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- / .row -->
+			<!-- / .row -->
+		</div>
+	</div>
+	<!-- / .main-content -->
+	<!-- JAVASCRIPT -->
+	<!-- Map JS -->
+	<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+	<!-- Vendor JS -->
+	<script src="../assets/js/vendor.bundle.js"></script>
+	<!-- Theme JS -->
+	<script src="../assets/js/theme.bundle.js"></script>
+</body>
+
+</html>
