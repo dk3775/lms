@@ -275,7 +275,7 @@ if ($_SESSION['role'] != "Texas") {
 											Uploaded By
 										</th>
 										<th>
-											Info
+											Infos
 										</th>
 										<th>
 											Download
