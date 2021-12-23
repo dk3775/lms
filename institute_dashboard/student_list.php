@@ -235,7 +235,7 @@ if ($_SESSION['role'] != "Texas") {
 											<!-- Form -->
 											<form>
 												<div class="input-group input-group-flush input-group-merge input-group-reverse">
-													<input class="form-control list-search" type="search" placeholder="Search Student Name">
+													<input class="form-control list-search" type="search" placeholder="Search">
 													<span class="input-group-text">
 														<i class="fe fe-search"></i>
 													</span>

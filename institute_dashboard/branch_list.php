@@ -235,7 +235,7 @@ if ($_SESSION['role'] != "Texas") {
 											<!-- Form -->
 											<form>
 												<div class="input-group input-group-flush input-group-merge input-group-reverse">
-													<input class="form-control list-search" type="search" placeholder="Search Branch name">
+													<input class="form-control list-search" type="search" placeholder="Search">
 													<span class="input-group-text">
 														<i class="fe fe-search"></i>
 													</span>
@@ -258,9 +258,6 @@ if ($_SESSION['role'] != "Texas") {
 													<a class="list-sort text-muted" data-sort="item-email">Branch Code</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-phone">No of Semesters</a>
-												</th>
-												<th>
 													<a class="list-sort text-muted justify-content-center">Action</a>
 												</th>
 												<th>
@@ -275,22 +272,21 @@ if ($_SESSION['role'] != "Texas") {
 														<a type="text" class="form-control item-name" name="bname" required><?php echo $row['BranchName']; ?></a>
 													</td>
 													<td>
-														<a type="text" class="form-control item-email" name="bcode" required><?php echo $row['BranchCode']; ?></a>
+														<!-- Email -->
+														<a type="text" class="form-control item-phone" name="bcode" required><?php echo $row['BranchCode']; ?></a>
+
 													</td>
 													<td>
-														<a type="text" class="form-control item-phone" name="bsem" required><?php echo $row['BranchSemesters']; ?></a>
-													</td>
-													<td>
-														<a href="edit_branch.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-sm btn-white">
+														<a href="edit_branch.php?facid=<?php echo $row['BranchId']; ?>" class="btn btn-sm btn-white">
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="branchdelete.php?brid=<?php echo $row['BranchId']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
+														<a class="btn btn-sm btn-white" href="branchdelete.php?facid=<?php echo $row['BranchId']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
 															Delete
 															<!--changes-->
 														</a>
 														&nbsp;
-														<a href="branch_profile.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-sm btn-white">
+														<a href="#!" class="btn btn-sm btn-white">
 															View
 														</a>
 													</td>

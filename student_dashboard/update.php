@@ -29,6 +29,7 @@
 		</style>
 	</head>
 	<body>
+		
 		<!-- NAVIGATION -->
 		<nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light" id="sidebar">
 			<div class="container-fluid">
@@ -60,7 +61,7 @@
 					<!-- Navigation -->
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a href="../faculty_dashboard" class="nav-link active">
+							<a href="../faculty_dashboard" class="nav-link ">
 							<i class="fe fe-home"></i> Dashboard
 							</a>
 						</li>
@@ -94,7 +95,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="update.php" class="nav-link ">
+							<a href="update.php" class="nav-link active">
 							<i class="fe fe-bell"></i>Updates 
 							</a>
 						</li>
@@ -123,7 +124,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="study_related.php" class="nav-link ">
+							<a href="#" class="nav-link ">
 							<i class="fe fe-book"></i>Study related querys
 							</a>
 						</li>
@@ -132,154 +133,42 @@
 			</div>
 		</nav>
 		<!-- MAIN CONTENT -->
-		<div class="main-content">
-			<!-- HEADER -->
-			<div class="header">
-				<div class="container-fluid">
-					<!-- Body -->
-					<div class="header-body">
-						<div class="row align-items-end">
-							<div class="col">
+		<div class="main-content bg-fixed-bottom" style="background-image: url(../assets/img/illustrations/sticky.svg);">
+			<div class="container-fluid">
+				<div class="row justify-content-center">
+					<div class="col-12 col-lg-10 col-xl-8">
+						<!-- Header -->
+						<div class="header mt-md-5">
+							<div class="header-body">
 								<!-- Pretitle -->
 								<h6 class="header-pretitle">
-									<?php echo $_SESSION['userrole']; ?>
+									GTU
 								</h6>
 								<!-- Title -->
 								<h1 class="header-title">
-									Dashboard
+									Updates Feed
 								</h1>
 							</div>
-							<div class="col-auto">
-								<!-- Button -->
-								<a href="#!" class="btn btn-primary lift">
-								logout 
-								</a>
-							</div>
 						</div>
-						<!-- / .row -->
-					</div>
-					<!-- / .header-body -->
-				</div>
-			</div>
-			<!-- / .header -->
-			<br><br>
-			<div class="container-fluid">
-				<div class="page-header min-height-100 border-radius-xl mt-4">
-				</div>
-				<div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
-					<div class="row gx-4">
-						<div class="col-auto">
-							<div class="avatar avatar-xl position-relative">
-								<img src="../assets/test1.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
-							</div>
-						</div>
-						<div class="col-auto my-auto">
-							<div class="h-100">
-								<h3 class="mb-1 font-weight-bold text-sm">
-									Computer
-								</h3>
-								<h1 class="mb-0 font-weight-bold text-sm">
-									Alec Thompson
-								</h1>
-								<p class="mb-0 font-weight-bold text-sm">
-									Sem - 5
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- CARDS -->
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-12 col-lg-6 col-xl">
-						<!-- Value  -->
+						<!-- Card -->
 						<div class="card">
-							<div class="card-body">
-								<div class="row align-items-center">
-									<div class="col">
+							<div class="card-body text-center">
+								<div class="row justify-content-center">
+									<div class="col-12 col-md-12 col-xl-8">
+										<!-- Image -->
+										<img src="../assets/img/illustrations/happiness.svg" alt="..." class="img-fluid mt-n5 mb-4" style="max-width: 272px;">
 										<!-- Title -->
-										<h6 class="text-uppercase text-muted mb-2">
-											SPI
-										</h6>
-										<!-- Heading -->
-										<span class="h2 mb-0">
-										9.58
-										</span>
-									</div>
-									<div class="col-auto">
-										<!-- Icon -->
-										<span></span>
-									</div>
-								</div>
-								<!-- / .row -->
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-lg-6 col-xl">
-						<!-- Hours -->
-						<div class="card">
-							<div class="card-body">
-								<div class="row align-items-center">
-									<div class="col">
-										<!-- Title -->
-										<h6 class="text-uppercase text-muted mb-2">
-											Attendance 
-										</h6>
-										<!-- Heading -->
-										<span class="h2 mb-0">
-										55%
-										</span>
-									</div>
-									<div class="col-auto">
-										<!-- Icon -->
-										<span class="h2 fe fe-briefcase text-muted mb-0"></span>
-									</div>
-								</div>
-								<!-- / .row -->
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-lg-6 col-xl">
-						<!-- Exit -->
-						<div class="card">
-							<div class="card-body">
-								<div class="row align-items-center">
-									<div class="col">
-										<!-- Title -->
-										<h6 class="text-uppercase text-muted mb-2">
-											assignment
-										</h6>
-										<!-- Heading -->
-										<span class="h2 mb-0">
-										10/40
-										</span>
-									</div>
-									<div class="col-auto">
-									</div>
-								</div>
-								<!-- / .row -->
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-lg-6 col-xl">
-						<!-- Time -->
-						<div class="card">
-							<div class="card-body">
-								<div class="row align-items-center">
-									<div class="col">
-										<!-- Title -->
-										<h6 class="text-uppercase text-muted mb-2">
-											Avg. Time
-										</h6>
-										<!-- Heading -->
-										<span class="h2 mb-0">
-										2:37
-										</span>
-									</div>
-									<div class="col-auto">
-										<!-- Icon -->
-										<span class="h2 fe fe-clock text-muted mb-0"></span>
+										<h2>
+											We released 2008 new versions of our theme to make the world a better place.
+										</h2>
+										<!-- Content -->
+										<p class="text-muted">
+											This is a true story and totally not made up. This is going to be better in the long run but for now this is the way it is.
+										</p>
+										<!-- Button -->
+										<a href="#!" class="btn btn-primary lift">
+										Try it for free
+										</a>
 									</div>
 								</div>
 								<!-- / .row -->
@@ -288,6 +177,53 @@
 					</div>
 				</div>
 				<!-- / .row -->
+			</div>
+		</div>
+		<!-- / .main-content -->
+		<!-- MAIN CONTENT -->
+		<div class="main-content bg-fixed-bottom" style="background-image: url(../assets/img/illustrations/sticky.svg);">
+			<div class="container-fluid">
+				<div class="row justify-content-center">
+					<div class="col-12 col-lg-10 col-xl-8">
+						<!-- Header -->
+						<div class="header mt-md-5">
+							<div class="header-body">
+								<!-- Pretitle -->
+								<h6 class="header-pretitle">
+									Campus 
+								</h6>
+								<!-- Title -->
+								<h1 class="header-title">
+									Updates Feed
+								</h1>
+							</div>
+						</div>
+						<!-- Card -->
+						<div class="card">
+							<div class="card-body text-center">
+								<div class="row justify-content-center">
+									<div class="col-12 col-md-12 col-xl-8">
+										<!-- Image -->
+										<img src="../assets/img/illustrations/happiness.svg" alt="..." class="img-fluid mt-n5 mb-4" style="max-width: 272px;">
+										<!-- Title -->
+										<h2>
+											We released 2008 new versions of our theme to make the world a better place.
+										</h2>
+										<!-- Content -->
+										<p class="text-muted">
+											This is a true story and totally not made up. This is going to be better in the long run but for now this is the way it is.
+										</p>
+										<!-- Button -->
+										<a href="#!" class="btn btn-primary lift">
+										Try it for free
+										</a>
+									</div>
+								</div>
+								<!-- / .row -->
+							</div>
+						</div>
+					</div>
+				</div>
 				<!-- / .row -->
 			</div>
 		</div>
