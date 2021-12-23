@@ -23,7 +23,6 @@ if ($_SESSION['role'] != "Texas") {
 			height: 0;
 			overflow: hidden;
 			@include transition($transition-collapse);
-
 			&.collapse-horizontal {
 				width: 0;
 				height: auto;
