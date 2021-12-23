@@ -4,7 +4,7 @@ if ($_SESSION['role'] != "Texas") {
 	header("Location: ../default.php");
 } else {
 	include_once("../config.php");
-	$_SESSION["userrole"] = "Faculty";
+	$_SESSION["userrole"] = "Institute";
 }
 ?>
 <!DOCTYPE html>
