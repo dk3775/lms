@@ -205,7 +205,7 @@ if ($_SESSION['role'] != "Texas") {
 						<!-- Form -->
 						<?php
 						include_once("../config.php");
-						$bid = $_GET['brid'];
+						$bid = $_GET['facid'];
 						$_SESSION["userrole"] = "institute";
 						if (isset($bid)) {
 							$sql = "SELECT * FROM branchmaster WHERE BranchId = '$bid'";
@@ -238,19 +238,6 @@ if ($_SESSION['role'] != "Texas") {
 										</div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<label for="validationCustom01" class="form-label">Number of Semesters</label>
-										<select class="form-control" id="validationCustom01" name="isem" required>
-											<option value="<?php echo $row['BranchSemesters']?$row['BranchSemesters']:""; ?>" hidden><?php echo $row['BranchSemesters']?$row['BranchSemesters']:"Select Semester"; ?></option>
-											<option value="4">4</option>
-											<option value="6">6</option>
-											<option value="8">8</option>
-										</select>
-									</div>
-								</div>
-
-								<hr class="my-4">
 								<div class="d-flex justify">
 									<!-- Button -->
 									<button class="btn btn-primary" type="submit" value="sub" name="subbed">
@@ -343,17 +330,18 @@ if ($_SESSION['role'] != "Texas") {
 	<?php
 	if (isset($_POST['subbed'])) {
 
-		extract($_POST);
+		$bcode = $_POST['bcode'];
+		$bname = $_POST['bname'];
 
 
-		$sqli = "UPDATE branchmaster SET BranchName = '$bname', BranchSemesters = '$isem' WHERE BranchId = '$bid';";
+		$sqli = "UPDATE branchmaster SET BranchName = '$bname', BranchCode = '$bcode' WHERE BranchId = '$bid';";
 		$runed = mysqli_query($conn, $sqli);
 		if ($runed == true) {
 			echo "<script>alert('Branch Edited Successfully')</script>";
-			echo "<script>window.open('branch_list.php','_self') </script>";
+			echo "<script>window.open('edit_branch.php','_self') </script>";
 		} else {
 			echo "<script>alert('Error Occured')</script>";
-			echo "<script>window.open('branch_list.php','_self')</script>";
+			echo "<script>window.open('edit_branch.php','_self')</script>";
 		}
 	}
 	?>
