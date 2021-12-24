@@ -302,7 +302,7 @@ if ($_SESSION['role'] != "Texas") {
 															Delete
 														</a>
 														&nbsp;
-														<a href="#!" class="btn btn-sm btn-white">
+														<a href="student_profile.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" class="btn btn-sm btn-white">
 															View
 														</a>
 													</td>
