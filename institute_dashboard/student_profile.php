@@ -14,7 +14,7 @@ if ($_SESSION['role'] != "Texas") {
 
 	<body>
 		<!-- NAVIGATION -->
-		<?php include_once("../nav.php"); ?>
+		<?php include_once('../nav.php'); ?>
 		<!-- MAIN CONTENT -->
 		<div class="main-content">
 			<div class="header">
@@ -43,7 +43,7 @@ if ($_SESSION['role'] != "Texas") {
 				<!-- / .header -->
 				<?php
 				include_once("../config.php");
-				$studentenr = $_GET['studentcode'];
+				$studentenr = $_GET['studentenr'];
 				$_SESSION["userrole"] = "institute";
 				if (isset($studentenr)) {
 					$sql = "SELECT * FROM studentmaster WHERE StudentEnrollmentNo = '$studentenr'";
