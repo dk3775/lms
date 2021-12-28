@@ -78,8 +78,8 @@
 									<?php
 										$a = 1;
 										while ($a <= $row['BranchSemesters']) { ?>
-									<li class="nav-item" <?php echo $a ? "active" : ""; ?>>
-										<a href="sem_details.php?semid=<?php echo $a; ?>&brid=<?php echo $row['BranchId']; ?>" class="nav-link h3">
+									<li class="nav-item" >
+										<a href="sem_details.php?semid=<?php echo $a; ?>&brid=<?php echo $row['BranchId']; ?>" class="nav-link h3 <?php if($_GET['semid'] == $a){echo "active";}?>">
 										Sem <?php echo $a; ?>
 										</a>
 									</li>
@@ -124,34 +124,8 @@
 				</div>
 			</div>
 			<?php
-				} else { ?>
-			<div class="container-fluid">
-				<form class="mb-4" method="post">
-					<div class="col">
-						<div class="row">
-							<div class="col-md-4">
-								<div class="input-group input-group-merge input-group-reverse">
-									<input class="form-control list-search" type="text" name="enr" placeholder="Enter Branch Code">
-									<div class="input-group-text">
-										<span class="fe fe-search"></span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="col-auto">
-									<!-- Button -->
-									<button class="btn btn-primary" type="submit" name="ser" value="2">
-									Search
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</form>
-			</div>
-			<?php
-				if (isset($_POST['ser'])) {
-					$er = $_POST['enr'];
+				} else {
+					$er = $_GET['brid'];
 					$qur = "SELECT * FROM branchmaster WHERE BranchCode = '$er';";
 					$res = mysqli_query($conn, $qur);
 					$row = mysqli_fetch_assoc($res);
@@ -181,7 +155,6 @@
 				</div>
 			</div>
 			<?php
-				}
 				}
 				}
 				?>

@@ -127,7 +127,7 @@ if ($_SESSION['role'] != "Texas") {
 															<!--changes-->
 														</a>
 														&nbsp;
-														<a href="#!" class="btn btn-sm btn-white">
+														<a href="branch_profile.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-sm btn-white">
 															View
 														</a>
 													</td>
