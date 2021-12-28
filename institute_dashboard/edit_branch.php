@@ -52,26 +52,26 @@ if ($_SESSION['role'] != "Texas") {
 							<form method="POST" enctype="multipart/form-data">
 								<div class="row">
 									<div class="col-12 col-md-6">
-										<!-- First name -->
 										<div class="form-group">
-											<!-- Label -->
 											<label class="form-label">
 												Branch Code
 											</label>
-											<!-- Input -->
 											<input type="text" class="form-control" name="bcode" value="<?php echo $row['BranchCode']; ?>" required>
 										</div>
 									</div>
 									<div class="col-12 col-md-6">
-										<!-- Middle name -->
 										<div class="form-group">
-											<!-- Label -->
 											<label class="form-label">
 												Branch Name
 											</label>
-											<!-- Input -->
 											<input type="text" class="form-control" name="bname" value="<?php echo $row['BranchName']; ?>" required>
 										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<label for="validationCustom01" class="form-label">No of Semesters</label>
+										<input type="text" class="form-control" id="validationCustom01" name="bsem" value="<?php echo $row['BranchSemesters']; ?>" required><br>
 									</div>
 								</div>
 								<div class="d-flex justify">
@@ -166,11 +166,10 @@ if ($_SESSION['role'] != "Texas") {
 	<?php
 	if (isset($_POST['subbed'])) {
 
-		$bcode = $_POST['bcode'];
-		$bname = $_POST['bname'];
+		extract($_POST);
 
 
-		$sqli = "UPDATE branchmaster SET BranchName = '$bname', BranchCode = '$bcode' WHERE BranchId = '$bid';";
+		$sqli = "UPDATE branchmaster SET BranchName = '$bname', BranchCode = '$bcode', BranchSemesters = '$bsem' WHERE BranchId = '$bid';";
 		$runed = mysqli_query($conn, $sqli);
 		if ($runed == true) {
 			echo "<script>alert('Branch Edited Successfully')</script>";

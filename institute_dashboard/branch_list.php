@@ -94,10 +94,12 @@ if ($_SESSION['role'] != "Texas") {
 													<a class="list-sort text-muted" data-sort="item-email">Branch Code</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted justify-content-center">Action</a>
+													<a class="list-sort text-muted" data-sort="item-number">No of Semesters</a>
 												</th>
 												<th>
+													<a class="list-sort text-muted justify-content-center">Action</a>
 												</th>
+
 											</tr>
 										</thead>
 										<tbody class="list font-size-base">
@@ -110,7 +112,10 @@ if ($_SESSION['role'] != "Texas") {
 													<td>
 														<!-- Email -->
 														<a type="text" class="form-control item-phone" name="bcode" required><?php echo $row['BranchCode']; ?></a>
-
+													</td>
+													<td>
+														<!-- Email -->
+														<a type="text" class="form-control item-number" name="bsem" required><?php echo $row['BranchSemesters']; ?></a>
 													</td>
 													<td>
 														<a href="edit_branch.php?facid=<?php echo $row['BranchId']; ?>" class="btn btn-sm btn-white">
@@ -126,8 +131,7 @@ if ($_SESSION['role'] != "Texas") {
 															View
 														</a>
 													</td>
-													<td class="text-right">
-													</td>
+
 												</tr>
 											<?php } ?>
 											<!--over-->
