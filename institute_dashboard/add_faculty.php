@@ -214,8 +214,8 @@ if ($_SESSION['role'] != "Texas") {
 										<!-- Personal details -->
 										<!-- Avatar -->
 										<div class="avatar">
-											<img class="avatar-img rounded-circle" src="../src/uploads/facprofile/<?php echo $row['FacultyProfilePic']; ?>" alt="...">
-										</div>
+											<img class="avatar-img rounded-circle" id="IMG-preview" alt="..." src="../assets/img/avatars/profiles/avatar-1.jpg">	
+                                        </div>
 									</div>
 									<div class="col ml-n2">
 										<!-- Heading -->
@@ -224,7 +224,7 @@ if ($_SESSION['role'] != "Texas") {
 										</h4>
 										<!-- Text -->
 										<small class="text-muted">
-											PNG format is only supported.
+											Only allowed PNG or JPG less than 2MB
 										</small>
 									</div>
 								</div>
@@ -232,10 +232,31 @@ if ($_SESSION['role'] != "Texas") {
 							</div>
 							<div class="col-auto">
 								<!-- Button -->
-								<input type="file" name="stuprofile" class="btn btn-sm" accept="image/png">
+								<input type="file" id="img" name="stuprofile" class="btn btn-sm" onchange="showPreview(event);" accept="image/png image/jpg image/jpeg">
 							</div>
 						</div>
 						<!-- / .row -->
+						 <!-- Priview Profile pic  -->
+						 <script>
+                        function showPreview(event) {
+                            var file = document.getElementById('img');
+                            if (file.files.length > 0) {
+                                // RUN A LOOP TO CHECK EACH SELECTED FILE.
+                                for (var i = 0; i <= file.files.length - 1; i++) {
+                                    var fsize = file.files.item(i).size; // THE SIZE OF THE FILE.	
+                                }
+                                if (fsize <= 2000000) {
+                                    var src = URL.createObjectURL(event.target.files[0]);
+                                    var preview = document.getElementById("IMG-preview");
+                                    preview.src = src;
+                                    preview.style.display = "block";
+                                } else {
+                                    alert("Only allowed less then 2MB.. !");
+                                    file.value = '';
+                                }
+                            }
+                        }
+                        </script>
 						<!-- Divider -->
 						<hr class="my-5">
 						<div class="row">
@@ -462,13 +483,13 @@ if ($_SESSION['role'] != "Texas") {
 
 <?php
 if (isset($_POST['subbed'])) {
-	$f_name = $_FILES['stuprofile']['name'];
+	// $f_name = $_FILES['stuprofile']['name'];
 	$f_tmp_name = $_FILES['stuprofile']['tmp_name'];
 	$f_size = $_FILES['stuprofile']['size'];
 	$f_error = $_FILES['stuprofile']['error'];
-	$f_type = $_FILES['stuprofile']['type'];
-	$f_ext = explode('.', $f_name);
-	$f_ext = strtolower(end($f_ext));
+	// $f_type = $_FILES['stuprofile']['type'];
+	// $f_ext = explode('.', $f_name);
+	// $f_ext = strtolower(end($f_ext));
 
 	$fname = $_POST['fname'];
 	$mname = $_POST['mname'];
@@ -483,7 +504,7 @@ if (isset($_POST['subbed'])) {
 	$fcode = $_POST['fcode'];
 	$fid = $_POST['fid'];
 	$fpass = $_POST['fpass'];
-	$fs_name = $fcode . "." . $f_ext;
+	$fs_name = $fcode . ".png";
 
 	if ($f_error === 0) {
 		if ($f_size <= 1000000) {
