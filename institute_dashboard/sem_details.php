@@ -99,19 +99,20 @@
 					<?php
 						$C=$_GET['semid'];
 						$ssql = "Select * from semestermaster where SemCode = '$C'";
+						$subsql = "Select *, FacultyFirstName, FacultyLastname from subjectmaster INNER JOIN facultymaster on subjectmaster.SubjectFacultyId=facultymaster.FacultyId where SemCode = '$C'";
 						$sresult = mysqli_query($conn, $ssql);
+						$subresult = mysqli_query($conn, $subsql);
 						$rowww=mysqli_fetch_assoc($sresult);
 						$sac = 1;
-						while($sac <= $rowww['SemSubjectCount']){
-						if($sac % 3 == 0){ ?></div><div class='row'><?php} ?>
-					<div class="col-12 col-md-4">
+						while($sac <= $rowww['SemSubjectCount'] and $roww=mysqli_fetch_assoc($subresult)){ ?>
+					<div class="col-12 col-md-4 mb-md-5">
 						<div class="card-group">
 							<div class="card">
 								<img src="../assets/img/files/file-3.jpg" class="card-img-top" alt="...">
 								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-									<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+									<h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
+									<p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
+									<p class="card-text"><?php echo $roww['FacultyFirstName']." ".$roww['FacultyLastName']; ?></p>
 								</div>
 							</div>
 						</div>
