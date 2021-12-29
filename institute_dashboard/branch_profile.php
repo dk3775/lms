@@ -79,7 +79,7 @@
 										$a = 1;
 										while ($a <= $row['BranchSemesters']) { ?>
 									<li class="nav-item" <?php echo $a ? "active" : ""; ?>>
-										<a href="sem_details.php?semid=<?php echo $a; ?>&brid=<?php echo $row['BranchId']; ?>" class="nav-link h3">
+										<a href="sem_details.php?semid=<?php echo $row['BranchCode']."_".$a; ?>&brid=<?php echo $row['BranchCode']; ?>" class="nav-link h3">
 										Sem <?php echo $a; ?>
 										</a>
 									</li>

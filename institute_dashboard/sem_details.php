@@ -44,7 +44,7 @@
 					$studentenr = $_GET['brid'];
 					$_SESSION["userrole"] = "Institute";
 					if (isset($studentenr)) {
-						$sql = "SELECT * FROM branchmaster WHERE BranchId = '$studentenr'";
+						$sql = "SELECT * FROM branchmaster WHERE BranchCode = '$studentenr'";
 						$result = mysqli_query($conn, $sql);
 						$row = mysqli_fetch_assoc($result);
 					
@@ -79,7 +79,7 @@
 										$a = 1;
 										while ($a <= $row['BranchSemesters']) { ?>
 									<li class="nav-item" >
-										<a href="sem_details.php?semid=<?php echo $a; ?>&brid=<?php echo $row['BranchId']; ?>" class="nav-link h3 <?php if($_GET['semid'] == $a){echo "active";}?>">
+										<a href="sem_details.php?semid=<?php echo $row['BranchCode']."_".$a; ?>&brid=<?php echo $row['BranchCode']; ?>" class="nav-link h3 <?php if($_GET['semid'] == $row['BranchCode']."_".$a){echo "active";}?>">
 										Sem <?php echo $a; ?>
 										</a>
 									</li>
@@ -96,8 +96,15 @@
 			<!-- CONTENT -->
 			<div class="container-fluid">
 				<div class="row">
+					<?php
+						$C=$_GET['semid'];
+						$ssql = "Select * from semestermaster where SemCode = '$C'";
+						$sresult = mysqli_query($conn, $ssql);
+						$rowww=mysqli_fetch_assoc($sresult);
+						$sac = 1;
+						while($sac <= $rowww['SemSubjectCount']){
+						if($sac % 3 == 0){ ?></div><div class='row'><?php} ?>
 					<div class="col-12 col-md-4">
-						<!-- Files -->
 						<div class="card-group">
 							<div class="card">
 								<img src="../assets/img/files/file-3.jpg" class="card-img-top" alt="...">
@@ -109,18 +116,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-12 col-md-4">
-						<div class="card-group">
-							<div class="card">
-								<img src="../assets/img/files/file-3.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-									<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-								</div>
-							</div>
-						</div>
-					</div>
+					<?php
+						$sac++;
+						}
+						?>
 				</div>
 			</div>
 			<?php

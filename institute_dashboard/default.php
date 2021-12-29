@@ -264,17 +264,26 @@ if ($_SESSION['role'] != "Texas") {
 		<div class="container-fluid">
 			<div class="row justify-content-center">
 				<!-- Table -->
+				<div class="card">
+					<div class="card-header">
+						<!-- Title -->
+						<h2 class="card-header-title ">
+						Updates
+						</h2>
+						<!-- Link -->
+						<a href="update.php" class="small">View all</a>
+					</div>
+					<div class="tab-content">
+						<div class="tab-pane fade show active" id="contactsListPane" role="tabpanel" aria-labelledby="contactsListTab">
+							<!-- Card -->
 
-				<div class="tab-content">
-					<div class="tab-pane fade show active" id="contactsListPane" role="tabpanel" aria-labelledby="contactsListTab">
-						<!-- Card -->
+							<div class="card" data-list="{&quot;valueNames&quot;: [&quot;item-name&quot;, &quot;item-title&quot;, &quot;item-email&quot;, &quot;item-phone&quot;, &quot;item-score&quot;, &quot;item-company&quot;], &quot;page&quot;: 10, &quot;pagination&quot;: {&quot;paginationClass&quot;: &quot;list-pagination&quot;}}" id="contactsList">
+								<div class="card-header">
 
-						<div class="card" data-list="{&quot;valueNames&quot;: [&quot;item-name&quot;, &quot;item-title&quot;, &quot;item-email&quot;, &quot;item-phone&quot;, &quot;item-score&quot;, &quot;item-company&quot;], &quot;page&quot;: 10, &quot;pagination&quot;: {&quot;paginationClass&quot;: &quot;list-pagination&quot;}}" id="contactsList">
-							<div class="card-header">
-
-								<div class="row align-items-center">
-									<div class="col">
-										<!-- Form -->
+									<div class="row align-items-center">
+										<div class="col">
+											<!-- Form -->
+										</div>
 										<form>
 
 											<div class="input-group input-group-flush input-group-merge input-group-reverse">
