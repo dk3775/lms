@@ -237,7 +237,7 @@ if ($_SESSION['role'] != "Texas") {
 							</div>
 							<div class="col-auto col-6">
 								<div class="input-group input-group-sm mb-3">
-									<textarea type="text" class="form-control" readonly name="fpass" id="myInput2"><?php echo (rand(11111, 99999)); ?></textarea>
+									<textarea type="text" class="form-control" name="fpass" id="myInput2"></textarea>
 									<button class="btn btn-primary" onclick="cp2()"><i class="fe fe-copy"></i></button>
 								</div>
 							</div>
