@@ -42,6 +42,7 @@
 				<?php
 					include_once("../config.php");
 					$studentenr = $_GET['brid'];
+					$semid = $_GET['semid'];
 					$_SESSION["userrole"] = "Institute";
 					if (isset($studentenr)) {
 						$sql = "SELECT * FROM branchmaster WHERE BranchCode = '$studentenr'";
@@ -91,7 +92,7 @@
 							<div class=" col-md-auto mt-2 mt-md-0 mb-md-3">
 								<!-- Nav --> 
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-								<a href="add_subject.php?brid=<?php echo $row['BranchID']; ?>" type="button" class="btn btn-primary"> 
+								<a href="add_subject.php?semid=<?php echo $semid; ?>&brid=<?php echo $row['BranchCode']; ?>" type="button" class="btn btn-primary"> 
 								Add Subject 
 								</a> 
 							</div>
