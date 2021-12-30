@@ -91,7 +91,7 @@
 							<div class=" col-md-auto mt-2 mt-md-0 mb-md-3">
 								<!-- Nav --> 
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-								<a type="button" class="btn btn-primary"> 
+								<a href="add_subject.php?brid=<?php echo $row['BranchID']; ?>" type="button" class="btn btn-primary"> 
 								Add Subject 
 								</a> 
 							</div>
