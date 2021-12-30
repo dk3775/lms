@@ -221,7 +221,7 @@
 							<?php
 								$branchsel = "SELECT * FROM branchmaster";
 								$branchresult = mysqli_query($conn, $branchsel);
-																?>
+							?>
 							<div class="row">
 								<div class="col-12 col-md-6">
 									<div class="form-group">

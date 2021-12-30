@@ -6,6 +6,8 @@ if ($_SESSION['role'] != "Texas") {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Faculty";
 }
+	$branchsel = "SELECT * FROM branchmaster";
+	$branchresult = mysqli_query($conn, $branchsel);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -169,7 +171,16 @@ if ($_SESSION['role'] != "Texas") {
 										Branch
 									</label>
 									<!-- Input -->
-									<input type="text" class="form-control" name="fbranch" required>
+									<select id="validationCustom01" class="form-control" name="fbranch" required>
+											<option value="" hidden="">Select Branch</option>
+											<?php
+												while($brrow = mysqli_fetch_assoc($branchresult)){ ?>
+											<option value="<?php echo $brrow['BranchCode']; ?>">
+												<?php echo $brrow['BranchName']; ?> 
+											</option>
+											<?php
+												} ?>
+										</select>
 								</div>
 							</div>
 						</div>

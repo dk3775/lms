@@ -157,6 +157,10 @@ if ($_SESSION['role'] != "Texas") {
 										<input type="tel" pattern="[0-9]{10}" class="form-control" maxlength="10" name="fcontact" value="<?php echo $row['FacultyContactNo']; ?>" required>
 									</div>
 								</div>
+								<?php
+									$branchsel = "SELECT * FROM branchmaster";
+									$branchresult = mysqli_query($conn, $branchsel);
+								?>
 								<div class="row">
 									<div class="col-12 col-md-6">
 										<!-- Email address -->
@@ -177,6 +181,16 @@ if ($_SESSION['role'] != "Texas") {
 												Branch
 											</label>
 											<!-- Input -->
+											<select id="validationCustom01" class="form-control" name="fbranch" required>
+											<option value="" hidden="">Select Branch</option>
+											<?php
+												while($brrow = mysqli_fetch_assoc($branchresult)){ ?>
+											<option <?php if($brrow['BranchCode'] == $row['FacultyBranchCode']){ ?> selected <?php } ?> value="<?php echo $brrow['BranchCode']; ?>">
+												<?php echo $brrow['BranchName']; ?> 
+											</option>
+											<?php
+												} ?>
+										</select>
 											<input type="text" class="form-control" name="fbranch" required value="<?php echo $row['FacultyBranch']; ?>" placeholder="YYYY-MM-DD">
 										</div>
 									</div>
