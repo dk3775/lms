@@ -6,7 +6,6 @@ if ($_SESSION['role'] != "Texas") {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Faculty";
 }
-
 #fetching tables
 $branchsel = "SELECT * FROM branchmaster";
 $branchresult = mysqli_query($conn, $branchsel);
