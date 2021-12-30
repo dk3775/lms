@@ -72,21 +72,28 @@
 						<hr class="navbar-divider my-4">
 						<!-- / .row -->
 						<div class="row align-items-center">
-							<div class="col">
-								<!-- Nav -->
+							<div class="col col-md-10">
+								<!-- Nav --> 
 								<ul class="nav nav-tabs nav-overflow header-tabs">
-									<?php
-										$a = 1;
-										while ($a <= $row['BranchSemesters']) { ?>
-									<li class="nav-item" >
-										<a href="sem_details.php?semid=<?php echo $row['BranchCode']."_".$a; ?>&brid=<?php echo $row['BranchCode']; ?>" class="nav-link h3 <?php if($_GET['semid'] == $row['BranchCode']."_".$a){echo "active";}?>">
-										Sem <?php echo $a; ?>
-										</a>
+									<?php 
+										$a = 1; 
+										while ($a <= $row['BranchSemesters']) { ?> 
+									<li class="nav-item" > 
+										<a href="sem_details.php?semid=<?php echo $row['BranchCode']."_".$a; ?>&brid=<?php echo $row['BranchCode']; ?>" class="nav-link h3 <?php if($_GET['semid'] == $row['BranchCode']."_".$a){echo "active";}?>"> 
+										Sem <?php echo $a; ?> 
+										</a> 
 									</li>
-									<?php $a++;
-										}
-										?>
+									<?php $a++; 
+										} 
+										?> 
 								</ul>
+							</div>
+							<div class=" col-md-auto mt-2 mt-md-0 mb-md-3">
+								<!-- Nav --> 
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+								<a type="button" class="btn btn-primary"> 
+								Add Subject 
+								</a> 
 							</div>
 						</div>
 					</div>
