@@ -132,7 +132,7 @@ if ($_SESSION['role'] != "Texas") {
 												<div class="col-auto">
 
 													<!-- Button -->
-													<a href="edit_branch.php?facid=<?php echo $row['BranchId']; ?>" class="btn btn-m btn-primary d-none d-md-inline-block">
+													<a href="edit_branch.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-m btn-primary d-none d-md-inline-block">
 														Edit
 													</a>
 
