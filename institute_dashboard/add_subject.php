@@ -6,13 +6,11 @@ if ($_SESSION['role'] != "Texas") {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Faculty";
 }
-
-$brcode = $_GET['brcode'];
-
 #fetching tables
 $branchsel = "SELECT * FROM branchmaster";
 $branchresult = mysqli_query($conn, $branchsel);
 
+$brcode = $_GET['brid'];
 $facsel = "SELECT * FROM facultymaster WHERE FacultyBranchCode = '$brcode'";
 $facresult = mysqli_query($conn, $facsel);
 
