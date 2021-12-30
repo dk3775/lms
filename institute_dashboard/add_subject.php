@@ -6,6 +6,15 @@ if ($_SESSION['role'] != "Texas") {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Faculty";
 }
+
+#fetching tables
+$branchsel = "SELECT * FROM branchmaster";
+$branchresult = mysqli_query($conn, $branchsel);
+
+$brcode = $_GET['brid'];
+$facsel = "SELECT * FROM facultymaster WHERE FacultyBranchCode = '$brcode'";
+$facresult = mysqli_query($conn, $facsel);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +60,7 @@ if ($_SESSION['role'] != "Texas") {
 							</div>
 							<div class="col-md-6">
 								<label for="validationCustom01" class="form-label">Subject Name</label>
-								<input type="text" class="form-control" id="validationCustom01" name="iname" placeholder="Computer Engg." required><br>
+								<input type="text" class="form-control" id="validationCustom01" name="iname" placeholder="Computer Programming" required><br>
 							</div>
 						</div>
 						<div class="row">
@@ -76,10 +85,14 @@ if ($_SESSION['role'] != "Texas") {
 						<div class="row">
 							<div class="col-md-6">
 								<label for="validationCustom01" class="form-label">Faculty</label>
-								<select class="form-select" aria-label="Default select example" name="ifac" required>
-									<option hidden>Select Faculty</option>
-									<option value="">DK</option>
-									<option value="">KD</option>
+									<select class="form-select" aria-label="Default select example" name="ifac" required>
+                                        <option value="" hidden="">Select Faculty</option>
+                                        <?php
+											while($facrow = mysqli_fetch_assoc($facresult)){ ?>
+                                        <option value="<?php echo $facrow['FacultyId']; ?>">
+                                            <?php echo $facrow['FacultyFirstName']." ".$facrow['FacultyLastName']; ?> </option> <?php
+									} ?>
+
 								</select>
 							</div>
 							<div class="col-md-6">
