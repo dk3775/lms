@@ -126,6 +126,20 @@
 							</ul>
 						</div>
 					</li>
+					<li class="nav-item">
+						<a href="#timetable" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="timetable">
+						<i class="fe uil-calendar-alt"></i>Time Table
+						</a>
+						<div class="collapse" id="timetable">
+							<ul class="nav nav-sm flex-column">
+								<li class="nav-item">
+									<a href="branch_list.php" class="nav-link">
+										Add Time Table
+									</a>
+								</li>
+							</ul>
+						</div>
+					</li>
 
 					<li class="nav-item">
 						<a href="#" class="nav-link ">
