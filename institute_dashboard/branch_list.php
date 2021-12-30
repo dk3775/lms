@@ -118,11 +118,11 @@ if ($_SESSION['role'] != "Texas") {
 														<a type="text" class="form-control item-number" name="bsem" required><?php echo $row['BranchSemesters']; ?></a>
 													</td>
 													<td>
-														<a href="edit_branch.php?facid=<?php echo $row['BranchId']; ?>" class="btn btn-sm btn-white">
+														<a href="edit_branch.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-sm btn-white">
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="branchdelete.php?facid=<?php echo $row['BranchId']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
+														<a class="btn btn-sm btn-white" href="branchdelete.php?brid=<?php echo $row['BranchId']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
 															Delete
 															<!--changes-->
 														</a>
