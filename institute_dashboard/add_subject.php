@@ -1,59 +1,54 @@
 <?php
-session_start();
-if ($_SESSION['role'] != "Texas") {
-	header("Location: ../default.php");
-} else {
-	include_once("../config.php");
-	$_SESSION["userrole"] = "Faculty";
-}
-#fetching tables
-$branchsel = "SELECT * FROM branchmaster";
-$branchresult = mysqli_query($conn, $branchsel);
-
-$brcode = $_GET['brid'];
-$facsel = "SELECT * FROM facultymaster WHERE FacultyBranchCode = '$brcode'";
-$facresult = mysqli_query($conn, $facsel);
-
-?>
+	session_start();
+	if ($_SESSION['role'] != "Texas") {
+		header("Location: ../default.php");
+	} else {
+		include_once("../config.php");
+		$_SESSION["userrole"] = "Faculty";
+	}
+	#fetching tables
+	if(isset($_GET['brid']) && isset($_GET['semid'])){
+	$brcode = $_GET['brid'];
+	$facsel = "SELECT * FROM facultymaster WHERE FacultyBranchCode = '$brcode'";
+	$facresult = mysqli_query($conn, $facsel);
+	$branchsel = "SELECT * FROM branchmaster";
+	$branchresult = mysqli_query($conn, $branchsel);
+	?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-	<?php include_once("../head.php"); ?>
-</head>
-
-<body>
-	<!-- NAVIGATION -->
-	<?php include_once("../nav.php"); ?>
-	
-	<!-- MAIN CONTENT -->
-	<div class="main-content">
-		<div class="container-fluid">
-			<div class="row justify-content-center">
-				<div class="col-12 col-lg-10 col-xl-8">
-					<!-- Header -->
-					<div class="header mt-md-5">
-						<div class="header-body">
-							<div class="row align-items-center">
-								<div class="col">
-									<!-- Pretitle -->
-									<h6 class="header-pretitle">
-										Add New
-									</h6>
-									<!-- Title -->
-									<h1 class="header-title">
-										Branch
-									</h1>
+	<head>
+		<?php include_once("../head.php"); ?>
+	</head>
+	<body>
+		<!-- NAVIGATION -->
+		<?php include_once("../nav.php"); ?>
+		<!-- MAIN CONTENT -->
+		<div class="main-content">
+			<div class="container-fluid">
+				<div class="row justify-content-center">
+					<div class="col-12 col-lg-10 col-xl-8">
+						<!-- Header -->
+						<div class="header mt-md-5">
+							<div class="header-body">
+								<div class="row align-items-center">
+									<div class="col">
+										<!-- Pretitle -->
+										<h6 class="header-pretitle">
+											Add New
+										</h6>
+										<!-- Title -->
+										<h1 class="header-title">
+											Subject
+										</h1>
+									</div>
 								</div>
+								<!-- / .row -->
 							</div>
-							<!-- / .row -->
 						</div>
-					</div>
-					<!-- Form -->
-					<br>
-					
-					<form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
-						<div class="row justify-content-between align-items-center">
+						<!-- Form -->
+						<br>
+						<form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+							<div class="row justify-content-between align-items-center">
 								<div class="col">
 									<div class="row align-items-center">
 										<div class="col-auto">
@@ -84,7 +79,7 @@ $facresult = mysqli_query($conn, $facsel);
 										onchange="showPreview(event);" accept="image/jpg, image/jpeg, image/png">
 								</div>
 							</div>
-														<!-- Priview Profile pic  -->
+							<!-- Priview Profile pic  -->
 							<script>
 								function showPreview(event) {
 								    var file = document.getElementById('img');
@@ -108,115 +103,107 @@ $facresult = mysqli_query($conn, $facsel);
 							<!-- / .row -->
 							<!-- Divider -->
 							<hr class="my-5">
-						<div class="row">
-							<div class="col-md-6">
-								<label for="validationCustom01" class="form-label">Subject Code</label>
-								<input type="number" class="form-control" id="validationCustom01" name="icode" placeholder="333070" required><br>
+							<div class="row">
+								<div class="col-md-6">
+									<label for="validationCustom01" class="form-label">Subject Code</label>
+									<input type="number" class="form-control" id="validationCustom01" name="icode" placeholder="333070" required><br>
+								</div>
+								<div class="col-md-6">
+									<label for="validationCustom01" class="form-label">Subject Name</label>
+									<input type="text" class="form-control" id="validationCustom01" name="iname" placeholder="Computer Programming" required><br>
+								</div>
 							</div>
-							<div class="col-md-6">
-								<label for="validationCustom01" class="form-label">Subject Name</label>
-								<input type="text" class="form-control" id="validationCustom01" name="iname" placeholder="Computer Programming" required><br>
+							<div class="row">
+								<div class="col-md-6">
+									<label for="validationCustom01" class="form-label">Branch</label>
+									<input type="text" class="form-control" id="validationCustom01" name="ibranch" value="<?php ?>" readonly><br>
+								</div>
+								<div class="col-md-6">
+									<label for="validationCustom01" class="form-label">Semester</label>
+									<select class="form-select" aria-label="Default select example" name="isem" required>
+										<option hidden value="<?php echo substr($_GET['semid'],-1,1);?>"><?php echo substr($_GET['semid'],-1,1);?></option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+									</select>
+									<br>
+								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label for="validationCustom01" class="form-label">Branch</label>
-								<select class="form-control" id="validationCustom01" name="ibranch" required>
-                                        <option value="" hidden="">Select Branch</option>
-                                        <?php
-											while($brrow = mysqli_fetch_assoc($branchresult)){ ?>
-                                        <option value="<?php echo $brrow['BranchCode']; ?>">
-                                            <?php echo $brrow['BranchName']; ?> </option> <?php
-									} ?>
-						</select><br>
-							
-							</div>
-							<div class="col-md-6">
-								<label for="validationCustom01" class="form-label">Semester</label>
-								<select class="form-select" aria-label="Default select example" name="isem" required>
-									<option hidden>Select Semester</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-
-								</select><br>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label for="validationCustom01" class="form-label">Faculty</label>
+							<div class="row">
+								<div class="col-md-6">
+									<label for="validationCustom01" class="form-label">Faculty</label>
 									<select class="form-select" aria-label="Default select example" name="ifac" required>
-                                        <option value="" hidden="">Select Faculty</option>
-                                        <?php
+										<option value="" hidden="">Select Faculty</option>
+										<?php
 											while($facrow = mysqli_fetch_assoc($facresult)){ ?>
-                                        <option value="<?php echo $facrow['FacultyId']; ?>">
-                                            <?php echo $facrow['FacultyFirstName']." ".$facrow['FacultyLastName']; ?> </option> <?php
-									} ?>
-
-								</select>
+										<option value="<?php echo $facrow['FacultyId']; ?>">
+											<?php echo $facrow['FacultyFirstName']." ".$facrow['FacultyLastName']; ?> 
+										</option>
+										<?php
+											} ?>
+									</select>
+								</div>
+								<div class="col-md-6">
+									<label for="validationCustom01" class="form-label">Syllabus</label>
+									<input type="file" style="background-color : #F9FBFD;" class="form-control border-0" id="validationCustom01" name="isyllabus" accept="application/pdf" required><br>
+								</div>
 							</div>
-							<div class="col-md-6">
-								<label for="validationCustom01" class="form-label">Syllabus</label>
-								<input type="file" style="background-color : #F9FBFD;" class="form-control border-0" id="validationCustom01" name="isyllabus" accept="application/pdf" required><br>
-							</div>
-						</div>
-
-
-						<!-- Divider -->
-						<hr class="mt-4 mb-5">
-						<div class="d-flex justify">
-							<!-- Button -->
-							<button class="btn btn-primary" type="submit" value="sub" name="subbed">
+							<!-- Divider -->
+							<hr class="mt-4 mb-5">
+							<div class="d-flex justify">
+								<!-- Button -->
+								<button class="btn btn-primary" type="submit" value="sub" name="subbed">
 								Add Subject
-							</button>
-						</div>
-						<!-- / .row -->
-					</form>
-					<br>
+								</button>
+							</div>
+							<!-- / .row -->
+						</form>
+						<br>
+					</div>
 				</div>
+				<!-- / .row -->
 			</div>
-			<!-- / .row -->
 		</div>
-	</div>
-	<!-- Map JS -->
-	<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-	<!-- Vendor JS -->
-	<script src="../assets/js/vendor.bundle.js"></script>
-	<!-- Theme JS -->
-	<script src="../assets/js/theme.bundle.js"></script>
-
-</body>
-
+		<!-- Map JS -->
+		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+		<!-- Vendor JS -->
+		<script src="../assets/js/vendor.bundle.js"></script>
+		<!-- Theme JS -->
+		<script src="../assets/js/theme.bundle.js"></script>
+	</body>
 </html>
-
 <?php
-if (isset($_POST['subbed'])) {
-
-	$f_tmp_name = $_FILES['subprofile']['tmp_name'];
-	$f_size = $_FILES['subprofile']['size'];
-	$f_error = $_FILES['subprofile']['error'];
-
-	$icode = $_POST['icode'];
-	$iname = $_POST['iname'];
-	$ibanch = $_POST['ibranch'];
-	$isme = $_POST['isem'];
-	$ifac = $_POST['ifac'];
-	$isyllabus = $_POST['isyllabus'];
+	if (isset($_POST['subbed'])) {
 	
-	$iimg = $icode.".png";
-
-	$sql = "INSERT INTO subjectmaster (SubjectCode, SubjectName, SubjectBranch, SubjectSemester, SubjectFacultyId, SubjectSyllabus,SubjectPic) 
-								VALUES ('$icode', '$iname', '$ibanch', '$isme', '$ifac', '$isyllabus','$iimg');";
-	$run = mysqli_query($conn, $sql);
-	if ($run == true) {
-		echo "<script>alert('Subject Added Successfully')</script>";
-		echo "<script>window.open('add_subject.php','_self')</script>";
-	} else {
-		echo "<script>alert('Subject Not Added')</script>";
-		echo "<script>window.open('add_subject.php','_self')</script>";
+		$f_tmp_name = $_FILES['subprofile']['tmp_name'];
+		$f_size = $_FILES['subprofile']['size'];
+		$f_error = $_FILES['subprofile']['error'];
+	
+		$icode = $_POST['icode'];
+		$iname = $_POST['iname'];
+		$ibanch = $_POST['ibranch'];
+		$isme = $_POST['isem'];
+		$ifac = $_POST['ifac'];
+		$isyllabus = $_POST['isyllabus'];
+		
+		$iimg = $icode.".png";
+	
+		$sql = "INSERT INTO subjectmaster (SubjectCode, SubjectName, SubjectBranch, SubjectSemester, SubjectFacultyId, SubjectSyllabus,SubjectPic) 
+									VALUES ('$icode', '$iname', '$ibranch', '$isme', '$ifac', '$isyllabus','$iimg');";
+		$run = mysqli_query($conn, $sql);
+		if ($run == true) {
+			echo "<script>alert('Subject Added Successfully')</script>";
+			echo "<script>window.open('add_subject.php','_self')</script>";
+		} else {
+			echo "<script>alert('Subject Not Added')</script>";
+			echo "<script>window.open('add_subject.php','_self')</script>";
+		}
 	}
 }
-?>
+else{
+	header("location: branch_profile.php");
+}
+	?>

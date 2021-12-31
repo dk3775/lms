@@ -191,7 +191,6 @@ if ($_SESSION['role'] != "Texas") {
 											<?php
 												} ?>
 										</select>
-											<input type="text" class="form-control" name="fbranch" required value="<?php echo $row['FacultyBranch']; ?>" placeholder="YYYY-MM-DD">
 										</div>
 									</div>
 								</div>
@@ -268,7 +267,7 @@ if ($_SESSION['role'] != "Texas") {
 								<div class="row">
 									<div class="col-md-10">
 										<div class="input-group input-group-merge input-group-reverse">
-											<input class="form-control list-search" type="text" name="enr" placeholder="Enter Faculty Id">
+											<input class="form-control list-search" type="text" name="enr" placeholder="Enter Faculty Code">
 											<div class="input-group-text">
 												<span class="fe fe-search"></span>
 											</div>
@@ -288,7 +287,7 @@ if ($_SESSION['role'] != "Texas") {
 							<?php
 							if (isset($_POST['ser'])) {
 								$er = $_POST['enr'];
-								$qur = "SELECT * FROM facultymaster WHERE FacultyId = '$er';";
+								$qur = "SELECT * FROM facultymaster WHERE FacultyCode = '$er';";
 								$res = mysqli_query($conn, $qur);
 								$row = mysqli_fetch_assoc($res);
 								if (isset($row)) { ?>

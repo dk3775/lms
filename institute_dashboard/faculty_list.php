@@ -126,7 +126,7 @@ if ($_SESSION['role'] != "Texas") {
 													</td>
 													<td>
 														<!-- Badge -->
-														<span class=""><?php echo $row['FacultyBranch']; ?></span>
+														<span class=""><?php echo $row['FacultyBranchCode']; ?></span>
 													</td>
 													<td>
 														<a href="edit_faculty.php?facid=<?php echo $row['FacultyCode']; ?>" class="btn btn-sm btn-white">
