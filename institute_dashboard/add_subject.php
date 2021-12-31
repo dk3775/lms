@@ -25,6 +25,7 @@ $facresult = mysqli_query($conn, $facsel);
 <body>
 	<!-- NAVIGATION -->
 	<?php include_once("../nav.php"); ?>
+	
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<div class="container-fluid">
@@ -50,8 +51,63 @@ $facresult = mysqli_query($conn, $facsel);
 					</div>
 					<!-- Form -->
 					<br>
+					
 					<form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
-
+						<div class="row justify-content-between align-items-center">
+								<div class="col">
+									<div class="row align-items-center">
+										<div class="col-auto">
+											<!-- Personal details -->
+											<!-- Avatar -->
+											<div class="avatar">
+												<img name="simg" class="w-100 border-radius-lg shadow-sm rounded"
+													src="../assets/img/avatars/profiles/avatar-1.jpg" alt="..."
+													id="IMG-preview">
+											</div>
+										</div>
+										<div class="col ml-n2">
+											<!-- Heading -->
+											<h4 class="mb-1">
+												Subject Photo
+											</h4>
+											<!-- Text -->
+											<small class="text-muted">
+											Only allowed PNG or JPG less than 2MB
+											</small>
+										</div>
+									</div>
+									<!-- / .row -->
+								</div>
+								<div class="col-auto">
+									<!-- Button -->
+									<input type="file" id="img" name="subprofile" class="btn btn-sm"
+										onchange="showPreview(event);" accept="image/jpg, image/jpeg, image/png">
+								</div>
+							</div>
+														<!-- Priview Profile pic  -->
+							<script>
+								function showPreview(event) {
+								    var file = document.getElementById('img');
+								    if (file.files.length > 0) {
+								        // RUN A LOOP TO CHECK EACH SELECTED FILE.
+								        for (var i = 0; i <= file.files.length - 1; i++) {
+								            var fsize = file.files.item(i).size; // THE SIZE OF THE FILE.	
+								        }
+								        if (fsize <= 2000000) {
+								            var src = URL.createObjectURL(event.target.files[0]);
+								            var preview = document.getElementById("IMG-preview");
+								            preview.src = src;
+								            preview.style.display = "block";
+								        } else {
+								            alert("Only allowed less then 2MB.. !");
+								            file.value = '';
+								        }
+								    }
+								}
+							</script>
+							<!-- / .row -->
+							<!-- Divider -->
+							<hr class="my-5">
 						<div class="row">
 							<div class="col-md-6">
 								<label for="validationCustom01" class="form-label">Subject Code</label>
@@ -64,8 +120,16 @@ $facresult = mysqli_query($conn, $facsel);
 						</div>
 						<div class="row">
 							<div class="col-md-6">
-								<label for="validationCustom01" class="form-label">Branch ID</label>
-								<input type="text" class="form-control" id="validationCustom01" name="ibranch" placeholder="CE" required><br>
+								<label for="validationCustom01" class="form-label">Branch</label>
+								<select class="form-control" id="validationCustom01" name="ibranch" required>
+                                        <option value="" hidden="">Select Branch</option>
+                                        <?php
+											while($brrow = mysqli_fetch_assoc($branchresult)){ ?>
+                                        <option value="<?php echo $brrow['BranchCode']; ?>">
+                                            <?php echo $brrow['BranchName']; ?> </option> <?php
+									} ?>
+						</select><br>
+							
 							</div>
 							<div class="col-md-6">
 								<label for="validationCustom01" class="form-label">Semester</label>
@@ -131,14 +195,21 @@ $facresult = mysqli_query($conn, $facsel);
 <?php
 if (isset($_POST['subbed'])) {
 
+	$f_tmp_name = $_FILES['subprofile']['tmp_name'];
+	$f_size = $_FILES['subprofile']['size'];
+	$f_error = $_FILES['subprofile']['error'];
+
 	$icode = $_POST['icode'];
 	$iname = $_POST['iname'];
 	$ibanch = $_POST['ibranch'];
 	$isme = $_POST['isem'];
 	$ifac = $_POST['ifac'];
 	$isyllabus = $_POST['isyllabus'];
+	
+	$iimg = $icode.".png";
 
-	$sql = "INSERT INTO subjectmaster (SubjectCode, SubjectName, SubjectBranch, SubjectSemester, SubjectFacultyId, SubjectSyllabus) VALUES ('$icode', '$iname', '$ibanch', '$isme', '$ifac', '$isyllabus');";
+	$sql = "INSERT INTO subjectmaster (SubjectCode, SubjectName, SubjectBranch, SubjectSemester, SubjectFacultyId, SubjectSyllabus,SubjectPic) 
+								VALUES ('$icode', '$iname', '$ibanch', '$isme', '$ifac', '$isyllabus','$iimg');";
 	$run = mysqli_query($conn, $sql);
 	if ($run == true) {
 		echo "<script>alert('Subject Added Successfully')</script>";
