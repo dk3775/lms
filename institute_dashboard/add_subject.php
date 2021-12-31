@@ -11,8 +11,9 @@
 	$brcode = $_GET['brid'];
 	$facsel = "SELECT * FROM facultymaster WHERE FacultyBranchCode = '$brcode'";
 	$facresult = mysqli_query($conn, $facsel);
-	$branchsel = "SELECT * FROM branchmaster";
+	$branchsel = "SELECT * FROM branchmaster where BranchCode = '$brcode'";
 	$branchresult = mysqli_query($conn, $branchsel);
+	$brow = mysqli_fetch_assoc($branchresult);
 	?>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,13 +101,11 @@
 								    }
 								}
 							</script>
-							<!-- / .row -->
-							<!-- Divider -->
 							<hr class="my-5">
 							<div class="row">
 								<div class="col-md-6">
 									<label for="validationCustom01" class="form-label">Subject Code</label>
-									<input type="number" class="form-control" id="validationCustom01" name="icode" placeholder="333070" required><br>
+									<input type="number" class="form-control" id="validationCustom01" name="icode" placeholder="3330701" required><br>
 								</div>
 								<div class="col-md-6">
 									<label for="validationCustom01" class="form-label">Subject Name</label>
@@ -116,7 +115,7 @@
 							<div class="row">
 								<div class="col-md-6">
 									<label for="validationCustom01" class="form-label">Branch</label>
-									<input type="text" class="form-control" id="validationCustom01" name="ibranch" value="<?php ?>" readonly><br>
+									<input type="text" class="form-control" id="validationCustom01" name="ibranch" value="<?php echo $brow['BranchName'];?>" readonly><br>
 								</div>
 								<div class="col-md-6">
 									<label for="validationCustom01" class="form-label">Semester</label>
@@ -188,11 +187,13 @@
 		$isme = $_POST['isem'];
 		$ifac = $_POST['ifac'];
 		$isyllabus = $_POST['isyllabus'];
+		$temo = $brow['BranchId'];
+		$temo2 = $brow['BranchCode']."_".$isme;
 		
 		$iimg = $icode.".png";
 	
-		$sql = "INSERT INTO subjectmaster (SubjectCode, SubjectName, SubjectBranch, SubjectSemester, SubjectFacultyId, SubjectSyllabus,SubjectPic) 
-									VALUES ('$icode', '$iname', '$ibranch', '$isme', '$ifac', '$isyllabus','$iimg');";
+		$sql = "INSERT INTO subjectmaster (SubjectCode, SubjectName, SubjectBranch, SubjectSemester, SubjectFacultyId, SemCode,SubjectPic) 
+									VALUES ('$icode', '$iname', '$temo', '$isme', '$ifac', '$temo2','$iimg');";
 		$run = mysqli_query($conn, $sql);
 		if ($run == true) {
 			echo "<script>alert('Subject Added Successfully')</script>";

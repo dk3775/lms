@@ -380,7 +380,7 @@ if ($_SESSION['role'] != "Texas") {
 		} else {
 			echo "Something went wrong .. !";
 		}
-		$sqli = "UPDATE facultymaster SET FacultyFirstName='$fname', FacultyMiddleName='$mname',FacultyLastName='$lname', FacultyContactNo='$fcontact', FacultyEmail='$femail', FacultyOffice='$foffice', FacultyBranch='$fbranch', FacultyQualification='$fquali', FacultySubject='$fsubject', FacultyPassword='$fpassword', FacultyCode='$fcode'  WHERE FacultyId = '$fid';";
+		$sqli = "UPDATE facultymaster SET FacultyFirstName='$fname', FacultyMiddleName='$mname',FacultyLastName='$lname', FacultyContactNo='$fcontact', FacultyEmail='$femail', FacultyOffice='$foffice', FacultyBranchCode='$fbranch', FacultyQualification='$fquali', FacultySubject='$fsubject', FacultyPassword='$fpassword', FacultyCode='$fcode'  WHERE FacultyId = '$fid';";
 		$runed = mysqli_query($conn, $sqli);
 		if ($runed == true) {
 			echo "<script>alert('Faculty Details Edited Successfully')</script>";

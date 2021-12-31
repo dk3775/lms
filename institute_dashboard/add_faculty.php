@@ -364,12 +364,11 @@ if (isset($_POST['subbed'])) {
 	$sql = "INSERT INTO facultymaster(
 		FacultyUserName,
 		FacultyPassword,
-		FacultyPassword,
 		FacultyFirstName,
 		FacultyMiddleName,
 		FacultyLastName,
 		FacultyProfilePic,
-		FacultyBranch,
+		FacultyBranchCode,
 		FacultyEmail,
 		FacultyContactNo,
 		FacultyQualification,
@@ -380,7 +379,6 @@ if (isset($_POST['subbed'])) {
 	VALUES(
 		'$fid',
 		'$fpass',
-		'$fpassword',
 		'$fname',
 		'$mname',
 		'$lname',
@@ -396,7 +394,7 @@ if (isset($_POST['subbed'])) {
 	$run = mysqli_query($conn, $sql);
 	if ($run == true) {
 		echo "<script>alert('Faculty Added Successfully')</script>";
-		echo "<script>window.open('add_faculty.php','_self')</script>";
+		echo "<script>window.open('faculty_list.php','_self')</script>";
 	} else {
 		echo "<script>alert('Faculty Not Added')</script>";
 		echo "<script>window.open('add_faculty.php','_self')</script>";
