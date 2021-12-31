@@ -133,7 +133,7 @@
 						<div class="collapse" id="timetable">
 							<ul class="nav nav-sm flex-column">
 								<li class="nav-item">
-									<a href="branch_list.php" class="nav-link">
+									<a href="add_timetable.php" class="nav-link">
 										Add Time Table
 									</a>
 								</li>
