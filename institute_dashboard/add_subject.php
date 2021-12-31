@@ -188,12 +188,7 @@
 			echo "Something went wrong .. !";
 		}
 	
-		$icode = $_POST['icode'];
-		$iname = $_POST['iname'];
-		$ibanch = $_POST['ibranch'];
-		$isme = $_POST['isem'];
-		$ifac = $_POST['ifac'];
-		$isyllabus = $_POST['isyllabus'];
+		explode($_POST);
 		$temo = $brow['BranchId'];
 		$temo2 = $brow['BranchCode']."_".$isme;
 		
