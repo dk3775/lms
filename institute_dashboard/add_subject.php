@@ -121,12 +121,9 @@
 									<label for="validationCustom01" class="form-label">Semester</label>
 									<select class="form-select" aria-label="Default select example" name="isem" required>
 										<option hidden value="<?php echo substr($_GET['semid'],-1,1);?>"><?php echo substr($_GET['semid'],-1,1);?></option>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
-										<option value="4">4</option>
-										<option value="5">5</option>
-										<option value="6">6</option>
+										<?php for($x=1;$x<=$brow['BranchSemesters'];$x++){
+											echo "<option value='".$x."'>".$x."</option>";
+										}?>
 									</select>
 									<br>
 								</div>
@@ -177,9 +174,19 @@
 <?php
 	if (isset($_POST['subbed'])) {
 	
-		$f_tmp_name = $_FILES['subprofile']['tmp_name'];
+		$fs_name = $_FILES['subprofile']['tmp_name'];
 		$f_size = $_FILES['subprofile']['size'];
 		$f_error = $_FILES['subprofile']['error'];
+
+		if ($f_error === 0) {
+			if ($f_size <= 1000000) {
+				move_uploaded_file($fs_name, "../src/uploads/subprofile/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
+			} else {
+				echo "<script>alert(File size is to big .. !);</script>";
+			}
+		} else {
+			echo "Something went wrong .. !";
+		}
 	
 		$icode = $_POST['icode'];
 		$iname = $_POST['iname'];
