@@ -3,10 +3,8 @@
 	if ($_SESSION['role'] != "Texas") {
 		header("Location: ../default.php");
 	} else {
-		include_once("../config.php");
-		$_SESSION["userrole"] = "Faculty";
-	}
-	#fetching tables
+	include_once("../config.php");
+	$_SESSION["userrole"] = "Institute";
 	if(isset($_GET['brid']) && isset($_GET['semid'])){
 	$brcode = $_GET['brid'];
 	$facsel = "SELECT * FROM facultymaster WHERE FacultyBranchCode = '$brcode'";
@@ -207,4 +205,5 @@
 else{
 	header("location: branch_profile.php");
 }
+	}
 	?>
