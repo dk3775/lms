@@ -177,10 +177,14 @@
 		$fs_name = $_FILES['subprofile']['tmp_name'];
 		$f_size = $_FILES['subprofile']['size'];
 		$f_error = $_FILES['subprofile']['error'];
+		extract($_POST);
+		$temo = $brow['BranchId'];
+		$temo2 = $brow['BranchCode']."_".$isem;
+		$iimg = $icode.".png";
 
 		if ($f_error === 0) {
 			if ($f_size <= 1000000) {
-				move_uploaded_file($fs_name, "../src/uploads/subprofile/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
+				move_uploaded_file($fs_name, "../src/uploads/subprofile/" . $iimg); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
 			} else {
 				echo "<script>alert(File size is to big .. !);</script>";
 			}
@@ -188,14 +192,8 @@
 			echo "Something went wrong .. !";
 		}
 	
-		explode($_POST);
-		$temo = $brow['BranchId'];
-		$temo2 = $brow['BranchCode']."_".$isme;
-		
-		$iimg = $icode.".png";
-	
 		$sql = "INSERT INTO subjectmaster (SubjectCode, SubjectName, SubjectBranch, SubjectSemester, SubjectFacultyId, SemCode,SubjectPic) 
-									VALUES ('$icode', '$iname', '$temo', '$isme', '$ifac', '$temo2','$iimg');";
+									VALUES ('$icode', '$iname', '$temo', '$isem', '$ifac', '$temo2','$iimg');";
 		$run = mysqli_query($conn, $sql);
 		if ($run == true) {
 			echo "<script>alert('Subject Added Successfully')</script>";
