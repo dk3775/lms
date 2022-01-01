@@ -41,7 +41,7 @@ if ($_SESSION['role'] != "Texas") {
 						<!-- Form -->
 						<?php
 						include_once("../config.php");
-						$sid = $_GET['facid'];
+						$sid = $_GET['brid'];
 						$_SESSION["userrole"] = "institute";
 						if (isset($sid)) {
 							$sql = "SELECT * FROM subjectmaster WHERE SubjectCode = '$sid'";
@@ -49,48 +49,82 @@ if ($_SESSION['role'] != "Texas") {
 							$row = mysqli_fetch_assoc($result);
 						?>
 							<form method="POST" enctype="multipart/form-data">
+								<div class="row justify-content-between align-items-center">
+									<div class="col">
+										<div class="row align-items-center">
+											<div class="col-auto">
+												<div class="avatar">
+													<img name="simg" class="w-100 border-radius-lg shadow-sm rounded" src="../src/uploads/subprofile/<?php echo $row['SubjectPic']; ?>" alt	="..." id="IMG-preview">
+												</div>
+											</div>
+											<div class="col ml-n2">
+												<h4 class="mb-1">
+													Subject Photo
+												</h4>
+												<small class="text-muted">
+													Only allowed PNG or JPG less than 2MB
+												</small>
+											</div>
+										</div>
+										<!-- / .row -->
+									</div>
+									<div class="col-auto">
+										<!-- Button -->
+										<input type="file" id="img" name="subprofile" class="btn btn-sm" onchange="showPreview(event);" accept="image/jpg, image/jpeg, image/png">
+									</div>
+								</div>
+								<!-- Priview Profile pic  -->
+								<script>
+									function showPreview(event) {
+										var file = document.getElementById('img');
+										if (file.files.length > 0) {
+											// RUN A LOOP TO CHECK EACH SELECTED FILE.
+											for (var i = 0; i <= file.files.length - 1; i++) {
+												var fsize = file.files.item(i).size; // THE SIZE OF THE FILE.	
+											}
+											if (fsize <= 2000000) {
+												var src = URL.createObjectURL(event.target.files[0]);
+												var preview = document.getElementById("IMG-preview");
+												preview.src = src;
+												preview.style.display = "block";
+											} else {
+												alert("Only allowed less then 2MB.. !");
+												file.value = '';
+											}
+										}
+									}
+								</script>
+								<hr class="my-5">
 								<div class="row">
 									<div class="col-12 col-md-6">
-										<!-- First name -->
 										<div class="form-group">
-											<!-- Label -->
 											<label class="form-label">
 												Subject Code
 											</label>
-											<!-- Input -->
 											<input type="text" class="form-control" name="icode" value="<?php echo $row['SubjectCode']; ?>" required>
 										</div>
 									</div>
 									<div class="col-12 col-md-6">
-										<!-- Middle name -->
 										<div class="form-group">
-											<!-- Label -->
 											<label class="form-label">
 												Subject Name
 											</label>
-											<!-- Input -->
 											<input type="text" class="form-control" name="iname" value="<?php echo $row['SubjectName']; ?>" required>
 										</div>
 									</div>
 									<div class="col-12 col-md-6">
-										<!-- Middle name -->
 										<div class="form-group">
-											<!-- Label -->
 											<label class="form-label">
 												Branch ID
 											</label>
-											<!-- Input -->
 											<input type="text" class="form-control" name="ibranch" value="<?php echo $row['SubjectBranch']; ?>" required>
 										</div>
 									</div>
 									<div class="col-12 col-md-6">
-										<!-- Middle name -->
 										<div class="form-group">
-											<!-- Label -->
 											<label class="form-label">
 												Semester
 											</label>
-											<!-- Input -->
 											<select class="form-select" aria-label="Default select example" name="isem" required>
 												<option hidden><?php echo $row['SubjectSemester']; ?></option>
 												<option value="1">1</option>
@@ -99,7 +133,6 @@ if ($_SESSION['role'] != "Texas") {
 												<option value="4">4</option>
 												<option value="5">5</option>
 												<option value="6">6</option>
-
 											</select><br>
 										</div>
 									</div>
@@ -185,12 +218,9 @@ if ($_SESSION['role'] != "Texas") {
 
 												</div>
 												<div class="col-auto">
-
-													<!-- Button -->
-													<a href="edit_subject.php?facid=<?php echo $row['SubjectCode']; ?>" class="btn btn-m btn-primary d-none d-md-inline-block">
+													<a href="edit_subject.php?brid=<?php echo $row['SubjectCode']; ?>" class="btn btn-m btn-primary d-none d-md-inline-block">
 														Edit
 													</a>
-
 												</div>
 											</div> <!-- / .row -->
 										</div> <!-- / .card-body -->
