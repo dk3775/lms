@@ -41,14 +41,13 @@
 				<!-- / .header -->
 				<?php
 					include_once("../config.php");
-					$studentenr = $_GET['brid'];
+					$xbrid = $_GET['brid'];
 					$semid = $_GET['semid'];
 					$_SESSION["userrole"] = "Institute";
-					if (isset($studentenr)) {
-						$sql = "SELECT * FROM branchmaster WHERE BranchCode = '$studentenr'";
+					if (isset($xbrid)) {
+						$sql = "SELECT * FROM branchmaster WHERE BranchCode = '$xbrid'";
 						$result = mysqli_query($conn, $sql);
 						$row = mysqli_fetch_assoc($result);
-					
 					?>
 				<br><br>
 				<div class="container-fluid">
@@ -121,6 +120,7 @@
 									<h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
 									<p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
 									<p class="card-text"><?php echo $roww['FacultyFirstName']." ".$roww['FacultyLastName']; ?></p>
+									<a href="edit_subject.php?semid=<?php echo $semid;?>&brid=<?php echo $xbrid;?>&subid=<?php echo $roww['SubjectCode'];?>" class="">Edit</a>
 								</div>
 							</div>
 						</div>
