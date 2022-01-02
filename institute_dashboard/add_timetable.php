@@ -124,7 +124,7 @@
                               Time Table Semester
                               </label>
                               <!-- Input -->	
-                              <select class="form-select" aria-label="Default select example" name="tsem" required>
+                              <select class="form-control" aria-label="Default select example" name="tsem" required>
                                  <option hidden>Select Semester</option>
                                  <option value="1">1</option>
                                  <option value="2">2</option>
@@ -220,7 +220,7 @@
    
    	if ($f_error === 0) {
    		if ($f_size <= 2000000) {
-   			move_uploaded_file($f_tmp_name, "../uploads/timetables/" . $tt_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
+   			move_uploaded_file($f_tmp_name, "../src/uploads/timetables/" . $tt_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
    		} else {
    			echo "<script>alert(File size is to big .. !);</script>";
    		}
