@@ -3,15 +3,15 @@
 	if ($_SESSION['role'] != "Texas") {
 		header("Location: ../default.php");
 	} else {
-	include_once("../config.php");
-	$_SESSION["userrole"] = "Institute";
-	if(isset($_GET['brid']) && isset($_GET['semid'])){
-	$brcode = $_GET['brid'];
-	$facsel = "SELECT * FROM facultymaster WHERE FacultyBranchCode = '$brcode'";
-	$facresult = mysqli_query($conn, $facsel);
-	$branchsel = "SELECT * FROM branchmaster where BranchCode = '$brcode'";
-	$branchresult = mysqli_query($conn, $branchsel);
-	$brow = mysqli_fetch_assoc($branchresult);
+		include_once("../config.php");
+		$_SESSION["userrole"] = "Institute";
+		if (isset($_GET['brid']) && isset($_GET['semid'])) {
+			$brcode = $_GET['brid'];
+			$facsel = "SELECT * FROM facultymaster WHERE FacultyBranchCode = '$brcode'";
+			$facresult = mysqli_query($conn, $facsel);
+			$branchsel = "SELECT * FROM branchmaster where BranchCode = '$brcode'";
+			$branchresult = mysqli_query($conn, $branchsel);
+			$brow = mysqli_fetch_assoc($branchresult);
 	?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,9 +54,7 @@
 											<!-- Personal details -->
 											<!-- Avatar -->
 											<div class="avatar">
-												<img name="simg" class="w-100 border-radius-lg shadow-sm rounded"
-													src="../assets/img/avatars/profiles/avatar-1.jpg" alt="..."
-													id="IMG-preview">
+												<img name="simg" class="w-100 border-radius-lg shadow-sm rounded" src="../assets/img/avatars/profiles/avatar-1.jpg" alt="..." id="IMG-preview">
 											</div>
 										</div>
 										<div class="col ml-n2">
@@ -74,29 +72,28 @@
 								</div>
 								<div class="col-auto">
 									<!-- Button -->
-									<input type="file" id="img" name="subprofile" class="btn btn-sm"
-										onchange="showPreview(event);" accept="image/jpg, image/jpeg, image/png">
+									<input type="file" id="img" name="subprofile" class="btn btn-sm" onchange="showPreview(event);" accept="image/jpg, image/jpeg, image/png">
 								</div>
 							</div>
 							<!-- Priview Profile pic  -->
 							<script>
 								function showPreview(event) {
-								    var file = document.getElementById('img');
-								    if (file.files.length > 0) {
-								        // RUN A LOOP TO CHECK EACH SELECTED FILE.
-								        for (var i = 0; i <= file.files.length - 1; i++) {
-								            var fsize = file.files.item(i).size; // THE SIZE OF THE FILE.	
-								        }
-								        if (fsize <= 2000000) {
-								            var src = URL.createObjectURL(event.target.files[0]);
-								            var preview = document.getElementById("IMG-preview");
-								            preview.src = src;
-								            preview.style.display = "block";
-								        } else {
-								            alert("Only allowed less then 2MB.. !");
-								            file.value = '';
-								        }
-								    }
+									var file = document.getElementById('img');
+									if (file.files.length > 0) {
+										// RUN A LOOP TO CHECK EACH SELECTED FILE.
+										for (var i = 0; i <= file.files.length - 1; i++) {
+											var fsize = file.files.item(i).size; // THE SIZE OF THE FILE.	
+										}
+										if (fsize <= 2000000) {
+											var src = URL.createObjectURL(event.target.files[0]);
+											var preview = document.getElementById("IMG-preview");
+											preview.src = src;
+											preview.style.display = "block";
+										} else {
+											alert("Only allowed less then 2MB.. !");
+											file.value = '';
+										}
+									}
 								}
 							</script>
 							<hr class="my-5">
@@ -113,15 +110,15 @@
 							<div class="row">
 								<div class="col-md-6">
 									<label for="validationCustom01" class="form-label">Branch</label>
-									<input type="text" class="form-control" id="validationCustom01" name="ibranch" value="<?php echo $brow['BranchName'];?>" readonly><br>
+									<input type="text" class="form-control" id="validationCustom01" name="ibranch" value="<?php echo $brow['BranchName']; ?>" readonly><br>
 								</div>
 								<div class="col-md-6">
 									<label for="validationCustom01" class="form-label">Semester</label>
 									<select class="form-select" aria-label="Default select example" name="isem" required>
-										<option hidden value="<?php echo substr($_GET['semid'],-1,1);?>"><?php echo substr($_GET['semid'],-1,1);?></option>
-										<?php for($x=1;$x<=$brow['BranchSemesters'];$x++){
-											echo "<option value='".$x."'>".$x."</option>";
-										}?>
+										<option hidden value="<?php echo substr($_GET['semid'], -1, 1); ?>"><?php echo substr($_GET['semid'], -1, 1); ?></option>
+										<?php for ($x = 1; $x <= $brow['BranchSemesters']; $x++) {
+											echo "<option value='" . $x . "'>" . $x . "</option>";
+											} ?>
 									</select>
 									<br>
 								</div>
@@ -132,9 +129,9 @@
 									<select class="form-select" aria-label="Default select example" name="ifac" required>
 										<option value="" hidden="">Select Faculty</option>
 										<?php
-											while($facrow = mysqli_fetch_assoc($facresult)){ ?>
+											while ($facrow = mysqli_fetch_assoc($facresult)) { ?>
 										<option value="<?php echo $facrow['FacultyId']; ?>">
-											<?php echo $facrow['FacultyFirstName']." ".$facrow['FacultyLastName']; ?> 
+											<?php echo $facrow['FacultyFirstName'] . " " . $facrow['FacultyLastName']; ?>
 										</option>
 										<?php
 											} ?>
@@ -173,25 +170,40 @@
 	if (isset($_POST['subbed'])) {
 	
 		$fs_name = $_FILES['subprofile']['tmp_name'];
-		$f_size = $_FILES['subprofile']['size'];
-		$f_error = $_FILES['subprofile']['error'];
+		$fs_size = $_FILES['subprofile']['size'];
+		$fs_error = $_FILES['subprofile']['error'];
+	
+		$f_name = $_FILES['isyllabus']['tmp_name'];
+		$f_size = $_FILES['isyllabus']['size'];
+		$f_error = $_FILES['isyllabus']['error'];
+	
 		extract($_POST);
 		$temo = $brow['BranchId'];
-		$temo2 = $brow['BranchCode']."_".$isem;
-		$iimg = $icode.".png";
-
-		if ($f_error === 0) {
-			if ($f_size <= 1000000) {
+		$temo2 = $brow['BranchCode'] . "_" . $isem;
+		$iimg = $icode . ".png";
+		$simg = $icode . ".pdf";
+	
+		if ($fs_error === 0) {
+			if ($fs_size <= 2000000) {
 				move_uploaded_file($fs_name, "../src/uploads/subprofile/" . $iimg); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
 			} else {
-				echo "<script>alert(File size is to big .. !);</script>";
+				echo "<script>alert(Image file size is to big .. !);</script>";
+			}
+		} else {
+			echo "Something went wrong .. !";
+		}
+		if ($f_error === 0) {
+			if ($f_size <= 2000000) {
+				move_uploaded_file($f_name, "../src/uploads/syllabus/" . $simg); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
+			} else {
+				echo "<script>alert(Pdf file size is to big .. !);</script>";
 			}
 		} else {
 			echo "Something went wrong .. !";
 		}
 	
-		$sql = "INSERT INTO subjectmaster (SubjectCode, SubjectName, SubjectBranch, SubjectSemester, SubjectFacultyId, SemCode,SubjectPic) 
-									VALUES ('$icode', '$iname', '$temo', '$isem', '$ifac', '$temo2','$iimg');";
+		$sql = "INSERT INTO subjectmaster (SubjectCode, SubjectName, SubjectBranch, SubjectSemester, SubjectFacultyId, SemCode, SubjectPic, SubjectSyllabus) 
+								VALUES ('$icode', '$iname', '$temo', '$isem', '$ifac', '$temo2','$iimg','$simg');";
 		$run = mysqli_query($conn, $sql);
 		if ($run == true) {
 			echo "<script>alert('Subject Added Successfully')</script>";
@@ -201,9 +213,8 @@
 			echo "<script>window.open('add_subject.php','_self')</script>";
 		}
 	}
-}
-else{
+	} else {
 	header("location: branch_profile.php");
-}
+	}
 	}
 	?>

@@ -264,7 +264,7 @@
 		$iimg = $icode.".png";
 	
 		if ($f_error === 0) {
-			if ($f_size <= 1000000) {
+			if ($f_size <= 2000000) {
 				move_uploaded_file($fs_name, "../src/uploads/subprofile/" . $iimg); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
 			} else {
 				echo "<script>alert(File size is to big .. !);</script>";

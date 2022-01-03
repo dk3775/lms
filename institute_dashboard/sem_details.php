@@ -111,7 +111,7 @@
 						$subresult = mysqli_query($conn, $subsql);
 						$rowww=mysqli_fetch_assoc($sresult);
 						$sac = 1;
-						while($sac <= $rowww['SemSubjectCount'] and $roww=mysqli_fetch_assoc($subresult)){ ?>
+						while(	$roww=mysqli_fetch_assoc($subresult)){ ?>
 					<div class="col-12 col-md-4 mb-md-5">
 						<div class="card-group">
 							<div class="card">
