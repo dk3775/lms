@@ -145,35 +145,27 @@
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
-									<!-- Middle name -->
 									<div class="form-group">
-										<!-- Label -->
 										<label class="form-label">
 										Faculty ID
 										</label>
-										<!-- Input -->
 										<input type="text" class="form-control" name="ifac" value="<?php echo $row['SubjectFacultyId']; ?>" required>
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
-									<!-- Middle name -->
 									<div class="form-group">
-										<!-- Label -->
 										<label class="form-label">
 										Syllabus
 										</label>
-										<!-- Input -->
-										<input type="file" style="background-color : #F9FBFD;" class="form-control border-0" id="validationCustom01" name="isyllabus" accept="application/pdf" required><br>
+										<input type="file" style="background-color : #F9FBFD;" class="form-control border-0" id="validationCustom01" name="isyllabus" accept="application/pdf"><br>
 									</div>
 								</div>
 							</div>
 							<div class="d-flex justify">
-								<!-- Button -->
 								<button class="btn btn-primary" type="submit" value="sub" name="subbed">
 								Save Changes
 								</button>
 							</div>
-							<!-- / .row -->
 						</form>
 						<?php
 							} else { ?>
@@ -189,7 +181,6 @@
 								</div>
 								<div class="col-md-2">
 									<div class="col-auto">
-										<!-- Button -->
 										<button class="btn btn-primary " type="submit" name="ser" value="2">
 										Search
 										</button>
@@ -256,24 +247,39 @@
 	if (isset($_POST['subbed'])) {
 	
 		$fs_name = $_FILES['subprofile']['tmp_name'];
-		$f_size = $_FILES['subprofile']['size'];
-		$f_error = $_FILES['subprofile']['error'];
+		$fs_size = $_FILES['subprofile']['size'];
+		$fs_error = $_FILES['subprofile']['error'];
+	
+		$f_name = $_FILES['isyllabus']['tmp_name'];
+		$f_size = $_FILES['isyllabus']['size'];
+		$f_error = $_FILES['isyllabus']['error'];
+	
 		extract($_POST);
 		$temo = $brow['BranchId'];
-		$temo2 = $brow['BranchCode']."_".$isem;
-		$iimg = $icode.".png";
+		$temo2 = $brow['BranchCode'] . "_" . $isem;
+		$iimg = $icode . ".png";
+		$simg = $icode . ".pdf";
 	
-		if ($f_error === 0) {
-			if ($f_size <= 2000000) {
+		if ($fs_error === 0) {
+			if ($fs_size <= 2000000) {
 				move_uploaded_file($fs_name, "../src/uploads/subprofile/" . $iimg); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
 			} else {
-				echo "<script>alert(File size is to big .. !);</script>";
+				echo "<script>alert(Image file size is to big .. !);</script>";
+			}
+		} else {
+			echo "Something went wrong .. !";
+		}
+		if ($f_error === 0) {
+			if ($f_size <= 2000000) {
+				move_uploaded_file($f_name, "../src/uploads/syllabus/" . $simg); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
+			} else {
+				echo "<script>alert(Pdf file size is to big .. !);</script>";
 			}
 		} else {
 			echo "Something went wrong .. !";
 		}
 	
-		$sqli = "UPDATE subjectmaster SET SubjectCode='$icode',SubjectName='$iname',SubjectBranch='$ibranch',SubjectSemester='$isem',SubjectFacultyId='$ifac',SubjectSyllabus='$isyllabus',SemCode='$temo2',SubjectPic='$iimg' WHERE SubjectCode='$sid';";
+		$sqli = "UPDATE subjectmaster SET SubjectCode='$icode',SubjectName='$iname',SubjectBranch='$ibranch',SubjectSemester='$isem',SubjectFacultyId='$ifac',SubjectSyllabus='$isyllabus',SemCode='$temo2',SubjectPic='$iimg', SubjectSyllabus='$simg' WHERE SubjectCode='$sid';";
 		$runed = mysqli_query($conn, $sqli);
 		if ($runed == true) {
 			echo "<script>alert('Subject Edited Successfully')</script>";
