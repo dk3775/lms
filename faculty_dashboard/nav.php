@@ -108,6 +108,21 @@
 										Edit Branch
 									</a>
 								</li>
+								<li class="nav-item">
+									<a href="subject_list.php" class="nav-link">
+										View Subject List
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="add_subject.php" class="nav-link">
+										Add New Subject
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="edit_subject.php" class="nav-link">
+										Edit Subject
+									</a>
+								</li>
 							</ul>
 						</div>
 					</li>
