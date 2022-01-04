@@ -89,9 +89,9 @@
 	    $u = mysqli_real_escape_string($conn,trim($na));
 	    $hp = mysqli_real_escape_string($conn,$hash_pass);
 	
-	    $sql="SELECT * FROM test_login WHERE id='$na'";
+	    /*$sql="SELECT * FROM test_login WHERE id='$na'";
 	    $result=mysqli_query($conn,$sql);
-	    $row=mysqli_fetch_array($result);
+	    $row=mysqli_fetch_array($result);*/
 	    
 	    // insert start
 	    
