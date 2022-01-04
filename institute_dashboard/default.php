@@ -34,38 +34,30 @@ if ($_SESSION['role'] != "Texas") {
 		<!-- HEADER -->
 		<div class="header">
 			<div class="container-fluid">
-				<!-- Body -->
 				<div class="header-body">
 					<div class="row align-items-end">
 						<div class="col">
-							<!-- Pretitle -->
 							<h6 class="header-pretitle">
 								<?php echo $_SESSION['userrole']; ?>
 							</h6>
-							<!-- Title -->
 							<h1 class="header-title">
 								Dashboard
 							</h1>
 						</div>
 						<div class="col-auto">
-							<!-- Button -->
-							<a href="#!" class="btn btn-primary lift">
+							<a href="../logout.php" class="btn btn-primary lift">
 								logout
 							</a>
 						</div>
 					</div>
-					<!-- / .row -->
 				</div>
-				<!-- / .header-body -->
 			</div>
 		</div>
-		<!-- / .header -->
 		<br><br>
 		<div class="container-fluid">
 			<div class="page-header min-height-100 border-radius-xl mt-4">
 			</div>
 			<div class="card card-body blur shadow-blur mx-1 mt-n6 overflow-hidden">
-				<!--width-->
 				<div class="row gx-4">
 					<div class="col-auto">
 						<div class="avatar avatar-xl position-relative">
