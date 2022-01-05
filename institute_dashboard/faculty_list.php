@@ -39,7 +39,7 @@ if ($_SESSION['role'] != "Texas") {
 									</h1>
 								</div>
 								<div class="col-auto">
-									<a href="add_student.php" class="btn btn-primary ml-2">
+									<a href="add_faculty.php" class="btn btn-primary ml-2">
 										Add Faculty
 									</a>
 								</div>
@@ -149,6 +149,30 @@ if ($_SESSION['role'] != "Texas") {
 											<!--over-->
 									</table>
 								</div>
+								<div class="card-footer d-flex justify-content-between">
+                                    <!-- Pagination (prev) -->
+                                    <ul class="list-pagination-prev pagination pagination-tabs card-pagination">
+                                       <li class="page-item">
+                                          <a class="page-link pl-0 pr-4 border-right" href="#">
+                                             <i class="fe fe-arrow-left mr-1"></i> Prev
+                                          </a>
+                                       </li>
+                                    </ul>
+                                    <!-- Pagination -->
+                                    <ul class="list-pagination pagination pagination-tabs card-pagination">
+                                       <li class="active"><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">1</a></li>
+                                       <li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">2</a></li>
+                                       <li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">3</a></li>
+                                    </ul>
+                                    <!-- Pagination (next) -->
+                                    <ul class="list-pagination-next pagination pagination-tabs card-pagination">
+                                       <li class="page-item">
+                                          <a class="page-link pl-4 pr-0 border-left" href="#">
+                                             Next <i class="fe fe-arrow-right ml-1"></i>
+                                          </a>
+                                       </li>
+                                    </ul>
+                                 </div>
 							</div>
 						</div>
 					</div>

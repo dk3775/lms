@@ -212,10 +212,10 @@ if (isset($_POST['subbed'])) {
     $run = mysqli_query($conn, $sql);
     if ($run == true) {
         echo "<script>alert('Update Added Successfully')</script>";
-        // echo "<script>window.open('add_faculty.php','_self')</script>";
+        echo "<script>window.open('update_list.php','_self')</script>";
     } else {
         echo "<script>alert('Update Not Added')</script>";
-        // echo "<script>window.open('add_faculty.php','_self')</script>";
+        echo "<script>window.open('update_list.php','_self')</script>";
     }
 }
 ?>

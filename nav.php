@@ -54,28 +54,14 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="#timetable" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="timetable">
-						<i class="fe uil-calendar-alt"></i>Time Table
+						<a href="#" class="nav-link ">
+							<i class="fe fe-percent"></i> Marksheet
 						</a>
-						<div class="collapse" id="timetable">
-							<ul class="nav nav-sm flex-column">
-								<li class="nav-item">
-									<a href="branch_list.php" class="nav-link">
-										View Branch List
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="add_branch.php" class="nav-link">
-										Add New Branch
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="edit_branch.php" class="nav-link">
-										Edit Branch
-									</a>
-								</li>
-							</ul>
-						</div>
+					</li>
+					<li class="nav-item">
+						<a href="update_list.php" class="nav-link ">
+						<i class="fe fe-bell"></i>Updates
+						</a>
 					</li>
 					<li class="nav-item">
 						<a href="#timetable" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="timetable">
@@ -95,36 +81,6 @@
 								</li>
 							</ul>
 						</div>
-					</li>
-
-					<li class="nav-item">
-						<a href="#" class="nav-link ">
-							<i class="fe fe-percent"></i> Marksheet
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="#update" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="update">
-						<i class="fe fe-bell"></i>Update
-						</a>
-						<div class="collapse" id="update">
-							<ul class="nav nav-sm flex-column">
-								<li class="nav-item">
-									<a href="update_list.php" class="nav-link">
-										View Updates List
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="add_update.php" class="nav-link">
-										Add Update
-									</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-					<li class="nav-item d-md-none">
-						<a class="nav-link" href="#" data-toggle="modal">
-							<span class="fe fe-bell"></span> Notifications
-						</a>
 					</li>
 				</ul>
 				<!-- Divider -->

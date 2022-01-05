@@ -1,24 +1,24 @@
 <?php
 session_start();
 if ($_SESSION['role'] != "Texas") {
-    header("Location: ../default.php");
+	header("Location: ../default.php");
 } else {
-    include_once "../config.php";
-    $_SESSION["userrole"] = "institute";
-    $qur = "SELECT * FROM timetablemaster ";
-    $res = mysqli_query($conn, $qur);
+	include_once "../config.php";
+	$_SESSION["userrole"] = "institute";
+	$qur = "SELECT * FROM timetablemaster ";
+	$res = mysqli_query($conn, $qur);
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<?php include_once "../head.php";?>
+	<?php include_once "../head.php"; ?>
 </head>
 
 <body>
 	<!-- NAVIGATION -->
-	<?php include_once "../nav.php";?>
+	<?php include_once "../nav.php"; ?>
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<div class="container-fluid">
@@ -107,9 +107,9 @@ if ($_SESSION['role'] != "Texas") {
 										</thead>
 										<tbody class="list font-size-base">
 											<?php
-while ($row = mysqli_fetch_assoc($res)) {?>
+											while ($row = mysqli_fetch_assoc($res)) { ?>
 												<tr>
-												<td>
+													<td>
 														<!-- Email -->
 														<span class="item-email text-reset"><?php echo $row['TimetableBranchCode']; ?></span>
 													</td>
@@ -142,9 +142,33 @@ while ($row = mysqli_fetch_assoc($res)) {?>
 													<td class="text-right">
 													</td>
 												</tr>
-											<?php }?>
+											<?php } ?>
 											<!--over-->
 									</table>
+								</div>
+								<div class="card-footer d-flex justify-content-between">
+									<!-- Pagination (prev) -->
+									<ul class="list-pagination-prev pagination pagination-tabs card-pagination">
+										<li class="page-item">
+											<a class="page-link pl-0 pr-4 border-right" href="#">
+												<i class="fe fe-arrow-left mr-1"></i> Prev
+											</a>
+										</li>
+									</ul>
+									<!-- Pagination -->
+									<ul class="list-pagination pagination pagination-tabs card-pagination">
+										<li class="active"><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">1</a></li>
+										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">2</a></li>
+										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">3</a></li>
+									</ul>
+									<!-- Pagination (next) -->
+									<ul class="list-pagination-next pagination pagination-tabs card-pagination">
+										<li class="page-item">
+											<a class="page-link pl-4 pr-0 border-left" href="#">
+												Next <i class="fe fe-arrow-right ml-1"></i>
+											</a>
+										</li>
+									</ul>
 								</div>
 							</div>
 						</div>

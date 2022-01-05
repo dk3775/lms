@@ -36,7 +36,7 @@ $row = mysqli_fetch_assoc($updateresult);
                               </h6>
                               <!-- Title -->
                               <h1 class="header-title">
-                                 Timetable
+                                 Update
                               </h1>
                            </div>
                         </div>
