@@ -34,64 +34,30 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="#sidebarProfile" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProfile">
-							<i class="fe uil-user"></i>Student
+						<a href="student_list.php" class="nav-link">
+						<i class="fe uil-user"></i> Student
 						</a>
-						<div class="collapse" id="sidebarProfile">
-							<ul class="nav nav-sm flex-column">
-								<li class="nav-item">
-									<a href="student_list.php" class="nav-link ">
-										View Student List
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="add_student.php" class="nav-link">
-										Add New Student
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="edit_student.php" class="nav-link">
-										Edit Student Details
-									</a>
-								</li>
-							</ul>
-						</div>
-					</li>
-
-					<li class="nav-item">
-						<a href="#sidebarPages" class="nav-link " data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarPages">
-							<i class="fe uil-graduation-cap"></i>Faculty
-						</a>
-						<div class="collapse" id="sidebarPages">
-							<ul class="nav nav-sm flex-column">
-								<li class="nav-item">
-									<a href="faculty_list.php" class="nav-link ">
-										View Faculty List
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="add_faculty.php" class="nav-link ">
-										Add New Faculty
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="edit_faculty.php" class="nav-link">
-										Edit Faculty Details
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="faculty_profile.php" class="nav-link ">
-										Faculty Profile
-									</a>
-								</li>
-							</ul>
-						</div>
 					</li>
 					<li class="nav-item">
-						<a href="#sidebarCrm" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCrm">
-							<i class="fe uil-book"></i>Branch/subject
+						<a href="faculty_list.php" class="nav-link">
+						<i class="fe uil-graduation-cap"></i> Faculty
 						</a>
-						<div class="collapse" id="sidebarCrm">
+					</li>
+					<li class="nav-item">
+						<a href="branch_list.php" class="nav-link">
+						<i class="fe uil-code-branch"></i> Branch
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="subject_list.php" class="nav-link">
+						<i class="fe uil-book"></i> Subject
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="#timetable" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="timetable">
+						<i class="fe uil-calendar-alt"></i>Time Table
+						</a>
+						<div class="collapse" id="timetable">
 							<ul class="nav nav-sm flex-column">
 								<li class="nav-item">
 									<a href="branch_list.php" class="nav-link">

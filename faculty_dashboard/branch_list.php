@@ -1,11 +1,12 @@
 <?php
 session_start();
+error_reporting(E_ALL ^ E_WARNING);
 if ($_SESSION['role'] != "Lagos") {
 	header("Location: ../default.php");
 } else {
 	include_once("../config.php");
-	$_SESSION["userrole"] = "Faculty";
-	$qur = "SELECT * FROM studentmaster";
+	$_SESSION["userrole"] = "institute";
+	$qur = "SELECT * FROM branchmaster";
 	$res = mysqli_query($conn, $qur);
 }
 ?>
@@ -17,7 +18,7 @@ if ($_SESSION['role'] != "Lagos") {
 </head>
 
 <body>
-	<!-- NAVIGATION -->
+	<!-- NAVIGATION -->	
 	<?php include_once("nav.php"); ?>
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
@@ -35,12 +36,12 @@ if ($_SESSION['role'] != "Lagos") {
 									</h6>
 									<!-- Title -->
 									<h1 class="header-title text-truncate">
-										Student List
+										Branch List
 									</h1>
 								</div>
 								<div class="col-auto">
-									<a href="add_student.php" class="btn btn-primary ml-2">
-										Add Student
+									<a href="add_branch.php" class="btn btn-primary ml-2">
+										Add Branch
 									</a>
 								</div>
 							</div>
@@ -51,7 +52,7 @@ if ($_SESSION['role'] != "Lagos") {
 									<ul class="nav nav-tabs nav-overflow header-tabs">
 										<li class="nav-item">
 											<a href="#!" class="nav-link text-nowrap active">
-												All Students <span class="badge rounded-pill bg-soft-secondary"><?php echo mysqli_num_rows($res); ?></span>
+												All Branch <span class="badge rounded-pill bg-soft-secondary"><?php echo mysqli_num_rows($res); ?></span>
 											</a>
 										</li>
 									</ul>
@@ -87,22 +88,18 @@ if ($_SESSION['role'] != "Lagos") {
 										<thead>
 											<tr>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-name">Name</a>
+													<a class="list-sort text-muted" data-sort="item-name">Branch Name</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-email">Enrollment No.</a>
+													<a class="list-sort text-muted" data-sort="item-email">Branch Code</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-phone">Phone</a>
-												</th>
-												<th>
-													<a class="list-sort text-muted">Sem</a>
+													<a class="list-sort text-muted" data-sort="item-number">No of Semesters</a>
 												</th>
 												<th>
 													<a class="list-sort text-muted justify-content-center">Action</a>
 												</th>
-												<th>
-												</th>
+
 											</tr>
 										</thead>
 										<tbody class="list font-size-base">
@@ -110,39 +107,31 @@ if ($_SESSION['role'] != "Lagos") {
 											while ($row = mysqli_fetch_assoc($res)) { ?>
 												<tr>
 													<td>
-														<!-- Avatar -->
-														<div class="avatar avatar-xs align-middle mr-2">
-															<img class="avatar-img rounded-circle" src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" alt="...">
-														</div>
-														<a class="item-name text-reset"><?php echo $row['StudentFirstName'] . " " . $row['StudentLastName']; ?></a>
+														<a type="text" class="form-control item-name" name="bname" required><?php echo $row['BranchName']; ?></a>
 													</td>
 													<td>
 														<!-- Email -->
-														<span class="item-email text-reset"><?php echo $row['StudentEnrollmentNo']; ?></span>
+														<a type="text" class="form-control item-phone" name="bcode" required><?php echo $row['BranchCode']; ?></a>
 													</td>
 													<td>
-														<!-- Phone -->
-														<span class="item-phone text-reset"><?php echo $row['StudentContactNo']; ?></span>
+														<!-- Email -->
+														<a type="text" class="form-control item-number" name="bsem" required><?php echo $row['BranchSemesters']; ?></a>
 													</td>
 													<td>
-														<!-- Badge -->
-														<span class=""><?php echo $row['StudentSemester']; ?></span>
-													</td>
-													<td>
-														<a href="edit_student.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" class="btn btn-sm btn-white">
+														<a href="edit_branch.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-sm btn-white">
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="sdelete.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
+														<a class="btn btn-sm btn-white" href="branchdelete.php?brid=<?php echo $row['BranchId']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
 															Delete
+															<!--changes-->
 														</a>
 														&nbsp;
-														<a href="student_profile.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" class="btn btn-sm btn-white">
+														<a href="branch_profile.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-sm btn-white">
 															View
 														</a>
 													</td>
-													<td class="text-right">
-													</td>
+
 												</tr>
 											<?php } ?>
 											<!--over-->

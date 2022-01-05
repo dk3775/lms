@@ -1,11 +1,12 @@
 <?php
 session_start();
+error_reporting(E_ALL ^ E_WARNING);
 if ($_SESSION['role'] != "Lagos") {
 	header("Location: ../default.php");
 } else {
 	include_once("../config.php");
-	$_SESSION["userrole"] = "Faculty";
-	$qur = "SELECT * FROM studentmaster";
+	$_SESSION["userrole"] = "institute";
+	$qur = "SELECT * FROM subjectmaster";
 	$res = mysqli_query($conn, $qur);
 }
 ?>
@@ -35,12 +36,12 @@ if ($_SESSION['role'] != "Lagos") {
 									</h6>
 									<!-- Title -->
 									<h1 class="header-title text-truncate">
-										Student List
+										Subject List
 									</h1>
 								</div>
 								<div class="col-auto">
-									<a href="add_student.php" class="btn btn-primary ml-2">
-										Add Student
+									<a href="add_branch.php" class="btn btn-primary ml-2">
+										Add Subject
 									</a>
 								</div>
 							</div>
@@ -51,7 +52,7 @@ if ($_SESSION['role'] != "Lagos") {
 									<ul class="nav nav-tabs nav-overflow header-tabs">
 										<li class="nav-item">
 											<a href="#!" class="nav-link text-nowrap active">
-												All Students <span class="badge rounded-pill bg-soft-secondary"><?php echo mysqli_num_rows($res); ?></span>
+												All Subject <span class="badge rounded-pill bg-soft-secondary"><?php echo mysqli_num_rows($res); ?></span>
 											</a>
 										</li>
 									</ul>
@@ -87,16 +88,16 @@ if ($_SESSION['role'] != "Lagos") {
 										<thead>
 											<tr>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-name">Name</a>
+													<a class="list-sort text-muted" data-sort="item-name">Subject Name</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-email">Enrollment No.</a>
+													<a class="list-sort text-muted" data-sort="item-email">Subject Code</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-phone">Phone</a>
+													<a class="list-sort text-muted" data-sort="item-email">Branch ID</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted">Sem</a>
+													<a class="list-sort text-muted" data-sort="item-email">Semester</a>
 												</th>
 												<th>
 													<a class="list-sort text-muted justify-content-center">Action</a>
@@ -110,34 +111,34 @@ if ($_SESSION['role'] != "Lagos") {
 											while ($row = mysqli_fetch_assoc($res)) { ?>
 												<tr>
 													<td>
-														<!-- Avatar -->
-														<div class="avatar avatar-xs align-middle mr-2">
-															<img class="avatar-img rounded-circle" src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" alt="...">
-														</div>
-														<a class="item-name text-reset"><?php echo $row['StudentFirstName'] . " " . $row['StudentLastName']; ?></a>
+														<a type="text" class="text-reset item-name" name="bname" required><?php echo $row['SubjectName']; ?></a>
 													</td>
 													<td>
 														<!-- Email -->
-														<span class="item-email text-reset"><?php echo $row['StudentEnrollmentNo']; ?></span>
+														<a type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectCode']; ?></a>
+
 													</td>
 													<td>
-														<!-- Phone -->
-														<span class="item-phone text-reset"><?php echo $row['StudentContactNo']; ?></span>
+														<!-- Email -->
+														<a type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectBranch']; ?></a>
+
 													</td>
 													<td>
-														<!-- Badge -->
-														<span class=""><?php echo $row['StudentSemester']; ?></span>
+														<!-- Email -->
+														<a type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectSemester']; ?></a>
+
 													</td>
 													<td>
-														<a href="edit_student.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" class="btn btn-sm btn-white">
+														<a href="edit_subject.php?facid=<?php echo $row['SubjectCode']; ?>" class="btn btn-sm btn-white">
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="sdelete.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
+														<a class="btn btn-sm btn-white" href="subdelete.php?facid=<?php echo $row['SubjectCode']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
 															Delete
+															<!--changes-->
 														</a>
 														&nbsp;
-														<a href="student_profile.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" class="btn btn-sm btn-white">
+														<a href="#!" class="btn btn-sm btn-white">
 															View
 														</a>
 													</td>
