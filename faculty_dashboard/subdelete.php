@@ -21,13 +21,18 @@
         header("Location: ../default.php");
     } else {
         include_once("../config.php");
-        $_SESSION["userrole"] = "Faculty";
-        $enr = $_GET['studentenr'];
-        $qur = "DELETE FROM studentmaster WHERE StudentEnrollmentNo = '$enr'";
+        $_SESSION["userrole"] = "institute";
+        $fid = $_GET['facid'];
+        echo $sid;
+        $qur = "DELETE FROM subjectmaster WHERE SubjectCode = '$fid'";
         $res = mysqli_query($conn, $qur);
         if ($res) {
-            echo "<script>alert('Student Deleted Successfully');</script>";
-            header("Location: ../faculty_dashboard/student_list.php");
+            echo "<script>alert('Subject Deleted Successfully');</script>";
+            header("Location: ../institute_dashboard/subject_list.php");
+        }
+        else {
+            echo "<script>alert('Subject Deletion Failed');</script>";
+            header("Location: ../institute_dashboard/subject_list.php");
         }
     }
     ?>

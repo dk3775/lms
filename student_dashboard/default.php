@@ -5,7 +5,7 @@
 	}
 	else{
 	  include_once("../config.php");
-	  $_SESSION["userrole"]="Faculty";
+	  $_SESSION["userrole"]="Student";
 	  $qur="SELECT * FROM `studentmaster` WHERE ``='Abuja'";
 	}
 	?>
@@ -166,7 +166,7 @@
 			<div class="container-fluid">
 				<div class="page-header min-height-100 border-radius-xl mt-4">
 				</div>
-				<div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
+				<div class="card card-body blur shadow-blur mx-1 mt-n6 overflow-hidden">
 					<div class="row gx-4">
 						<div class="col-auto">
 							<div class="avatar avatar-xl position-relative">

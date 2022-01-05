@@ -29,18 +29,13 @@
 				<!-- Navigation -->
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a href="../institute_dashboard" class="nav-link">
+						<a href="../faculty_dashboard" class="nav-link">
 							<i class="fe fe-home"></i> Dashboard
 						</a>
 					</li>
 					<li class="nav-item">
 						<a href="student_list.php" class="nav-link">
 						<i class="fe uil-user"></i> Student
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="faculty_list.php" class="nav-link">
-						<i class="fe uil-graduation-cap"></i> Faculty
 						</a>
 					</li>
 					<li class="nav-item">
