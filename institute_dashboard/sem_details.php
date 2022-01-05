@@ -41,17 +41,13 @@
 				<!-- / .header -->
 				<?php
 					include_once("../config.php");
-					$studentenr = $_GET['brid'];
+					$xbrid = $_GET['brid'];
+					$semid = $_GET['semid'];
 					$_SESSION["userrole"] = "Institute";
-					if (isset($studentenr)) {
-						$sql = "SELECT BranchName, BranchCode, BranchSemesters, StudentId FROM branchmaster INNER JOIN studentmaster ON branchmaster.BranchCode = studentmaster.StudentBranchCode WHERE BranchId = '$studentenr'";
-						$ssql = "SELECT FacultyId FROM branchmaster INNER JOIN facultymaster ON branchmaster.BranchCode = facultymaster.FacultyBranchCode WHERE BranchId = '$studentenr'";
+					if (isset($xbrid)) {
+						$sql = "SELECT * FROM branchmaster WHERE BranchCode = '$xbrid'";
 						$result = mysqli_query($conn, $sql);
-						$reesult = mysqli_query($conn, $ssql);
 						$row = mysqli_fetch_assoc($result);
-						$c = isset($result)? mysqli_num_rows($result):0;
-						$cc = isset($reesult)? mysqli_num_rows($reesult):0;
-					
 					?>
 				<br><br>
 				<div class="container-fluid">
@@ -74,79 +70,67 @@
 							</div>
 						</div>
 						<hr class="navbar-divider my-4">
-						<!-- details -->
-						<div class="col mb-3 ml-n3 ml-md-n2">
-							<h3 class="header-title">
-								Branch Details
-							</h3>
-						</div>
-						<ul class="list-group list-group-horizontal col-4">
-							<li class="list-group-item col-7">Total Students Enrolled </li>
-							<li class="list-group-item col-7"><?php echo $c;?></li>
-						</ul>
-						<ul class="list-group list-group-horizontal col-4">
-							<li class="list-group-item col-7">No of Faculties</li>
-							<li class="list-group-item col-7"><?php echo $cc;?></li>
-						</ul>
-						<!-- over -->
-						<hr class="navbar-divider my-4">
 						<!-- / .row -->
-						<div class="col mb-3 ml-n3 ml-md-n2">
-							<h3 class="header-title">
-								Semester Details
-							</h3>
-						</div>
 						<div class="row align-items-center">
-							<div class="col">
-								<!-- Nav -->
+							<div class="col col-md-10">
+								<!-- Nav --> 
 								<ul class="nav nav-tabs nav-overflow header-tabs">
-									<?php
-										$a = 1;
-										while ($a <= $row['BranchSemesters']) { ?>
-									<li class="nav-item" <?php echo $a ? "active" : ""; ?>>
-										<a href="sem_details.php?semid=<?php echo $row['BranchCode'] . "_" . $a; ?>&brid=<?php echo $row['BranchCode']; ?>" class="nav-link h3">
-										Sem <?php echo $a; ?>
-										</a>
+									<?php 
+										$a = 1; 
+										while ($a <= $row['BranchSemesters']) { ?> 
+									<li class="nav-item" > 
+										<a href="sem_details.php?semid=<?php echo $row['BranchCode']."_".$a; ?>&brid=<?php echo $row['BranchCode']; ?>" class="nav-link h3 <?php if($_GET['semid'] == $row['BranchCode']."_".$a){echo "active";}?>"> 
+										Sem <?php echo $a; ?> 
+										</a> 
 									</li>
-									<?php $a++;
-										}
-										?>
+									<?php $a++; 
+										} 
+										?> 
 								</ul>
+							</div>
+							<div class=" col-md-auto mt-2 mt-md-0 mb-md-3">
+								<!-- Nav --> 
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+								<a href="add_subject.php?semid=<?php echo $semid; ?>&brid=<?php echo $row['BranchCode']; ?>" type="button" class="btn btn-primary"> 
+								Add Subject 
+								</a> 
 							</div>
 						</div>
 					</div>
 					<!-- / .header-body -->
 				</div>
 			</div>
-			<?php
-				} else { ?>
+			<!-- CONTENT -->
 			<div class="container-fluid">
-				<form class="mb-4" method="post">
-					<div class="col">
-						<div class="row">
-							<div class="col-md-4">
-								<div class="input-group input-group-merge input-group-reverse">
-									<input class="form-control list-search" type="text" name="enr" placeholder="Enter Branch Code">
-									<div class="input-group-text">
-										<span class="fe fe-search"></span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="col-auto">
-									<!-- Button -->
-									<button class="btn btn-primary" type="submit" name="ser" value="2">
-									Search
-									</button>
+				<div class="row">
+					<?php
+						$C=$_GET['semid'];
+						$subsql = "Select *, FacultyFirstName, FacultyLastname from subjectmaster INNER JOIN facultymaster on subjectmaster.SubjectFacultyId=facultymaster.FacultyId where SemCode = '$C'";
+						$subresult = mysqli_query($conn, $subsql);
+						$sac = 1;
+						while(	$roww=mysqli_fetch_assoc($subresult)){ ?>
+					<div class="col-12 col-md-4 mb-md-5">
+						<div class="card-group">
+							<div class="card">
+								<img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic']; ?>" class="card-img-top" alt="...">
+								<div class="card-body">
+									<h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
+									<p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
+									<p class="card-text"><?php echo $roww['FacultyFirstName']." ".$roww['FacultyLastName']; ?></p>
+									<a href="edit_subject.php?semid=<?php echo $semid;?>&brid=<?php echo $xbrid;?>&subid=<?php echo $roww['SubjectCode'];?>" class="">Edit</a>
 								</div>
 							</div>
 						</div>
 					</div>
-				</form>
+					<?php
+						$sac++;
+						}
+						?>
+				</div>
 			</div>
 			<?php
-				if (isset($_POST['ser'])) {
-					$er = $_POST['enr'];
+				} else {
+					$er = $_GET['brid'];
 					$qur = "SELECT * FROM branchmaster WHERE BranchCode = '$er';";
 					$res = mysqli_query($conn, $qur);
 					$row = mysqli_fetch_assoc($res);
@@ -176,7 +160,6 @@
 				</div>
 			</div>
 			<?php
-				}
 				}
 				}
 				?>

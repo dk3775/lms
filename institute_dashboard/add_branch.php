@@ -55,8 +55,12 @@ if ($_SESSION['role'] != "Texas") {
 								<input type="text" class="form-control" id="validationCustom01" name="iname" placeholder="Computer Engg." required><br>
 							</div>
 						</div>
-
-
+						<div class="row">
+							<div class="col-md-6">
+								<label for="validationCustom01" class="form-label">No of Semesters</label>
+								<input type="text" class="form-control" id="validationCustom01" name="isem" placeholder="06" required><br>
+							</div>
+						</div>
 						<!-- Divider -->
 						<hr class="mt-4 mb-5">
 						<div class="d-flex justify">
@@ -87,10 +91,7 @@ if ($_SESSION['role'] != "Texas") {
 <?php
 if (isset($_POST['subbed'])) {
 
-	$icode = $_POST['icode'];
-	$iname = $_POST['iname'];
-	$fs_name = $senr . "." . $f_ext;
-
+	extract($_POST);
 	if ($f_error === 0) {
 		if ($f_size <= 1000000) {
 			move_uploaded_file($f_tmp_name, "../src/uploads/stuprofile/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
@@ -100,7 +101,7 @@ if (isset($_POST['subbed'])) {
 	} else {
 		echo "Something went wrong .. !";
 	}
-	$sql = "INSERT INTO branchmaster (BranchName,BranchCode) VALUES ('$iname', '$icode' );";
+	$sql = "INSERT INTO branchmaster (BranchName,BranchCode,BranchSemesters) VALUES ('$iname', '$icode','$isem' );";
 	$run = mysqli_query($conn, $sql);
 	if ($run == true) {
 		echo "<script>alert('Branch Added Successfully')</script>";

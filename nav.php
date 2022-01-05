@@ -60,6 +60,35 @@
 						<div class="collapse" id="timetable">
 							<ul class="nav nav-sm flex-column">
 								<li class="nav-item">
+									<a href="branch_list.php" class="nav-link">
+										View Branch List
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="add_branch.php" class="nav-link">
+										Add New Branch
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="edit_branch.php" class="nav-link">
+										Edit Branch
+									</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a href="#timetable" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="timetable">
+						<i class="fe uil-calendar-alt"></i>Time Table
+						</a>
+						<div class="collapse" id="timetable">
+							<ul class="nav nav-sm flex-column">
+								<li class="nav-item">
+									<a href="timetable_list.php" class="nav-link">
+										View Time Table List
+									</a>
+								</li>
+								<li class="nav-item">
 									<a href="add_timetable.php" class="nav-link">
 										Add Time Table
 									</a>
