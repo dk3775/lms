@@ -344,6 +344,7 @@
 		$fcode = $_POST['fcode'];
 		$fid = $_POST['fid'];
 		$fpass = $_POST['fpass'];
+		$fpass = password_hash($fpass, PASSWORD_BCRYPT);
 		$fs_name = $fcode . ".png";
 	
 		if ($f_error === 0) {

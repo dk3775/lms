@@ -234,7 +234,7 @@ if ($_SESSION['role'] != "Texas") {
 									</div>
 									<div class="col-auto col-6">
 										<div class="input-group input-group-sm mb-3 ">
-											<textarea id="demo" class="form-control fs-2" name="ec" readonly maxlength="4">ST<?php echo $row['FacultyUserName']; ?></textarea>
+											<textarea id="demo" class="form-control fs-2" name="ec" readonly maxlength="4"><?php echo "FA_".$row['FacultyCode']; ?></textarea>
 											<button class="btn btn-primary" onclick="cp1()"><i class="fe fe-copy"></i></button>
 										</div>
 									</div>
@@ -247,7 +247,7 @@ if ($_SESSION['role'] != "Texas") {
 									</div>
 									<div class="col-auto col-6">
 										<div class="input-group input-group-sm mb-3">
-											<textarea type="text" class="form-control" name="fpassword" id="myInput2"><?php echo $row['FacultyPassword']; ?></textarea>
+											<textarea type="text" class="form-control" name="fpassword" id="myInput2"></textarea>
 											<button class="btn btn-primary" onclick="cp2()"><i class="fe fe-copy"></i></button>
 										</div>
 									</div>
@@ -344,18 +344,12 @@ if ($_SESSION['role'] != "Texas") {
 		<!-- Theme JS -->
 		<script src="../assets/js/theme.bundle.js"></script>
 	</body>
-
 	</html>
 	<?php
 	if (isset($_POST['subbed'])) {
-		// $f_name = $_FILES['stuprofile']['name'];
 		$f_tmp_name = $_FILES['stuprofile']['tmp_name'];
 		$f_size = $_FILES['stuprofile']['size'];
 		$f_error = $_FILES['stuprofile']['error'];
-		// $f_type = $_FILES['stuprofile']['type'];
-		// $f_ext = explode('.', $f_name);
-		// $f_ext = strtolower(end($f_ext));
-
 		$fname = $_POST['fname'];
 		$mname = $_POST['mname'];
 		$lname = $_POST['lname'];
@@ -366,6 +360,7 @@ if ($_SESSION['role'] != "Texas") {
 		$fquali = $_POST['fqualification'];
 		$fsubject = $_POST['fsubject'];
 		$fpassword = $_POST['fpassword'];
+		$fpassword = password_hash($fpass, PASSWORD_BCRYPT);
 		$fcode = $_POST['fcode'];
 		$fid = $row['FacultyId'];
 

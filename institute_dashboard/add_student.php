@@ -349,15 +349,13 @@
 		</script>
 		<script>
 			function cp() {
-			
-			    var x = document.getElementById("myInput").value;
-			    document.getElementById("demo").innerHTML = "ST" + x;
-			
+			var x = document.getElementById("myInput").value;
+			document.getElementById("demo").innerHTML = "ST" + x;
 			
 			let num = document.getElementById("myInput").value;
-			let str = num.toString().split('').reverse().join('');
-			let rev = parseInt(str.substr(0,4));
-			
+			let s = num.toString();
+			let str = s.toString().split('').reverse().join('');
+			let rev = str.substr(0,4);
 			
 			document.getElementById("myInput2").innerHTML = rev;
 			
