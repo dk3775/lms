@@ -137,9 +137,23 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="update.php" class="nav-link ">
-							<i class="fe fe-bell"></i>Updates
+						<a href="#update" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="update">
+						<i class="fe fe-bell"></i>Update
 						</a>
+						<div class="collapse" id="update">
+							<ul class="nav nav-sm flex-column">
+								<li class="nav-item">
+									<a href="update_list.php" class="nav-link">
+										View Updates List
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="add_update.php" class="nav-link">
+										Add Update
+									</a>
+								</li>
+							</ul>
+						</div>
 					</li>
 					<li class="nav-item d-md-none">
 						<a class="nav-link" href="#" data-toggle="modal">

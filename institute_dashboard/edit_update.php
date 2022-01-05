@@ -7,15 +7,10 @@ if ($_SESSION['role'] != "Texas") {
     $_SESSION["userrole"] = "Faculty";
 }
 
-#fetching tables
-$branchsel = "SELECT * FROM branchmaster";
-$branchresult = mysqli_query($conn, $branchsel);
-
-// $ttid = "4";
-$ttid = $_GET['ttid'];
-$timetablesel = "SELECT * FROM timetablemaster WHERE TimetableId='$ttid'";
-$timetableresult = mysqli_query($conn, $timetablesel);
-$row = mysqli_fetch_assoc($timetableresult);
+$updid = $_GET['updid'];
+$updatesel = "SELECT * FROM updatemaster WHERE UpdateId='$updid'";
+$updateresult = mysqli_query($conn, $updatesel);
+$row = mysqli_fetch_assoc($updateresult);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,9 +51,9 @@ $row = mysqli_fetch_assoc($timetableresult);
                               <div class="col-12 col-md-12 col-xl-5">
                                  <!-- Image -->
                                  <h2 class="mb-3">
-                                    Time Table Image
+                                    Update Image
                                  </h2>
-                                 <img src="../src/uploads/timetables/<?php echo $row['TimetableImage']; ?>" id="IMG-preview" alt="..." class="img-fluid mb-3 rounded" style="margin:auto; max-width: 80%;">
+                                 <img src="../src/uploads/updates/<?php echo $row['UpdateFile']; ?>" id="IMG-preview" alt="..." class="img-fluid mb-3 rounded" style="margin:auto; max-width: 80%;">
                                  <!-- Title -->
                               </div>
                               <div class="row justify-content-center">
@@ -70,7 +65,7 @@ $row = mysqli_fetch_assoc($timetableresult);
                                     </small>
                                  </div>
                                  <div class="col-12 col-md-6">
-                                    <input type="file" id="img" name="tpic" class="btn btn-sm"
+                                    <input type="file" id="img" name="updpic" class="btn btn-sm"
                                        onchange="showPreview(event);" accept="image/jpg, image/jpeg, image/png">
                                  </div>
                               </div>
@@ -103,68 +98,49 @@ $row = mysqli_fetch_assoc($timetableresult);
                      <!-- Divider -->
                      <hr class="mb-5">
                      <div class="row">
+                         <div class="col-12 col-md-6">
+                           <!-- Last name -->
+                           <div class="form-group">
+                              <!-- Label -->
+                              <label class="form-label">
+                              Update Title
+                              </label>
+                              <!-- Input -->
+                              <input type="text" class="form-control" id="validationCustom01" value="<?php echo $row['UpdateTitle']; ?>" name="updtitle" required>
+                           </div>
+                        </div>
                         <div class="col-12 col-md-6">
                            <!-- Middle name -->
                            <div class="form-group">
                               <!-- Label -->
                               <label class="form-label">
-                              Time Table Branch
+                              Update Type
                               </label>
                               <!-- Input -->
-                              <select class="form-control" id="validationCustom01" name="tbranch" required>
-                                 <option value="" hidden="">Select Branch</option>
-                                 <?php
-while ($brrow = mysqli_fetch_assoc($branchresult)) {?>
-                                 <option <?php if ($brrow['BranchCode'] == $row['TimetableBranchCode']) {?> selected <?php }?> value="<?php echo $brrow['BranchCode']; ?>">
-                                    <?php echo $brrow['BranchName']; ?>
-                                 </option>
-                                 <?php
-}?>
-                              </select>
+                              <select class="form-control" id="validationCustom01" name="updtype" required>
+                                  <option value="" hidden="">Select Type</option>
+                                  <option <?php if ($row['UpdateType'] == 'GTU') {?> selected <?php }?> value="GTU">GTU</option>
+                                  <option <?php if ($row['UpdateType'] == 'Campus') {?> selected <?php }?>value="Campus">Campus</option>
+
+                                </select>
                            </div>
                         </div>
-                        <div class="col-12 col-md-6">
-                           <!-- Last name -->
-                           <div class="form-group">
-                              <!-- Label -->
-                              <label class="form-label">
-                              Time Table Semester
-                              </label>
-                              <!-- Input -->
-                              <select class="form-control" aria-label="Default select example" name="tsem" required>
-                                 <option hidden>Select Semester</option>
-                                 <?php
-for ($a = 1; $a <= 6; $a++) {?>
 
-                                   <option <?php if ($a == $row['TimetableSemester']) {?> selected <?php }?> value="<?php echo $a; ?>"><?php echo $a; ?>
-</option>
-                                 <?php }
-?>
-                              </select>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- / .row   Only For Faculty Profile-->
-                     <!-- <div class="row">
-                        <div class="col-12 col-md-6">
-
-                        	<div class="form-group">
-
-                        		<label class="form-label">
-                        			Time Table Uploaded By
-                        		</label>
-
-                        		<input type="text" class="form-control" name="tuploaded" required>
-                        	</div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                        	<label class="form-label">
-                        		Time Table Upload Time
-                        	</label>
-                        	<input type="datetime-local" class="form-control" name="ttime" required>
-                        </div>
-                        </div> -->
-                     <hr>
+                    </div>
+                        <div class="row">
+                            <div class="form-group">
+                               <!-- Label -->
+                               <label class="form-label">
+                               Update Description
+                               </label>
+                            <div class="col-12 col-md-12">
+									<div class="input-group input-group-sm mb-3 ">
+                                        <textarea id="demo" rows="4" class="form-control fs-2" name="upddescription"><?php echo $row['UpdateDescription'] ?></textarea>
+									</div>
+								</div>
+                            </div>
+                            </div>
+                            <hr>
                      <div class="d-flex justify">
                         <!-- Button -->
                         <button class="btn btn-primary" type="submit" value="sub" name="subbed">
@@ -210,44 +186,45 @@ for ($a = 1; $a <= 6; $a++) {?>
    </body>
 </html>
 <?php
+
 if (isset($_POST['subbed'])) {
-    // $f_name = $_FILES['tpic']['name'];
-    $f_tmp_name = $_FILES['tpic']['tmp_name'];
-    $f_size = $_FILES['tpic']['size'];
-    $f_error = $_FILES['tpic']['error'];
-    // $f_type = $_FILES['tpic']['type'];
+    // $f_name = $_FILES['updpic']['name'];
+    $f_tmp_name = $_FILES['updpic']['tmp_name'];
+    $f_size = $_FILES['updpic']['size'];
+    $f_error = $_FILES['updpic']['error'];
+    // $f_type = $_FILES['updpic']['type'];
     // $f_ext = explode('.', $f_name);
     // $f_ext = strtolower(end($f_ext));
 
-    $tbranch = $_POST['tbranch'];
-    $tsem = $_POST['tsem'];
-    $tupd = "Institute";
-    $tupdtime = date("Y-m-d H:i:s");
+    $updtitle = $_POST['updtitle'];
+    $updtype = $_POST['updtype'];
+    $upddescription = $_POST['upddescription'];
+    $updloadby = "Institute";
+    $updtime = date("Y-m-d");
 
-    $tt_name = $tbranch . "_" . $tsem . ".png";
+    $upd_file = $updtitle . ".png";
 
     if ($f_error === 0) {
         if ($f_size <= 2000000) {
-            move_uploaded_file($f_tmp_name, "../src/uploads/timetables/" . $tt_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ...
+            move_uploaded_file($f_tmp_name, "../src/uploads/updates/" . $upd_file); // Moving Uploaded File to Server ... to uploades folder by file name f_name ...
         } else {
             echo "<script>alert(File size is to big .. !);</script>";
         }
     } else {
         echo "Something went wrong .. !";
     }
-    $sql = "UPDATE `timetablemaster` SET
-    `TimetableBranchCode`='$tbranch',
-    `TimetableSemester`='$tsem',
-    `TimetableUploadedBy`='$tupd',
-    `TimetableUploadTime`='$tupdtime',
-    `TimetableImage`='$tt_name' WHERE `TimetableId` = '$ttid'";
-
+    $sql = "UPDATE `updatemaster` SET `UpdateTitle`='$updtitle',
+    `UpdateDescription`='$upddescription',
+    `UpdateFile`='$upd_file',
+    `UpdateUploadedBy`='$updloadby',
+    `UpdateType`='' WHERE `UpdateId`='$updid'";
     $run = mysqli_query($conn, $sql);
+
     if ($run == true) {
-        echo "<script>alert('Time Table Edited Successfully')</script>";
-        echo "<script>window.open('timetable_list.php','_self')</script>";
+        echo "<script>alert('Update Edited Successfully')</script>";
+        echo "<script>window.open('update_list.php','_self')</script>";
     } else {
-        echo "<script>alert('Time Table Not Edited')</script>";
+        echo "<script>alert('Update Not Edited')</script>";
         // echo "<script>window.open('add_faculty.php','_self')</script>";
     }
 }
