@@ -69,8 +69,8 @@
 					</li>
 
 					<li class="nav-item">
-						<a href="#" class="nav-link ">
-							<i class="fe fe-percent"></i> Marksheet
+						<a href="assignment_list.php" class="nav-link ">
+						<i class="fe uil-file"></i> Assignment
 						</a>
 					</li>
 					<li class="nav-item">

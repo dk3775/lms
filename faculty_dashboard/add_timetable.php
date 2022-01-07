@@ -232,10 +232,10 @@
    	$run = mysqli_query($conn, $sql);
    	if ($run == true) {
    		echo "<script>alert('Time Table Added Successfully')</script>";
-   		// echo "<script>window.open('add_faculty.php','_self')</script>";
+   		echo "<script>window.open('faculty_list.php','_self')</script>";
    	} else {
    		echo "<script>alert('Time Table Not Added')</script>";
-   		// echo "<script>window.open('add_faculty.php','_self')</script>";
+   		echo "<script>window.open('add_faculty.php','_self')</script>";
    	}
    }
    ?>

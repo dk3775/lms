@@ -409,7 +409,7 @@
 		$run = mysqli_query($conn, $sql);
 		if ($run == true) {
 			echo "<script>alert('Student Added Successfully')</script>";
-			echo "<script>window.open('add_student.php','_self')</script>";
+			echo "<script>window.open('student_list.php','_self')</script>";
 		} else {
 			echo "<script>alert('Student Not Added')</script>";
 			echo "<script>window.open('add_student.php','_self')</script>";

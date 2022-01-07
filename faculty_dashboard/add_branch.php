@@ -104,7 +104,7 @@ if (isset($_POST['subbed'])) {
 	$run = mysqli_query($conn, $sql);
 	if ($run == true) {
 		echo "<script>alert('Branch Added Successfully')</script>";
-		echo "<script>window.open('add_branch.php','_self')</script>";
+		echo "<script>window.open('branch_list.php','_self')</script>";
 	} else {
 		echo "<script>alert('Branch Not Added')</script>";
 		echo "<script>window.open('add_branch.php','_self')</script>";
