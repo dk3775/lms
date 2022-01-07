@@ -6,7 +6,6 @@ if ($_SESSION['role'] != "Texas") {
 } else {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Institute";
-	$qur = "SELECT * FROM institutemaster WHERE ``='Abuja'";
 	$squr = "SELECT * FROM studentmaster";
 	$sres = mysqli_query($conn, $squr);
 	$fqur = "SELECT * FROM facultymaster ";
