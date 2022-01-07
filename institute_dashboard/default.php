@@ -260,7 +260,7 @@ if ($_SESSION['role'] != "Texas") {
 					<div class="card-header">
 						<!-- Title -->
 						<h2 class="card-header-title ">
-							Updates
+						Updates
 						</h2>
 						<!-- Link -->
 						<a href="update.php" class="small">View all</a>
