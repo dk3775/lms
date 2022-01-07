@@ -54,11 +54,6 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="#" class="nav-link ">
-							<i class="fe fe-percent"></i> Marksheet
-						</a>
-					</li>
-					<li class="nav-item">
 						<a href="update_list.php" class="nav-link ">
 						<i class="fe fe-bell"></i>Updates
 						</a>
