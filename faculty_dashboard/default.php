@@ -198,7 +198,7 @@ if ($_SESSION['role'] != "Lagos") {
 												</small>
 
 											</div>
-										</div> <!-- / .row -->
+										</div>
 									</div>
 									<div class="list-group-item">
 										<div class="row align-items-center">
