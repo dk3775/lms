@@ -234,7 +234,7 @@ if ($_SESSION['role'] != "Texas") {
 									</div>
 									<div class="col-auto col-6">
 										<div class="input-group input-group-sm mb-3 ">
-											<textarea id="demo" class="form-control fs-2" name="ec" readonly maxlength="4"><?php echo "FA_".$row['FacultyCode']; ?></textarea>
+											<textarea id="demo" class="form-control fs-2" name="ec" readonly maxlength="4"><?php echo "FA".$row['FacultyCode']; ?></textarea>
 											<button class="btn btn-primary" onclick="cp1()"><i class="fe fe-copy"></i></button>
 										</div>
 									</div>
@@ -360,8 +360,8 @@ if ($_SESSION['role'] != "Texas") {
 		$fquali = $_POST['fqualification'];
 		$fsubject = $_POST['fsubject'];
 		$fpassword = $_POST['fpassword'];
-		$fpassword = password_hash($fpass, PASSWORD_BCRYPT);
 		$fcode = $_POST['fcode'];
+		$fuid = $_POST['ec'];
 		$fid = $row['FacultyId'];
 
 		$fs_name = $fcode . ".png";
@@ -375,7 +375,7 @@ if ($_SESSION['role'] != "Texas") {
 		} else {
 			echo "Something went wrong .. !";
 		}
-		$sqli = "UPDATE facultymaster SET FacultyFirstName='$fname', FacultyMiddleName='$mname',FacultyLastName='$lname', FacultyContactNo='$fcontact', FacultyEmail='$femail', FacultyOffice='$foffice', FacultyBranchCode='$fbranch', FacultyQualification='$fquali', FacultySubject='$fsubject', FacultyPassword='$fpassword', FacultyCode='$fcode'  WHERE FacultyId = '$fid';";
+		$sqli = "UPDATE facultymaster SET FacultyUserName='$fuid',FacultyFirstName='$fname', FacultyMiddleName='$mname',FacultyLastName='$lname', FacultyContactNo='$fcontact', FacultyEmail='$femail', FacultyOffice='$foffice', FacultyBranchCode='$fbranch', FacultyQualification='$fquali', FacultySubject='$fsubject', FacultyPassword='$fpassword', FacultyCode='$fcode'  WHERE FacultyId = '$fid';";
 		$runed = mysqli_query($conn, $sqli);
 		if ($runed == true) {
 			echo "<script>alert('Faculty Details Edited Successfully')</script>";

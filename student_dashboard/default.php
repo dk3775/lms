@@ -1,24 +1,26 @@
 <?php
-	//error_reporting(E_ALL ^ E_WARNING);
-	session_start();
-	if ($_SESSION['role'] != "Abuja") {
-		header("Location: ../default.php");
-	} else {
-		require_once("../config.php");
-		$_SESSION["userrole"] = "Student";
-		$cred = explode("_", $_SESSION["cred"]);
-		$qur = "SELECT *,BranchName FROM studentmaster INNER JOIN branchmaster ON studentmaster.StudentBranchCode = branchmaster.BranchCode WHERE StudentUserName='$cred[0]' AND StudentPassword='$cred[1]'";
-		$res = mysqli_query($conn, $qur);
-		$row = mysqli_fetch_assoc($res);
-		$uqur = "SELECT * FROM updatemaster";
-		$ures = mysqli_query($conn, $uqur);
-		$urow = mysqli_fetch_assoc($ures);
-	?>
-<!DOCTYPE html>
-<html lang="en">
+//error_reporting(E_ALL ^ E_WARNING);
+session_start();
+if ($_SESSION['role'] != "Abuja") {
+	header("Location: ../default.php");
+} else {
+	require_once("../config.php");
+	$_SESSION["userrole"] = "Student";
+	$cred = explode("_", $_SESSION["cred"]);
+	$qur = "SELECT *,BranchName FROM studentmaster INNER JOIN branchmaster ON studentmaster.StudentBranchCode = branchmaster.BranchCode WHERE StudentUserName='$cred[0]' AND StudentPassword='$cred[1]'";
+	$res = mysqli_query($conn, $qur);
+	$row = mysqli_fetch_assoc($res);
+	$uqur = "SELECT * FROM updatemaster";
+	$ures = mysqli_query($conn, $uqur);
+	$urow = mysqli_fetch_assoc($ures);
+?>
+	<!DOCTYPE html>
+	<html lang="en">
+
 	<head>
 		<?php require_once('../head.php'); ?>
 	</head>
+
 	<body>
 		<!-- NAVIGATION -->
 		<?php require_once('nav.php'); ?>
@@ -43,7 +45,7 @@
 							<div class="col-auto">
 								<!-- Button -->
 								<a href="../logout.php" class="btn btn-primary lift">
-								logout
+									logout
 								</a>
 							</div>
 						</div>
@@ -86,13 +88,30 @@
 												<div class="col">
 													<!-- Title -->
 													<h5 class="mb-0">
-														Ongoing Semester 
+														Roll No
 													</h5>
 												</div>
 												<div class="col-auto">
 													<!-- Time -->
 													<h5 class="text-muted mb-0">
-													<?php echo $row['StudentSemester']; ?>
+														<?php echo $row['StudentRollNo']; ?>
+													</h5>
+												</div>
+											</div>
+											<!-- / .row -->
+										</div>
+										<div class="list-group-item">
+											<div class="row align-items-center">
+												<div class="col">
+													<!-- Title -->
+													<h5 class="mb-0">
+														Ongoing Semester
+													</h5>
+												</div>
+												<div class="col-auto">
+													<!-- Time -->
+													<h5 class="text-muted mb-0">
+														<?php echo $row['StudentSemester']; ?>
 													</h5>
 												</div>
 											</div>
@@ -109,25 +128,8 @@
 												<div class="col-auto">
 													<!-- Text -->
 													<small class="text-muted">
-													<?php echo $row['BranchName']; ?>
+														<?php echo $row['BranchName']; ?>
 													</small>
-												</div>
-											</div>
-											<!-- / .row -->
-										</div>
-										<div class="list-group-item">
-											<div class="row align-items-center">
-												<div class="col">
-													<!-- Title -->
-													<h5 class="mb-0">
-														Website
-													</h5>
-												</div>
-												<div class="col-auto">
-													<!-- Link -->
-													<a href="#!" class="small">
-													themes.getbootstrap.com
-													</a>
 												</div>
 											</div>
 											<!-- / .row -->
@@ -144,12 +146,12 @@
 											<div class="row align-items-center">
 												<div class="col">
 													<h5 class="mb-0">
-													Primary Contact Number
+														Primary Contact Number
 													</h5>
 												</div>
 												<div class="col-auto">
 													<small class="text-muted">
-													<?php echo $row['StudentContactNo'];?>
+														<?php echo $row['StudentContactNo']; ?>
 													</small>
 												</div>
 											</div>
@@ -163,7 +165,7 @@
 												</div>
 												<div class="col-auto">
 													<small class="text-muted">
-													<?php echo $row['StudentEmail'];?>
+														<?php echo $row['StudentEmail']; ?>
 													</small>
 												</div>
 											</div>
@@ -177,7 +179,7 @@
 												</div>
 												<div class="col-auto">
 													<time class="small text-muted" datetime="2018-10-28">
-													<?php echo $row['StudentDOB']; ?>
+														<?php echo $row['StudentDOB']; ?>
 													</time>
 												</div>
 											</div>
@@ -200,7 +202,7 @@
 											SPI
 										</h6>
 										<span class="h2 mb-0">
-										9.58
+											9.58
 										</span>
 									</div>
 									<div class="col-auto">
@@ -219,7 +221,7 @@
 											Attendance
 										</h6>
 										<span class="h2 mb-0">
-										55%
+											55%
 										</span>
 									</div>
 									<div class="col-auto">
@@ -238,7 +240,7 @@
 											assignment
 										</h6>
 										<span class="h2 mb-0">
-										10/40
+											10/40
 										</span>
 									</div>
 									<div class="col-auto">
@@ -256,7 +258,7 @@
 											Avg. Time
 										</h6>
 										<span class="h2 mb-0">
-										2:37
+											2:37
 										</span>
 									</div>
 									<div class="col-auto">
@@ -291,7 +293,7 @@
 													<div class="input-group input-group-flush input-group-merge input-group-reverse">
 														<input class="form-control list-search" type="search" placeholder="Search">
 														<span class="input-group-text">
-														<i class="fe fe-search"></i>
+															<i class="fe fe-search"></i>
 														</span>
 													</div>
 												</form>
@@ -325,35 +327,35 @@
 											</thead>
 											<tbody class="list font-size-base">
 												<?php
-													while ($urow = mysqli_fetch_assoc($ures)) { ?>
-												<tr>
-													<td>
-														<?php echo $urow['UpdateId']; ?>
-													</td>
-													<td>
-														<span class="item-title"><?php echo $urow['UpdateUploadDate']; ?></span>
-													</td>
-													<td>
-														<!-- Text -->
-														<span class="item-title"><?php echo $urow['UpdateTitle']; ?></span>
-													</td>
-													<td>
-														<span class="item-title"><?php echo $urow['UpdateUploadedBy']; ?></span>
-													</td>
-													<td>
-														<!-- Phone -->
-														<button type="button" class="btn btn-sm btn-outline-primary" data-toggle="collapse" data-target="#demo1" data-parent="#myTable">View</button>
-													</td>
-													<td>
-														<!-- Badge -->
-														<a download="../uploads/facprofile/CEAJJ.png" href="../uploads/facprofile/CEAJJ.png" type="button" class="btn btn-sm btn-outline-primary">Download</a>
-													</td>
-												<tr id="demo1" class="collapse">
-													<td colspan="6" class="hiddenRow">
-														<div>Demo1</div>
-													</td>
-												</tr>
-												</tr>
+												while ($urow = mysqli_fetch_assoc($ures)) { ?>
+													<tr>
+														<td>
+															<?php echo $urow['UpdateId']; ?>
+														</td>
+														<td>
+															<span class="item-title"><?php echo $urow['UpdateUploadDate']; ?></span>
+														</td>
+														<td>
+															<!-- Text -->
+															<span class="item-title"><?php echo $urow['UpdateTitle']; ?></span>
+														</td>
+														<td>
+															<span class="item-title"><?php echo $urow['UpdateUploadedBy']; ?></span>
+														</td>
+														<td>
+															<!-- Phone -->
+															<button type="button" class="btn btn-sm btn-outline-primary" data-toggle="collapse" data-target="#demo1" data-parent="#myTable">View</button>
+														</td>
+														<td>
+															<!-- Badge -->
+															<a download="../uploads/facprofile/CEAJJ.png" href="../uploads/facprofile/CEAJJ.png" type="button" class="btn btn-sm btn-outline-primary">Download</a>
+														</td>
+													<tr id="demo1" class="collapse">
+														<td colspan="6" class="hiddenRow">
+															<div>Demo1</div>
+														</td>
+													</tr>
+													</tr>
 												<?php } ?>
 												<!--over-->
 											</tbody>
@@ -364,7 +366,7 @@
 										<ul class="list-pagination-prev pagination pagination-tabs card-pagination">
 											<li class="page-item">
 												<a class="page-link pl-0 pr-4 border-right" href="#">
-												<i class="fe fe-arrow-left mr-1"></i> Prev
+													<i class="fe fe-arrow-left mr-1"></i> Prev
 												</a>
 											</li>
 										</ul>
@@ -378,7 +380,7 @@
 										<ul class="list-pagination-next pagination pagination-tabs card-pagination">
 											<li class="page-item">
 												<a class="page-link pl-4 pr-0 border-left" href="#">
-												Next <i class="fe fe-arrow-right ml-1"></i>
+													Next <i class="fe fe-arrow-right ml-1"></i>
 												</a>
 											</li>
 										</ul>
@@ -396,7 +398,7 @@
 												<div class="input-group input-group-lg input-group-merge input-group-reverse">
 													<input class="form-control list-search" type="search" placeholder="Search">
 													<span class="input-group-text">
-													<i class="fe fe-search"></i>
+														<i class="fe fe-search"></i>
 													</span>
 												</div>
 											</form>
@@ -446,5 +448,6 @@
 		<!-- Theme JS -->
 		<script src="../assets/js/theme.bundle.js"></script>
 	</body>
-</html>
+
+	</html>
 <?php } ?>
