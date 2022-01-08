@@ -93,7 +93,7 @@
 				<!-- Navigation -->
 				<ul class="navbar-nav mb-md-4">
 					<li class="nav-item">
-						<a href="#" class="nav-link ">
+						<a href="account_related.php" class="nav-link ">
 							<i class="fe fe-user"></i>Account related Details
 						</a>
 					</li>
