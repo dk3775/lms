@@ -123,7 +123,7 @@ if ($_SESSION['role'] != "Texas") {
 													</td>
 													
 													<td>
-														<a href="edit_student.php?insid=<?php echo $row['InstituteId']; ?>" class="btn btn-sm btn-white">
+														<a href="edit_institute.php?insid=<?php echo $row['InstituteId']; ?>" class="btn btn-sm btn-white">
 															Edit
 														</a>
 														&nbsp;
@@ -131,7 +131,7 @@ if ($_SESSION['role'] != "Texas") {
 															Delete
 														</a>
 														&nbsp;
-														<a href="student_profile.php?insid=<?php echo $row['InstituteId']; ?>" class="btn btn-sm btn-white">
+														<a href="institute_profile.php?insid=<?php echo $row['InstituteId']; ?>" class="btn btn-sm btn-white">
 															View
 														</a>
 													</td>
