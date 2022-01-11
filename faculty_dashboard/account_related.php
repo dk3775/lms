@@ -1,468 +1,204 @@
 <?php
 session_start();
 if ($_SESSION['role'] != "Lagos") {
-    header("Location: ../default.php");
+	header("Location: ../default.php");
 } else {
-    include_once("../config.php");
-    $_SESSION["userrole"] = "Faculty";
-    $qur = "SELECT * FROM `studentmaster` WHERE ``='Abuja'";
+	include_once("../config.php");
+	$_SESSION["userrole"] = "Faculty";
+	$qur = "SELECT * FROM querymaster";
+	$res = mysqli_query($conn, $qur);
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include("../head.php"); ?>
+
+<head>
+	<?php include_once("../head.php"); ?>
+</head>
+
 <body>
-
-    <!-- NAVIGATION -->
-    <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light" id="sidebar">
-        <div class="container-fluid">
-
-            <!-- Toggler -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Brand -->
-            <a class="navbar-brand" href="dashboard.html">
-                <img src="../assets/img/logo.svg" class="navbar-brand-img mx-auto" alt="...">
-            </a>
-
-            <!-- User (xs) -->
-            <div class="navbar-user d-md-none">
-
-                <!-- Dropdown -->
-                <div class="dropdown">
-                </div>
-
-            </div>
-
-            <!-- Collapse -->
-            <div class="collapse navbar-collapse" id="sidebarCollapse">
-
-                <!-- Form -->
-                <form class="mt-4 mb-3 d-md-none">
-                    <div class="input-group input-group-rounded input-group-merge input-group-reverse">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                        <div class="input-group-text">
-                            <span class="fe fe-search"></span>
-                        </div>
-                    </div>
-                </form>
-
-                <!-- Navigation -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="../faculty_dashboard" class="nav-link ">
-                            <i class="fe fe-home"></i> Dashboard
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#sidebarProfile" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProfile">
-                            <i class="fe fe-file"></i>Student
-                        </a>
-                        <div class="collapse " id="sidebarProfile">
-                            <ul class="nav nav-sm flex-column">
-                                <li class="nav-item">
-                                    <a href="student_list.php" class="nav-link ">
-                                        View Student List
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="add_student.php" class="nav-link">
-                                        Add New Student
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="edit_student.php" class="nav-link">
-                                        Edit Student Details
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link ">
-                            <i class="fe fe-percent"></i> Marksheet
-                        </a>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a href="update.php" class="nav-link ">
-                            <i class="fe fe-bell"></i>Updates
-                        </a>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a href="attendance.php" class="nav-link ">
-                            <i class="fe fe-clipboard"></i>Attendance
-                        </a>
-                    </li>
-                    </li>
-
-
-
-                    <li class="nav-item d-md-none">
-                        <a class="nav-link" href="#" data-toggle="modal">
-                            <span class="fe fe-bell"></span> Notifications
-                        </a>
-                    </li>
-                </ul>
-
-                <!-- Divider -->
-                <hr class="navbar-divider my-3">
-
-                <!-- Heading -->
-                <h6 class="navbar-heading">
-                    Help Center
-                </h6>
-
-                <!-- Navigation -->
-                <ul class="navbar-nav mb-md-4">
-                    <li class="nav-item">
-                        <a href="account_related.php" class="nav-link active">
-                            <i class="fe fe-user"></i>Account related Details
-                        </a>
-                    </li>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link ">
-                            <i class="fe fe-book"></i>Study related querys
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            </li>
-
-            </ul>
-        </div>
-    </nav>
-
-   <!-- MAIN CONTENT -->
-   <div class="main-content">
-
-      
-      
-
-<div class="container-fluid">
-  <div class="row justify-content-center">
-    <div class="col-12 col-lg-10 col-xl-8">
-
-      <!-- Header -->
-      <div class="header mt-md-5">
-        <div class="header-body">
-          <div class="row align-items-center">
-            <div class="col">
-
-              <!-- Pretitle -->
-              <h6 class="header-pretitle">
-                New project
-              </h6>
-
-              <!-- Title -->
-              <h1 class="header-title">
-                Create a new project
-              </h1>
-
-            </div>
-          </div> <!-- / .row -->
-        </div>
-      </div>
-
-      <!-- Form -->
-      <form class="mb-4">
-
-        <!-- Project name -->
-        <div class="form-group">
-
-          <!-- Label  -->
-          <label class="form-label">
-            Project name
-          </label>
-
-          <!-- Input -->
-          <input type="text" class="form-control">
-
-        </div>
-
-        <!-- Project description -->
-        <div class="form-group">
-
-          <!-- Label -->
-          <label class="form-label mb-1">
-            Project description
-          </label>
-
-          <!-- Text -->
-          <small class="form-text text-muted">
-            This is how others will learn about the project, so make it good!
-          </small>
-
-          <!-- Textarea -->
-          <div data-quill></div>
-
-        </div>
-
-        <!-- Project tags -->
-        <div class="form-group">
-
-          <!-- Label -->
-          <label class="form-label">
-            Project tags
-          </label>
-
-          <!-- Select -->
-          <select class="form-control" data-choices='{"removeItemButton": true}' multiple>
-            <option>CSS</option>
-            <option>HTML</option>
-            <option>JavaScript</option>
-            <option>Bootstrap</option>
-          </select>
-
-        </div>
-
-        <div class="row">
-          <div class="col-12 col-md-6">
-
-            <!-- Start date -->
-            <div class="form-group">
-
-              <!-- Label -->
-              <label class="form-label">
-                Start date
-              </label>
-
-              <!-- Input -->
-              <input type="text" class="form-control" data-flatpickr>
-
-            </div>
-
-          </div>
-          <div class="col-12 col-md-6">
-
-            <!-- Start date -->
-            <div class="form-group">
-
-              <!-- Label -->
-              <label class="form-label">
-                End date
-              </label>
-
-              <!-- Input -->
-              <input type="text" class="form-control" data-flatpickr>
-
-            </div>
-
-          </div>
-        </div> <!-- / .row -->
-
-        <!-- Divider -->
-        <hr class="mt-4 mb-5">
-
-        <!-- Project cover -->
-        <div class="form-group">
-
-          <!-- Label  -->
-          <label class="form-label mb-1">
-            Project cover
-          </label>
-
-          <!-- Text -->
-          <small class="form-text text-muted">
-            Please use an image no larger than 1200px * 600px.
-          </small>
-
-          <!-- Dropzone -->
-          <div class="dropzone dropzone-single mb-3" data-dropzone='{"url": "https://", "maxFiles": 1, "acceptedFiles": "image/*"}'>
-
-            <!-- Fallback -->
-            <div class="fallback">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="projectCoverUploads">
-                <label class="custom-file-label" for="projectCoverUploads">Choose file</label>
-              </div>
-            </div>
-
-            <!-- Preview -->
-            <div class="dz-preview dz-preview-single">
-              <div class="dz-preview-cover">
-                <img class="dz-preview-img" src="data:image/svg+xml,%3csvg3c/svg%3e" alt="..." data-dz-thumbnail>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Divider -->
-        <hr class="mt-5 mb-5">
-
-        <!-- Starting files -->
-        <div class="form-group">
-
-          <!-- Label -->
-          <label class="mb-1">
-            Starting files
-          </label>
-
-          <!-- Text -->
-          <small class="form-text text-muted">
-            Upload any files you want to start the projust with.
-          </small>
-
-          <!-- Card -->
-          <div class="card">
-            <div class="card-body">
-
-              <!-- Dropzone -->
-              <div class="dropzone dropzone-multiple" data-dropzone='{"url": "https://"}'>
-
-                <!-- Fallback -->
-                <div class="fallback">
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFileUpload" multiple>
-                    <label class="custom-file-label" for="customFileUpload">Choose file</label>
-                  </div>
-                </div>
-
-                <!-- Preview -->
-                <ul class="dz-preview dz-preview-multiple list-group list-group-lg list-group-flush">
-                  <li class="list-group-item">
-                    <div class="row align-items-center">
-                      <div class="col-auto">
-
-                        <!-- Image -->
-                        <div class="avatar">
-                          <img class="avatar-img rounded" src="data:image/svg+xml,%3csvg3c/svg%3e" alt="..." data-dz-thumbnail>
-                        </div>
-
-                      </div>
-                      <div class="col ml-n3">
-
-                        <!-- Heading -->
-                        <h4 class="mb-1" data-dz-name>...</h4>
-
-                        <!-- Text -->
-                        <p class="small text-muted mb-0" data-dz-size></p>
-
-                      </div>
-                      <div class="col-auto">
-
-                        <!-- Dropdown -->
-                        <div class="dropdown">
-
-                          <!-- Toggle -->
-                          <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fe fe-more-vertical"></i>
-                          </a>
-
-                          <!-- Menu -->
-                          <div class="dropdown-menu dropdown-menu-right">
-                            <a href="#" class="dropdown-item" data-dz-remove>
-                              Remove
-                            </a>
-                          </div>
-
-                        </div>
-
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Divider -->
-        <hr class="mt-5 mb-5">
-
-        <div class="row">
-          <div class="col-12 col-md-6">
-
-            <!-- Private project -->
-            <div class="form-group">
-
-              <!-- Label -->
-              <label class="form-label mb-1">
-                Private project
-              </label>
-
-              <!-- Text -->
-              <small class="form-text text-muted">
-                If you are available for hire outside of the current situation, you can encourage others to hire you.
-              </small>
-
-              <!-- Switch -->
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="switchOne" />
-                <label class="form-check-label" for="switchOne"></label>
-              </div>
-
-            </div>
-
-          </div>
-          <div class="col-12 col-md-6">
-
-            <!-- Warning -->
-            <div class="card bg-light border">
-              <div class="card-body">
-
-                <!-- Heading -->
-                <h4 class="mb-2">
-                  <i class="fe fe-alert-triangle"></i> Warning
-                </h4>
-
-                <!-- Text -->
-                <p class="small text-muted mb-0">
-                  Once a project is made private, you cannot revert it to a public project.
-                </p>
-
-              </div>
-            </div>
-
-          </div>
-        </div> <!-- / .row -->
-
-        <!-- Divider -->
-        <hr class="mt-5 mb-5">
-
-        <!-- Buttons -->
-        <a href="#" class="btn btn-block btn-primary">
-          Create project
-        </a>
-        <a href="#" class="btn btn-block btn-link text-muted">
-          Cancel this project
-        </a>
-
-      </form>
-
-    </div>
-  </div> <!-- / .row -->
-</div>
-
-</div> <!-- / .main-content -->
-
-    </div>
-    </div> <!-- / .row -->
-    </div>
-
-    </div><!-- / .main-content -->
-
-    <!-- JAVASCRIPT -->
-    <!-- Map JS -->
-    <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-
-    <!-- Vendor JS -->
-    <script src="../assets/js/vendor.bundle.js"></script>
-
-    <!-- Theme JS -->
-    <script src="../assets/js/theme.bundle.js"></script>
+	<!-- NAVIGATION -->
+	<?php include_once("nav.php"); ?>
+	<!-- MAIN CONTENT -->
+	<div class="main-content">
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<div class="col-12">
+					<!-- Header -->
+					<div class="header">
+						<div class="header-body">
+							<div class="row align-items-center">
+								<div class="col">
+									<!-- Pretitle -->
+									<h6 class="header-pretitle">
+										View
+									</h6>
+									<!-- Title -->
+									<h1 class="header-title text-truncate">
+										Query List
+									</h1>
+								</div>
+							</div>
+							<!-- / .row -->
+							<div class="row align-items-center">
+								<div class="col">
+									<!-- Nav -->
+									<ul class="nav nav-tabs nav-overflow header-tabs">
+										<li class="nav-item">
+											<a href="#!" class="nav-link text-nowrap active">
+												All Query <span class="badge rounded-pill bg-soft-secondary"><?php echo mysqli_num_rows($res); ?></span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Tab content -->
+					<div class="main-content">
+						<div class="">
+							<div class="row justify-content-center">
+								<div class="tab-content">
+									<div class="tab-pane fade show active" id="contactsListPane" role="tabpanel" aria-labelledby="contactsListTab">
+										<!-- Card -->
+										<div class="card" data-list='{"valueNames": ["item-name", "item-title", "item-email", "item-phone", "item-score", "item-company"], "page": 10, "pagination": {"paginationClass": "list-pagination"}}' id="contactsList">
+											<div class="card-header">
+												<div class="row align-items-center">
+													<div class="col">
+														<!-- Form -->
+														<form>
+															<div class="input-group input-group-flush input-group-merge input-group-reverse">
+																<input class="form-control list-search" type="search" placeholder="Search">
+																<span class="input-group-text">
+																	<i class="fe fe-search"></i>
+																</span>
+															</div>
+														</form>
+													</div>
+													<div class="col-auto">
+													</div>
+												</div>
+												<!-- / .row -->
+											</div>
+											<div class="table-responsive">
+												<table class="table table-sm table-hover table-nowrap card-table" id="myTable">
+													<thead>
+														<tr>
+															<th>
+																<a class="list-sort text-muted" data-sort="item-name">#</a>
+															</th>
+															<th>
+																<a class="list-sort text-muted" data-sort="item-title" href="#">id</a>
+															</th>
+															<th>
+																<a class="list-sort text-muted" data-sort="item-email" href="#">From</a>
+															</th>
+															<th>
+																<a class="list-sort text-muted" data-sort="item-phone" href="#">Status</a>
+															</th>
+															<th colspan="2">
+																<a class="list-sort text-muted" data-sort="item-company" href="#">Action</a>
+															</th>
+														</tr>
+													</thead>
+													<tbody class="list font-size-base">
+														<?php
+														while ($urow = mysqli_fetch_assoc($res)) { ?>
+															<tr>
+																<td>
+																	<?php echo $urow['QueryId']; ?>
+																</td>
+																<td>
+																	<span class="item-title"><?php echo $urow['QueryFromId']; ?></span>
+																</td>
+																<td>
+																	<!-- Text -->
+																	<span class="item-title"><?php echo $urow['QueryFromId']; ?></span>
+																</td>
+																<td>
+																	<?php 
+																		$a=$urow['Querystatus'];
+																		if($a == 1)
+																		{?>
+																			<span class="badge bg-soft-primary">New</span>
+																		<?php
+																		}
+																		if($a == 2)
+																		{?>
+																			<span class="badge bg-soft-warning">Open</span>
+																		<?php
+																		}
+																		if($a == 3)
+																		{?>
+																			<span class="badge bg-soft-success">Solved</span>
+																		<?php
+																		}
+																		?>
+																</td>
+																<td>
+																	<!-- Badge -->
+																	<button type="button" class="btn btn-sm btn-outline-primary" data-toggle="collapse" data-target="#demo<?php echo $i++; ?>" data-parent="#myTable">View</button>
+																	<a download="../uploads/facprofile/CEAJJ.png" href="../uploads/facprofile/CEAJJ.png" type="button" class="btn btn-sm btn-outline-primary">Download</a>
+																</td>
+															<tr id="demo<?php echo $j++; ?>" class="collapse">
+																<td colspan="6" class="hiddenRow">
+																	<div><?php echo $urow['QueryQuestion']; ?></div>
+																</td>
+															</tr>
+															</tr>
+														<?php } ?>
+														<!--over-->
+													</tbody>
+												</table>
+											</div>
+											<div class="card-footer d-flex justify-content-between">
+												<!-- Pagination (prev) -->
+												<ul class="list-pagination-prev pagination pagination-tabs card-pagination">
+													<li class="page-item">
+														<a class="page-link pl-0 pr-4 border-right" href="#">
+															<i class="fe fe-arrow-left mr-1"></i> Prev
+														</a>
+													</li>
+												</ul>
+												<!-- Pagination -->
+												<ul class="list-pagination pagination pagination-tabs card-pagination">
+													<li class="active"><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">1</a></li>
+													<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">2</a></li>
+													<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">3</a></li>
+													<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">4</a></li>
+													<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">5</a></li>
+													<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">6</a></li>
+													<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">7</a></li>
+												</ul>
+												<!-- Pagination (next) -->
+												<ul class="list-pagination-next pagination pagination-tabs card-pagination">
+													<li class="page-item">
+														<a class="page-link pl-4 pr-0 border-left" href="#">
+															Next <i class="fe fe-arrow-right ml-1"></i>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<!-- / .main-content -->
+	<!-- JAVASCRIPT -->
+	<!-- Map JS -->
+	<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+	<!-- Vendor JS -->
+	<script src="../assets/js/vendor.bundle.js"></script>
+	<!-- Theme JS -->
+	<script src="../assets/js/theme.bundle.js"></script>
+	<!-- Delete Popup -->
 
 </body>
 

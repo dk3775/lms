@@ -8,7 +8,10 @@ if ($_SESSION['role'] != "Texas") {
 	$_SESSION["userrole"] = "Institute";
 	$squr = "SELECT * FROM studentmaster";
 	$sres = mysqli_query($conn, $squr);
-	$fqur = "SELECT * FROM facultymaster ";
+	$iqur = "SELECT * FROM institutemaster";
+	$ires = mysqli_query($conn, $iqur);
+	$irow = mysqli_fetch_assoc($ires);
+	$fqur = "SELECT * FROM facultymaster";
 	$fres = mysqli_query($conn, $fqur);
 	$bqur = "SELECT * FROM branchmaster";
 	$bres = mysqli_query($conn, $bqur);
@@ -65,14 +68,11 @@ if ($_SESSION['role'] != "Texas") {
 					</div>
 					<div class="col-auto my-auto">
 						<div class="h-100">
-							<h3 class="mb-1 font-weight-bold text-sm">
-								Computer
-							</h3>
 							<h1 class="mb-0 font-weight-bold text-sm">
-								Alec Thompson
+								<?php echo $irow['InstituteName'];?>
 							</h1>
 							<p class="mb-0 font-weight-bold text-sm">
-								Sem - 5
+							<?php echo $irow['InstituteRole'];?>
 							</p>
 						</div>
 					</div>

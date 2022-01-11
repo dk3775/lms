@@ -59,7 +59,7 @@ if ($_SESSION['role'] != "Texas") {
 								<div class="col-auto">
 									<!-- Avatar -->
 									<div class="../avatar avatar-xxl header-avatar-top">
-										<img src="../src/uploads/facprofile/<?php echo $row['StudentProfilePic']; ?>" alt="..." class="avatar-img rounded-circle border border-4 border-body">
+										<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" alt="..." class="avatar-img rounded-circle border border-4 border-body">
 									</div>
 								</div>
 								<div class="col mb-3 ml-n3 ml-md-n2">
