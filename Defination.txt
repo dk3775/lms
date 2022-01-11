@@ -1,0 +1,10 @@
+Ajava:-
+1.Write an applet that draws a circles the dymension of applet should be 500*300 pixcels.The circle should be centered in the appleet and have radius 100px.display your name center in the circle(using draw oval method)
+2.draw ten red circles in vertical column in the center of the applet
+3.build the applet then display horizontal lack the rectangle fild with biue color and background of applet should be red color
+
+dwsl:-
+1.write & develop script using previous HTML Tags,
+  input Tags,input types.
+2.write & develop a small application with semantic page Elements
+  ,Inline Semantic element,media elements.
