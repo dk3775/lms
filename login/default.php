@@ -39,7 +39,7 @@ error_reporting(E_ALL ^ E_WARNING);
 					<!-- Password -->
 					<div class="col-12 logo_outer">
 						<div class="input-group mb-3">
-							<input name="password" type="password" value="" class="input form-control" id="password" placeholder="password" required="true" aria-label="password" aria-describedby="basic-addon1" />
+							<input name="password" type="password" value="" class="input form-control" id="password" placeholder="Password" required="true" aria-label="password" aria-describedby="basic-addon1" />
 							<div class="input-group-append ">
 								<span class="input-group-text" style="border-radius: 1px 5px 5px 1px;" onclick="password_show_hide();">
 									<i class="fe uil-eye-slash" id="show_eye"></i>
