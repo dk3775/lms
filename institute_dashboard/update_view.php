@@ -24,10 +24,12 @@ if ($_SESSION['role'] != "Texas") {
 						<!-- Card -->
 						<div class="card">
 							<div class="card-body">
+
 								<!-- Header -->
 								<div class="mb-3">
 									<div class="row align-items-center">
 										<div class="col ml-n2">
+
 											<!-- Title -->
 											<h1 class="mb-1">
 												Update
@@ -37,12 +39,13 @@ if ($_SESSION['role'] != "Texas") {
 								</div>
 								<?php
 								include_once "../config.php";
-								$updateid = $_GET['updateid'];
+								$ttid = $_GET['ttid'];
 								$_SESSION["userrole"] = "institute";
-								if (isset($updateid)) {
-									$sql = "SELECT * FROM updatemaster WHERE UpdateId = '$updateid'";
+								if (isset($ttid)) {
+									$sql = "SELECT * FROM updatemaster WHERE UpdateId = '$ttid'";
 									$result = mysqli_query($conn, $sql);
 									$row = mysqli_fetch_assoc($result);
+
 								?>
 									<!-- CONTENT -->
 									<div class="container-fluid">
