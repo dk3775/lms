@@ -7,8 +7,8 @@ if ($_SESSION['role'] != "Texas") {
     $_SESSION["userrole"] = "Faculty";
 }
 
-$updateid = $_GET['updateid'];
-$updatesel = "SELECT * FROM updatemaster WHERE UpdateId='$updateid'";
+$updid = $_GET['updid'];
+$updatesel = "SELECT * FROM updatemaster WHERE UpdateId='$updid'";
 $updateresult = mysqli_query($conn, $updatesel);
 $row = mysqli_fetch_assoc($updateresult);
 ?>
@@ -217,7 +217,7 @@ if (isset($_POST['subbed'])) {
     `UpdateDescription`='$upddescription',
     `UpdateFile`='$upd_file',
     `UpdateUploadedBy`='$updloadby',
-    `UpdateType`='' WHERE `UpdateId`='$updateid'";
+    `UpdateType`='' WHERE `UpdateId`='$updid'";
     $run = mysqli_query($conn, $sql);
 
     if ($run == true) {
