@@ -126,11 +126,11 @@ if ($_SESSION['role'] != "Texas") {
                                                 </td>
                                                 <td>
                                                    <!-- Phone -->
-                                                   <a href="update_view.php?ttid=<?php echo $urow['UpdateId']; ?>" type="button" class="btn btn-sm btn-white">View</a>
+                                                   <a href="update_view.php?updateid=<?php echo $urow['UpdateId']; ?>" type="button" class="btn btn-sm btn-white">View</a>
                                                 </td>
                                                 <td>
                                                    <!-- Badge -->
-                                                   <a href="edit_update.php?updid=<?php echo $urow['UpdateId']; ?>" type="button" class="btn btn-sm btn-white">Edit</a> &nbsp;
+                                                   <a href="edit_update.php?updateid=<?php echo $urow['UpdateId']; ?>" type="button" class="btn btn-sm btn-white">Edit</a> &nbsp;
 
                                                    <!-- Badge -->
                                                    <a download="../src/uploads/updates/<?php echo $urow['UpdateFile']; ?>" href="../src/uploads/updates/<?php echo $urow['UpdateFile']; ?>" type="button" class="btn btn-sm btn-white">Download</a>
