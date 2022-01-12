@@ -263,24 +263,25 @@
 						<div class="tab-content">
 							<div class="tab-pane fade show active" id="contactsListPane" role="tabpanel" aria-labelledby="contactsListTab">
 								<!-- Card -->
-								<div class="card" data-list="{&quot;valueNames&quot;: [&quot;item-name&quot;, &quot;item-title&quot;, &quot;item-email&quot;, &quot;item-phone&quot;, &quot;item-score&quot;, &quot;item-company&quot;], &quot;page&quot;: 10, &quot;pagination&quot;: {&quot;paginationClass&quot;: &quot;list-pagination&quot;}}" id="contactsList">
+								<div class="card" data-list='{"valueNames": ["item-name", "item-title", "item-email", "item-phone", "item-score", "item-company"], "page": 10, "pagination": {"paginationClass": "list-pagination"}}' id="contactsList">
 									<div class="card-header">
 										<div class="row align-items-center">
 											<div class="col">
 												<!-- Form -->
+												<form>
+													<div class="input-group input-group-flush input-group-merge input-group-reverse">
+														<input class="form-control list-search" type="search" placeholder="Search">
+														<span class="input-group-text">
+															<i class="fe fe-search"></i>
+														</span>
+													</div>
+												</form>
 											</div>
-											<form>
-												<div class="input-group input-group-flush input-group-merge input-group-reverse">
-													<input class="form-control list-search" type="search" placeholder="Search">
-													<span class="input-group-text">
-													<i class="fe fe-search"></i>
-													</span>
-												</div>
-											</form>
+											<div class="col-auto">
+											</div>
 										</div>
+										<!-- / .row -->
 									</div>
-									<!-- / .row -->
-								</div>
 								<div class="table-responsive">
 									<table class="table table-sm table-hover table-nowrap card-table" id="myTable">
 										<thead>
@@ -341,7 +342,7 @@
 									<ul class="list-pagination-prev pagination pagination-tabs card-pagination">
 										<li class="page-item">
 											<a class="page-link pl-0 pr-4 border-right" href="#">
-											<i class="fe fe-arrow-left mr-1"></i> Prev
+												<i class="fe fe-arrow-left mr-1"></i> Prev
 											</a>
 										</li>
 									</ul>
@@ -350,61 +351,18 @@
 										<li class="active"><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">1</a></li>
 										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">2</a></li>
 										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">3</a></li>
+										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">4</a></li>
+										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">5</a></li>
+										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">6</a></li>
 									</ul>
 									<!-- Pagination (next) -->
 									<ul class="list-pagination-next pagination pagination-tabs card-pagination">
 										<li class="page-item">
 											<a class="page-link pl-4 pr-0 border-left" href="#">
-											Next <i class="fe fe-arrow-right ml-1"></i>
+												Next <i class="fe fe-arrow-right ml-1"></i>
 											</a>
 										</li>
 									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="contactsCardsPane" role="tabpanel" aria-labelledby="contactsCardsTab">
-							<!-- Cards -->
-							<div data-list="{&quot;valueNames&quot;: [&quot;item-name&quot;, &quot;item-title&quot;, &quot;item-email&quot;, &quot;item-phone&quot;, &quot;item-score&quot;, &quot;item-company&quot;], &quot;page&quot;: 9, &quot;pagination&quot;: {&quot;paginationClass&quot;: &quot;list-pagination&quot;}}" id="contactsCards">
-								<!-- Header -->
-								<div class="row align-items-center mb-4">
-									<div class="col">
-										<!-- Form -->
-										<form>
-											<div class="input-group input-group-lg input-group-merge input-group-reverse">
-												<input class="form-control list-search" type="search" placeholder="Search">
-												<span class="input-group-text">
-												<i class="fe fe-search"></i>
-												</span>
-											</div>
-										</form>
-									</div>
-									<div class="col-auto mr-n3">
-										<!-- Select -->
-										<form>
-											<div class="choices" data-type="select-one" tabindex="0" role="listbox" aria-haspopup="true" aria-expanded="false">
-												<div class="form-select form-select-sm form-control-flush">
-													<select class="form-select form-select-sm form-control-flush form-control" data-choices="{&quot;searchEnabled&quot;: false}" hidden="" tabindex="-1" data-choice="active">
-														<option value="9 per page">9 per page</option>
-													</select>
-													<div class="choices__list choices__list--single">
-														<div class="choices__item choices__item--selectable" data-item="" data-id="1" data-value="9 per page" data-custom-properties="null" aria-selected="true">9 per
-															page
-														</div>
-													</div>
-												</div>
-												<div class="choices__list dropdown-menu" aria-expanded="false">
-													<div class="choices__list" role="listbox">
-														<div class="choices__item dropdown-item choices__item--selectable is-highlighted" data-select-text="Press to select" data-choice="" data-choice-selectable="" data-id="1" data-value="9 per page" role="option" aria-selected="true">
-															9 per page
-														</div>
-														<div class="choices__item dropdown-item choices__item--selectable" data-select-text="Press to select" data-choice="" data-choice-selectable="" data-id="2" data-value="All" role="option">
-															All
-														</div>
-													</div>
-												</div>
-											</div>
-										</form>
-									</div>
 								</div>
 							</div>
 						</div>
