@@ -39,7 +39,7 @@ if ($_SESSION['role'] != "Texas") {
 								</div>
 								<?php
 								include_once "../config.php";
-								$ttid = $_GET['ttid'];
+								$ttid = $_GET['updateid'];
 								$_SESSION["userrole"] = "institute";
 								if (isset($ttid)) {
 									$sql = "SELECT * FROM updatemaster WHERE UpdateId = '$ttid'";
