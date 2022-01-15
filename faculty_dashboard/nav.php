@@ -48,6 +48,23 @@
 						<i class="fe uil-book"></i> Subject
 						</a>
 					</li>
+					
+
+					<li class="nav-item">
+						<a href="assignment_list.php" class="nav-link ">
+						<i class="fe uil-file"></i> Assignment
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="update_list.php" class="nav-link ">
+							<i class="fe fe-bell"></i>Updates
+						</a>
+					</li>
+					<li class="nav-item d-md-none">
+						<a class="nav-link" href="#" data-toggle="modal">
+							<span class="fe fe-bell"></span> Notifications
+						</a>
+					</li>
 					<li class="nav-item">
 						<a href="#timetable" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="timetable">
 						<i class="fe uil-calendar-alt"></i>Time Table
@@ -66,22 +83,6 @@
 								</li>
 							</ul>
 						</div>
-					</li>
-
-					<li class="nav-item">
-						<a href="assignment_list.php" class="nav-link ">
-						<i class="fe uil-file"></i> Assignment
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="update_list.php" class="nav-link ">
-							<i class="fe fe-bell"></i>Updates
-						</a>
-					</li>
-					<li class="nav-item d-md-none">
-						<a class="nav-link" href="#" data-toggle="modal">
-							<span class="fe fe-bell"></span> Notifications
-						</a>
 					</li>
 				</ul>
 				<!-- Divider -->

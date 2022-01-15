@@ -224,6 +224,8 @@ if ($_SESSION['role'] != "Lagos") {
 				}
 		?>
 		</div>
+		
+	<?php include("context.php");?>
 		<!-- / .main-content -->
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->

@@ -90,6 +90,8 @@
 				</div>
 			</div>
 		</div>
+		
+	<?php include("context.php");?>
 		<!-- / .main-content -->
 		<?php } ?>
 		<!-- JAVASCRIPT -->

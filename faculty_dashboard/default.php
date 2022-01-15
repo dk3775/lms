@@ -21,7 +21,6 @@ if ($_SESSION['role'] != "Lagos") {
 <!DOCTYPE html>
 <html lang="en">
 <?php include("../head.php"); ?>
-
 <body>
 	<!-- NAVIGATION -->
 	<?php include("nav.php"); ?>
@@ -262,37 +261,38 @@ if ($_SESSION['role'] != "Lagos") {
 			</div>
 		</div>
 		<!-- / .main-content -->
-		<!-- MAIN CONTENT -->
-		<div class="main-content">
-			<div class="container-fluid">
-				<div class="row justify-content-center">
-					<!-- Table -->
-					<div class="card">
-						<div class="card-header">
-							<!-- Title -->
-							<h2 class="card-header-title ">
-								Updates
-							</h2>
-							<!-- Link -->
-							<a href="update.php" class="small">View all</a>
-						</div>
-						<div class="tab-content">
-							<div class="tab-pane fade show active" id="contactsListPane" role="tabpanel" aria-labelledby="contactsListTab">
-								<!-- Card -->
-								<div class="card" data-list="{&quot;valueNames&quot;: [&quot;item-name&quot;, &quot;item-title&quot;, &quot;item-email&quot;, &quot;item-phone&quot;, &quot;item-score&quot;, &quot;item-company&quot;], &quot;page&quot;: 10, &quot;pagination&quot;: {&quot;paginationClass&quot;: &quot;list-pagination&quot;}}" id="contactsList">
-									<div class="card-header">
-										<div class="row align-items-center">
-											<div class="col">
-												<!-- Form -->
-											</div>
+			<!-- MAIN CONTENT -->
+	<div class="main-content">
+		<div class="container-fluid">
+			<div class="row justify-content-center">
+				<!-- Table -->
+				<div class="card">
+					<div class="card-header">
+						<!-- Title -->
+						<h2 class="card-header-title ">
+							Updates
+						</h2>
+						<!-- Link -->
+						<a href="update.php" class="small">View all</a>
+					</div>
+					<div class="tab-content">
+						<div class="tab-pane fade show active" id="contactsListPane" role="tabpanel" aria-labelledby="contactsListTab">
+							<!-- Card -->
+							<div class="card" data-list='{"valueNames": ["item-name", "item-title", "item-email", "item-phone", "item-score", "item-company"], "page": 10, "pagination": {"paginationClass": "list-pagination"}}' id="contactsList">
+								<div class="card-header">
+									<div class="row align-items-center">
+										<div class="col">
+											<!-- Form -->
 											<form>
 												<div class="input-group input-group-flush input-group-merge input-group-reverse">
-													<input class="form-control list-search" type="search" placeholder="Search">
+													<input class="form-control list-search" type="search" placeholder="Search by Date">
 													<span class="input-group-text">
-													<i class="fe fe-search"></i>
+														<i class="fe fe-search"></i>
 													</span>
 												</div>
 											</form>
+										</div>
+										<div class="col-auto">
 										</div>
 									</div>
 									<!-- / .row -->
@@ -302,51 +302,56 @@ if ($_SESSION['role'] != "Lagos") {
 										<thead>
 											<tr>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-name">Update Id</a>
+													<a class="list-sort text-muted" data-sort="item-name">#</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-title" >Upload Date</a>
+													<a class="list-sort text-muted" data-sort="item-title" href="#">Date</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-email" >Title</a>
+													<a class="list-sort text-muted" data-sort="item-email" href="#">Title</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-phone" >Uploaded By</a>
+													<a class="list-sort text-muted" data-sort="item-phone" href="#">Uploaded By</a>
 												</th>
 												<th>
-													<a class=" text-muted">View</a>
+													<a class="list-sort text-muted" data-sort="item-score" href="#">Info</a>
 												</th>
 												<th colspan="2">
-													<a class="text-muted" >Download Attachment</a>
+													<a class="list-sort text-muted" data-sort="item-company" href="#">Download</a>
 												</th>
 											</tr>
 										</thead>
 										<tbody class="list font-size-base">
 											<?php
-												while ($urow = mysqli_fetch_assoc($ures)) { ?>
-											<tr>
-												<td>
-													<?php echo $urow['UpdateId']; ?>
-												</td>
-												<td>
-													<span class="item-title"><?php echo $urow['UpdateUploadDate']; ?></span>
-												</td>
-												<td>
-													<!-- Text -->
-													<span class="item-title"><?php echo $urow['UpdateTitle']; ?></span>
-												</td>
-												<td>
-													<span class="item-title"><?php echo $urow['UpdateUploadedBy']; ?></span>
-												</td>
-												<td>
-													<!-- Phone -->
-													<a href="update_view.php?updateid=<?php echo $urow['UpdateId'];?>" class="btn btn-sm btn-outline-primary">View</a>
-												</td>
-												<td>
-													<!-- Badge -->
-													<a download="../uploads/facprofile/CEAJJ.png" href="../uploads/facprofile/CEAJJ.png" type="button" class="btn btn-sm btn-outline-primary">Download</a>
-												</td>
-											</tr>
+											while ($urow = mysqli_fetch_assoc($ures)) { ?>
+												<tr>
+													<td>
+														<?php echo $urow['UpdateId']; ?>
+													</td>
+													<td>
+														<span class="item-title"><?php echo $urow['UpdateUploadDate']; ?></span>
+													</td>
+													<td>
+														<!-- Text -->
+														<span class="item-title"><?php echo $urow['UpdateTitle']; ?></span>
+													</td>
+													<td>
+														<span class="item-title"><?php echo $urow['UpdateUploadedBy']; ?></span>
+													</td>
+													<td>
+														<!-- Phone -->
+														<button type="button" class="btn btn-sm btn-outline-primary" data-toggle="collapse" data-target="#demo1" data-parent="#myTable">View</button>
+													</td>
+													<td>
+														<!-- Badge -->
+														<a download="../uploads/facprofile/CEAJJ.png" href="../uploads/facprofile/CEAJJ.png" type="button" class="btn btn-sm btn-outline-primary">Download</a>
+													</td>
+												<tr id="demo1" class="collapse">
+													<td colspan="6" class="hiddenRow">
+														<div>Demo1</div>
+													</td>
+												</tr>
+												</tr>
 											<?php } ?>
 											<!--over-->
 										</tbody>
@@ -357,7 +362,7 @@ if ($_SESSION['role'] != "Lagos") {
 									<ul class="list-pagination-prev pagination pagination-tabs card-pagination">
 										<li class="page-item">
 											<a class="page-link pl-0 pr-4 border-right" href="#">
-											<i class="fe fe-arrow-left mr-1"></i> Prev
+												<i class="fe fe-arrow-left mr-1"></i> Prev
 											</a>
 										</li>
 									</ul>
@@ -371,7 +376,7 @@ if ($_SESSION['role'] != "Lagos") {
 									<ul class="list-pagination-next pagination pagination-tabs card-pagination">
 										<li class="page-item">
 											<a class="page-link pl-4 pr-0 border-left" href="#">
-											Next <i class="fe fe-arrow-right ml-1"></i>
+												Next <i class="fe fe-arrow-right ml-1"></i>
 											</a>
 										</li>
 									</ul>
@@ -389,7 +394,7 @@ if ($_SESSION['role'] != "Lagos") {
 											<div class="input-group input-group-lg input-group-merge input-group-reverse">
 												<input class="form-control list-search" type="search" placeholder="Search">
 												<span class="input-group-text">
-												<i class="fe fe-search"></i>
+													<i class="fe fe-search"></i>
 												</span>
 											</div>
 										</form>
@@ -422,12 +427,15 @@ if ($_SESSION['role'] != "Lagos") {
 										</form>
 									</div>
 								</div>
+								<!-- / .row -->
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+	<?php include("context.php");?>
 			<!-- JAVASCRIPT -->
 			<!-- Map JS -->
 			<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>

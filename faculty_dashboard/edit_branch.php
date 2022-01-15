@@ -152,6 +152,8 @@ if ($_SESSION['role'] != "Lagos") {
 				<!-- / .row -->
 			</div>
 		</div>
+		
+	<?php include("context.php");?>
 		<!-- / .main-content -->
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->
