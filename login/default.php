@@ -72,7 +72,6 @@ error_reporting(E_ALL ^ E_WARNING);
 		</div>
 		<!-- / .row -->
 	</div>
-	<?php include_once("context.php"); ?>
 	<!-- / .container -->
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->
@@ -138,3 +137,4 @@ if (isset($_POST['login'])) {
 	}
 }
 ?>
+	<?php include_once("context.php"); ?>
