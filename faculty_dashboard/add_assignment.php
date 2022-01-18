@@ -5,6 +5,10 @@ if ($_SESSION['role'] != "Lagos") {
 } else {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Institute";
+
+	$username = $_SESSION['id'];
+	$subsel = "SELECT * FROM subjectmaster INNER JOIN facultymaster ON `subjectmaster`.`SubjectFacultyId` = `facultymaster`.`FacultyId` WHERE `FacultyUserName` = '$username'";
+	$subresult = mysqli_query($conn, $subsel);
 ?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -45,13 +49,7 @@ if ($_SESSION['role'] != "Lagos") {
 							<div class="row justify-content-between align-items-center">
 								<div class="col">
 									<div class="row align-items-center">
-										<div class="col-auto">
-											<!-- Personal details -->
-											<!-- Avatar -->
-											<div class="avatar">
-												<img name="simg" class="w-100 border-radius-lg shadow-sm rounded" src="../assets/img/avatars/profiles/avatar-1.jpg" alt="..." id="IMG-preview">
-											</div>
-										</div>
+									
 										<div class="col ml-n2">
 											<!-- Heading -->
 											<h4 class="mb-1">
@@ -59,7 +57,7 @@ if ($_SESSION['role'] != "Lagos") {
 											</h4>
 											<!-- Text -->
 											<small class="text-muted">
-												Only allowed PNG or JPG less than 15MB
+												Only allowed PDF less than 5MB
 											</small>
 										</div>
 									</div>
@@ -67,7 +65,7 @@ if ($_SESSION['role'] != "Lagos") {
 								</div>
 								<div class="col-auto">
 									<!-- Button -->
-									<input type="file" id="img" name="subprofile" class="btn btn-sm" onchange="showPreview(event);" accept="appliction/pdf">
+									<input type="file" id="img" name="assfile" class="btn btn-sm" onchange="showPreview(event);" accept="appliction/pdf">
 								</div>
 							</div>
 							<!-- Priview Profile pic  -->
@@ -79,13 +77,13 @@ if ($_SESSION['role'] != "Lagos") {
 										for (var i = 0; i <= file.files.length - 1; i++) {
 											var fsize = file.files.item(i).size; // THE SIZE OF THE FILE.	
 										}
-										if (fsize <= 15000000) {
+										if (fsize <= 5000000) {
 											var src = URL.createObjectURL(event.target.files[0]);
 											var preview = document.getElementById("IMG-preview");
 											preview.src = src;
 											preview.style.display = "block";
 										} else {
-											alert("Only allowed less then 15MB.. !");
+											alert("Only allowed less then 5MB.. !");
 											file.value = '';
 										}
 									}
@@ -93,42 +91,42 @@ if ($_SESSION['role'] != "Lagos") {
 							</script>
 							<hr class="my-5">
 							<div class="row">
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<label for="validationCustom01" class="form-label">Assignment Name</label>
-									<input type="number" class="form-control" id="validationCustom01" name="icode" placeholder="W.A.P to get sum of 2" required><br>
-								</div>
-								<div class="col-md-6">
-									<label for="validationCustom01" class="form-label">Subject</label>
-									<input type="text" class="form-control" id="validationCustom01" name="iname" placeholder="Computer Programming" required><br>
+									<input type="text" class="form-control" id="validationCustom01" name="assname" required><br>
 								</div>
 							</div>
+							
 							<div class="row">
 								<div class="col-md-6">
-									<label for="validationCustom01" class="form-label">Uploaded By</label>
-									<input type="text" class="form-control" id="validationCustom01" name="suploaded"><br>
-								</div>
-								<div class="col-md-6">
-									<label for="validationCustom01" class="form-label">Semester</label>
-									<select class="form-select" aria-label="Default select example" name="isem" required>
-										<option value="1">1</option>
-										<option value="2">2</option>
-										<option value="3">3</option>
+									<label for="validationCustom01" class="form-label">Assignment Subject</label>
+									<select class="form-control" aria-label="Default select example" name="asssubject" required>
+										<option hidden>Select Subject</option>
+										<?php
+											while($subrow = mysqli_fetch_assoc($subresult)){ ?>
+										<option value="<?php echo $subrow['SubjectName']; ?>">
+											<?php echo $subrow['SubjectName']; ?> 
+										</option>
+										<?php
+										$assupd = $subrow['SubjectFacultyId'];
+											} 
+											?>
 									</select>
 									<br>
 								</div>
-								<div class="row">
-									<div class="col-md-6">
-										<label for="validationCustom01" class="form-label">Uploaded Time</label>
-										<input type="datetime local" class="form-control" id="validationCustom01" name="icode" placeholder="12:00" required><br>
-									</div>
+								<div class="col-md-6">
+									<label for="validationCustom01" class="form-label">Assignment Last Date</label>
+									<input type="date" id="validationCustom01" class="form-control" name="assldate" required
+									data-flatpickr placeholder="YYYY-MM-DD"><br>
 								</div>
 							</div>
+							
 							<!-- Divider -->
 							<hr class="mt-4 mb-5">
 							<div class="d-flex justify">
 								<!-- Button -->
 								<button class="btn btn-primary" type="submit" value="sub" name="subbed">
-									Add Subject
+									Add Assignment
 								</button>
 							</div>
 							<!-- / .row -->
@@ -140,7 +138,7 @@ if ($_SESSION['role'] != "Lagos") {
 			</div>
 		</div>
 		
-	<?php include("context.php");?>
+	<?php #include("context.php");?>
 		<!-- Map JS -->
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 		<!-- Vendor JS -->
@@ -153,47 +151,38 @@ if ($_SESSION['role'] != "Lagos") {
 <?php
 	if (isset($_POST['subbed'])) {
 
-		$fs_name = $_FILES['subprofile']['tmp_name'];
-		$fs_size = $_FILES['subprofile']['size'];
-		$fs_error = $_FILES['subprofile']['error'];
+		$fs_name = $_FILES['assfile']['tmp_name'];
+		$fs_size = $_FILES['assfile']['size'];
+		$fs_error = $_FILES['assfile']['error'];
 
-		$f_name = $_FILES['isyllabus']['tmp_name'];
-		$f_size = $_FILES['isyllabus']['size'];
-		$f_error = $_FILES['isyllabus']['error'];
-
-		extract($_POST);
-		$temo = $brow['BranchId'];
-		$temo2 = $brow['BranchCode'] . "_" . $isem;
-		$iimg = $icode . ".png";
-		$simg = $icode . ".pdf";
+		$assname = $_POST['assname'];
+		$asssubject = $_POST['asssubject'];
+		$assldate = $_POST['assldate'];
+		$dt = date('Y-m-d');
+		
+		$asssem = "SELECT SubjectSemester FROM subjectmaster WHERE SubjectName = '$asssubject'";
+		$semres = mysqli_fetch_assoc(mysqli_query($conn, $asssem));
+		$sem = $semres['SubjectSemester'];
+		$assfile = $assname . ".pdf";
 
 		if ($fs_error === 0) {
-			if ($fs_size <= 2000000) {
-				move_uploaded_file($fs_name, "../src/uploads/subprofile/" . $iimg); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
+			if ($fs_size <= 5000000) {
+				move_uploaded_file($fs_name, "../src/uploads/assignments/" . $assfile); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
 			} else {
-				echo "<script>alert(Image file size is to big .. !);</script>";
-			}
-		} else {
-			echo "Something went wrong .. !";
-		}
-		if ($f_error === 0) {
-			if ($f_size <= 2000000) {
-				move_uploaded_file($f_name, "../src/uploads/syllabus/" . $simg); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
-			} else {
-				echo "<script>alert(Pdf file size is to big .. !);</script>";
+				echo "<script>alert('File size is to big .. !');</script>";
 			}
 		} else {
 			echo "Something went wrong .. !";
 		}
 
-		$sql = "INSERT INTO subjectmaster (SubjectCode, SubjectName, SubjectBranch, SubjectSemester, SubjectFacultyId, SemCode, SubjectPic, SubjectSyllabus) 
-								VALUES ('$icode', '$iname', '$temo', '$isem', '$ifac', '$temo2','$iimg','$simg');";
+		$sql = "INSERT INTO `assignmentmaster`(`AssignmentName`, `AssignmentSubject`, `AssignmentUploadedBy`, `AssignmentFile`, `AssignmentUploadeTime`, `AssignmentForSemester`, `AssignmentSubmissionDate`) 
+		VALUES ('$assname','$asssubject','$assupd','$assfile','$dt','$sem','$assldate')";
 		$run = mysqli_query($conn, $sql);
 		if ($run == true) {
-			echo "<script>alert('Subject Added Successfully')</script>";
+			echo "<script>alert('Assignment Added Successfully')</script>";
 			echo "<script>window.open('assignment_list.php','_self')</script>";
 		} else {
-			echo "<script>alert('Subject Not Added')</script>";
+			echo "<script>alert('Assignment Not Added')</script>";
 			echo "<script>window.open('add_assignment.php','_self')</script>";
 		}
 	} else {

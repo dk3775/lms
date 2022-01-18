@@ -132,11 +132,11 @@ if ($_SESSION['role'] != "Lagos") {
 														<span class=""><?php echo $row['AssignmentForSemester']; ?></span>
 													</td>
 													<td>
-														<a href="edit_student.php?studentenr=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-white">
+														<a href="edit_assignment.php?assid=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-white">
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="sdelete.php?studentenr=<?php echo $row['AssignmentId']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
+														<a href="assdelete.php?assid=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-white" onclick="if (! confirm('Are you sure to delete Assignment ?')) return false;">
 															Delete
 														</a>
 														&nbsp;
