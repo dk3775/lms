@@ -115,7 +115,7 @@ if (isset($_POST['login'])) {
 			$_SESSION['role'] = "Lagos";
 			header("location:../faculty_dashboard/");
 		} else {
-		echo "<script>alert('Invalid Login ID or Password');</script>";
+			echo "<script>alert('Invalid Login ID or Password');</script>";
 		}
 	}
 	else if ($na2 == "ST") {
@@ -126,6 +126,7 @@ if (isset($_POST['login'])) {
 			session_start();
 			$_SESSION['cred'] = $u."_".$pass;
 			//echo $_SESSION['cred'];
+			$_SESSION['id'] = $u;
 			$_SESSION['role'] = "Abuja";
 			header("location:../student_dashboard/");
 		} else {
