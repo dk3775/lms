@@ -91,9 +91,15 @@ if ($_SESSION['role'] != "Lagos") {
 							</script>
 							<hr class="my-5">
 							<div class="row">
+								<div class="col-md-6">
+									<label for="validationCustom01" class="form-label">Assignment Title</label>
+									<input type="text" class="form-control" id="validationCustom01" name="asstitle" required><br>
+								</div>
+							</div>
+							<div class="row">
 								<div class="col-md-12">
-									<label for="validationCustom01" class="form-label">Assignment Name</label>
-									<input type="text" class="form-control" id="validationCustom01" name="assname" required><br>
+									<label for="validationCustom01" class="form-label">Assignment Description</label>
+									<input type="text" class="form-control" id="validationCustom01" name="assdesc" required><br>
 								</div>
 							</div>
 							
@@ -155,15 +161,14 @@ if ($_SESSION['role'] != "Lagos") {
 		$fs_size = $_FILES['assfile']['size'];
 		$fs_error = $_FILES['assfile']['error'];
 
-		$assname = $_POST['assname'];
+		$assname = $_POST['asstitle'];
+		$assdesc = $_POST['assdesc'];
 		$asssubject = $_POST['asssubject'];
 		$assldate = $_POST['assldate'];
 		$dt = date('Y-m-d');
 		
-		$asssem = "SELECT SubjectSemester FROM subjectmaster WHERE SubjectName = '$asssubject'";
-		$semres = mysqli_fetch_assoc(mysqli_query($conn, $asssem));
 		$sem = $semres['SubjectSemester'];
-		$assfile = $assname . ".pdf";
+		$assfile = $asstitle . ".pdf";
 
 		if ($fs_error === 0) {
 			if ($fs_size <= 5000000) {

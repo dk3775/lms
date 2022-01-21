@@ -5,7 +5,7 @@ if ($_SESSION['role'] != "Lagos") {
 } else {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Faculty";
-	$qur = "SELECT * FROM assignmentmaster";
+	$qur = "SELECT *,AssignmentUploadedBy FROM assignmentmaster INNER JOIN facultymaster ON assignmentmaster.AssignmentUploadedBy = facultymaster.FacultyId";
 	$res = mysqli_query($conn, $qur);
 }
 ?>
@@ -93,10 +93,10 @@ if ($_SESSION['role'] != "Lagos") {
 													<a class="list-sort text-muted" data-sort="item-name">Subject</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-name">Uploaded By</a>
+													<a class="list-sort text-muted" data-sort="item-phone">Upload Date</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-phone">Upload Time</a>
+													<a class="list-sort text-muted" data-sort="item-phone">Last Date</a>
 												</th>
 												<th>
 													<a class="list-sort text-muted" data-sort="item-score">Sem</a>
@@ -120,8 +120,8 @@ if ($_SESSION['role'] != "Lagos") {
 														<span class="item-email text-reset"><?php echo $row['AssignmentSubject']; ?></span>
 													</td>
 													<td>
-														<!-- Phone -->
-														<span class="item-phone text-reset"><?php echo $row['AssignmentUploadedBy']; ?></span>
+														<!-- Badge -->
+														<span class=""><?php echo $row['AssignmentUploadeTime']; ?></span>
 													</td>
 													<td>
 														<!-- Badge -->
