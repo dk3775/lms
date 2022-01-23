@@ -1,22 +1,20 @@
 <?php
-session_start();
-if ($_SESSION['role'] != "Lagos") {
-	header("Location: ../default.php");
-} else {
-	include_once("../config.php");
-	$_SESSION["userrole"] = "Institute";
-
-	$username = $_SESSION['id'];
-	$subsel = "SELECT * FROM subjectmaster INNER JOIN facultymaster ON `subjectmaster`.`SubjectFacultyId` = `facultymaster`.`FacultyId` WHERE `FacultyUserName` = '$username'";
-	$subresult = mysqli_query($conn, $subsel);
-?>
-	<!DOCTYPE html>
-	<html lang="en">
-
+	session_start();
+	if ($_SESSION['role'] != "Lagos") {
+		header("Location: ../default.php");
+	} else {
+		include_once("../config.php");
+		$_SESSION["userrole"] = "Faculty";
+	
+		$username = $_SESSION['id'];
+		$subsel = "SELECT * FROM subjectmaster INNER JOIN facultymaster ON `subjectmaster`.`SubjectFacultyId` = `facultymaster`.`FacultyId` WHERE `FacultyUserName` = '$username'";
+		$subresult = mysqli_query($conn, $subsel);
+	?>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<?php include_once("../head.php"); ?>
 	</head>
-
 	<body>
 		<!-- NAVIGATION -->
 		<?php include_once("nav.php"); ?>
@@ -49,7 +47,6 @@ if ($_SESSION['role'] != "Lagos") {
 							<div class="row justify-content-between align-items-center">
 								<div class="col">
 									<div class="row align-items-center">
-									
 										<div class="col ml-n2">
 											<!-- Heading -->
 											<h4 class="mb-1">
@@ -57,7 +54,7 @@ if ($_SESSION['role'] != "Lagos") {
 											</h4>
 											<!-- Text -->
 											<small class="text-muted">
-												Only allowed PDF less than 5MB
+											Only allowed PDF less than 5MB
 											</small>
 										</div>
 									</div>
@@ -102,7 +99,6 @@ if ($_SESSION['role'] != "Lagos") {
 									<input type="text" class="form-control" id="validationCustom01" name="assdesc" required><br>
 								</div>
 							</div>
-							
 							<div class="row">
 								<div class="col-md-6">
 									<label for="validationCustom01" class="form-label">Assignment Subject</label>
@@ -114,25 +110,24 @@ if ($_SESSION['role'] != "Lagos") {
 											<?php echo $subrow['SubjectName']; ?> 
 										</option>
 										<?php
-										$assupd = $subrow['SubjectFacultyId'];
-											} 
-											?>
+											$assupd = $subrow['SubjectFacultyId'];
+												} 
+												?>
 									</select>
 									<br>
 								</div>
 								<div class="col-md-6">
-									<label for="validationCustom01" class="form-label">Assignment Last Date</label>
+									<label for="validationCustom01" class="form-label">Assignment Submission Date</label>
 									<input type="date" id="validationCustom01" class="form-control" name="assldate" required
-									data-flatpickr placeholder="YYYY-MM-DD"><br>
+										data-flatpickr placeholder="YYYY-MM-DD"><br>
 								</div>
 							</div>
-							
 							<!-- Divider -->
 							<hr class="mt-4 mb-5">
 							<div class="d-flex justify">
 								<!-- Button -->
 								<button class="btn btn-primary" type="submit" value="sub" name="subbed">
-									Add Assignment
+								Add Assignment
 								</button>
 							</div>
 							<!-- / .row -->
@@ -143,8 +138,7 @@ if ($_SESSION['role'] != "Lagos") {
 				<!-- / .row -->
 			</div>
 		</div>
-		
-	<?php #include("context.php");?>
+		<?php #include("context.php");?>
 		<!-- Map JS -->
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 		<!-- Vendor JS -->
@@ -152,24 +146,25 @@ if ($_SESSION['role'] != "Lagos") {
 		<!-- Theme JS -->
 		<script src="../assets/js/theme.bundle.js"></script>
 	</body>
-
-	</html>
+</html>
 <?php
 	if (isset($_POST['subbed'])) {
-
+	
 		$fs_name = $_FILES['assfile']['tmp_name'];
 		$fs_size = $_FILES['assfile']['size'];
 		$fs_error = $_FILES['assfile']['error'];
-
+	
 		$assname = $_POST['asstitle'];
 		$assdesc = $_POST['assdesc'];
 		$asssubject = $_POST['asssubject'];
 		$assldate = $_POST['assldate'];
 		$dt = date('Y-m-d');
-		
-		$sem = $semres['SubjectSemester'];
-		$assfile = $asstitle . ".pdf";
-
+		$xsql="SELECT SubjectSemester from subjectmaster where SubjectName='$asssubject'";
+		$xresult=mysqli_query($conn,$xsql);
+		$xrow=mysqli_fetch_assoc($xresult);
+		$sem = $xrow['SubjectSemester'];
+		$assfile = $assname.$dt . ".pdf";
+	
 		if ($fs_error === 0) {
 			if ($fs_size <= 5000000) {
 				move_uploaded_file($fs_name, "../src/uploads/assignments/" . $assfile); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
@@ -179,19 +174,19 @@ if ($_SESSION['role'] != "Lagos") {
 		} else {
 			echo "Something went wrong .. !";
 		}
-
-		$sql = "INSERT INTO `assignmentmaster`(`AssignmentName`, `AssignmentSubject`, `AssignmentUploadedBy`, `AssignmentFile`, `AssignmentUploadeTime`, `AssignmentForSemester`, `AssignmentSubmissionDate`) 
-		VALUES ('$assname','$asssubject','$assupd','$assfile','$dt','$sem','$assldate')";
+	
+		$sql = "INSERT INTO assignmentmaster (AssignmentTitle, AssignmentDesc, AssignmentSubject, AssignmentUploadedBy, AssignmentFile, AssignmentUploaddate, AssignmentForSemester, AssignmentSubmissionDate) 
+		VALUES ('$assname', '$assdesc', '$asssubject', '$assupd', '$assfile', '$dt', '$sem', '$assldate')";
 		$run = mysqli_query($conn, $sql);
 		if ($run == true) {
 			echo "<script>alert('Assignment Added Successfully')</script>";
 			echo "<script>window.open('assignment_list.php','_self')</script>";
 		} else {
-			echo "<script>alert('Assignment Not Added')</script>";
+			echo "<script>alert('Error Occured, Assignment Not Added')</script>";
 			echo "<script>window.open('add_assignment.php','_self')</script>";
 		}
 	} else {
 		echo "<script>window.open('assignment_list.php','_self')";
 	}
-}
-?>
+	}
+	?>

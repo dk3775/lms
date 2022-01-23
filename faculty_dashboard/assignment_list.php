@@ -93,18 +93,16 @@ if ($_SESSION['role'] != "Lagos") {
 													<a class="list-sort text-muted" data-sort="item-name">Subject</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-phone">Upload Date</a>
-												</th>
-												<th>
-													<a class="list-sort text-muted" data-sort="item-phone">Last Date</a>
-												</th>
-												<th>
 													<a class="list-sort text-muted" data-sort="item-score">Sem</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted justify-content-center">Action</a>
+													<a class="list-sort text-muted" data-sort="item-phone">Upload Date</a>
 												</th>
 												<th>
+													<a class="list-sort text-muted" data-sort="item-phone">Submission Date</a>
+												</th>
+												<th>
+													<a class="list-sort text-muted justify-content-center">Action</a>
 												</th>
 											</tr>
 										</thead>
@@ -113,7 +111,7 @@ if ($_SESSION['role'] != "Lagos") {
 											while ($row = mysqli_fetch_assoc($res)) { ?>
 												<tr>
 													<td>
-														<a class="item-name text-reset"><?php echo $row['AssignmentName']; ?></a>
+														<a class="item-name text-reset"><?php echo $row['AssignmentTitle']; ?></a>
 													</td>
 													<td>
 														<!-- Email -->
@@ -121,15 +119,15 @@ if ($_SESSION['role'] != "Lagos") {
 													</td>
 													<td>
 														<!-- Badge -->
-														<span class=""><?php echo $row['AssignmentUploadeTime']; ?></span>
-													</td>
-													<td>
-														<!-- Badge -->
-														<span class=""><?php echo $row['AssignmentUploadeTime']; ?></span>
-													</td>
-													<td>
-														<!-- Badge -->
 														<span class=""><?php echo $row['AssignmentForSemester']; ?></span>
+													</td>
+													<td>
+														<!-- Badge -->
+														<span class=""><?php echo $row['AssignmentUploaddate']; ?></span>
+													</td>
+													<td>
+														<!-- Badge -->
+														<span class=""><?php echo $row['AssignmentSubmissionDate']; ?></span>
 													</td>
 													<td>
 														<a href="edit_assignment.php?assid=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-white">
@@ -140,11 +138,9 @@ if ($_SESSION['role'] != "Lagos") {
 															Delete
 														</a>
 														&nbsp;
-														<a href="student_profile.php?studentenr=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-white">
+														<a href="#" class="btn btn-sm btn-white">
 															View
 														</a>
-													</td>
-													<td class="text-right">
 													</td>
 												</tr>
 											<?php } ?>

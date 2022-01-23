@@ -1,17 +1,23 @@
 <?php
-error_reporting(E_ALL ^ E_WARNING);
-session_start();
-if ($_SESSION['role'] != "Lagos") {
-	header("Location: ../default.php");
-} else {
-?>
-	<!DOCTYPE html>
-	<html lang="en">
-
+	session_start();
+	if ($_SESSION['role'] != "Lagos") {
+		header("Location: ../default.php");
+	} else {
+		include_once("../config.php");
+		$_SESSION["userrole"] = "Faculty";
+		$assid=$_GET['assid'];
+		$username = $_SESSION['id'];
+		$xxsql="SELECT * FROM assignmentmaster WHERE AssignmentId='$assid'";
+		$xxresult=mysqli_query($conn,$xxsql);
+		$xxrow=mysqli_fetch_assoc($xxresult);
+		$subsel = "SELECT * FROM subjectmaster INNER JOIN facultymaster ON `subjectmaster`.`SubjectFacultyId` = `facultymaster`.`FacultyId` WHERE `FacultyUserName` = '$username'";
+		$subresult = mysqli_query($conn, $subsel);
+	?>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<?php include_once("../head.php"); ?>
 	</head>
-
 	<body>
 		<!-- NAVIGATION -->
 		<?php include_once("nav.php"); ?>
@@ -31,7 +37,7 @@ if ($_SESSION['role'] != "Lagos") {
 										</h6>
 										<!-- Title -->
 										<h1 class="header-title">
-											Assignment Details
+											Assignment
 										</h1>
 									</div>
 								</div>
@@ -39,24 +45,11 @@ if ($_SESSION['role'] != "Lagos") {
 							</div>
 						</div>
 						<!-- Form -->
-						<?php
-						include_once("../config.php");
-						$assid = $_GET['assid'];
-						$_SESSION["userrole"] = "institute";
-						if (isset($assid)) {
-							$sql = "SELECT * FROM assignmentmaster WHERE AssignmentId = '$assid'";
-							$result = mysqli_query($conn, $sql);
-							$row = mysqli_fetch_assoc($result);
-
-                            $username = $_SESSION['id'];
-                            $subsel = "SELECT * FROM subjectmaster INNER JOIN facultymaster ON `subjectmaster`.`SubjectFacultyId` = `facultymaster`.`FacultyId` WHERE `FacultyUserName` = '$username'";
-                            $subresult = mysqli_query($conn, $subsel);
-						?>
-							<form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+						<br>
+						<form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
 							<div class="row justify-content-between align-items-center">
 								<div class="col">
 									<div class="row align-items-center">
-									
 										<div class="col ml-n2">
 											<!-- Heading -->
 											<h4 class="mb-1">
@@ -64,7 +57,7 @@ if ($_SESSION['role'] != "Lagos") {
 											</h4>
 											<!-- Text -->
 											<small class="text-muted">
-												Only allowed PDF less than 5MB
+											Only allowed PDF less than 5MB
 											</small>
 										</div>
 									</div>
@@ -98,122 +91,57 @@ if ($_SESSION['role'] != "Lagos") {
 							</script>
 							<hr class="my-5">
 							<div class="row">
-								<div class="col-md-12">
-									<label for="validationCustom01" class="form-label">Assignment Name</label>
-									<input type="text" class="form-control" id="validationCustom01" name="assname" value="<?php echo $row['AssignmentName']; ?>" required><br>
+								<div class="col-md-6">
+									<label for="validationCustom01" class="form-label">Assignment Title</label>
+									<input type="text" class="form-control" id="validationCustom01" name="asstitle" value="<?php echo $xxrow['AssignmentTitle'];?>" required><br>
 								</div>
 							</div>
-							
+							<div class="row">
+								<div class="col-md-12">
+									<label for="validationCustom01" class="form-label">Assignment Description</label>
+									<input type="text" class="form-control" id="validationCustom01" name="assdesc" value="<?php echo $xxrow['AssignmentDesc'];?>" required><br>
+								</div>
+							</div>
 							<div class="row">
 								<div class="col-md-6">
 									<label for="validationCustom01" class="form-label">Assignment Subject</label>
 									<select class="form-control" aria-label="Default select example" name="asssubject" required>
-										<option hidden>Select Subject</option>
+										<option hidden><?php echo $xxrow['AssignmentSubject'];?></option>
 										<?php
 											while($subrow = mysqli_fetch_assoc($subresult)){ ?>
-										<option <?php if ($row['AssignmentSubject'] == $subrow['SubjectName']) {?> selected <?php }?> value="<?php echo $subrow['SubjectName']; ?>">
+										<option value="<?php echo $subrow['SubjectName']; ?>">
 											<?php echo $subrow['SubjectName']; ?> 
 										</option>
 										<?php
-										$assupd = $subrow['SubjectFacultyId'];
-											} 
-											?>
+											$assupd = $subrow['SubjectFacultyId'];
+												} 
+												?>
 									</select>
 									<br>
 								</div>
 								<div class="col-md-6">
-									<label for="validationCustom01" class="form-label">Assignment Last Date</label>
-									<input type="date" id="validationCustom01" class="form-control" name="assldate" value="<?php echo $row['AssignmentSubmissionDate']; ?>" required data-flatpickr placeholder="YYYY-MM-DD"><br>
+									<label for="validationCustom01" class="form-label">Assignment Submission Date</label>
+									<input type="date" id="validationCustom01" class="form-control" name="assldate" required
+										data-flatpickr placeholder="YYYY-MM-DD" value="<?php echo $xxrow['AssignmentSubmissionDate'];?>"><br>
 								</div>
 							</div>
-							
 							<!-- Divider -->
 							<hr class="mt-4 mb-5">
-						
-								<div class="d-flex justify">
-									<!-- Button -->
-									<button class="btn btn-primary" type="submit" value="sub" name="subbed">
-										Save Changes
-									</button>
-								</div>
-								<!-- / .row -->
-							</form>
-						<?php
-						} else { ?>
-							<form class="mb-4" method="post">
-								<div class="row">
-									<div class="col-md-10">
-										<div class="input-group input-group-merge input-group-reverse">
-											<input class="form-control list-search" type="text" name="enr" placeholder="Enter Assignment Name">
-											<div class="input-group-text">
-												<span class="fe fe-search"></span>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div class="col-auto">
-											<!-- Button -->
-											<button class="btn btn-primary " type="submit" name="ser" value="2">
-												Search
-											</button>
-										</div>
-									</div>
-								</div>
-							</form>
-
-							<?php
-							if (isset($_POST['ser'])) {
-								$er = $_POST['enr'];
-								$qur = "SELECT * FROM assignmentmaster WHERE AssignmentName = '$er';";
-								$res = mysqli_query($conn, $qur);
-								$row = mysqli_fetch_assoc($res);
-								if (isset($row)) { ?>
-									<hr class="navbar-divider my-4">
-									<div class="card">
-										<div class="card-body">
-											<div class="row align-items-center">
-												<div class="col ml-n2">
-
-													<!-- Title -->
-													<h4 class="mb-1">
-														<a href="profile-posts.html"><?php echo $row['AssignmentName']; ?></a>
-													</h4>
-
-													<!-- Text -->
-													<p class="small mb-1">
-														<?php echo $row['AssignmentSubject']; ?>
-													</p>
-													<p class="small mb-1">
-														<?php echo $row['AssignmentUploadeTime']." -- ".$row['AssignmentSubmissionDate']; ?>
-													</p>
-
-												</div>
-												<div class="col-auto">
-
-													<!-- Button -->
-													<a href="edit_assignment.php?assid=<?php echo $row['AssignmentId']; ?>" class="btn btn-m btn-primary d-none d-md-inline-block">
-														Edit
-													</a>
-
-												</div>
-											</div> 
-										</div>
-									</div>
-					<?php
-								}
-							}
-						}
-					}
-					?>
-					<br>
+							<div class="d-flex justify">
+								<!-- Button -->
+								<button class="btn btn-primary" type="submit" value="sub" name="subbed">
+								Save Changes
+								</button>
+							</div>
+							<!-- / .row -->
+						</form>
+						<br>
 					</div>
 				</div>
+				<!-- / .row -->
 			</div>
 		</div>
-		
-	<?php include("context.php");?>
-		<!-- / .main-content -->
-		<!-- JAVASCRIPT -->
+		<?php #include("context.php");?>
 		<!-- Map JS -->
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 		<!-- Vendor JS -->
@@ -221,41 +149,55 @@ if ($_SESSION['role'] != "Lagos") {
 		<!-- Theme JS -->
 		<script src="../assets/js/theme.bundle.js"></script>
 	</body>
-
-	</html>
-	<?php
+</html>
+<?php
 	if (isset($_POST['subbed'])) {
-		
+	
 		$fs_name = $_FILES['assfile']['tmp_name'];
 		$fs_size = $_FILES['assfile']['size'];
 		$fs_error = $_FILES['assfile']['error'];
-
-		$assname = $_POST['assname'];
+		$assname = $_POST['asstitle'];
+		$assdesc = $_POST['assdesc'];
 		$asssubject = $_POST['asssubject'];
 		$assldate = $_POST['assldate'];
 		$dt = date('Y-m-d');
-		
-		$asssem = "SELECT SubjectSemester FROM subjectmaster WHERE SubjectName = '$asssubject'";
-		$semres = mysqli_fetch_assoc(mysqli_query($conn, $asssem));
-		$sem = $semres['SubjectSemester'];
-		$assfile = $assname . ".pdf";
-
-		$sqli = "UPDATE `assignmentmaster` SET 
-        `AssignmentName`='$assname',
-        `AssignmentSubject`='$asssubject',
-        `AssignmentUploadedBy`='$assupd',
-        `AssignmentFile`='$assfile',
-        `AssignmentForSemester`='$sem',
-        `AssignmentSubmissionDate`='$assldate' 
-        WHERE `AssignmentId` = '$assid';";
-        
-		$runed = mysqli_query($conn, $sqli);
-		if ($runed == true) {
-			echo "<script>alert('Assignment Edited Successfully')</script>";
-			echo "<script>window.open('assignment_list.php','_self') </script>";
+		$xsql="SELECT SubjectSemester from subjectmaster where SubjectName='$asssubject'";
+		$xresult=mysqli_query($conn,$xsql);
+		$xrow=mysqli_fetch_assoc($xresult);
+		$sem = $xrow['SubjectSemester'];
+		$assfile = $assname.$dt . ".pdf";
+	
+		if ($fs_error === 0) {
+			if ($fs_size <= 5000000) {
+				move_uploaded_file($fs_name, "../src/uploads/assignments/" . $assfile); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
+			} else {
+				echo "<script>alert('File size is to big .. !');</script>";
+			}
 		} else {
-			echo "<script>alert('Error Occured')</script>";
-			echo "<script>window.open('edit_assignment.php','_self')</script>";
+			echo "Something went wrong .. !";
 		}
+	
+		$sql = "UPDATE
+		assignmentmaster
+		SET
+		AssignmentTitle = '$assname',
+		AssignmentDesc = '$assdesc',
+		AssignmentSubject = '$asssubject',
+		AssignmentFile = '$assfile',
+		AssignmentForSemester = '$sem',
+		AssignmentSubmissionDate = '$assldate'
+		WHERE 
+		AssignmentId = '$assid';";
+		$run = mysqli_query($conn, $sql);
+		if ($run == true) {
+			echo "<script>alert('Assignment Edited Successfully')</script>";
+			echo "<script>window.open('assignment_list.php','_self')</script>";
+		} else {
+			echo "<script>alert('Error Occured, Assignment Not Added')</script>";
+			echo "<script>window.open('add_assignment.php','_self')</script>";
+		}
+	} else {
+		echo "<script>window.open('assignment_list.php','_self')";
+	}
 	}
 	?>
