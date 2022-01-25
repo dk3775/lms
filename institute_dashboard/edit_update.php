@@ -218,7 +218,7 @@ if (isset($_POST['subbed'])) {
     `UpdateDescription`='$upddescription',
     `UpdateFile`='$upd_file',
     `UpdateUploadedBy`='$updloadby',
-    `UpdateType`='' WHERE `UpdateId`='$updid'";
+    `UpdateType`='$updtype' WHERE `UpdateId`='$updid'";
     $run = mysqli_query($conn, $sql);
 
     if ($run == true) {
@@ -226,7 +226,7 @@ if (isset($_POST['subbed'])) {
         echo "<script>window.open('update_list.php','_self')</script>";
     } else {
         echo "<script>alert('Update Not Edited')</script>";
-        // echo "<script>window.open('add_faculty.php','_self')</script>";
+        echo "<script>window.open('edit_update.php?updid=$updid','_self')</script>";
     }
 }
 

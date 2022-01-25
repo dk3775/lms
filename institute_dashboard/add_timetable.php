@@ -136,26 +136,6 @@
                            </div>
                         </div>
                      </div>
-                     <!-- / .row   Only For Faculty Profile-->
-                     <!-- <div class="row">
-                        <div class="col-12 col-md-6">
-                        	
-                        	<div class="form-group">
-                        	
-                        		<label class="form-label">
-                        			Time Table Uploaded By
-                        		</label>
-                        		
-                        		<input type="text" class="form-control" name="tuploaded" required>
-                        	</div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                        	<label class="form-label">
-                        		Time Table Upload Time
-                        	</label>
-                        	<input type="datetime-local" class="form-control" name="ttime" required>
-                        </div>
-                        </div> -->
                      <hr>
                      <div class="d-flex justify">
                         <!-- Button -->
@@ -233,10 +213,10 @@
    	$run = mysqli_query($conn, $sql);
    	if ($run == true) {
    		echo "<script>alert('Time Table Added Successfully')</script>";
-   		// echo "<script>window.open('add_faculty.php','_self')</script>";
+   		echo "<script>window.open('timetable_list.php','_self')</script>";
    	} else {
    		echo "<script>alert('Time Table Not Added')</script>";
-   		// echo "<script>window.open('add_faculty.php','_self')</script>";
+   		echo "<script>window.open('add_faculty.php','_self')</script>";
    	}
    }
    ?>

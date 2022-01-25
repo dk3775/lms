@@ -114,7 +114,7 @@ if ($_SESSION['role'] != "Texas") {
 														<div class="avatar avatar-xs align-middle mr-2">
 															<img class="avatar-img rounded-circle" src="../src/uploads/facprofile/<?php echo $row['FacultyProfilePic']; ?>" alt="...">
 														</div>
-														<a class="item-name text-reset"><?php echo $row['FacultyFirstName'] . " " . $row['FacultyLastName']; ?></a>
+														<span class="item-name text-reset"><?php echo $row['FacultyFirstName'] . " " . $row['FacultyLastName']; ?></sp>
 													</td>
 													<td>
 														<!-- Email -->
@@ -129,16 +129,16 @@ if ($_SESSION['role'] != "Texas") {
 														<span class=""><?php echo $row['FacultyBranchCode']; ?></span>
 													</td>
 													<td>
-														<a href="edit_faculty.php?facid=<?php echo $row['FacultyCode']; ?>" class="btn btn-sm btn-white">
+														<a href="edit_faculty.php?facid=<?php echo $row['FacultyId']; ?>" class="btn btn-sm btn-white">
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="fdelete.php?facid=<?php echo $row['FacultyId']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
+														<a class="btn btn-sm btn-white" href="fdelete.php?facid=<?php echo $row['FacultyId']; ?>" onclick="if (! confirm('Are You Sure, You want to Delete this Faculty ?')) return false;">
 															Delete
 															<!--changes-->
 														</a>
 														&nbsp;
-														<a href="faculty_profile.php?facultycode=<?php echo $row['FacultyCode']; ?>" class="btn btn-sm btn-white">
+														<a href="faculty_profile.php?facultycode=<?php echo $row['FacultyId']; ?>" class="btn btn-sm btn-white">
 															View
 														</a>
 													</td>

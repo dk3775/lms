@@ -111,7 +111,7 @@ if ($_SESSION['role'] != "Texas") {
 														<div class="avatar avatar-xs align-middle mr-2">
 															<img class="avatar-img rounded-circle" src="../src/uploads/inprofile/<?php echo $row['InstituteProfilePic']; ?>" alt="...">
 														</div>
-														<a class="item-name text-reset"><?php echo $row['InstituteName']; ?></a>
+														<span class="item-name text-reset"><?php echo $row['InstituteName']; ?></span>
 													</td>
 													<td>
 														<!-- Email -->

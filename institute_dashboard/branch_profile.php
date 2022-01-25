@@ -68,7 +68,7 @@
 							</div>
 							<div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
 								<!-- Button -->
-								<a href="edit_branch.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-primary d-block d-md-inline-block btn-md">
+								<a href="edit_branch.php?brid=<?php echo $studentenr; ?>" class="btn btn-primary d-block d-md-inline-block btn-md">
 								Edit Details
 								</a>
 							</div>

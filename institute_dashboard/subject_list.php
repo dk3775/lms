@@ -111,29 +111,29 @@ if ($_SESSION['role'] != "Texas") {
 											while ($row = mysqli_fetch_assoc($res)) { ?>
 												<tr>
 													<td>
-														<a type="text" class="text-reset item-name" name="bname" required><?php echo $row['SubjectName']; ?></a>
+														<span type="text" class="text-reset item-name" name="bname" required><?php echo $row['SubjectName']; ?></span>
 													</td>
 													<td>
 														<!-- Email -->
-														<a type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectCode']; ?></a>
+														<span type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectCode']; ?></span>
 
 													</td>
 													<td>
 														<!-- Email -->
-														<a type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectBranch']; ?></a>
+														<span type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectBranch']; ?></span>
 
 													</td>
 													<td>
 														<!-- Email -->
-														<a type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectSemester']; ?></a>
+														<span type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectSemester']; ?></span>
 
 													</td>
 													<td>
-														<a href="edit_subject.php?facid=<?php echo $row['SubjectCode']; ?>" class="btn btn-sm btn-white">
+														<a href="edit_subject.php?subcode=<?php echo $row['SubjectCode']; ?>" class="btn btn-sm btn-white">
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="subdelete.php?facid=<?php echo $row['SubjectCode']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
+														<a class="btn btn-sm btn-white" href="subdelete.php?subcode=<?php echo $row['SubjectCode']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
 															Delete
 															<!--changes-->
 														</a>

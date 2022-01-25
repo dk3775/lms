@@ -181,6 +181,7 @@
 		extract($_POST);
 		$temo = $brow['BranchId'];
 		$temo2 = $brow['BranchCode'] . "_" . $isem;
+		$BranchCode = $brow['BranchCode'];
 		$iimg = $icode . ".png";
 		$simg = $icode . ".pdf";
 	
@@ -208,14 +209,12 @@
 		$run = mysqli_query($conn, $sql);
 		if ($run == true) {
 			echo "<script>alert('Subject Added Successfully')</script>";
-			echo "<script>window.open('add_subject.php','_self')</script>";
+			echo "<script>window.open('sem_details.php?semid=$temo2&brid=$BranchCode','_self')</script>";
 		} else {
 			echo "<script>alert('Subject Not Added')</script>";
 			echo "<script>window.open('add_subject.php','_self')</script>";
 		}
 	}
-	} else {
-	header("location: branch_profile.php");
-	}
+	} 
 	}
 	?>

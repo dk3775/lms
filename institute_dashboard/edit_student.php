@@ -383,13 +383,10 @@
 </html>
 <?php
 	if (isset($_POST['subbed'])) {
-		// $f_name = $_FILES['stuprofile']['name'];
+
 		$f_tmp_name = $_FILES['stuprofile']['tmp_name'];
 		$f_size = $_FILES['stuprofile']['size'];
 		$f_error = $_FILES['stuprofile']['error'];
-		// $f_type = $_FILES['stuprofile']['type'];
-		// $f_ext = explode('.', $f_name);
-		// $f_ext = strtolower(end($f_ext));
 	
 		$fname = $_POST['fname'];
 		$mname = $_POST['mname'];
@@ -424,7 +421,7 @@
 		$runed = mysqli_query($conn, $sqli);
 		if ($runed == true) {
 			echo "<script>alert('Student Details Edited Successfully')</script>";
-			echo "<script>window.open('edit_student.php','_self')</script>";
+			echo "<script>window.open('student_list.php','_self')</script>";
 		} else {
 			echo "<script>alert('Error Occured')</script>";
 			echo "<script>window.open('edit_student.php','_self')</script>";

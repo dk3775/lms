@@ -127,7 +127,7 @@ if ($_SESSION['role'] != "Texas") {
 															</div>
 															<div class="col-auto">
 																<!-- Dropdown -->
-																<a href="edit_faculty.php?facid=<?php echo $frow['FacultyCode']; ?>" class="btn btn-sm btn-white">
+																<a href="edit_faculty.php?facid=<?php echo $frow['FacultyId']; ?>" class="btn btn-sm btn-white">
 																	Edit
 																</a>
 															</div>
@@ -333,13 +333,8 @@ if ($_SESSION['role'] != "Texas") {
 													</td>
 													<td>
 														<!-- Badge -->
-														<a download="../uploads/facprofile/CEAJJ.png" href="../uploads/facprofile/CEAJJ.png" type="button" class="btn btn-sm btn-outline-primary">Download</a>
+														<a download="<?php echo $urow['UpdateFile']; ?>" href="../src/uploads/updates/<?php echo $urow['UpdateFile']; ?>" type="button" class="btn btn-sm btn-outline-primary">Download</a>
 													</td>
-												<tr id="demo1" class="collapse">
-													<td colspan="6" class="hiddenRow">
-														<div>Demo1</div>
-													</td>
-												</tr>
 												</tr>
 											<?php } ?>
 											<!--over-->
