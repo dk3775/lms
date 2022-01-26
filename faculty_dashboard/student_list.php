@@ -133,7 +133,7 @@ if ($_SESSION['role'] != "Lagos") {
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="sdelete.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
+														<a class="btn btn-sm btn-white" href="sdelete.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" onclick="if (! confirm('Are You Sure, You want to Delete this Student ?')) return false;">
 															Delete
 														</a>
 														&nbsp;

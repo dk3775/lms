@@ -78,7 +78,7 @@
 									</p>
 									<div class="d-flex justify">
 										<!-- Button -->
-										<a href="../src/uploads/updates/<?php echo $row['UpdateFile']; ?>" download="../src/uploads/timetables/<?php echo $row['TimetableImage']; ?>" class="btn btn-primary" name="Download">
+										<a href="../src/uploads/updates/<?php echo $row['UpdateFile']; ?>" download="<?php echo $row['TimetableImage']; ?>" class="btn btn-primary" name="Download">
 										Download
 										</a>
 									</div>

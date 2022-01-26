@@ -91,7 +91,7 @@
 							</script>
 							<hr class="my-5">
 							<div class="row">
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<label for="validationCustom01" class="form-label">Assignment Title</label>
 									<input type="text" class="form-control" id="validationCustom01" name="asstitle" value="<?php echo $xxrow['AssignmentTitle'];?>" required><br>
 								</div>
@@ -99,7 +99,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<label for="validationCustom01" class="form-label">Assignment Description</label>
-									<input type="text" class="form-control" id="validationCustom01" name="assdesc" value="<?php echo $xxrow['AssignmentDesc'];?>" required><br>
+									<textarea class="form-control" id="validationCustom01" name="assdesc" required><?php echo $xxrow['AssignmentDesc'];?></textarea><br>
 								</div>
 							</div>
 							<div class="row">

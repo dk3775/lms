@@ -6,7 +6,7 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<!-- Brand -->
-		<a class="navbar-brand" href="../institute_dashboard/">
+		<a class="navbar-brand" href="../faculty_dashboard/">
 			<img src="../assets/img/logo.svg" class="navbar-brand-img mx-auto" alt="...">
 		</a>
 		<!-- User (xs) -->

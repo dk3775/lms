@@ -88,7 +88,7 @@
 							</script>
 							<hr class="my-5">
 							<div class="row">
-								<div class="col-md-6">
+								<div class="col-md-12">
 									<label for="validationCustom01" class="form-label">Assignment Title</label>
 									<input type="text" class="form-control" id="validationCustom01" name="asstitle" required><br>
 								</div>
@@ -96,7 +96,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<label for="validationCustom01" class="form-label">Assignment Description</label>
-									<input type="text" class="form-control" id="validationCustom01" name="assdesc" required><br>
+									<textarea class="form-control" id="validationCustom01" name="assdesc" required></textarea><br>
 								</div>
 							</div>
 							<div class="row">

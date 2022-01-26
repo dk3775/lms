@@ -108,22 +108,22 @@ if ($_SESSION['role'] != "Lagos") {
 											while ($row = mysqli_fetch_assoc($res)) { ?>
 												<tr>
 													<td>
-														<a type="text" class="form-control item-name" name="bname" required><?php echo $row['BranchName']; ?></a>
+														<span type="text" class="form-control item-name" name="bname" required><?php echo $row['BranchName']; ?></span>
 													</td>
 													<td>
 														<!-- Email -->
-														<a type="text" class="form-control item-phone" name="bcode" required><?php echo $row['BranchCode']; ?></a>
+														<span type="text" class="form-control item-phone" name="bcode" required><?php echo $row['BranchCode']; ?></span>
 													</td>
 													<td>
 														<!-- Email -->
-														<a type="text" class="form-control item-number" name="bsem" required><?php echo $row['BranchSemesters']; ?></a>
+														<span type="text" class="form-control item-number" name="bsem" required><?php echo $row['BranchSemesters']; ?></span>
 													</td>
 													<td>
 														<a href="edit_branch.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-sm btn-white">
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="branchdelete.php?brid=<?php echo $row['BranchId']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
+														<a class="btn btn-sm btn-white" href="branchdelete.php?brid=<?php echo $row['BranchId']; ?>" onclick="if (! confirm('Are You Sure, You want to Delete this Branch ?')) return false;">
 															Delete
 															<!--changes-->
 														</a>

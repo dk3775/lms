@@ -3,8 +3,8 @@ session_start();
 if ($_SESSION['role'] != "Lagos") {
 	header("Location: ../default.php");
 } else {
-	include_once("../config.php");
-	$_SESSION["userrole"] = "institute";
+	include_once "../config.php";
+	$_SESSION["userrole"] = "Faculty";
 	$qur = "SELECT * FROM timetablemaster ";
 	$res = mysqli_query($conn, $qur);
 }
@@ -13,12 +13,12 @@ if ($_SESSION['role'] != "Lagos") {
 <html lang="en">
 
 <head>
-	<?php include_once("../head.php"); ?>
+	<?php include_once "../head.php"; ?>
 </head>
 
 <body>
 	<!-- NAVIGATION -->
-	<?php include_once("nav.php"); ?>
+	<?php include_once "nav.php"; ?>
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<div class="container-fluid">
@@ -130,7 +130,7 @@ if ($_SESSION['role'] != "Lagos") {
 															Edit
 														</a>
 														&nbsp;
-														<a href="ttdelete.php?ttid=<?php echo $row['TimetableId']; ?>" class="btn btn-sm btn-white" onclick="if (! confirm('Are you sure you want to delete ..?')) return false;">
+														<a href="ttdelete.php?ttid=<?php echo $row['TimetableId']; ?>" class="btn btn-sm btn-white" onclick="if (! confirm('Are You Sure, You want to Delete this Time-Table ?')) return false;">
 															Delete
 															<!--changes-->
 														</a>
@@ -177,8 +177,7 @@ if ($_SESSION['role'] != "Lagos") {
 			</div>
 		</div>
 	</div>
-	
-	<?php include("context.php");?>
+	<?php include_once("context.php"); ?>
 	<!-- / .main-content -->
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->

@@ -344,7 +344,7 @@ if ($_SESSION['role'] != "Lagos") {
 													</td>
 													<td>
 														<!-- Badge -->
-														<a download="../uploads/facprofile/CEAJJ.png" href="../uploads/facprofile/CEAJJ.png" type="button" class="btn btn-sm btn-outline-primary">Download</a>
+														<a download="<?php echo $urow['UpdateFile']; ?>" href="../src/uploads/updates/<?php echo $urow['UpdateFile']; ?>" type="button" class="btn btn-sm btn-outline-primary">Download</a>
 													</td>
 												<tr id="demo1" class="collapse">
 													<td colspan="6" class="hiddenRow">

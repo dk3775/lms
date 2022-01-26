@@ -133,7 +133,7 @@ if ($_SESSION['role'] != "Lagos") {
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="subdelete.php?facid=<?php echo $row['SubjectCode']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
+														<a class="btn btn-sm btn-white" href="subdelete.php?facid=<?php echo $row['SubjectCode']; ?>" onclick="if (! confirm('Are You Sure, You want to Delete this Subject ?')) return false;">
 															Delete
 															<!--changes-->
 														</a>

@@ -86,12 +86,6 @@ if ($_SESSION['role'] != "Texas") {
                         </a>
                      </div>
 									</div>
-
-
-
-								<!-- Buttons -->
-
-								<!-- Divider -->
 								<hr>
 							</div>
 						</div>
