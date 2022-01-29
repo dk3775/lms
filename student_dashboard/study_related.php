@@ -79,7 +79,7 @@
             <div class="row">
               <div class="col-md-10">
                 <select class="form-control form-select-lg mb-3" name="sec" aria-label=".form-select-lg example">
-                  <option value="ABC" hidden>Select Subject</option>
+                  <option value="ABC" selected hidden>Select Subject</option>
                   <?php 
                  while ($sresult = mysqli_fetch_assoc($sqry)) { ?>
                    <option value="<?php echo $sresult['SubjectName']; ?>"><?php echo $sresult['SubjectName']; ?></option>
