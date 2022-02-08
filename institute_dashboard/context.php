@@ -27,6 +27,7 @@
             transform: scale(0);
             transform-origin: top left;
             z-index: 999999999999999;
+            overflow-y: auto;
         }
 
         #context-menu.visible {
@@ -92,12 +93,7 @@
                     <i class="fe uil-user"></i>
                     Student List</a>
             </div>
-            <div class="item" onclick="window.location.href='faculty_list.php';">
-                <a class="nav-item" style="color: #6F6F6F;">
-                    <i class="fe uil-user"></i>
-                    Faculty List</a>
-            </div>
-            <div class="item" onclick="window.location.href='branch_list.php';">
+            <div class="item" onclick="window.location.href='';">
                 <a class="nav-item" style="color: #6F6F6F;">
                     <i class="fe uil-code-branch"></i>
                     Branch list</a>

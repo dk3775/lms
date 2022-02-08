@@ -91,10 +91,10 @@ if ($_SESSION['role'] != "Texas") {
 													<a class="list-sort text-muted" data-sort="item-name">Branch Name</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-email">Branch Code</a>
+													<a class="list-sort text-muted" data-sort="item-name">Branch Code</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-number">No of Semesters</a>
+													<a class="list-sort text-muted" data-sort="item-phone">No of Semesters</a>
 												</th>
 												<th>
 													<a class="list-sort text-muted justify-content-center">Action</a>

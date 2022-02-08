@@ -216,7 +216,7 @@
 		}
 	}
 	} else {
-	header("location: branch_profile.php");
+	header("location: subject_list.php");
 	}
 	}
 	?>

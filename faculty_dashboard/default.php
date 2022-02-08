@@ -274,7 +274,7 @@ if ($_SESSION['role'] != "Lagos") {
 							Updates
 						</h2>
 						<!-- Link -->
-						<a href="update.php" class="small">View all</a>
+						<a href="update_list.php" class="small">View List</a>
 					</div>
 					<div class="tab-content">
 						<div class="tab-pane fade show active" id="contactsListPane" role="tabpanel" aria-labelledby="contactsListTab">

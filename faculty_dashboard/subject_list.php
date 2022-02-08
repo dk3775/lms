@@ -40,7 +40,7 @@ if ($_SESSION['role'] != "Lagos") {
 									</h1>
 								</div>
 								<div class="col-auto">
-									<a href="add_branch.php" class="btn btn-primary ml-2">
+									<a href="add_subject.php" class="btn btn-primary ml-2">
 										Add Subject
 									</a>
 								</div>

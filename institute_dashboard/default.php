@@ -262,7 +262,7 @@ if ($_SESSION['role'] != "Texas") {
 							Updates
 						</h2>
 						<!-- Link -->
-						<a href="update.php" class="small">View all</a>
+						<a href="update_list.php" class="small">View List</a>
 					</div>
 					<div class="tab-content">
 						<div class="tab-pane fade show active" id="contactsListPane" role="tabpanel" aria-labelledby="contactsListTab">
@@ -312,6 +312,8 @@ if ($_SESSION['role'] != "Texas") {
 										</thead>
 										<tbody class="list font-size-base">
 											<?php
+											$a=1;
+											$b=1;
 											while ($urow = mysqli_fetch_assoc($ures)) { ?>
 												<tr>
 													<td>
@@ -329,12 +331,17 @@ if ($_SESSION['role'] != "Texas") {
 													</td>
 													<td>
 														<!-- Phone -->
-														<button type="button" class="btn btn-sm btn-outline-primary" data-toggle="collapse" data-target="#demo1" data-parent="#myTable">View</button>
+														<button type="button" class="btn btn-sm btn-outline-primary" data-toggle="collapse" data-target="#demo<?php echo $b++;?>" data-parent="#myTable">View</button>
 													</td>
 													<td>
 														<!-- Badge -->
 														<a download="<?php echo $urow['UpdateFile']; ?>" href="../src/uploads/updates/<?php echo $urow['UpdateFile']; ?>" type="button" class="btn btn-sm btn-outline-primary">Download</a>
 													</td>
+												<tr id="#demo<?php echo $a++;?>" class="collapse">
+													<td colspan="6" class="hiddenRow">
+														<div>Demo1</div>
+													</td>
+												</tr>
 												</tr>
 											<?php } ?>
 											<!--over-->
@@ -419,7 +426,7 @@ if ($_SESSION['role'] != "Texas") {
 			</div>
 		</div>
 	</div>
-	<?php include_once("context.php"); ?>
+	
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->
 	<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
@@ -433,6 +440,7 @@ if ($_SESSION['role'] != "Texas") {
 			return new bootstrap.Tooltip(tooltipTriggerEl)
 		})
 	</script>
+	<?php include_once("context.php"); ?>
 </body>
 
 </html>

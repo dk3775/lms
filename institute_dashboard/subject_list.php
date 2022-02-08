@@ -40,7 +40,7 @@ if ($_SESSION['role'] != "Texas") {
 									</h1>
 								</div>
 								<div class="col-auto">
-									<a href="add_branch.php" class="btn btn-primary ml-2">
+									<a href="add_subject.php" class="btn btn-primary ml-2">
 										Add Subject
 									</a>
 								</div>
@@ -91,13 +91,13 @@ if ($_SESSION['role'] != "Texas") {
 													<a class="list-sort text-muted" data-sort="item-name">Subject Name</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-email">Subject Code</a>
+													<a class="list-sort text-muted" data-sort="item-phone">Subject Code</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-email">Branch ID</a>
+													<a class="list-sort text-muted" data-sort="item-name">Branch ID</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-email">Semester</a>
+													<a class="list-sort text-muted" data-sort="item-name">Semester</a>
 												</th>
 												<th>
 													<a class="list-sort text-muted justify-content-center">Action</a>
