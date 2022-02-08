@@ -7,15 +7,16 @@ if ($_SESSION['role'] != "Lagos") {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Faculty";
 	$user = $_SESSION['id'];
+	$fid = $_SESSION['fid'];
 	$fqur = "SELECT *,BranchName FROM facultymaster INNER JOIN branchmaster ON facultymaster.FacultyBranchCode = branchmaster.BranchCode WHERE FacultyUserName = '$user'";
 	$fres = mysqli_query($conn, $fqur);
 	$frow = mysqli_fetch_array($fres);
-	$bqur = "SELECT * FROM branchmaster";
-	$bres = mysqli_query($conn, $bqur);
+	$aqur = "SELECT * FROM assignmentmaster WHERE AssignmentUploadedBy = '$fid'";
+	$arow = mysqli_num_rows(mysqli_query($conn, $aqur));
 	$uqur = "SELECT * FROM updatemaster";
 	$ures = mysqli_query($conn, $uqur);
-	$qqur = "SELECT * FROM querymaster";
-	$qres = mysqli_query($conn, $qqur);
+	$qqur = "SELECT * FROM querymaster WHERE QueryToId = '$fid'";
+	$qrow = mysqli_num_rows(mysqli_query($conn, $qqur));
 }
 ?>
 <!DOCTYPE html>
@@ -174,7 +175,7 @@ if ($_SESSION['role'] != "Lagos") {
 									</h6>
 									<!-- Heading -->
 									<span class="h2 mb-0">
-										9.58
+										<?php echo $qrow; ?>
 									</span>
 								</div>
 								<div class="col-auto">
@@ -198,7 +199,7 @@ if ($_SESSION['role'] != "Lagos") {
 									</h6>
 									<!-- Heading -->
 									<span class="h2 mb-0">
-										55%
+										<?php echo $arow; ?>
 									</span>
 								</div>
 								<div class="col-auto">
@@ -222,7 +223,7 @@ if ($_SESSION['role'] != "Lagos") {
 									</h6>
 									<!-- Heading -->
 									<span class="h2 mb-0">
-										MAT
+										<?php echo $frow['FacultySubject']; ?>
 										<!--- Subject name only -->
 									</span>
 								</div>
@@ -246,7 +247,7 @@ if ($_SESSION['role'] != "Lagos") {
 									</h6>
 									<!-- Heading -->
 									<span class="h2 mb-0">
-										CE
+										<?php echo $frow['FacultyBranchCode']; ?>
 									</span>
 								</div>
 								<div class="col-auto">

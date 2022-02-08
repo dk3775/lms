@@ -111,6 +111,7 @@ if (isset($_POST['login'])) {
 		$row = mysqli_fetch_assoc($result);
 		if ($row['FacultyUserName'] == $u and $row['FacultyPassword'] == $hp) {
 			session_start();
+			$_SESSION['fid'] = $row['FacultyId'];
 			$_SESSION['id'] = $u;
 			$_SESSION['role'] = "Lagos";
 			header("location:../faculty_dashboard/");
