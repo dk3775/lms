@@ -1,14 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8" />
+<?php
+	session_start();
+	error_reporting(E_ALL ^ E_WARNING);
+	if ($_SESSION['role'] != "Abuja") {
+		header("Location: ../default.php");
+	} else {
+		include_once("../config.php");
+		$_SESSION["userrole"] = "Student";
+		
+		$un = $_SESSION['id'];
+		$ssql = "SELECT SubjectName,StudentId FROM studentmaster INNER JOIN subjectmaster ON studentmaster.StudentSemester = subjectmaster.SubjectSemester WHERE StudentUserName = '$un'";
+		$sqry = mysqli_query($conn, $ssql);
+	}
+  ?>
+  
+  <!DOCTYPE html>
+  <html lang="en">
+    
+    <head>
+      <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc." />
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="../assets/favicon/favicon.ico" type="image/x-icon" />
-
+  
   <!-- Map CSS -->
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" />
 
@@ -17,147 +32,20 @@
 
   <!-- Theme CSS -->
   <link rel="stylesheet" href="../assets/css/theme.bundle.css" />
-
+  
   <!-- Title -->
   <title>LMS by Titanslab</title>
-
+  
   <style>
-
-  </style>
+    
+    </style>
 
 </head>
 
 <body>
-
+  
   <!-- NAVIGATION -->
-  <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light" id="sidebar">
-    <div class="container-fluid">
-
-      <!-- Toggler -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Brand -->
-      <a class="navbar-brand" href="dashboard.html">
-        <img src="../assets/img/logo.svg" class="navbar-brand-img mx-auto" alt="...">
-      </a>
-
-      <!-- User (xs) -->
-      <div class="navbar-user d-md-none">
-
-        <!-- Dropdown -->
-        <div class="dropdown">
-        </div>
-
-      </div>
-
-      <!-- Collapse -->
-      <div class="collapse navbar-collapse" id="sidebarCollapse">
-
-        <!-- Form -->
-        <form class="mt-4 mb-3 d-md-none">
-          <div class="input-group input-group-rounded input-group-merge input-group-reverse">
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-text">
-              <span class="fe fe-search"></span>
-            </div>
-          </div>
-        </form>
-
-        <!-- Navigation -->
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="../faculty_dashboard" class="nav-link ">
-              <i class="fe fe-home"></i> Dashboard
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="#sidebarProfile" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProfile">
-              <i class="fe fe-file"></i>Student
-            </a>
-            <div class="collapse " id="sidebarProfile">
-              <ul class="nav nav-sm flex-column">
-                <li class="nav-item">
-                  <a href="student_list.php" class="nav-link ">
-                    View Student List
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="add_student.php" class="nav-link">
-                    Add New Student
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="edit_student.php" class="nav-link">
-                    Edit Student Details
-                  </a>
-                </li>
-
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link ">
-              <i class="fe fe-percent"></i> Marksheet
-            </a>
-          </li>
-
-
-          <li class="nav-item">
-            <a href="update.php" class="nav-link ">
-              <i class="fe fe-bell"></i>Updates
-            </a>
-          </li>
-
-
-          <li class="nav-item">
-            <a href="attendance.php" class="nav-link ">
-              <i class="fe fe-clipboard"></i>Attendance
-            </a>
-          </li>
-          </li>
-
-
-
-          <li class="nav-item d-md-none">
-            <a class="nav-link" href="#" data-toggle="modal">
-              <span class="fe fe-bell"></span> Notifications
-            </a>
-          </li>
-        </ul>
-
-        <!-- Divider -->
-        <hr class="navbar-divider my-3">
-
-        <!-- Heading -->
-        <h6 class="navbar-heading">
-          Help Center
-        </h6>
-
-        <!-- Navigation -->
-        <ul class="navbar-nav mb-md-4">
-          <li class="nav-item">
-            <a href="account_related.php" class="nav-link">
-              <i class="fe fe-user"></i>Account related Details
-            </a>
-          </li>
-          </li>
-
-          <li class="nav-item">
-            <a href="study_related.php" class="nav-link active">
-              <i class="fe fe-book"></i>Study related querys
-            </a>
-          </li>
-        </ul>
-      </div>
-      </li>
-
-      </ul>
-    </div>
-  </nav>
-
+  <?php include_once('nav.php'); ?> 
   <!-- MAIN CONTENT -->
   <div class="main-content">
     <div class="container-fluid">
@@ -169,15 +57,15 @@
             <div class="header-body">
               <div class="row align-items-center">
                 <div class="col">
-
+                  
                   <!-- Pretitle -->
                   <h6 class="header-pretitle">
                     New Request
                   </h6>
-
+                  
                   <!-- Title -->
                   <h1 class="header-title">
-                    Study related help
+                    Study Related Help
                   </h1>
 
                 </div>
@@ -186,66 +74,66 @@
           </div>
 
           <!-- select -->
-
-          <form class="mb-4" method="post">
+          
+          <form class="mb-4" method="POST">
             <div class="row">
               <div class="col-md-10">
-                <select class="form-select form-select-lg mb-3" name="sec" aria-label=".form-select-lg example">
-                  <option selected hidden>Open this select menu</option>
-                  <option value="1">MAT</option>
-                  <option value="2">CMT</option>
-                </select>
-              </div>
-              <div class="col-md-2">
-                <div class="col-auto">
-                  <!-- Button -->
-                  <button class="col-12 btn-lg btn btn-primary " type="submit" name="ser" value="2">
-                    Select
-                  </button>
+                <select class="form-control form-select-lg mb-3" name="sec" aria-label=".form-select-lg example">
+                  <option value="ABC" selected hidden>Select Subject</option>
+                  <?php 
+                 while ($sresult = mysqli_fetch_assoc($sqry)) { ?>
+                   <option value="<?php echo $sresult['SubjectName']; ?>"><?php echo $sresult['SubjectName']; ?></option>
+                   <?php } ?>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <div class="col-auto">
+                    <!-- Button -->
+                    <button class="col-12 btn-lg btn btn-primary" type="submit" name="ser" value="2">
+                      Select
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
           </form>
 
-
-          <?php
-          error_reporting(E_ALL ^ E_WARNING);
-          if ($_POST['sec'] === '1') {
-          ?>
-
-            <form class="mb-4">
+          <?php if (isset($_POST['ser']) AND $_POST['sec'] != 'ABC') { ?>
+            <form class="mb-4" method="POST" enctype="multipart/form-data">
 
               <!-- Divider -->
               <hr class="mt-5 mb-5">
               <h1 class="header-title">
-                MAT
+
+                
+                <?php echo $_POST['sec']; ?>
+                
               </h1>
               <br>
               <!-- Project name -->
               <div class="form-group">
-
+                
                 <!-- Label  -->
                 <label class="form-label">
                   Topic
                 </label>
 
                 <!-- Input -->
-                <input type="text" class="form-control">
-
+                <input type="text" name="srtopic" class="form-control">
+                
               </div>
 
               <div class="form-group">
-
+                
                 <!-- Label  -->
                 <label class="form-label">
                   Subject 
                 </label>
-
+                
                 <!-- Input -->
-                <input type="text" class="form-control" Value="CMT" readonly>
-
+                <input type="text" name="srsub" class="form-control" Value="<?php echo $_POST['sec']; ?>" readonly>
+                
               </div>  
-
+              
               <!-- Project description -->
               <div class="form-group">
 
@@ -253,261 +141,148 @@
                 <label class="form-label mb-1">
                   Detail
                 </label>
-
+                
                 <!-- Textarea -->
                 <div>
                   <div class="form-group shadow-textarea">
-                    <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..."></textarea>
+                    <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="4" name="srdetail" placeholder="Write Something Here..."></textarea>
                   </div>
                 </div>
-
+                
               </div>
-
+              
               <!-- Divider -->
-              <hr class="mt-5 mb-5">
-
-              <!-- Starting files -->
-              <div class="form-group">
-
-                <!-- Label -->
-                <label class="mb-1">
-                  Upload files
-                </label>
-                <small class="form-text text-muted">
-                  Upload jpeg,png,pdf only
-                </small>
-
-                <!-- Card -->
-                <div class="card">
-                  <div class="card-body">
-
-                    <!-- Dropzone -->
-                    <div class="dropzone dropzone-multiple" data-dropzone='{"url": "https://"}'>
-
-                      <!-- Fallback -->
-                      <div class="fallback">
-                        <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="customFileUpload" accept="image/jpeg,image/png,application/pdf" multiple>
-                          <label class="custom-file-label" for="customFileUpload">Choose file</label>
-                        </div>
-                      </div>
-
-                      <!-- Preview -->
-                      <ul class="dz-preview dz-preview-multiple list-group list-group-lg list-group-flush">
-                        <li class="list-group-item">
-                          <div class="row align-items-center">
-                            <div class="col-auto">
-
-                              <!-- Image -->
-                              <div class="avatar">
-                                <img class="avatar-img rounded" src="data:image/svg+xml,%3csvg3c/svg%3e" alt="..." data-dz-thumbnail>
-                              </div>
-
-                            </div>
-                            <div class="col ml-n3">
-
-                              <!-- Heading -->
-                              <h4 class="mb-1" data-dz-name>...</h4>
-
-                              <!-- Text -->
-                              <p class="small text-muted mb-0" data-dz-size></p>
-
-                            </div>
-                            <div class="col-auto">
-
-                              <!-- Dropdown -->
-                              <div class="dropdown">
-
-                                <!-- Toggle -->
-                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <i class="fe fe-more-vertical"></i>
-                                </a>
-
-                                <!-- Menu -->
-                                <div class="dropdown-menu dropdown-menu-right">
-                                  <a href="#" class="dropdown-item" data-dz-remove>
-                                    Remove
-                                  </a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
+              <hr class="mt-5">
+            	<div class="row justify-content-between align-items-center">
+                <div class="col">
+                  <div class="row align-items-center">
+                    <div class="col-auto">
+                      <!-- Personal details -->
+											<!-- Avatar -->
+											<div class="avatar">
+												<img name="StuIMG" class="avatar-img rounded-circle" src="../assets/img/avatars/products/product-1.jpg" alt="..." id="IMG-preview">
+											</div>
+										</div>
+										<div class="col ml-n2">
+                      <!-- Heading -->
+											<h4 class="mb-1">
+                        Query Document
+											</h4>
+											<!-- Text -->
+											<small class="text-muted">
+                        Only allowed PNG, JPG or PDF less than 2MB
+											</small>
+										</div>
+									</div>
+									<!-- / .row -->
+								</div>
+								<div class="col-auto">
+                  <!-- Button -->
+									<input type="file" id="img" name="srdoc" class="btn btn-sm"
+                  onchange="showPreview(event);" accept="application/pdf,image/png,image/jpg,image/jpeg">
+								</div>
+							</div>
+							<!-- Priview Profile pic  -->
+							<script>
+								function showPreview(event) {
+								    var file = document.getElementById('img');
+								    if (file.files.length > 0) {
+								        // RUN A LOOP TO CHECK EACH SELECTED FILE.
+								        for (var i = 0; i <= file.files.length - 1; i++) {
+								            var fsize = file.files.item(i).size; // THE SIZE OF THE FILE.	
+								        }
+								        if (fsize <= 2000000) {
+								            var src = URL.createObjectURL(event.target.files[0]);
+								            var preview = document.getElementById("IMG-preview");
+								            preview.src = src;
+								            preview.style.display = "block";
+								        } else {
+								            alert("Only allowed less then 2MB.. !");
+								            file.value = '';
+								        }
+								    }
+								}
+							</script>
               <!-- Divider -->
-              <hr class="mt-5 mb-5">
-
+              <hr class="mb-5">
+              
               <!-- Buttons -->
-              <input class="btn btn-block btn-primary" type="submit" name="submit">
+              <input class="btn btn-block btn-primary mb-5" type="submit" name="sub">
             </form>
-          <?php
-          } elseif ($_POST['sec'] === '2') {
-          ?>
-
-            <form class="mb-4">
-
-              <!-- Divider -->
-              <hr class="mt-5 mb-5">
-              <h1 class="header-title">
-                CMT
-              </h1>
-              <br>
-              <!-- Project name -->
-              <div class="form-group">
-
-                <!-- Label  -->
-                <label class="form-label">
-                  Topic
-                </label>
-
-                <!-- Input -->
-                <input type="text" class="form-control">
-
-              </div>
-
-              <div class="form-group">
-
-                <!-- Label  -->
-                <label class="form-label">
-                  Subject 
-                </label>
-
-                <!-- Input -->
-                <input type="text" class="form-control" Value="CMT" readonly>
-
-              </div>
-
-              <!-- Project description -->
-              <div class="form-group">
-
-                <!-- Label -->
-                <label class="form-label mb-1">
-                  Detail
-                </label>
-
-                <!-- Textarea -->
-                <div>
-                  <div class="form-group shadow-textarea">
-                    <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="Write something here..."></textarea>
-                  </div>
-                </div>
-
-              </div>
-
-              <!-- Divider -->
-              <hr class="mt-5 mb-5">
-
-              <!-- Starting files -->
-              <div class="form-group">
-
-                <!-- Label -->
-                <label class="mb-1">
-                  Upload files
-                </label>
-                <small class="form-text text-muted">
-                  Upload jpeg,png,pdf only
-                </small>
-
-                <!-- Card -->
-                <div class="card">
-                  <div class="card-body">
-
-                    <!-- Dropzone -->
-                    <div class="dropzone dropzone-multiple" data-dropzone='{"url": "https://"}'>
-
-                      <!-- Fallback -->
-                      <div class="fallback">
-                        <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="customFileUpload" accept="image/jpeg,image/png,application/pdf" multiple>
-                          <label class="custom-file-label" for="customFileUpload">Choose file</label>
-                        </div>
-                      </div>
-
-                      <!-- Preview -->
-                      <ul class="dz-preview dz-preview-multiple list-group list-group-lg list-group-flush">
-                        <li class="list-group-item">
-                          <div class="row align-items-center">
-                            <div class="col-auto">
-
-                              <!-- Image -->
-                              <div class="avatar">
-                                <img class="avatar-img rounded" src="data:image/svg+xml,%3csvg3c/svg%3e" alt="..." data-dz-thumbnail>
-                              </div>
-
-                            </div>
-                            <div class="col ml-n3">
-
-                              <!-- Heading -->
-                              <h4 class="mb-1" data-dz-name>...</h4>
-
-                              <!-- Text -->
-                              <p class="small text-muted mb-0" data-dz-size></p>
-
-                            </div>
-                            <div class="col-auto">
-
-                              <!-- Dropdown -->
-                              <div class="dropdown">
-
-                                <!-- Toggle -->
-                                <a href="#" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <i class="fe fe-more-vertical"></i>
-                                </a>
-
-                                <!-- Menu -->
-                                <div class="dropdown-menu dropdown-menu-right">
-                                  <a href="#" class="dropdown-item" data-dz-remove>
-                                    Remove
-                                  </a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Divider -->
-              <hr class="mt-5 mb-5">
-
-              <!-- Buttons -->
-              <input class="btn btn-block btn-primary" type="submit" name="submit">
-            </form>
-          <?php
-          }
-          ?>
-
-
-
+            <?php }  ?>
         </div>
       </div> <!-- / .row -->
     </div>
 
   </div> <!-- / .main-content -->
-
+  
   </div>
-  </div> <!-- / .row -->
-  </div>
+</div> <!-- / .row -->
+</div>
 
-  </div><!-- / .main-content -->
+</div><!-- / .main-content -->
 
-  <!-- JAVASCRIPT -->
-  <!-- Map JS -->
-  <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<!-- JAVASCRIPT -->
+<!-- Map JS -->
+<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 
-  <!-- Vendor JS -->
-  <script src="../assets/js/vendor.bundle.js"></script>
+<!-- Vendor JS -->
+<script src="../assets/js/vendor.bundle.js"></script>
 
-  <!-- Theme JS -->
+<!-- Theme JS -->
   <script src="../assets/js/theme.bundle.js"></script>
 </body>
 
 </html>
+
+<?php
+
+if(isset($_POST['sub'])){
+
+  $f_name = $_FILES['srdoc']['name'];
+  $f_tmp_name = $_FILES['srdoc']['tmp_name'];
+	$f_size = $_FILES['srdoc']['size'];
+	$f_error = $_FILES['srdoc']['error'];
+  $f_ext = explode(".",strtolower($f_name));
+  $f_extension = end($f_ext);
+  
+  $stuqry = "SELECT * FROM studentmaster WHERE StudentUserName = '$un'";
+	$sturesult = mysqli_fetch_assoc(mysqli_query($conn, $stuqry));
+	$qrfrom = $sturesult['StudentId'];
+  
+	$srsub = $_POST['srsub'];
+  $facqry = "SELECT SubjectFacultyId FROM `subjectmaster` WHERE SubjectName = '$srsub'";
+	$facresult = mysqli_fetch_assoc(mysqli_query($conn, $facqry));
+	$qrto = $facresult['SubjectFacultyId'];
+  
+	$srtopic = $_POST['srtopic'];
+	$srdetail = $_POST['srdetail'];
+	$qrstatus = 0;
+	$dt = date('Y-m-d');
+  
+  $qrdoc = $qrfrom."_".time()."_".$f_name;
+  
+	$sql = "INSERT INTO `querymaster`(`QueryFromId`, `QueryToId`, `QueryTopic`, `QueryQuestion`, `Querystatus`, `QuerySubject`, `QueryDocument`, `QueryGenDate`) 
+	VALUES ('$qrfrom','$qrto','$srtopic','$srdetail','$qrstatus','$srsub','$qrdoc','$dt')";
+	$run = mysqli_query($conn, $sql);
+  
+	if ($run == true) {
+    echo "<script>alert('Request Sent .. ')</script>";
+    
+    if ($f_error === 0) {
+      if ($f_size <= 2000000) {
+        move_uploaded_file($f_tmp_name, "../src/uploads/querydocument/" . $qrdoc); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
+			} else {
+				echo "<script>alert(File size is to big .. !);</script>";
+			}
+		} else {
+			echo "Something went wrong .. !";
+		}
+		echo "<script>window.open('study_related.php','_self')</script>";
+	} else {
+    echo "<script>alert('Error to Send Request .. ')</script>";
+		echo "<script>window.open('study_related.php','_self')</script>";
+	}
+  
+}
+?>

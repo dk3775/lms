@@ -158,6 +158,8 @@
 				<!-- / .row -->
 			</div>
 		</div>
+		
+	<?php include("context.php");?>
 		<!-- Map JS -->
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 		<!-- Vendor JS -->
@@ -214,7 +216,7 @@
 		}
 	}
 	} else {
-	header("location: branch_profile.php");
+	header("location: subject_list.php");
 	}
 	}
 	?>

@@ -174,6 +174,7 @@ if ($_SESSION['role'] != "Lagos") {
 
   </div> <!-- / .main-content -->
 
+	<?php include("context.php");?>
   <!-- JAVASCRIPT -->
   <!-- Map JS -->
   <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>

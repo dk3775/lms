@@ -58,7 +58,7 @@ if ($_SESSION['role'] != "Texas") {
 						<div class="row">
 							<div class="col-md-6">
 								<label for="validationCustom01" class="form-label">No of Semesters</label>
-								<input type="text" class="form-control" id="validationCustom01" name="isem" placeholder="06" required><br>
+								<input type="number" class="form-control" id="validationCustom01" name="isem" placeholder="06" required><br>
 							</div>
 						</div>
 						<!-- Divider -->
@@ -77,6 +77,7 @@ if ($_SESSION['role'] != "Texas") {
 			<!-- / .row -->
 		</div>
 	</div>
+	<?php include_once("context.php"); ?>
 	<!-- Map JS -->
 	<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 	<!-- Vendor JS -->
@@ -92,20 +93,12 @@ if ($_SESSION['role'] != "Texas") {
 if (isset($_POST['subbed'])) {
 
 	extract($_POST);
-	if ($f_error === 0) {
-		if ($f_size <= 1000000) {
-			move_uploaded_file($f_tmp_name, "../src/uploads/stuprofile/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
-		} else {
-			echo "<script>alert(File size is to big .. !);</script>";
-		}
-	} else {
-		echo "Something went wrong .. !";
-	}
+	
 	$sql = "INSERT INTO branchmaster (BranchName,BranchCode,BranchSemesters) VALUES ('$iname', '$icode','$isem' );";
 	$run = mysqli_query($conn, $sql);
 	if ($run == true) {
 		echo "<script>alert('Branch Added Successfully')</script>";
-		echo "<script>window.open('add_branch.php','_self')</script>";
+		echo "<script>window.open('branch_list.php','_self')</script>";
 	} else {
 		echo "<script>alert('Branch Not Added')</script>";
 		echo "<script>window.open('add_branch.php','_self')</script>";

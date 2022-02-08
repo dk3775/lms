@@ -17,10 +17,6 @@ if ($_SESSION['role'] != "Lagos") {
 		<?php include_once("nav.php"); ?>
 		<!-- MAIN CONTENT -->
 		<div class="main-content">
-
-
-
-
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<div class="col-12	">
@@ -42,15 +38,14 @@ if ($_SESSION['role'] != "Lagos") {
 									</div> <!-- / .row -->
 								</div>
 								<?php
-								include_once("../config.php");
-								$tbranch = $_GET['tbranch'];
-								$_SESSION["userrole"] = "institute";
-								if (isset($tbranch)) {
-									$sql = "SELECT * FROM timetablemaster WHERE TimetableBranchCode = '$tbranch'";
-									$result = mysqli_query($conn, $sql);
-									$row = mysqli_fetch_assoc($result);
-
-								?>
+									include_once "../config.php";
+									$ttid = $_GET['ttid'];
+									$_SESSION["userrole"] = "institute";
+									if (isset($ttid)) {
+										$sql = "SELECT * FROM timetablemaster WHERE TimetableId = '$ttid'";
+										$result = mysqli_query($conn, $sql);
+										$row = mysqli_fetch_assoc($result);
+								?>	
 									<!-- CONTENT -->
 									<div class="container-fluid">
 										<div class="row">
@@ -66,33 +61,31 @@ if ($_SESSION['role'] != "Lagos") {
 															<span class="input-group-text col-3 text-dark">Time Table Branch Code</span>
 															<input type="text" value="<?php echo $row['TimetableBranchCode']; ?>" aria-label="First name" class="form-control" disabled>
 															<span class="input-group-text col-3 text-dark">Time Table Semester</span>
-															<input type="text" value="<?php echo $row['TimetableSemester']; ?>" aria-label="Last name" class="form-control disable">
+															<input type="text" value="<?php echo $row['TimetableSemester']; ?>" aria-label="Last name" class="form-control disable" disabled>
 														</div>
 														<br>
 														<div class="input-group">
 															<span class="input-group-text col-3 text-dark">Time Table Uploaded By</span>
 															<input type="text" value="<?php echo $row['TimetableUploadedBy']; ?>" aria-label="First name" class="form-control" disabled>
 															<span class="input-group-text col-3 text-dark">Time Table Upload Time</span>
-															<input type="text" value="<?php echo $row['TimetableUploadTime']; ?>" aria-label="Last name" class="form-control disable">
+															<input type="text" value="<?php echo $row['TimetableUploadTime']; ?>" aria-label="Last name" class="form-control disable" disabled>
 														</div>
 
 													</div>
 												</div>
 											</div>
 										</div>
+										<!-- Image -->
+										<p class="text-center mb-3">
+											<img src="../src/uploads/timetables/<?php echo $row['TimetableImage']; ?>" alt="..." class="img-fluid rounded">
+										</p>
+										 <div class="d-flex justify">
+                        <!-- Button -->
+                        <a href="../src/uploads/timetables/<?php echo $row['TimetableImage']; ?>" download="../src/uploads/timetables/<?php echo $row['TimetableImage']; ?>" class="btn btn-primary" name="Download">
+                        Download
+                        </a>
+                     </div>
 									</div>
-
-								<?php
-								} ?>
-
-								<!-- Image -->
-								<p class="text-center mb-3">
-									<img src="../assets/img/posts/post-1.jpg" alt="..." class="img-fluid rounded">
-								</p>
-
-								<!-- Buttons -->
-								
-								<!-- Divider -->
 								<hr>
 							</div>
 						</div>
@@ -102,6 +95,8 @@ if ($_SESSION['role'] != "Lagos") {
 			</div>
 
 		</div> <!-- / .main-content -->
+		<?php }?>
+		<?php include_once("context.php"); ?>
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
@@ -110,6 +105,5 @@ if ($_SESSION['role'] != "Lagos") {
 		<!-- Theme JS -->
 		<script src="../assets/js/theme.bundle.js"></script>
 	</body>
-
 	</html>
-<?php } ?>
+	<?php }?>

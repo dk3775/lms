@@ -114,7 +114,7 @@
                      </div>
                      <hr class="md-5">
                      <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-12 col-md-12">
 							<div class="form-group">
                            <label for="validationCustom01" class="form-label">
 							   User Full Name
@@ -122,15 +122,7 @@
                            <input type="text" class="form-control" id="validationCustom01" name="inname" required>
                         </div>
                         </div>
-                       <div class="col-12 col-md-6">
-                           <div class="form-group">
-                              <label for="validationCustom01" class="form-label">
-                              Date of Birth
-                              </label>
-                              <input type="date" id="validationCustom01" class="form-control" name="dob" required
-                                 data-flatpickr placeholder="YYYY-MM-DD">
-                           </div>
-                        </div>
+                       
                      </div>
                      <!-- / .row -->
                      <div class="row">
@@ -152,6 +144,27 @@
                            </label>
                            <input type="tel" pattern="[0-9]{10}" maxlength="10" id="validationCustom01"
                               class="form-control" name="incontact" required>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-12 col-md-6">
+                           <!-- Email address -->
+                           <div class="form-group">
+                              <!-- Label -->
+                              <label for="validationCustom01" class="form-label">
+                              User Role
+                              </label>
+                              <!-- Input -->
+                              <input type="text" class="form-control" id="validationCustom01" name="inrole"
+                                 required>
+                           </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                           <label for="validationCustom01" class="form-label">
+                           User Office
+                           </label>
+                           <input type="text" maxlength="10" id="validationCustom01"
+                              class="form-control" name="inoffice" required>
                         </div>
                      </div>
                      <div class="row">
@@ -183,6 +196,7 @@
             <!-- / .row -->
          </div>
       </div>
+      <?php include_once("context.php"); ?>
       <!-- Map JS -->
       <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
       <!-- Vendor JS -->
@@ -260,7 +274,8 @@
    	$inusername = $_POST['inusername'];
    	$inpass = $_POST['inpass'];
    	// $spass = password_hash($spassword,PASSWORD_BCRYPT); //hashing the $spassword 
-   	// $slid = $_POST['slid'];
+   	$inrole = $_POST['inrole'];
+      $inoffice = $_POST['inoffice'];
   
    	$fs_name = $inusername.".png";
    
@@ -273,12 +288,12 @@
    	} else {
    		echo "Something went wrong .. !";
    	}
-   	$sql = "INSERT INTO `institutemaster`(`InstituteUserName`, `InstitutePassword`, `InstituteName`, `InstituteProfilePic`, `InstituteEmail`, `InstituteContactNo`, `InstituteAddress`) 
-	   VALUES ('$inusername','$inpass','$inname','$fs_name','$inemail','$incontact','$add')";
+   	$sql = "INSERT INTO `institutemaster`(`InstituteUserName`, `InstitutePassword`, `InstituteName`, `InstituteRole`, `InstituteProfilePic`, `InstituteEmail`, `InstituteContactNo`, `InstituteAddress`, `InstituteOffice`) 
+	   VALUES ('$inusername','$inpass','$inname','$inrole','$fs_name','$inemail','$incontact','$add','$inoffice')";
 	$run = mysqli_query($conn, $sql);
    	if ($run == true) {
    		echo "<script>alert('Institute User Added Successfully')</script>";
-   		echo "<script>window.open('add_institute.php','_self')</script>";
+   		echo "<script>window.open('institute_list.php','_self')</script>";
    	} else {
    		echo "<script>alert('Institute User Not Added')</script>";
    		// echo "<script>window.open('add_student.php','_self')</script>";

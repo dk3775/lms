@@ -14,10 +14,10 @@ if ($_SESSION['role'] != "Lagos") {
 
 	<body>
 		<!-- NAVIGATION -->
-		<?php include_once("nav.php"); ?>
+		<?php include_once('nav.php'); ?>
 		<!-- MAIN CONTENT -->
 		<div class="main-content">
-			<div class="header">
+			<div class="header ml-5 mr-5">
 				<!-- HEADER -->
 				<div class="header">
 					<div class="container-fluid">
@@ -59,7 +59,7 @@ if ($_SESSION['role'] != "Lagos") {
 								<div class="col-auto">
 									<!-- Avatar -->
 									<div class="../avatar avatar-xxl header-avatar-top">
-										<img src="../src/uploads/facprofile/<?php echo $row['StudentProfilePic']; ?>" alt="..." class="avatar-img rounded-circle border border-4 border-body">
+										<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" alt="..." class="avatar-img rounded-circle border border-4 border-body">
 									</div>
 								</div>
 								<div class="col mb-3 ml-n3 ml-md-n2">
@@ -68,6 +68,9 @@ if ($_SESSION['role'] != "Lagos") {
 									</h1>
 									<h5 class="header-pretitle mt-2">
 										<?php echo $row['StudentEnrollmentNo']; ?>
+									</h5>
+									<h5 class="header-pretitle mt-2">
+										<?php echo "Sem : ".$row['StudentSemester']; ?>
 									</h5>
 								</div>
 								<div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
@@ -114,21 +117,21 @@ if ($_SESSION['role'] != "Lagos") {
 									<span class="input-group-text col-2 text-dark">Enrollment No.</span>
 									<input type="text" value="<?php echo $row['StudentEnrollmentNo']; ?>" aria-label="First name" class="form-control" disabled>
 									<span class="input-group-text col-2 text-dark">Branch</span>
-									<input type="text" value="<?php echo $row['StudentBranch']; ?>" aria-label="Last name" class="form-control disable">
+									<input type="text" value="<?php echo $row['StudentBranchCode']; ?>" aria-label="Last name" class="form-control" disabled>
 								</div>
 								<br>
 								<div class="input-group">
 									<span class="input-group-text col-2 text-dark">Semester</span>
 									<input type="text" value="<?php echo $row['StudentSemester']; ?>" aria-label="First name" class="form-control" disabled>
 									<span class="input-group-text col-2 text-dark">Date Of Birth</span>
-									<input type="text" value="<?php echo $row['StudentDOB']; ?>" aria-label="Last name" class="form-control disable">
+									<input type="text" value="<?php echo $row['StudentDOB']; ?>" aria-label="Last name" class="form-control" disabled>
 								</div>
 								<br>
 								<div class="input-group">
 									<span class="input-group-text col-2 text-dark">Roll No.</span>
-									<input type="text" value="<?php echo $row['StudentRollNo']; ?>" aria-label="Last name" class="form-control disable">
+									<input type="text" value="<?php echo $row['StudentRollNo']; ?>" aria-label="Last name" class="form-control" disabled>
 									<span class="input-group-text col-2 text-dark">E-mail</span>
-									<input type="text" value="<?php echo $row['StudentEmail']; ?>" aria-label="Last name" class="form-control disable">
+									<input type="text" value="<?php echo $row['StudentEmail']; ?>" aria-label="Last name" class="form-control" disabled>
 								</div>
 								<br>
 								<div class="input-group">
@@ -140,7 +143,7 @@ if ($_SESSION['role'] != "Lagos") {
 								<br>
 								<div class="input-group  input-group-lg mb-3">
 									<span class="input-group-text col-2 text-dark">Address</span>
-									<input type="text" value="<?php echo $row['StudentAddress']; ?>" aria-label="Last name" class="form-control disable">
+									<input type="text" value="<?php echo $row['StudentAddress']; ?>" aria-label="Last name" class="form-control" disabled>
 								</div>
 							</div>
 						</div>
@@ -150,11 +153,11 @@ if ($_SESSION['role'] != "Lagos") {
 		<?php
 				} else { ?>
 			<div class="container-fluid">
-				<form class="mb-4" method="post">
-					<div class="col">
+				<form class="m-5" method="post">
+					<div class="col ml-5 mr-5">
 						<div class="row">
 
-							<div class="col-md-4">
+							<div class="col-md-10">
 								<div class="input-group input-group-merge input-group-reverse">
 									<input class="form-control list-search" type="text" name="enr" placeholder="Enter Student Enrollment">
 									<div class="input-group-text">
@@ -183,32 +186,34 @@ if ($_SESSION['role'] != "Lagos") {
 
 						if (isset($row)) { ?>
 					<div class="container-fluid">
-						<hr class="navbar-divider my-4">
-						<div class="card">
+						<hr class="navbar-divider m-5">
+						<div class="card ml-5 mr-5">
 							<div class="card-body">
 								<div class="row align-items-center">
 									<div class="col-auto">
 										<a href="profile-posts.html" class="avatar avatar-lg">
-											<img src="../src/uploads/facprofile/<?php echo $row['StudentProfilePic']; ?>" alt="..." class="avatar-img rounded-circle">
+											<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" alt="..." class="avatar-img rounded-circle">
 										</a>
 									</div>
-									<div class="col ml-n2">
+									<div class="col" >
 										<!-- Title -->
-										<h4 class="mb-1">
-											<a href="student_profile.php"><?php echo $row['StudentFirstName'] . " " . $row['StudentLastName']; ?></a>
-										</h4>
-										<!-- Text -->
-										<p class="small mb-1">
+										<h3 class="ml-3 mb-2 header-title">
+											 <?php echo $row['StudentFirstName'] . " " . $row['StudentLastName']; ?>
+										</h3>
+										<p class="small ml-3 mb-1">
 											<?php echo $row['StudentEnrollmentNo']; ?>
 										</p>
 										<!-- Status -->
-										<p class="small mb-1">
-											<?php echo $row['StudentBranch']; ?>
+										<p class="small ml-3  mb-1">
+											<?php echo "Sem : ".$row['StudentSemester']; ?>
+										</p>
+										<p class="small ml-3  mb-1">
+											<?php echo "Branch : ".$row['StudentBranchCode']; ?>
 										</p>
 									</div>
 									<div class="col-auto">
 										<!-- Button -->
-										<a href="student_profile.php?studentcode=<?php echo $row['StudentEnrollmentNo']; ?>" class="btn btn-m btn-primary d-none d-md-inline-block">
+										<a href="student_profile.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" class="btn btn-m btn-primary d-none d-md-inline-block">
 											View
 										</a>
 									</div>
@@ -224,6 +229,7 @@ if ($_SESSION['role'] != "Lagos") {
 				}
 		?>
 		</div>
+		<?php #include_once("context.php"); ?>
 		<!-- / .main-content -->
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->

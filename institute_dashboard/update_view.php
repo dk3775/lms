@@ -39,7 +39,7 @@ if ($_SESSION['role'] != "Texas") {
 								</div>
 								<?php
 								include_once "../config.php";
-								$ttid = $_GET['ttid'];
+								$ttid = $_GET['updateid'];
 								$_SESSION["userrole"] = "institute";
 								if (isset($ttid)) {
 									$sql = "SELECT * FROM updatemaster WHERE UpdateId = '$ttid'";
@@ -61,7 +61,9 @@ if ($_SESSION['role'] != "Texas") {
 														<div class="input-group">
 															<span class="input-group-text col-3 text-dark">Title</span>
 															<input type="text" value="<?php echo $row['UpdateTitle']; ?>" aria-label="First name" class="form-control" disabled>
-															<span class="input-group-text col-3 text-dark">Description</span>
+														</div>
+														<br>
+														<div class="input-group"><span class="input-group-text col-3 text-dark">Description</span>
 															<input type="text" value="<?php echo $row['UpdateDescription']; ?>" aria-label="Last name" class="form-control disable" disabled>
 														</div>
 														<br>
@@ -72,7 +74,7 @@ if ($_SESSION['role'] != "Texas") {
 															<input type="text" value="<?php echo $row['UpdateType']; ?>" aria-label="Last name" class="form-control disable" disabled>
 														</div>
 
-													</div>
+													</div>	
 												</div>
 											</div>
 										</div>
@@ -82,7 +84,7 @@ if ($_SESSION['role'] != "Texas") {
 										</p>
 										<div class="d-flex justify">
 											<!-- Button -->
-											<a href="../src/uploads/updates/<?php echo $row['UpdateFile']; ?>" download="../src/uploads/timetables/<?php echo $row['TimetableImage']; ?>" class="btn btn-primary" name="Download">
+											<a href="../src/uploads/updates/<?php echo $row['UpdateFile']; ?>" download="<?php echo $row['UpdateFile']; ?>" class="btn btn-primary" name="Download">
 												Download
 											</a>
 										</div>
@@ -103,6 +105,7 @@ if ($_SESSION['role'] != "Texas") {
 
 		</div> <!-- / .main-content -->
 	<?php } ?>
+	<?php include_once("context.php"); ?>
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->
 	<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>

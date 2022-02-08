@@ -46,7 +46,7 @@ if ($_SESSION['role'] != "Texas") {
 				$studentenr = $_GET['facultycode'];
 				$_SESSION["userrole"] = "institute";
 				if (isset($studentenr)) {
-					$sql = "SELECT * FROM facultymaster WHERE FacultyCode = '$studentenr'";
+					$sql = "SELECT * FROM facultymaster WHERE FacultyId = '$studentenr'";
 					$result = mysqli_query($conn, $sql);
 					$row = mysqli_fetch_assoc($result);
 
@@ -69,10 +69,13 @@ if ($_SESSION['role'] != "Texas") {
 									<h5 class="header-pretitle mt-2">
 										<?php echo $row['FacultyCode']; ?>
 									</h5>
+									<h5 class="header-pretitle mt-2">
+										<?php echo $row['FacultyEmail']; ?>
+									</h5>
 								</div>
 								<div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
 									<!-- Button -->
-									<a href="edit_faculty.php?facid=<?php echo $row['FacultyCode']; ?>" class="btn btn-primary d-block d-md-inline-block btn-md">
+									<a href="edit_faculty.php?facid=<?php echo $row['FacultyId']; ?>" class="btn btn-primary d-block d-md-inline-block btn-md">
 										Edit Details
 									</a>
 								</div>
@@ -114,26 +117,26 @@ if ($_SESSION['role'] != "Texas") {
 									<span class="input-group-text col-2 text-dark">Faculty Code</span>
 									<input type="text" value="<?php echo $row['FacultyCode']; ?>" aria-label="First name" class="form-control" disabled>
 									<span class="input-group-text col-2 text-dark">Branch</span>
-									<input type="text" value="<?php echo $row['FacultyBranch']; ?>" aria-label="Last name" class="form-control disable">
+									<input type="text" value="<?php echo $row['FacultyBranchCode']; ?>" aria-label="Last name" class="form-control" disabled>
 								</div>
 								<br>
 								<div class="input-group">
 									<span class="input-group-text col-2 text-dark">Phone No</span>
 									<input type="text" value="<?php echo $row['FacultyContactNo']; ?>" aria-label="First name" class="form-control" disabled>
 									<span class="input-group-text col-2 text-dark">Email</span>
-									<input type="text" value="<?php echo $row['FacultyEmail']; ?>" aria-label="Last name" class="form-control disable">
+									<input type="text" value="<?php echo $row['FacultyEmail']; ?>" aria-label="Last name" class="form-control" disabled>
 								</div>
 								<br>
 								<div class="input-group">
 									<span class="input-group-text col-2 text-dark">Faculty Qualification</span>
 									<input type="text" value="<?php echo $row['FacultyQualification']; ?>" aria-label="First name" class="form-control" disabled>
 									<span class="input-group-text col-2 text-dark">Faculty Office</span>
-									<input type="text" value="<?php echo $row['FacultyOffice']; ?>" aria-label="Last name" class="form-control disable">
+									<input type="text" value="<?php echo $row['FacultyOffice']; ?>" aria-label="Last name" class="form-control" disabled>
 								</div>
 								<br>
 								<div class="input-group  input-group-lg mb-3">
-									<span class="input-group-text col-2 text-dark">Address</span>
-									<textarea class="form-control" aria-label="With textarea" disabled>abc hello nubs</textarea>
+									<span class="input-group-text col-2 text-dark">Subject</span>
+									<input class="form-control" value="<?php echo $row['FacultySubject']; ?>" aria-label="With textarea" disabled>
 								</div>
 							</div>
 						</div>
@@ -143,11 +146,11 @@ if ($_SESSION['role'] != "Texas") {
 		<?php
 				} else { ?>
 			<div class="container-fluid">
-				<form class="mb-4" method="post">
-					<div class="col">
+				<form class="m-5" method="post">
+					<div class="col ml-5 mr-5">
 						<div class="row">
 
-							<div class="col-md-4">
+							<div class="col-md-10">
 								<div class="input-group input-group-merge input-group-reverse">
 									<input class="form-control list-search" type="text" name="enr" placeholder="Enter Faculty Code">
 									<div class="input-group-text">
@@ -175,8 +178,8 @@ if ($_SESSION['role'] != "Texas") {
 						$row = mysqli_fetch_assoc($res);
 						if (isset($row)) { ?>
 					<div class="container-fluid">
-						<hr class="navbar-divider my-4">
-						<div class="card">
+						<hr class="navbar-divider m-5">
+						<div class="card ml-5 mr-5">
 							<div class="card-body">
 								<div class="row align-items-center">
 									<div class="col-auto">
@@ -187,7 +190,7 @@ if ($_SESSION['role'] != "Texas") {
 									<div class="col ml-n2">
 										<!-- Title -->
 										<h4 class="mb-1">
-											<a href="faculty_profile.php"><?php echo $row['FacultyFirstName'] . " " . $row['FacultyLastName']; ?></a>
+											<span href="faculty_profile.php"><?php echo $row['FacultyFirstName'] . " " . $row['FacultyLastName']; ?></span>
 										</h4>
 										<!-- Text -->
 										<p class="small mb-1">
@@ -195,12 +198,12 @@ if ($_SESSION['role'] != "Texas") {
 										</p>
 										<!-- Status -->
 										<p class="small mb-1">
-											<?php echo $row['FacultyBranch']; ?>
+											<?php echo "Branch : ".$row['FacultyBranchCode']; ?>
 										</p>
 									</div>
 									<div class="col-auto">
 										<!-- Button -->
-										<a href="faculty_profile.php?facultycode=<?php echo $row['FacultyCode']; ?>" class="btn btn-m btn-primary d-none d-md-inline-block">
+										<a href="faculty_profile.php?facultycode=<?php echo $row['FacultyId']; ?>" class="btn btn-m btn-primary d-none d-md-inline-block">
 											View
 										</a>
 									</div>
@@ -216,6 +219,7 @@ if ($_SESSION['role'] != "Texas") {
 				}
 		?>
 		</div>
+		<?php include_once("context.php"); ?>
 		<!-- / .main-content -->
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->

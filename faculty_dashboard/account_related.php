@@ -189,6 +189,7 @@ if ($_SESSION['role'] != "Lagos") {
 			</div>
 		</div>
 	</div>
+	<?php include("context.php");?>
 	</div>
 	<!-- / .main-content -->
 	<!-- JAVASCRIPT -->

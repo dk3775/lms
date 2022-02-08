@@ -40,7 +40,7 @@ if ($_SESSION['role'] != "Texas") {
 									</h1>
 								</div>
 								<div class="col-auto">
-									<a href="add_branch.php" class="btn btn-primary ml-2">
+									<a href="add_subject.php" class="btn btn-primary ml-2">
 										Add Subject
 									</a>
 								</div>
@@ -91,13 +91,13 @@ if ($_SESSION['role'] != "Texas") {
 													<a class="list-sort text-muted" data-sort="item-name">Subject Name</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-email">Subject Code</a>
+													<a class="list-sort text-muted" data-sort="item-phone">Subject Code</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-email">Branch ID</a>
+													<a class="list-sort text-muted" data-sort="item-name">Branch ID</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-email">Semester</a>
+													<a class="list-sort text-muted" data-sort="item-name">Semester</a>
 												</th>
 												<th>
 													<a class="list-sort text-muted justify-content-center">Action</a>
@@ -111,29 +111,29 @@ if ($_SESSION['role'] != "Texas") {
 											while ($row = mysqli_fetch_assoc($res)) { ?>
 												<tr>
 													<td>
-														<a type="text" class="text-reset item-name" name="bname" required><?php echo $row['SubjectName']; ?></a>
+														<span type="text" class="text-reset item-name" name="bname" required><?php echo $row['SubjectName']; ?></span>
 													</td>
 													<td>
 														<!-- Email -->
-														<a type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectCode']; ?></a>
+														<span type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectCode']; ?></span>
 
 													</td>
 													<td>
 														<!-- Email -->
-														<a type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectBranch']; ?></a>
+														<span type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectBranch']; ?></span>
 
 													</td>
 													<td>
 														<!-- Email -->
-														<a type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectSemester']; ?></a>
+														<span type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectSemester']; ?></span>
 
 													</td>
 													<td>
-														<a href="edit_subject.php?facid=<?php echo $row['SubjectCode']; ?>" class="btn btn-sm btn-white">
+														<a href="edit_subject.php?subcode=<?php echo $row['SubjectCode']; ?>" class="btn btn-sm btn-white">
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="subdelete.php?facid=<?php echo $row['SubjectCode']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
+														<a class="btn btn-sm btn-white" href="subdelete.php?subcode=<?php echo $row['SubjectCode']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
 															Delete
 															<!--changes-->
 														</a>
@@ -180,7 +180,7 @@ if ($_SESSION['role'] != "Texas") {
 			</div>
 		</div>
 	</div>
-	</div>
+	<?php include_once("context.php"); ?>
 	<!-- / .main-content -->
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->

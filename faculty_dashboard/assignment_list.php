@@ -5,7 +5,7 @@ if ($_SESSION['role'] != "Lagos") {
 } else {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Faculty";
-	$qur = "SELECT * FROM assignmentmaster";
+	$qur = "SELECT *,AssignmentUploadedBy FROM assignmentmaster INNER JOIN facultymaster ON assignmentmaster.AssignmentUploadedBy = facultymaster.FacultyId";
 	$res = mysqli_query($conn, $qur);
 }
 ?>
@@ -35,7 +35,7 @@ if ($_SESSION['role'] != "Lagos") {
 									</h6>
 									<!-- Title -->
 									<h1 class="header-title text-truncate">
-									Assignment List
+										Assignment List
 									</h1>
 								</div>
 								<div class="col-auto">
@@ -93,18 +93,16 @@ if ($_SESSION['role'] != "Lagos") {
 													<a class="list-sort text-muted" data-sort="item-name">Subject</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-name">Uploaded By</a>
-												</th>
-												<th>
-													<a class="list-sort text-muted" data-sort="item-phone">Upload Time</a>
-												</th>
-												<th>
 													<a class="list-sort text-muted" data-sort="item-score">Sem</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted justify-content-center">Action</a>
+													<a class="list-sort text-muted" data-sort="item-phone">Upload Date</a>
 												</th>
 												<th>
+													<a class="list-sort text-muted" data-sort="item-phone">Submission Date</a>
+												</th>
+												<th>
+													<a class="list-sort text-muted justify-content-center">Action</a>
 												</th>
 											</tr>
 										</thead>
@@ -113,43 +111,65 @@ if ($_SESSION['role'] != "Lagos") {
 											while ($row = mysqli_fetch_assoc($res)) { ?>
 												<tr>
 													<td>
-														<a class="item-name text-reset"><?php echo $row['AssignmentName']; ?></a>
+														<a class="item-name text-reset"><?php echo $row['AssignmentTitle']; ?></a>
 													</td>
 													<td>
 														<!-- Email -->
 														<span class="item-email text-reset"><?php echo $row['AssignmentSubject']; ?></span>
 													</td>
 													<td>
-														<!-- Phone -->
-														<span class="item-phone text-reset"><?php echo $row['AssignmentUploadedBy']; ?></span>
-													</td>
-													<td>
-														<!-- Badge -->
-														<span class=""><?php echo $row['AssignmentUploadeTime']; ?></span>
-													</td>
-													<td>
 														<!-- Badge -->
 														<span class=""><?php echo $row['AssignmentForSemester']; ?></span>
 													</td>
 													<td>
-														<a href="edit_student.php?studentenr=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-white">
+														<!-- Badge -->
+														<span class=""><?php echo $row['AssignmentUploaddate']; ?></span>
+													</td>
+													<td>
+														<!-- Badge -->
+														<span class=""><?php echo $row['AssignmentSubmissionDate']; ?></span>
+													</td>
+													<td>
+														<a href="edit_assignment.php?assid=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-white">
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="sdelete.php?studentenr=<?php echo $row['AssignmentId']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
+														<a href="assdelete.php?assid=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-white" onclick="if (! confirm('Are you sure to delete Assignment ?')) return false;">
 															Delete
 														</a>
 														&nbsp;
-														<a href="student_profile.php?studentenr=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-white">
+														<a href="#" class="btn btn-sm btn-white">
 															View
 														</a>
-													</td>
-													<td class="text-right">
 													</td>
 												</tr>
 											<?php } ?>
 											<!--over-->
 									</table>
+								</div>
+								<div class="card-footer d-flex justify-content-between">
+									<!-- Pagination (prev) -->
+									<ul class="list-pagination-prev pagination pagination-tabs card-pagination">
+										<li class="page-item">
+											<a class="page-link pl-0 pr-4 border-right" href="#">
+												<i class="fe fe-arrow-left mr-1"></i> Prev
+											</a>
+										</li>
+									</ul>
+									<!-- Pagination -->
+									<ul class="list-pagination pagination pagination-tabs card-pagination">
+										<li class="active"><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">1</a></li>
+										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">2</a></li>
+										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">3</a></li>
+									</ul>
+									<!-- Pagination (next) -->
+									<ul class="list-pagination-next pagination pagination-tabs card-pagination">
+										<li class="page-item">
+											<a class="page-link pl-4 pr-0 border-left" href="#">
+												Next <i class="fe fe-arrow-right ml-1"></i>
+											</a>
+										</li>
+									</ul>
 								</div>
 							</div>
 						</div>
@@ -159,6 +179,8 @@ if ($_SESSION['role'] != "Lagos") {
 		</div>
 	</div>
 	</div>
+
+	<?php include("context.php"); ?>
 	<!-- / .main-content -->
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->

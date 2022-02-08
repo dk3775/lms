@@ -172,7 +172,9 @@ if ($_SESSION['role'] != "Texas") {
       </div> <!-- / .row -->
     </div>
 
-  </div> <!-- / .main-content -->
+  </div> 
+  <?php include_once("context.php"); ?>
+  <!-- / .main-content -->
 
   <!-- JAVASCRIPT -->
   <!-- Map JS -->

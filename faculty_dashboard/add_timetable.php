@@ -5,6 +5,7 @@
    } else {
    	include_once("../config.php");
    	$_SESSION["userrole"] = "Faculty";
+   	$u = $_SESSION["id"];
    }
    #fetching tables
    $branchsel = "SELECT * FROM branchmaster";
@@ -171,6 +172,8 @@
             <!-- / .row -->
          </div>
       </div>
+      
+	<?php include("context.php");?>
       <!-- Map JS -->
       <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
       <!-- Vendor JS -->
@@ -203,19 +206,19 @@
 </html>
 <?php
    if (isset($_POST['subbed'])) {
-   	// $f_name = $_FILES['tpic']['name'];
+
    	$f_tmp_name = $_FILES['tpic']['tmp_name'];
    	$f_size = $_FILES['tpic']['size'];
    	$f_error = $_FILES['tpic']['error'];
-   	// $f_type = $_FILES['tpic']['type'];
-   	// $f_ext = explode('.', $f_name);
-   	// $f_ext = strtolower(end($f_ext));
    
    	$tbranch = $_POST['tbranch'];
    	$tsem = $_POST['tsem'];
-   	$tupd = "Institute";
+
+      $updsql = "SELECT `FacultyFirstName`,`FacultyLastName` FROM `facultymaster` WHERE `FacultyUserName` = '$u'";
+      $updqry = mysqli_fetch_assoc(mysqli_query($conn , $updsql));
+   	$tupd = $updqry['FacultyFirstName']." ".$updqry['FacultyLastName'];
    	$tupdtime = date("Y-m-d H:i:s");
-   
+
    	$tt_name = $tbranch."_".$tsem.".png";
    
    	if ($f_error === 0) {
@@ -232,10 +235,10 @@
    	$run = mysqli_query($conn, $sql);
    	if ($run == true) {
    		echo "<script>alert('Time Table Added Successfully')</script>";
-   		echo "<script>window.open('faculty_list.php','_self')</script>";
+   		echo "<script>window.open('timetable_list.php','_self')</script>";
    	} else {
    		echo "<script>alert('Time Table Not Added')</script>";
-   		echo "<script>window.open('add_faculty.php','_self')</script>";
+   		echo "<script>window.open('add_timetable.php','_self')</script>";
    	}
    }
    ?>

@@ -152,6 +152,8 @@ if ($_SESSION['role'] != "Lagos") {
 				<!-- / .row -->
 			</div>
 		</div>
+		
+	<?php include("context.php");?>
 		<!-- / .main-content -->
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->
@@ -173,10 +175,10 @@ if ($_SESSION['role'] != "Lagos") {
 		$runed = mysqli_query($conn, $sqli);
 		if ($runed == true) {
 			echo "<script>alert('Branch Edited Successfully')</script>";
-			echo "<script>window.open('edit_branch.php','_self') </script>";
+			echo "<script>window.open('branch_list.php','_self') </script>";
 		} else {
 			echo "<script>alert('Error Occured')</script>";
-			echo "<script>window.open('edit_branch.php','_self')</script>";
+			echo "<script>window.open('edit_branch.php?brid=$bid','_self')</script>";
 		}
 	}
 	?>
