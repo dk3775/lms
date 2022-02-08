@@ -114,7 +114,7 @@ if ($_SESSION['role'] != "Texas") {
 														<div class="avatar avatar-xs align-middle mr-2">
 															<img class="avatar-img rounded-circle" src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" alt="...">
 														</div>
-														<span class="item-name text-reset"><?php echo $row['StudentFirstName'] . " " . $row['StudentLastName']; ?></span>
+														<a class="item-name text-reset"><?php echo $row['StudentFirstName'] . " " . $row['StudentLastName']; ?></a>
 													</td>
 													<td>
 														<!-- Email -->
@@ -133,7 +133,7 @@ if ($_SESSION['role'] != "Texas") {
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="sdelete.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" onclick="if (! confirm('Are You Sure, You want to Delete this Student ?')) return false;">
+														<a class="btn btn-sm btn-white" href="sdelete.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
 															Delete
 														</a>
 														&nbsp;
@@ -179,7 +179,7 @@ if ($_SESSION['role'] != "Texas") {
 			</div>
 		</div>
 	</div>
-	<?php include_once("context.php"); ?>
+	</div>
 	<!-- / .main-content -->
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->

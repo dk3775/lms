@@ -155,7 +155,6 @@ $row = mysqli_fetch_assoc($updateresult);
             <!-- / .row -->
          </div>
       </div>
-      <?php include_once("context.php"); ?>
       <!-- Map JS -->
       <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
       <!-- Vendor JS -->
@@ -218,7 +217,7 @@ if (isset($_POST['subbed'])) {
     `UpdateDescription`='$upddescription',
     `UpdateFile`='$upd_file',
     `UpdateUploadedBy`='$updloadby',
-    `UpdateType`='$updtype' WHERE `UpdateId`='$updid'";
+    `UpdateType`='' WHERE `UpdateId`='$updid'";
     $run = mysqli_query($conn, $sql);
 
     if ($run == true) {
@@ -226,7 +225,7 @@ if (isset($_POST['subbed'])) {
         echo "<script>window.open('update_list.php','_self')</script>";
     } else {
         echo "<script>alert('Update Not Edited')</script>";
-        echo "<script>window.open('edit_update.php?updid=$updid','_self')</script>";
+        // echo "<script>window.open('add_faculty.php','_self')</script>";
     }
 }
 

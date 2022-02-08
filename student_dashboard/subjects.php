@@ -4,10 +4,8 @@ if ($_SESSION['role'] != "Abuja") {
     header("Location: ../default.php");
 } else {
     include_once("../config.php");
-    $u = $_SESSION["id"];
     $_SESSION["userrole"] = "Student";
-    $qur = "SELECT * FROM `studentmaster` WHERE `StudentUserName`='$u'";
-    $row = mysqli_fetch_assoc(mysqli_query($conn, $qur));
+    $qur = "SELECT * FROM `studentmaster` WHERE ``='Abuja'";
 }
 ?>
 <!DOCTYPE html>
@@ -54,33 +52,28 @@ if ($_SESSION['role'] != "Abuja") {
         <div class="container-fluid">
             <div class="row">
                 <?php
-                $C = $row['StudentBranchCode']."_".$row['StudentSemester'];
-                $subsql = "SELECT *, FacultyFirstName, FacultyLastname FROM subjectmaster INNER JOIN facultymaster ON subjectmaster.SubjectFacultyId=facultymaster.FacultyId WHERE SemCode = '$C'";
+                $C = $_GET['semid'];
+                $subsql = "Select *, FacultyFirstName, FacultyLastname from subjectmaster INNER JOIN facultymaster on subjectmaster.SubjectFacultyId=facultymaster.FacultyId where SemCode = '$C'";
                 $subresult = mysqli_query($conn, $subsql);
-                if(mysqli_num_rows($subresult)>0){
-                    while ($roww = mysqli_fetch_assoc($subresult)) { ?>
-                        <div class="col-12 col-md-4">
-                            <div class="card-group">
-                                <div class="card">
-                                    <img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic']; ?>" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
-                                        <p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
-                                        <p class="card-text"><?php echo $roww['FacultyFirstName'] . " " . $roww['FacultyLastName']; ?></p>
-                                    </div>
+                $sac = 1;
+                while ($roww = mysqli_fetch_assoc($subresult)) { ?>
+                    <div class="col-12 col-md-4 mb-md-5">
+                        <div class="card-group">
+                            <div class="card">
+                                <img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic']; ?>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
+                                    <p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
+                                    <p class="card-text"><?php echo $roww['FacultyFirstName'] . " " . $roww['FacultyLastName']; ?></p>
+                                    <a href="edit_subject.php?semid=<?php echo $semid; ?>&brid=<?php echo $xbrid; ?>&subid=<?php echo $roww['SubjectCode']; ?>" class="">Edit</a>
                                 </div>
                             </div>
                         </div>
-                <?php
-                    }
-                }
-                else{ ?>
-                    <div class="col-12">
-                        <h1 class="card header-title m-5 p-5"> Oops, No Subject To Show</h1>
                     </div>
                 <?php
+                    $sac++;
                 }
-                ?>  
+                ?>
             </div>
         </div>
     </div>

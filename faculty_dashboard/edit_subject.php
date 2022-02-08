@@ -6,13 +6,13 @@
 	} else {
 		include_once("../config.php");
 		$_SESSION["userrole"] = "Institute";
-		if(isset($_GET['facid'])){
-			$brcode = $_GET['facid'];
-			$facsel = "SELECT * FROM facultymaster WHERE FacultyBranchCode = '$brcode'";
-			$facresult = mysqli_query($conn, $facsel);
-			$branchsel = "SELECT * FROM branchmaster where BranchCode = '$brcode'";
-			$branchresult = mysqli_query($conn, $branchsel);
-			$brow = mysqli_fetch_assoc($branchresult);
+		if(isset($_GET['brid']) && isset($_GET['semid'])){
+		$brcode = $_GET['brid'];
+		$facsel = "SELECT * FROM facultymaster WHERE FacultyBranchCode = '$brcode'";
+		$facresult = mysqli_query($conn, $facsel);
+		$branchsel = "SELECT * FROM branchmaster where BranchCode = '$brcode'";
+		$branchresult = mysqli_query($conn, $branchsel);
+		$brow = mysqli_fetch_assoc($branchresult);
 	?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +48,7 @@
 						<!-- Form -->
 						<?php
 							include_once("../config.php");
-							$sid = $_GET['facid'];
+							$sid = $_GET['subid'];
 							$_SESSION["userrole"] = "institute";
 							if (isset($sid)) {
 								$sql = "SELECT * FROM subjectmaster WHERE SubjectCode = '$sid'";
@@ -233,8 +233,6 @@
 				<!-- / .row -->
 			</div>
 		</div>
-		
-	<?php include("context.php");?>
 		<!-- / .main-content -->
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->
@@ -291,6 +289,8 @@
 			echo "<script>window.open('edit_subject.php','_self')</script>";
 		}
 	}
+	}else{
+		header("location: branch_profile.php");
 	}
 	}
 	?>

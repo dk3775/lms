@@ -22,17 +22,17 @@
     } else {
         include_once("../config.php");
         $_SESSION["userrole"] = "institute";
-        $fid = $_GET['brid'];
+        $fid = $_GET['facid'];
         echo $sid;
-        $qur = "DELETE FROM branchmaster WHERE BranchId = '$fid'";
+        $qur = "DELETE FROM branchmaster WHERE BranchCode = '$fid'";
         $res = mysqli_query($conn, $qur);
         if ($res) {
             echo "<script>alert('branch Deleted Successfully');</script>";
-            header("Location: branch_list.php");
+            header("Location: ../institute_dashboard/branch_list.php");
         }
         else {
             echo "<script>alert('branch Deletion Failed');</script>";
-            header("Location: branch_list.php");
+            header("Location: ../institute_dashboard/branch_list.php");
         }
     }
     ?>

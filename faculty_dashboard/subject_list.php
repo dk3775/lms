@@ -133,7 +133,7 @@ if ($_SESSION['role'] != "Lagos") {
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="subdelete.php?facid=<?php echo $row['SubjectCode']; ?>" onclick="if (! confirm('Are You Sure, You want to Delete this Subject ?')) return false;">
+														<a class="btn btn-sm btn-white" href="subdelete.php?facid=<?php echo $row['SubjectCode']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
 															Delete
 															<!--changes-->
 														</a>
@@ -149,30 +149,6 @@ if ($_SESSION['role'] != "Lagos") {
 											<!--over-->
 									</table>
 								</div>
-								<div class="card-footer d-flex justify-content-between">
-									<!-- Pagination (prev) -->
-									<ul class="list-pagination-prev pagination pagination-tabs card-pagination">
-										<li class="page-item">
-											<a class="page-link pl-0 pr-4 border-right" href="#">
-												<i class="fe fe-arrow-left mr-1"></i> Prev
-											</a>
-										</li>
-									</ul>
-									<!-- Pagination -->
-									<ul class="list-pagination pagination pagination-tabs card-pagination">
-										<li class="active"><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">1</a></li>
-										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">2</a></li>
-										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">3</a></li>
-									</ul>
-									<!-- Pagination (next) -->
-									<ul class="list-pagination-next pagination pagination-tabs card-pagination">
-										<li class="page-item">
-											<a class="page-link pl-4 pr-0 border-left" href="#">
-												Next <i class="fe fe-arrow-right ml-1"></i>
-											</a>
-										</li>
-									</ul>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -180,8 +156,7 @@ if ($_SESSION['role'] != "Lagos") {
 			</div>
 		</div>
 	</div>
-
-	<?php include("context.php"); ?>
+	</div>
 	<!-- / .main-content -->
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->

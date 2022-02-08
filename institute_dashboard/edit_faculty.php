@@ -44,7 +44,7 @@ if ($_SESSION['role'] != "Texas") {
 						$studentenr = $_GET['facid'];
 						$_SESSION["userrole"] = "institute";
 						if (isset($studentenr)) {
-							$sql = "SELECT * FROM facultymaster WHERE FacultyId = '$studentenr'";
+							$sql = "SELECT * FROM facultymaster WHERE FacultyCode = '$studentenr'";
 							$result = mysqli_query($conn, $sql);
 							$row = mysqli_fetch_assoc($result);
 
@@ -335,7 +335,6 @@ if ($_SESSION['role'] != "Texas") {
 				<!-- / .row -->
 			</div>
 		</div>
-		<?php include_once("context.php"); ?>
 		<!-- / .main-content -->
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->
@@ -368,7 +367,7 @@ if ($_SESSION['role'] != "Texas") {
 		$fs_name = $fcode . ".png";
 
 		if ($f_error === 0) {
-			if ($f_size <= 2000000) {
+			if ($f_size <= 1000000) {
 				move_uploaded_file($f_tmp_name, "../src/uploads/stuprofile/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
 			} else {
 				echo "<script> alert(File size is to big .. !);</script>";

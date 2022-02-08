@@ -3,8 +3,8 @@ session_start();
 if ($_SESSION['role'] != "Lagos") {
 	header("Location: ../default.php");
 } else {
-	include_once "../config.php";
-	$_SESSION["userrole"] = "Faculty";
+	include_once("../config.php");
+	$_SESSION["userrole"] = "institute";
 	$qur = "SELECT * FROM timetablemaster ";
 	$res = mysqli_query($conn, $qur);
 }
@@ -13,12 +13,12 @@ if ($_SESSION['role'] != "Lagos") {
 <html lang="en">
 
 <head>
-	<?php include_once "../head.php"; ?>
+	<?php include_once("../head.php"); ?>
 </head>
 
 <body>
 	<!-- NAVIGATION -->
-	<?php include_once "nav.php"; ?>
+	<?php include_once("nav.php"); ?>
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<div class="container-fluid">
@@ -107,9 +107,9 @@ if ($_SESSION['role'] != "Lagos") {
 										</thead>
 										<tbody class="list font-size-base">
 											<?php
-											while ($row = mysqli_fetch_assoc($res)) { ?>
+											while ($row = mysqli_fetch_assoc($res)) { ?> 
 												<tr>
-													<td>
+												<td>
 														<!-- Email -->
 														<span class="item-email text-reset"><?php echo $row['TimetableBranchCode']; ?></span>
 													</td>
@@ -126,16 +126,16 @@ if ($_SESSION['role'] != "Lagos") {
 														<span class="item-phone text-reset"><?php echo $row['TimetableUploadTime']; ?></span>
 													</td>
 													<td>
-														<a href="edit_timetable.php?ttid=<?php echo $row['TimetableId']; ?>" class="btn btn-sm btn-white">
+														<a href="edit_faculty.php?facid=<?php echo $row['TimetableId']; ?>" class="btn btn-sm btn-white">
 															Edit
 														</a>
 														&nbsp;
-														<a href="ttdelete.php?ttid=<?php echo $row['TimetableId']; ?>" class="btn btn-sm btn-white" onclick="if (! confirm('Are You Sure, You want to Delete this Time-Table ?')) return false;">
+														<a class="btn btn-sm btn-white" href="fdelete.php?facid=<?php echo $row['TimetableId']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
 															Delete
 															<!--changes-->
 														</a>
 														&nbsp;
-														<a href="timetable_view.php?ttid=<?php echo $row['TimetableId']; ?>" class="btn btn-sm btn-white">
+														<a href="timetable_view.php?tbranch=<?php echo $row['TimetableBranchCode']; ?>" class="btn btn-sm btn-white">
 															View
 														</a>
 													</td>
@@ -146,30 +146,6 @@ if ($_SESSION['role'] != "Lagos") {
 											<!--over-->
 									</table>
 								</div>
-								<div class="card-footer d-flex justify-content-between">
-									<!-- Pagination (prev) -->
-									<ul class="list-pagination-prev pagination pagination-tabs card-pagination">
-										<li class="page-item">
-											<a class="page-link pl-0 pr-4 border-right" href="#">
-												<i class="fe fe-arrow-left mr-1"></i> Prev
-											</a>
-										</li>
-									</ul>
-									<!-- Pagination -->
-									<ul class="list-pagination pagination pagination-tabs card-pagination">
-										<li class="active"><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">1</a></li>
-										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">2</a></li>
-										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">3</a></li>
-									</ul>
-									<!-- Pagination (next) -->
-									<ul class="list-pagination-next pagination pagination-tabs card-pagination">
-										<li class="page-item">
-											<a class="page-link pl-4 pr-0 border-left" href="#">
-												Next <i class="fe fe-arrow-right ml-1"></i>
-											</a>
-										</li>
-									</ul>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -177,7 +153,6 @@ if ($_SESSION['role'] != "Lagos") {
 			</div>
 		</div>
 	</div>
-	<?php include_once("context.php"); ?>
 	<!-- / .main-content -->
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->

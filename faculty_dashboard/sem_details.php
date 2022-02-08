@@ -105,8 +105,8 @@
 				<div class="row">
 					<?php
 						$C=$_GET['semid'];
-						$ssql = "SELECT * FROM semestermaster WHERE SemCode = '$C'";
-						$subsql = "SELECT * FROM subjectmaster INNER JOIN facultymaster ON subjectmaster.SubjectFacultyId=facultymaster.FacultyId WHERE SemCode = '$C'";
+						$ssql = "Select * from semestermaster where SemCode = '$C'";
+						$subsql = "Select *, FacultyFirstName, FacultyLastname from subjectmaster INNER JOIN facultymaster on subjectmaster.SubjectFacultyId=facultymaster.FacultyId where SemCode = '$C'";
 						$sresult = mysqli_query($conn, $ssql);
 						$subresult = mysqli_query($conn, $subsql);
 						$rowww=mysqli_fetch_assoc($sresult);
@@ -167,8 +167,6 @@
 				}
 				?>
 		</div>
-		
-	<?php include("context.php");?>
 		<!-- / .main-content -->
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->

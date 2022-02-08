@@ -4,7 +4,7 @@
    	header("Location: ../default.php");
    } else {
    	include_once("../config.php");
-   	$_SESSION["userrole"] = "Institute";
+   	$_SESSION["userrole"] = "Faculty";
    }
    #fetching tables
    $branchsel = "SELECT * FROM branchmaster";
@@ -62,7 +62,7 @@
                                  </div>
                                  <div class="col-12 col-md-6">
                                     <input type="file" id="img" name="logo" class="btn btn-sm"
-                                       onchange="showPreview(event);" accept="image/svg+xml,application/svg+xml">
+                                       onchange="showPreview(event);" accept="image/svg+xml application/svg+xml">
                                  </div>
                               </div>
                            </div>

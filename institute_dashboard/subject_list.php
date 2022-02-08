@@ -111,29 +111,29 @@ if ($_SESSION['role'] != "Texas") {
 											while ($row = mysqli_fetch_assoc($res)) { ?>
 												<tr>
 													<td>
-														<span type="text" class="text-reset item-name" name="bname" required><?php echo $row['SubjectName']; ?></span>
+														<a type="text" class="text-reset item-name" name="bname" required><?php echo $row['SubjectName']; ?></a>
 													</td>
 													<td>
 														<!-- Email -->
-														<span type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectCode']; ?></span>
+														<a type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectCode']; ?></a>
 
 													</td>
 													<td>
 														<!-- Email -->
-														<span type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectBranch']; ?></span>
+														<a type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectBranch']; ?></a>
 
 													</td>
 													<td>
 														<!-- Email -->
-														<span type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectSemester']; ?></span>
+														<a type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectSemester']; ?></a>
 
 													</td>
 													<td>
-														<a href="edit_subject.php?subcode=<?php echo $row['SubjectCode']; ?>" class="btn btn-sm btn-white">
+														<a href="edit_subject.php?facid=<?php echo $row['SubjectCode']; ?>" class="btn btn-sm btn-white">
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="subdelete.php?subcode=<?php echo $row['SubjectCode']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
+														<a class="btn btn-sm btn-white" href="subdelete.php?facid=<?php echo $row['SubjectCode']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
 															Delete
 															<!--changes-->
 														</a>
@@ -180,7 +180,7 @@ if ($_SESSION['role'] != "Texas") {
 			</div>
 		</div>
 	</div>
-	<?php include_once("context.php"); ?>
+	</div>
 	<!-- / .main-content -->
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->

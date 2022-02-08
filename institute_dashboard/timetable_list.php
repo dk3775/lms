@@ -130,7 +130,7 @@ if ($_SESSION['role'] != "Texas") {
 															Edit
 														</a>
 														&nbsp;
-														<a href="ttdelete.php?ttid=<?php echo $row['TimetableId']; ?>" class="btn btn-sm btn-white" onclick="if (! confirm('Are You Sure, You want to Delete this Time-Table ?')) return false;">
+														<a href="ttdelete.php?ttid=<?php echo $row['TimetableId']; ?>" class="btn btn-sm btn-white" onclick="if (! confirm('Are you sure you want to delete ..?')) return false;">
 															Delete
 															<!--changes-->
 														</a>
@@ -177,7 +177,6 @@ if ($_SESSION['role'] != "Texas") {
 			</div>
 		</div>
 	</div>
-	<?php include_once("context.php"); ?>
 	<!-- / .main-content -->
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->

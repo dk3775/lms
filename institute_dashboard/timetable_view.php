@@ -17,6 +17,10 @@ if ($_SESSION['role'] != "Texas") {
 		<?php include_once '../nav.php';?>
 		<!-- MAIN CONTENT -->
 		<div class="main-content">
+
+
+
+
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<div class="col-12	">
@@ -38,14 +42,15 @@ if ($_SESSION['role'] != "Texas") {
 									</div> <!-- / .row -->
 								</div>
 								<?php
-									include_once "../config.php";
-									$ttid = $_GET['ttid'];
-									$_SESSION["userrole"] = "institute";
-									if (isset($ttid)) {
-										$sql = "SELECT * FROM timetablemaster WHERE TimetableId = '$ttid'";
-										$result = mysqli_query($conn, $sql);
-										$row = mysqli_fetch_assoc($result);
-								?>	
+include_once "../config.php";
+    $ttid = $_GET['ttid'];
+    $_SESSION["userrole"] = "institute";
+    if (isset($ttid)) {
+        $sql = "SELECT * FROM timetablemaster WHERE TimetableId = '$ttid'";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+
+        ?>
 									<!-- CONTENT -->
 									<div class="container-fluid">
 										<div class="row">
@@ -86,6 +91,12 @@ if ($_SESSION['role'] != "Texas") {
                         </a>
                      </div>
 									</div>
+
+
+
+								<!-- Buttons -->
+
+								<!-- Divider -->
 								<hr>
 							</div>
 						</div>
@@ -96,7 +107,6 @@ if ($_SESSION['role'] != "Texas") {
 
 		</div> <!-- / .main-content -->
 		<?php }?>
-		<?php include_once("context.php"); ?>
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>

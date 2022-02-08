@@ -16,9 +16,10 @@ if ($_SESSION['role'] != "Lagos") {
 </head>
 
 <body>
+	
 	<!-- NAVIGATION -->
-	<?php include_once("../nav.php"); ?>
-
+	<?php include_once("nav.php"); ?>
+	
 	<!-- MAIN CONTENT -->
 	<div class="main-content bg-fixed-bottom" style="background-image: url(../assets/img/illustrations/sticky.svg);">
 		<div class="container-fluid">
@@ -114,8 +115,6 @@ if ($_SESSION['role'] != "Lagos") {
 			<!-- / .row -->
 		</div>
 	</div>
-
-	<?php include("context.php"); ?>
 	<!-- / .main-content -->
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->

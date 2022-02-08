@@ -39,7 +39,7 @@ error_reporting(E_ALL ^ E_WARNING);
 					<!-- Password -->
 					<div class="col-12 logo_outer">
 						<div class="input-group mb-3">
-							<input name="password" type="password" value="" class="input form-control" id="password" placeholder="Password" required="true" aria-label="password" aria-describedby="basic-addon1" />
+							<input name="password" type="password" value="" class="input form-control" id="password" placeholder="password" required="true" aria-label="password" aria-describedby="basic-addon1" />
 							<div class="input-group-append ">
 								<span class="input-group-text" style="border-radius: 1px 5px 5px 1px;" onclick="password_show_hide();">
 									<i class="fe uil-eye-slash" id="show_eye"></i>
@@ -115,7 +115,7 @@ if (isset($_POST['login'])) {
 			$_SESSION['role'] = "Lagos";
 			header("location:../faculty_dashboard/");
 		} else {
-			echo "<script>alert('Invalid Login ID or Password');</script>";
+		echo "<script>alert('Invalid Login ID or Password');</script>";
 		}
 	}
 	else if ($na2 == "ST") {
@@ -126,7 +126,6 @@ if (isset($_POST['login'])) {
 			session_start();
 			$_SESSION['cred'] = $u."_".$pass;
 			//echo $_SESSION['cred'];
-			$_SESSION['id'] = $u;
 			$_SESSION['role'] = "Abuja";
 			header("location:../student_dashboard/");
 		} else {
@@ -138,4 +137,3 @@ if (isset($_POST['login'])) {
 	}
 }
 ?>
-	<?php include_once("context.php"); ?>

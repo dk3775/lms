@@ -27,7 +27,7 @@
         $res = mysqli_query($conn, $qur);
         if ($res) {
             echo "<script>alert('Student Deleted Successfully');</script>";
-            header("Location: student_list.php");
+            header("Location: ../institute_dashboard/student_list.php");
         }
     }
     ?>

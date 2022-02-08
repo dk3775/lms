@@ -111,7 +111,7 @@ if ($_SESSION['role'] != "Texas") {
 														<div class="avatar avatar-xs align-middle mr-2">
 															<img class="avatar-img rounded-circle" src="../src/uploads/inprofile/<?php echo $row['InstituteProfilePic']; ?>" alt="...">
 														</div>
-														<span class="item-name text-reset"><?php echo $row['InstituteName']; ?></span>
+														<a class="item-name text-reset"><?php echo $row['InstituteName']; ?></a>
 													</td>
 													<td>
 														<!-- Email -->
@@ -123,7 +123,7 @@ if ($_SESSION['role'] != "Texas") {
 													</td>
 													
 													<td>
-														<a href="edit_institute.php?insid=<?php echo $row['InstituteId']; ?>" class="btn btn-sm btn-white">
+														<a href="edit_student.php?insid=<?php echo $row['InstituteId']; ?>" class="btn btn-sm btn-white">
 															Edit
 														</a>
 														&nbsp;
@@ -131,7 +131,7 @@ if ($_SESSION['role'] != "Texas") {
 															Delete
 														</a>
 														&nbsp;
-														<a href="institute_profile.php?insid=<?php echo $row['InstituteId']; ?>" class="btn btn-sm btn-white">
+														<a href="student_profile.php?insid=<?php echo $row['InstituteId']; ?>" class="btn btn-sm btn-white">
 															View
 														</a>
 													</td>
@@ -173,7 +173,7 @@ if ($_SESSION['role'] != "Texas") {
 			</div>
 		</div>
 	</div>
-	<?php include_once("context.php"); ?>
+	</div>
 	<!-- / .main-content -->
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->
