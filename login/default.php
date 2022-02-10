@@ -13,6 +13,14 @@ error_reporting(E_ALL ^ E_WARNING);
 			================================================== -->
 	<div class="container">
 		<div class="row justify-content-center">
+			<div class="col-12 col-md-6 offset-xl-2 offset-md-1 order-md-2 mb-5 mb-md-0">
+
+				<!-- Image -->
+				<div class="text-center">
+					<img src="../assets/img/illustrations/login.png" alt="..." class="img-fluid">
+				</div>
+
+			</div>
 			<div class="col-12 col-md-5 col-xl-4 my-5">
 				<!-- Heading -->
 				<h1 class="display-4 text-center mb-3">
@@ -102,10 +110,9 @@ if (isset($_POST['login'])) {
 			$_SESSION['role'] = "Texas";
 			header("location:../institute_dashboard/");
 		} else {
-		echo "<script>alert('Invalid Login ID or Password');</script>";
+			echo "<script>alert('Invalid Login ID or Password');</script>";
 		}
-	}
-	else if ($na2 == "FA") {
+	} else if ($na2 == "FA") {
 		$sql = "SELECT * FROM facultymaster WHERE FacultyUserName = '$u'";
 		$result = mysqli_query($conn, $sql);
 		$row = mysqli_fetch_assoc($result);
@@ -118,25 +125,23 @@ if (isset($_POST['login'])) {
 		} else {
 			echo "<script>alert('Invalid Login ID or Password');</script>";
 		}
-	}
-	else if ($na2 == "ST") {
+	} else if ($na2 == "ST") {
 		$sql = "SELECT * FROM studentmaster WHERE StudentUserName = '$u'";
 		$result = mysqli_query($conn, $sql);
 		$row = mysqli_fetch_assoc($result);
 		if ($row['StudentUserName'] == $u and $row['StudentPassword'] === $hp) {
 			session_start();
-			$_SESSION['cred'] = $u."_".$pass;
+			$_SESSION['cred'] = $u . "_" . $pass;
 			//echo $_SESSION['cred'];
 			$_SESSION['id'] = $u;
 			$_SESSION['role'] = "Abuja";
 			header("location:../student_dashboard/");
 		} else {
-		echo "<script>alert('Invalid Login ID or Password');</script>";
+			echo "<script>alert('Invalid Login ID or Password');</script>";
 		}
-	}
-	else {
+	} else {
 		echo "<script>alert('Invalid Login ID or Password');</script>";
 	}
 }
 ?>
-	<?php include_once("context.php"); ?>
+<?php include_once("context.php"); ?>

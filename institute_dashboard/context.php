@@ -27,7 +27,7 @@
             transform: scale(0);
             transform-origin: top left;
             z-index: 999999999999999;
-            overflow-y: auto;
+            overflow-x: auto;
         }
 
         #context-menu.visible {

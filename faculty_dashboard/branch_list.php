@@ -92,10 +92,10 @@ if ($_SESSION['role'] != "Lagos") {
 													<a class="list-sort text-muted" data-sort="item-name">Branch Name</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-email">Branch Code</a>
+													<a class="list-sort text-muted" data-sort="item-score">Branch Code</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-number">No of Semesters</a>
+													<a class="list-sort text-muted" data-sort="item-phone">No of Semesters</a>
 												</th>
 												<th>
 													<a class="list-sort text-muted justify-content-center">Action</a>
@@ -112,11 +112,11 @@ if ($_SESSION['role'] != "Lagos") {
 													</td>
 													<td>
 														<!-- Email -->
-														<span type="text" class="form-control item-phone" name="bcode" required><?php echo $row['BranchCode']; ?></span>
+														<span type="text" class="form-control item-score" name="bcode" required><?php echo $row['BranchCode']; ?></span>
 													</td>
 													<td>
 														<!-- Email -->
-														<span type="text" class="form-control item-number" name="bsem" required><?php echo $row['BranchSemesters']; ?></span>
+														<span type="text" class="form-control item-phone" name="bsem" required><?php echo $row['BranchSemesters']; ?></span>
 													</td>
 													<td>
 														<a href="edit_branch.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-sm btn-white">

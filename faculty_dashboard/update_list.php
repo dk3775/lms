@@ -40,11 +40,6 @@ if ($_SESSION['role'] != "Lagos") {
                               Updates List
                            </h1>
                         </div>
-                        <div class="col-auto">
-                           <a href="update.php" class="btn btn-primary ml-2">
-                              View All
-                           </a>
-                        </div>
                         
                         <div class="col-auto">
                            <a href="add_update.php" class="btn btn-primary ml-2">
@@ -86,16 +81,16 @@ if ($_SESSION['role'] != "Lagos") {
                                        <thead>
                                           <tr>
                                              <th>
-                                                <a class="list-sort text-muted" data-sort="item-name">No.</a>
+                                                <a class="list-sort text-muted" data-sort="item-score">No.</a>
                                              </th>
                                              <th>
-                                                <a class="list-sort text-muted" data-sort="item-date">Date</a>
+                                                <a class="list-sort text-muted" data-sort="item-phone">Date</a>
                                              </th>
                                              <th>
                                                 <a class="list-sort text-muted" data-sort="item-name">Title</a>
                                              </th>
                                              <th>
-                                                <a class="list-sort text-muted" data-sort="item-name">Uploaded By</a>
+                                                <a class="list-sort text-muted" data-sort="item-company">Uploaded By</a>
                                              </th>
                                              <th>
                                                 <a class="text-muted">Info</a>
@@ -115,14 +110,14 @@ if ($_SESSION['role'] != "Lagos") {
                                                    <?php echo $urow['UpdateId']; ?>
                                                 </td>
                                                 <td>
-                                                   <span class="item-title"><?php echo $urow['UpdateUploadDate']; ?></span>
+                                                   <span class="item-score"><?php echo $urow['UpdateUploadDate']; ?></span>
                                                 </td>
                                                 <td>
                                                    <!-- Text -->
-                                                   <span class="item-title"><?php echo $urow['UpdateTitle']; ?></span>
+                                                   <span class="item-name"><?php echo $urow['UpdateTitle']; ?></span>
                                                 </td>
                                                 <td>
-                                                   <span class="item-title"><?php echo $urow['UpdateUploadedBy']; ?></span>
+                                                   <span class="item-company"><?php echo $urow['UpdateUploadedBy']; ?></span>
                                                 </td>
                                                 <td>
                                                    <!-- Phone -->

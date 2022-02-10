@@ -137,7 +137,7 @@ if ($_SESSION['role'] != "Lagos") {
 																</td>
 																<td>
 																	<!-- Badge -->
-																	<button type="button" class="btn btn-sm btn-outline-primary" data-toggle="collapse" data-target="#demo<?php echo $i++; ?>" data-parent="#myTable">View</button>
+																	<a href="account_related_view.php?qid=<?php echo $urow['QueryId']; ?>" type="button" class="btn btn-sm btn-white">View</a>
 																	<a download="../uploads/facprofile/CEAJJ.png" href="../uploads/facprofile/CEAJJ.png" type="button" class="btn btn-sm btn-outline-primary">Download</a>
 																</td>
 															<tr id="demo<?php echo $j++; ?>" class="collapse">

@@ -93,10 +93,10 @@ if ($_SESSION['role'] != "Lagos") {
 													<a class="list-sort text-muted" data-sort="item-phone">Time Table Semester</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-name">Time Table Uploaded By</a>
+													<a class="list-sort text-muted" data-sort="item-score">Time Table Uploaded By</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-phone">Time Table Upload Time</a>
+													<a class="list-sort text-muted">Time Table Upload Time</a>
 												</th>
 												<th>
 													<a class="list-sort text-muted justify-content-center">Action</a>
@@ -111,15 +111,15 @@ if ($_SESSION['role'] != "Lagos") {
 												<tr>
 													<td>
 														<!-- Email -->
-														<span class="item-email text-reset"><?php echo $row['TimetableBranchCode']; ?></span>
+														<span class="item-name text-reset"><?php echo $row['TimetableBranchCode']; ?></span>
 													</td>
 													<td>
 														<!-- Email -->
-														<span class="item-email text-reset"><?php echo $row['TimetableSemester']; ?></span>
+														<span class="item-phone text-reset"><?php echo $row['TimetableSemester']; ?></span>
 													</td>
 													<td>
 														<!-- Phone -->
-														<span class="item-phone text-reset"><?php echo $row['TimetableUploadedBy']; ?></span>
+														<span class="item-score text-reset"><?php echo $row['TimetableUploadedBy']; ?></span>
 													</td>
 													<td>
 														<!-- Badge -->
