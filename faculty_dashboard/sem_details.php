@@ -105,11 +105,11 @@
 				<div class="row">
 					<?php
 						$C=$_GET['semid'];
-						$ssql = "SELECT * FROM semestermaster WHERE SemCode = '$C'";
+						//$ssql = "SELECT * FROM semestermaster WHERE SemCode = '$C'";
 						$subsql = "SELECT * FROM subjectmaster INNER JOIN facultymaster ON subjectmaster.SubjectFacultyId=facultymaster.FacultyId WHERE SemCode = '$C'";
-						$sresult = mysqli_query($conn, $ssql);
+						//$sresult = mysqli_query($conn, $ssql);
 						$subresult = mysqli_query($conn, $subsql);
-						$rowww=mysqli_fetch_assoc($sresult);
+						//$rowww=mysqli_fetch_assoc($sresult);
 						$sac = 1;
 						while(	$roww=mysqli_fetch_assoc($subresult)){ ?>
 					<div class="col-12 col-md-4 mb-md-5">

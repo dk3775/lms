@@ -44,7 +44,7 @@
 					$studentenr = $_GET['brid'];
 					$_SESSION["userrole"] = "Institute";
 					if (isset($studentenr)) {
-						$sql = "SELECT BranchName, BranchCode, BranchSemesters, StudentId FROM branchmaster INNER JOIN studentmaster ON branchmaster.BranchCode = studentmaster.StudentBranchCode WHERE BranchId = '$studentenr'";
+						$sql = "SELECT BranchName, BranchCode, BranchSemesters FROM branchmaster WHERE BranchId = '$studentenr'";
 						$ssql = "SELECT FacultyId FROM branchmaster INNER JOIN facultymaster ON branchmaster.BranchCode = facultymaster.FacultyBranchCode WHERE BranchId = '$studentenr'";
 						$result = mysqli_query($conn, $sql);
 						$reesult = mysqli_query($conn, $ssql);
