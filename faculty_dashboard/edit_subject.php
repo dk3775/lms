@@ -5,7 +5,7 @@
 		header("Location: ../default.php");
 	} else {
 		include_once("../config.php");
-		$_SESSION["userrole"] = "Institute";
+		$_SESSION["userrole"] = "Faculty";
 		if(isset($_GET['facid'])){
 			$brcode = $_GET['facid'];
 			$facsel = "SELECT * FROM facultymaster WHERE FacultyBranchCode = '$brcode'";
@@ -13,6 +13,10 @@
 			$branchsel = "SELECT * FROM branchmaster where BranchCode = '$brcode'";
 			$branchresult = mysqli_query($conn, $branchsel);
 			$brow = mysqli_fetch_assoc($branchresult);
+			$sid = $_GET['subid'];
+			$sql = "SELECT * FROM subjectmaster WHERE SubjectCode = '$sid'";
+			$result = mysqli_query($conn, $sql);
+			$row = mysqli_fetch_assoc($result);
 	?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,15 +50,6 @@
 							</div>
 						</div>
 						<!-- Form -->
-						<?php
-							include_once("../config.php");
-							$sid = $_GET['facid'];
-							$_SESSION["userrole"] = "institute";
-							if (isset($sid)) {
-								$sql = "SELECT * FROM subjectmaster WHERE SubjectCode = '$sid'";
-								$result = mysqli_query($conn, $sql);
-								$row = mysqli_fetch_assoc($result);
-							?>
 						<form method="POST" enctype="multipart/form-data">
 							<div class="row justify-content-between align-items-center">
 								<div class="col">
