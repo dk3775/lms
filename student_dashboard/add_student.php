@@ -423,6 +423,7 @@ if ($_SESSION['role'] != "Abuja") {
     })
 })()
 </script>
+<?php include("context.php"); ?>
 </body>
 
 </html>

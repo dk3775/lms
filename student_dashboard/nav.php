@@ -37,13 +37,13 @@
 							<i class="fe fe-file"></i>Subjects
 							</a>
 						</li>
-						<li class="nav-item">
+						<!--<li class="nav-item">
 							<a href="#" class="nav-link ">
 							<i class="fe fe-percent"></i> Marksheet
 							</a>
-						</li>
+						</li>-->
 						<li class="nav-item">
-							<a href="update.php" class="nav-link ">
+							<a href="update_list.php" class="nav-link ">
 							<i class="fe fe-bell"></i>Updates 
 							</a>
 						</li>

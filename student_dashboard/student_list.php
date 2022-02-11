@@ -305,6 +305,7 @@
 			</div>
 		</div>
 		</div>
+		<?php include("context.php"); ?>
 		<!-- / .main-content -->
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->

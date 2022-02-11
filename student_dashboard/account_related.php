@@ -142,6 +142,7 @@
 		<script src="../assets/js/vendor.bundle.js"></script>
 		<!-- Theme JS -->
 		<script src="../assets/js/theme.bundle.js"></script>
+		<?php include("context.php"); ?>
 	</body>
 </html>
 

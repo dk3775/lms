@@ -38,12 +38,6 @@ if ($_SESSION['role'] != "Abuja") {
                                 Details
                             </h1>
                         </div>
-                        <div class="col-auto">
-                            <!-- Button -->
-                            <a href="../logout.php" class="btn btn-primary lift">
-                                logout
-                            </a>
-                        </div>
                     </div>
                     <!-- / .row -->
                 </div>
@@ -84,6 +78,7 @@ if ($_SESSION['role'] != "Abuja") {
             </div>
         </div>
     </div>
+    <?php include("context.php"); ?>
     <!-- / .main-content -->
     <!-- JAVASCRIPT -->
     <!-- Map JS -->

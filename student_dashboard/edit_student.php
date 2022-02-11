@@ -430,6 +430,7 @@ if ($_SESSION['role'] != "Abuja") {
 				<!-- / .row -->
 			</div>
 		</div>
+		<?php include("context.php"); ?>
 		<!-- / .main-content -->
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->
