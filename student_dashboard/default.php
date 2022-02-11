@@ -10,9 +10,17 @@ if ($_SESSION['role'] != "Abuja") {
 	$qur = "SELECT *,BranchName FROM studentmaster INNER JOIN branchmaster ON studentmaster.StudentBranchCode = branchmaster.BranchCode WHERE StudentUserName='$cred[0]' AND StudentPassword='$cred[1]'";
 	$res = mysqli_query($conn, $qur);
 	$row = mysqli_fetch_assoc($res);
+	$_SESSION["userid"] = $row["StudentId"];
+	// Branch
 	$uqur = "SELECT * FROM updatemaster";
 	$ures = mysqli_query($conn, $uqur);
 	$urow = mysqli_fetch_assoc($ures);
+	$bid= $row["BranchId"];
+	//Assignment
+	$aqur = "SELECT * FROM assignmentmaster WHERE AssignmentBranch = '$bid'";
+	$ares = mysqli_query($conn, $aqur);
+	$arow = mysqli_fetch_assoc($ares);
+	$acrow = mysqli_num_rows($ares);
 ?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -63,7 +71,7 @@ if ($_SESSION['role'] != "Abuja") {
 					<div class="row gx-4">
 						<div class="col-auto">
 							<div class="avatar avatar-xxl position-relative">
-								<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+								<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" style="border-radius: 10px;" class="w-100 border-radius-lg shadow-sm">
 							</div>
 						</div>
 						<div class="col-auto my-auto">
@@ -193,7 +201,7 @@ if ($_SESSION['role'] != "Abuja") {
 											SPI
 										</h6>
 										<span class="h2 mb-0">
-											9.58
+											<?php echo $row['SPI']; ?>
 										</span>
 									</div>
 									<div class="col-auto">
@@ -209,10 +217,10 @@ if ($_SESSION['role'] != "Abuja") {
 								<div class="row align-items-center">
 									<div class="col">
 										<h6 class="text-uppercase text-muted mb-2">
-											Attendance
+											CGPA
 										</h6>
 										<span class="h2 mb-0">
-											55%
+											<?php echo $row['CGPA']; ?>
 										</span>
 									</div>
 									<div class="col-auto">
@@ -231,7 +239,7 @@ if ($_SESSION['role'] != "Abuja") {
 											assignment
 										</h6>
 										<span class="h2 mb-0">
-											10/40
+											10/<?php echo $acrow ?>
 										</span>
 									</div>
 									<div class="col-auto">
@@ -246,7 +254,7 @@ if ($_SESSION['role'] != "Abuja") {
 								<div class="row align-items-center">
 									<div class="col">
 										<h6 class="text-uppercase text-muted mb-2">
-											Avg. Time
+											Attendance
 										</h6>
 										<span class="h2 mb-0">
 											2:38
@@ -300,28 +308,28 @@ if ($_SESSION['role'] != "Abuja") {
 									</div>
 									<div class="table-responsive">
 										<table class="table table-sm table-hover table-nowrap card-table" id="myTable">
-										<thead>
-											<tr>
-												<th>
-													<a class="list-sort text-muted" data-sort="item-phone">#</a>
-												</th>
-												<th>
-													<a class="list-sort text-muted" data-sort="item-phone">Date</a>
-												</th>
-												<th>
-													<a class="list-sort text-muted" data-sort="item-name">Title</a>
-												</th>
-												<th>
-													<a class="list-sort text-muted" data-sort="item-company">Uploaded By</a>
-												</th>
-												<th>
-													<a class="list-sort text-muted">Info</a>
-												</th>
-												<th colspan="2">
-													<a class="list-sort text-muted">Download</a>
-												</th>
-											</tr>
-										</thead>
+											<thead>
+												<tr>
+													<th>
+														<a class="list-sort text-muted" data-sort="item-phone">#</a>
+													</th>
+													<th>
+														<a class="list-sort text-muted" data-sort="item-phone">Date</a>
+													</th>
+													<th>
+														<a class="list-sort text-muted" data-sort="item-name">Title</a>
+													</th>
+													<th>
+														<a class="list-sort text-muted" data-sort="item-company">Uploaded By</a>
+													</th>
+													<th>
+														<a class="list-sort text-muted">Info</a>
+													</th>
+													<th colspan="2">
+														<a class="list-sort text-muted">Download</a>
+													</th>
+												</tr>
+											</thead>
 											<tbody class="list font-size-base">
 												<?php
 												while ($urow = mysqli_fetch_assoc($ures)) { ?>
@@ -349,7 +357,7 @@ if ($_SESSION['role'] != "Abuja") {
 														</td>
 													<tr id="demos<?php echo $j++; ?>" class="collapse">
 														<td colspan="6" class="hiddenRow">
-														<div><?php echo $urow['UpdateDescription']; ?></div>
+															<div><?php echo $urow['UpdateDescription']; ?></div>
 														</td>
 													</tr>
 													</tr>
@@ -436,7 +444,7 @@ if ($_SESSION['role'] != "Abuja") {
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- / .main-content -->
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->
