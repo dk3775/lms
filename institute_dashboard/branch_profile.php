@@ -40,7 +40,7 @@
 				</div>
 				<!-- / .header -->
 				<?php
-					include_once("../config.php");
+					require_once("../config.php");
 					$studentenr = $_GET['brid'];
 					$_SESSION["userrole"] = "Institute";
 					if (isset($studentenr)) {

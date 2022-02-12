@@ -446,5 +446,4 @@ if ($_SESSION['role'] != "Lagos") {
 		<!-- Theme JS -->
 		<script src="../assets/js/theme.bundle.js"></script>
 </body>
-
 </html>

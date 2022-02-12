@@ -92,7 +92,7 @@ error_reporting(E_ALL ^ E_WARNING);
 
 </html>
 <?php
-include_once("../config.php");
+require_once("../config.php");
 if (isset($_POST['login'])) {
 	$na = $_POST['name'];
 	$pass = $_POST['password'];

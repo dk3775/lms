@@ -97,7 +97,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- / .header-body -->
 				</div>
 			</div>
 			<!-- CONTENT -->
