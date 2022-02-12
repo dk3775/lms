@@ -76,6 +76,11 @@
 							<i class="fe fe-book"></i>Study related querys
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="query_list.php" class="nav-link ">
+							<i class="fe uil-file-question-alt"></i>All querys
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>
