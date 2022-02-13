@@ -9,7 +9,7 @@ if ($_SESSION['role'] != "Lagos") {
 	$fres = mysqli_query($conn, $fqur);
 	$frow = mysqli_fetch_assoc($fres);
 	$bcode = $frow['FacultyId'];
-	$qur = "SELECT * FROM querymaster WHERE QueryToId = '$bcode'";
+	$qur = "SELECT *, StudentFirstName, StudentLastName FROM querymaster INNER JOIN studentmaster on querymaster.QueryFromId = studentmaster.StudentId WHERE QueryToId = '$bcode'";
 	$res = mysqli_query($conn, $qur);
 }
 ?>
@@ -92,7 +92,7 @@ if ($_SESSION['role'] != "Lagos") {
 																<a class="list-sort text-muted" data-sort="item-name">#</a>
 															</th>
 															<th>
-																<a class="list-sort text-muted" data-sort="item-title" href="#">id</a>
+																<a class="list-sort text-muted" data-sort="item-title" href="#">Date</a>
 															</th>
 															<th>
 																<a class="list-sort text-muted" data-sort="item-email" href="#">From</a>
@@ -107,42 +107,39 @@ if ($_SESSION['role'] != "Lagos") {
 													</thead>
 													<tbody class="list font-size-base">
 														<?php
+														$a=1;	
 														while ($urow = mysqli_fetch_assoc($res)) { ?>
 															<tr>
 																<td>
-																	<?php echo $urow['QueryId']; ?>
+																	<?php echo $a++ ?>
 																</td>
 																<td>
-																	<span class="item-title"><?php echo $urow['QueryFromId']; ?></span>
+																	<span class="item-title"><?php echo $urow['QueryGenDate']; ?></span>
 																</td>
 																<td>
 																	<!-- Text -->
-																	<span class="item-title"><?php echo $urow['QueryFromId']; ?></span>
-																</td>
+																	<span class="item-title"><?php echo $urow['StudentFirstName']." ".$urow['StudentLastName']; ?></span>
+																</td> 
 																<td>
 																	<?php 
 																		$a=$urow['Querystatus'];
 																		if($a == 1)
 																		{?>
-																			<span class="badge bg-soft-primary">New</span>
+																			<span class="badge bg-soft-primary">Open</span>
 																		<?php
 																		}
 																		if($a == 2)
 																		{?>
-																			<span class="badge bg-soft-warning">Open</span>
-																		<?php
-																		}
-																		if($a == 3)
-																		{?>
-																			<span class="badge bg-soft-success">Solved</span>
+																			<span class="badge bg-soft-warning">Solved</span>
 																		<?php
 																		}
 																		?>
 																</td>
 																<td>
 																	<!-- Badge -->
-																	<a href="account_related_view.php?qid=<?php echo $urow['QueryId']; ?>" type="button" class="btn btn-sm btn-white">View</a>
-																	<a download="../uploads/facprofile/CEAJJ.png" href="../uploads/facprofile/CEAJJ.png" type="button" class="btn btn-sm btn-white-primary">Download</a>
+																	<a href="#" type="button" class="btn btn-sm btn-white">View</a>
+																	<a download="#" href="#" type="button" class="btn btn-sm btn-white">Download</a>
+																	<a href="qrystatus.php?qid=<?php echo $urow['QueryId']; ?>" type="button" class="btn btn-sm btn-white">Close</a>
 																</td>
 															<tr id="demo<?php echo $j++; ?>" class="collapse">
 																<td colspan="6" class="hiddenRow">
