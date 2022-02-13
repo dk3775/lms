@@ -93,7 +93,7 @@ if ($_SESSION['role'] != "Lagos") {
 														<a class="list-sort text-muted" data-sort="item-name">Name</a>
 													</th>
 													<th>
-														<a class="list-sort text-muted" data-sort="item-name">Subject</a>
+														<a class="list-sort text-muted" data-sort="item-company">Subject</a>
 													</th>
 													<th>
 														<a class="list-sort text-muted" data-sort="item-score">Sem</a>
@@ -118,19 +118,19 @@ if ($_SESSION['role'] != "Lagos") {
 														</td>
 														<td>
 															<!-- Email -->
-															<span class="item-email text-reset"><?php echo $row['AssignmentSubject']; ?></span>
+															<span class="item-company text-reset"><?php echo $row['AssignmentSubject']; ?></span>
 														</td>
 														<td>
 															<!-- Badge -->
-															<span class=""><?php echo $row['AssignmentForSemester']; ?></span>
+															<span class="item-score text-reset"><?php echo $row['AssignmentForSemester']; ?></span>
 														</td>
 														<td>
 															<!-- Badge -->
-															<span class=""><?php echo $row['AssignmentUploaddate']; ?></span>
+															<span class="item-phone text-reset"><?php echo $row['AssignmentUploaddate']; ?></span>
 														</td>
 														<td>
 															<!-- Badge -->
-															<span class=""><?php echo $row['AssignmentSubmissionDate']; ?></span>
+															<span class="item-phone text-reset"><?php echo $row['AssignmentSubmissionDate']; ?></span>
 														</td>
 														<td>
 															<a href="edit_assignment.php?assid=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-white">
@@ -141,7 +141,7 @@ if ($_SESSION['role'] != "Lagos") {
 																Delete
 															</a>
 															&nbsp;
-															<a href="#" class="btn btn-sm btn-white">
+															<a href="assignment_view.php?updateid=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-white">
 																View
 															</a>
 														</td>

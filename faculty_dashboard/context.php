@@ -97,10 +97,10 @@
                     <i class="fe uil-code-branch"></i>
                     Branch list</a>
             </div>
-            <div class="item" onclick="window.location.href='subject_list.php';">
+            <div class="item" onclick="window.location.href='assignment_list.php';">
                 <a class="nav-item" style="color: #6F6F6F;">
                     <i class="fe uil-book"></i>
-                    Subject list</a>
+                    Assignment list</a>
             </div>
         </div>
         <div class="list">

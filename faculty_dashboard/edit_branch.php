@@ -43,8 +43,13 @@ if ($_SESSION['role'] != "Lagos") {
 						include_once("../config.php");
 						$bid = $_GET['brid'];
 						$_SESSION["userrole"] = "institute";
+
+						$fqur = "SELECT * FROM facultymaster";
+						$fres = mysqli_query($conn, $fqur);
+						$frow = mysqli_fetch_assoc($fres);
+						$bcode = $frow['FacultyBranchCode'];
 						if (isset($bid)) {
-							$sql = "SELECT * FROM branchmaster WHERE BranchId = '$bid'";
+							$sql = "SELECT * FROM branchmaster WHERE BranchCode = '$bcode'";
 							$result = mysqli_query($conn, $sql);
 							$row = mysqli_fetch_assoc($result);
 
@@ -83,85 +88,24 @@ if ($_SESSION['role'] != "Lagos") {
 								<!-- / .row -->
 							</form>
 						<?php
-						} else { ?>
-							<form class="mb-4" method="post">
-								<div class="row">
-									<div class="col-md-10">
-										<div class="input-group input-group-merge input-group-reverse">
-											<input class="form-control list-search" type="text" name="enr" placeholder="Enter Branch ID">
-											<div class="input-group-text">
-												<span class="fe fe-search"></span>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div class="col-auto">
-											<!-- Button -->
-											<button class="btn btn-primary " type="submit" name="ser" value="2">
-												Search
-											</button>
-										</div>
-									</div>
-								</div>
-							</form>
-
-							<?php
-							if (isset($_POST['ser'])) {
-								$er = $_POST['enr'];
-								$qur = "SELECT * FROM branchmaster WHERE BranchId = '$er';";
-								$res = mysqli_query($conn, $qur);
-								$row = mysqli_fetch_assoc($res);
-								if (isset($row)) { ?>
-									<hr class="navbar-divider my-4">
-									<div class="card">
-										<div class="card-body">
-											<div class="row align-items-center">
-												<div class="col ml-n2">
-
-													<!-- Title -->
-													<h4 class="mb-1">
-														<a href="profile-posts.html"><?php echo $row['BranchName']; ?></a>
-													</h4>
-
-													<!-- Text -->
-													<p class="small mb-1">
-														<?php echo $row['BranchCode']; ?>
-													</p>
-
-												</div>
-												<div class="col-auto">
-
-													<!-- Button -->
-													<a href="edit_branch.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-m btn-primary d-none d-md-inline-block">
-														Edit
-													</a>
-
-												</div>
-											</div> <!-- / .row -->
-										</div> <!-- / .card-body -->
-									</div>
-					<?php
-								}
-							}
-						}
-					}
-					?>
-					<br>
+						} ?>
+						<br>
 					</div>
 				</div>
 				<!-- / .row -->
 			</div>
 		</div>
-		
-	<?php include("context.php");?>
-		<!-- / .main-content -->
-		<!-- JAVASCRIPT -->
-		<!-- Map JS -->
-		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-		<!-- Vendor JS -->
-		<script src="../assets/js/vendor.bundle.js"></script>
-		<!-- Theme JS -->
-		<script src="../assets/js/theme.bundle.js"></script>
+	<?php
+} ?>
+	<?php include("context.php"); ?>
+	<!-- / .main-content -->
+	<!-- JAVASCRIPT -->
+	<!-- Map JS -->
+	<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+	<!-- Vendor JS -->
+	<script src="../assets/js/vendor.bundle.js"></script>
+	<!-- Theme JS -->
+	<script src="../assets/js/theme.bundle.js"></script>
 	</body>
 
 	</html>
@@ -171,11 +115,11 @@ if ($_SESSION['role'] != "Lagos") {
 		extract($_POST);
 
 
-		$sqli = "UPDATE branchmaster SET BranchName = '$bname', BranchCode = '$bcode', BranchSemesters = '$bsem' WHERE BranchId = '$bid';";
+		$sqli = "UPDATE branchmaster SET BranchName = '$bname', BranchCode = '$bcode', BranchSemesters = '$bsem' WHERE BranchCode = '$bcode';";
 		$runed = mysqli_query($conn, $sqli);
 		if ($runed == true) {
 			echo "<script>alert('Branch Edited Successfully')</script>";
-			echo "<script>window.open('branch_list.php','_self') </script>";
+			echo "<script>window.open('branch_profile.php','_self') </script>";
 		} else {
 			echo "<script>alert('Error Occured')</script>";
 			echo "<script>window.open('edit_branch.php?brid=$bid','_self')</script>";

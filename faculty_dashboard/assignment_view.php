@@ -28,7 +28,7 @@
 										<div class="col ml-n2">
 											<!-- Title -->
 											<h1 class="mb-1">
-												Update
+												Assignment
 											</h1>
 										</div>
 									</div>
@@ -39,7 +39,7 @@
 									$ttid = $_GET['updateid'];
 									$_SESSION["userrole"] = "Faculty";
 									if (isset($ttid)) {
-										$sql = "SELECT * FROM updatemaster WHERE UpdateId = '$ttid'";
+										$sql = "SELECT * FROM assignmentmaster WHERE AssignmentId = '$ttid'";
 										$result = mysqli_query($conn, $sql);
 										$row = mysqli_fetch_assoc($result);
 									
@@ -52,33 +52,34 @@
 											<div class="card" data-list='{"valueNames": ["name"]}'>
 												<div class="card-body">
 													<h3 class="header-title">
-														Name Info:
+													<?php echo $row['AssignmentTitle']; ?> Info:
 													</h3>
 													<br>
 													<div class="input-group">
 														<span class="input-group-text col-3 text-dark">Title</span>
-														<input type="text" value="<?php echo $row['UpdateTitle']; ?>" aria-label="First name" class="form-control" disabled>
-														<span class="input-group-text col-3 text-dark">Description</span>
-														<input type="text" value="<?php echo $row['UpdateDescription']; ?>" aria-label="Last name" class="form-control disable" disabled>
+														<input type="text" value="<?php echo $row['AssignmentTitle']; ?>" aria-label="First name" class="form-control" disabled>
+														<span class="input-group-text col-3 text-dark">Subject</span>
+														<input type="text" value="<?php echo $row['AssignmentSubject']; ?>" aria-label="Last name" class="form-control disable" disabled>
 													</div>
 													<br>
 													<div class="input-group">
-														<span class="input-group-text col-3 text-dark">Uploaded By</span>
-														<input type="text" value="<?php echo $row['UpdateUploadedBy']; ?>" aria-label="First name" class="form-control" disabled>
-														<span class="input-group-text col-3 text-dark">Update Type</span>
-														<input type="text" value="<?php echo $row['UpdateType']; ?>" aria-label="Last name" class="form-control disable" disabled>
+														<span class="input-group-text col-3 text-dark">Upload date</span>
+														<input type="text" value="<?php echo $row['AssignmentUploaddate']; ?>" aria-label="First name" class="form-control" disabled>
+														<span class="input-group-text col-3 text-dark">Submission Date</span>
+														<input type="text" value="<?php echo $row['AssignmentSubmissionDate']; ?>" aria-label="Last name" class="form-control disable" disabled>
 													</div>
+													<br>
+													<div class="input-group">
+														<span class="input-group-text col-3 text-dark">Description</span>
+														<textarea aria-label="First name" class="form-control" disabled><?php echo $row['AssignmentDesc']; ?></textarea>
+														</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									<!-- Image -->
-									<p class="text-center mb-3">
-										<img src="../src/uploads/updates/<?php echo $row['UpdateFile']; ?>" alt="..." class="img-fluid rounded">
-									</p>
 									<div class="d-flex justify">
 										<!-- Button -->
-										<a href="../src/uploads/updates/<?php echo $row['UpdateFile']; ?>" download="<?php echo $row['TimetableImage']; ?>" class="btn btn-primary" name="Download">
+										<a href="../src/uploads/assignments/<?php echo $row['AssignmentFile']; ?>" download="<?php echo $row['AssignmentFile']; ?>" class="btn btn-primary" name="Download">
 										Download
 										</a>
 									</div>

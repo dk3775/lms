@@ -61,6 +61,7 @@ if ($_SESSION['role'] != "Abuja") {
                                         <h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
                                         <p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
                                         <p class="card-text"><?php echo $roww['FacultyFirstName'] . " " . $roww['FacultyLastName']; ?></p>
+                                        <a href="subject_view.php?id=<?php echo $roww['SubjectId']; ?>" class="small">Details</a>
                                     </div>
                                 </div>
                             </div>

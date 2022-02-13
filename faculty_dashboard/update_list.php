@@ -104,13 +104,14 @@ if ($_SESSION['role'] != "Lagos") {
                                        </thead>
                                        <tbody class="list font-size-base">
                                           <?php
+                                          $a=1;
                                           while ($urow = mysqli_fetch_assoc($ures)) { ?>
                                              <tr>
                                                 <td>
-                                                   <?php echo $urow['UpdateId']; ?>
+                                                <span class="item-score"><?php echo $a++; ?></span>
                                                 </td>
                                                 <td>
-                                                   <span class="item-score"><?php echo $urow['UpdateUploadDate']; ?></span>
+                                                   <span class="item-phone"><?php echo $urow['UpdateUploadDate']; ?></span>
                                                 </td>
                                                 <td>
                                                    <!-- Text -->
@@ -125,8 +126,9 @@ if ($_SESSION['role'] != "Lagos") {
                                                 </td>
                                                 <td>
                                                    <!-- Badge -->
-                                                   <a href="edit_update.php?updid=<?php echo $urow['UpdateId']; ?>" type="button" class="btn btn-sm btn-white">Edit</a> &nbsp;
+                                                   <a href="edit_update.php?updid=<?php echo $urow['UpdateId']; ?>" type="button" class="btn btn-sm btn-white">Edit</a> 
 
+                                                   <a href="delete_update.php?updid=<?php echo $urow['UpdateId']; ?>" type="button" class="btn btn-sm btn-white">Delete</a>
                                                    <!-- Badge -->
                                                    <a download="<?php echo $urow['UpdateFile']; ?>" href="../src/uploads/updates/<?php echo $urow['UpdateFile']; ?>" type="button" class="btn btn-sm btn-white">Download</a>
                                                 </td>

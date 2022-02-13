@@ -114,6 +114,13 @@ if ($_SESSION['role'] != "Texas") {
 								</div>
 								<br>
 								<div class="input-group">
+									<span class="input-group-text col-2 text-dark">SPI</span>
+									<input type="text" value="<?php echo $row['SPI']; ?>" aria-label="First name" class="form-control" disabled>
+									<span class="input-group-text col-2 text-dark">CGPA</span>
+									<input type="text" value="<?php echo $row['CGPA']; ?>" aria-label="Last name" class="form-control" disabled>
+								</div>
+								<br>
+								<div class="input-group">
 									<span class="input-group-text col-2 text-dark">Enrollment No.</span>
 									<input type="text" value="<?php echo $row['StudentEnrollmentNo']; ?>" aria-label="First name" class="form-control" disabled>
 									<span class="input-group-text col-2 text-dark">Branch</span>
@@ -229,7 +236,7 @@ if ($_SESSION['role'] != "Texas") {
 				}
 		?>
 		</div>
-		<?php #include_once("context.php"); ?>
+		<?php include_once("context.php"); ?>
 		<!-- / .main-content -->
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->

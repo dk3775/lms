@@ -88,13 +88,6 @@
 										?> 
 								</ul>
 							</div>
-							<div class=" col-md-auto mt-2 mt-md-0 mb-md-3">
-								<!-- Nav --> 
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-								<a href="add_subject.php?semid=<?php echo $semid; ?>&brid=<?php echo $row['BranchCode']; ?>" type="button" class="btn btn-primary"> 
-								Add Subject 
-								</a> 
-							</div>
 						</div>
 					</div>
 				</div>
@@ -114,7 +107,7 @@
 					<div class="col-12 col-md-4 mb-md-5">
 						<div class="card-group">
 							<div class="card">
-								<img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic']; ?>" class="card-img-top" alt="...">
+							<img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic']; ?>" class="card-img-top img-fluid" alt="...">
 								<div class="card-body">
 									<h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
 									<p class="card-text"><?php echo $roww['SubjectCode']; ?></p>

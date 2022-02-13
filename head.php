@@ -13,4 +13,12 @@
 	<!-- Title -->
 	<title>LMS by Titanslab</title>
 	<style>
+		.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
 	</style>
+	<?php
+	//error_reporting(E_ALL ^ E_ALL);
+	?>

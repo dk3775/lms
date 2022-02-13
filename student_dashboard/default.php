@@ -332,6 +332,8 @@ if ($_SESSION['role'] != "Abuja") {
 											</thead>
 											<tbody class="list font-size-base">
 												<?php
+												$j=1;
+												$i=1;
 												while ($urow = mysqli_fetch_assoc($ures)) { ?>
 													<tr>
 														<td>

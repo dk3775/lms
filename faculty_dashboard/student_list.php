@@ -38,11 +38,6 @@ if ($_SESSION['role'] != "Lagos") {
 										Student List
 									</h1>
 								</div>
-								<div class="col-auto">
-									<a href="add_student.php" class="btn btn-primary ml-2">
-										Add Student
-									</a>
-								</div>
 							</div>
 							<!-- / .row -->
 							<div class="row align-items-center">
@@ -96,7 +91,7 @@ if ($_SESSION['role'] != "Lagos") {
 													<a class="list-sort text-muted" data-sort="item-phone">Phone</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted">Sem</a>
+													<a class="list-sort text-muted" data-sort="item-score">Sem</a>
 												</th>
 												<th>
 													<a class="list-sort text-muted justify-content-center">Action</a>
@@ -126,17 +121,9 @@ if ($_SESSION['role'] != "Lagos") {
 													</td>
 													<td>
 														<!-- Badge -->
-														<span class=""><?php echo $row['StudentSemester']; ?></span>
+														<span class="item-score text-reset"><?php echo $row['StudentSemester']; ?></span>
 													</td>
-													<td>
-														<a href="edit_student.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" class="btn btn-sm btn-white">
-															Edit
-														</a>
-														&nbsp;
-														<a class="btn btn-sm btn-white" href="sdelete.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" onclick="if (! confirm('Are You Sure, You want to Delete this Student ?')) return false;">
-															Delete
-														</a>
-														&nbsp;
+													<td>	
 														<a href="student_profile.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" class="btn btn-sm btn-white">
 															View
 														</a>

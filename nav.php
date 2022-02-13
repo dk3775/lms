@@ -49,11 +49,6 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="subject_list.php" class="nav-link">
-						<i class="fe uil-book"></i> Subject
-						</a>
-					</li>
-					<li class="nav-item">
 						<a href="update_list.php" class="nav-link ">
 						<i class="fe fe-bell"></i>Updates
 						</a>
@@ -87,13 +82,8 @@
 				<!-- Navigation -->
 				<ul class="navbar-nav mb-md-4">
 					<li class="nav-item">
-						<a href="#" class="nav-link ">
+						<a href="acc_related.php" class="nav-link ">
 							<i class="fe fe-user"></i>Account related Details
-						</a>
-					</li>
-					<li class="nav-item">
-						<a href="#" class="nav-link ">
-							<i class="fe fe-book"></i>Study related querys
 						</a>
 					</li>
 				</ul>

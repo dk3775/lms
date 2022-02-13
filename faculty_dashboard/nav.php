@@ -39,16 +39,10 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="branch_list.php" class="nav-link">
+					<a href="branch_profile.php" class="nav-link">
 						<i class="fe uil-code-branch"></i> Branch
 					</a>
 				</li>
-				<li class="nav-item">
-					<a href="subject_list.php" class="nav-link">
-						<i class="fe uil-book"></i> Subject
-					</a>
-				</li>
-
 
 				<li class="nav-item">
 					<a href="assignment_list.php" class="nav-link ">
@@ -80,12 +74,7 @@
 			<!-- Navigation -->
 			<ul class="navbar-nav mb-md-4">
 				<li class="nav-item">
-					<a href="account_related.php" class="nav-link ">
-						<i class="fe fe-user"></i>Account related Details
-					</a>
-				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link ">
+					<a href="Study_related.php" class="nav-link ">
 						<i class="fe fe-book"></i>Study related querys
 					</a>
 				</li>
