@@ -93,7 +93,7 @@ if ($_SESSION['role'] != "Texas") {
 													<a class="list-sort text-muted" data-sort="item-email">Enrollment No.</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-phone">Branch Code</a>
+													<a class="list-sort text-muted" data-sort="item-phone">Phone</a>
 												</th>
 												<th>
 													<a class="list-sort text-muted">Sem</a>
@@ -122,7 +122,7 @@ if ($_SESSION['role'] != "Texas") {
 													</td>
 													<td>
 														<!-- Phone -->
-														<span class="item-phone text-reset"><?php echo $row['StudentBranchCode']; ?></span>
+														<span class="item-phone text-reset"><?php echo $row['StudentContactNo']; ?></span>
 													</td>
 													<td>
 														<!-- Badge -->
