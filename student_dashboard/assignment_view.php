@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL ^ E_WARNING);
 session_start();
-if ($_SESSION['role'] != "Lagos") {
+if ($_SESSION['role'] != "Abuja") {
 	header("Location: ../default.php");
 } else {
 ?>
@@ -39,7 +39,7 @@ if ($_SESSION['role'] != "Lagos") {
 								<?php
 								include_once "../config.php";
 								$ttid = $_GET['updateid'];
-								$_SESSION["userrole"] = "Faculty";
+								$_SESSION["userrole"] = "Student";
 								if (isset($ttid)) {
 									$sql = "SELECT * FROM assignmentmaster WHERE AssignmentId = '$ttid'";
 									$result = mysqli_query($conn, $sql);
