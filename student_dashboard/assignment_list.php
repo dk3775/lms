@@ -22,6 +22,51 @@ if ($_SESSION['role'] != "Abuja") {
 
 <head>
 	<?php include_once("../head.php"); ?>
+	<style>
+		.wrap {
+			padding: 15px;
+		}
+
+		h1 {
+			font-size: 28px;
+		}
+
+		h4,
+		modal-title {
+			font-size: 18px;
+			font-weight: bold;
+		}
+
+		.no-borders {
+			border: 0px;
+		}
+
+		.body-message {
+			font-size: 18px;
+		}
+
+		.centered {
+			text-align: center;
+		}
+
+		.btn-primary {
+			background-color: #2086c1;
+			border-color: transparent;
+			outline: none;
+			border-radius: 8px;
+			font-size: 15px;
+			padding: 10px 25px;
+		}
+
+		.btn-primary:hover {
+			background-color: #2086c1;
+			border-color: transparent;
+		}
+
+		.btn-primary:focus {
+			outline: none;
+		}
+	</style>
 </head>
 
 <body>
@@ -190,8 +235,9 @@ if ($_SESSION['role'] != "Abuja") {
 											<!--over-->
 									</table>
 								</div>
-								<!-- model -->
-								<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+								<div class="modal fade bs-example-modal-new" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
 									<div class="modal-dialog">
 										<div class="modal-content">
 											<div class="modal-header">
@@ -207,38 +253,46 @@ if ($_SESSION['role'] != "Abuja") {
 											</div>
 										</div>
 									</div>
+
 								</div>
-								<!-- model -->
-								<div class="card-footer d-flex justify-content-between">
-									<!-- Pagination (prev) -->
-									<ul class="list-pagination-prev pagination pagination-tabs card-pagination">
-										<li class="page-item">
-											<a class="page-link pl-0 pr-4 border-right" href="#">
-												<i class="fe fe-arrow-left mr-1"></i> Prev
-											</a>
-										</li>
-									</ul>
-									<!-- Pagination -->
-									<ul class="list-pagination pagination pagination-tabs card-pagination">
-										<li class="active"><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">1</a></li>
-										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">2</a></li>
-										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">3</a></li>
-									</ul>
-									<!-- Pagination (next) -->
-									<ul class="list-pagination-next pagination pagination-tabs card-pagination">
-										<li class="page-item">
-											<a class="page-link pl-4 pr-0 border-left" href="#">
-												Next <i class="fe fe-arrow-right ml-1"></i>
-											</a>
-										</li>
-									</ul>
-								</div>
+								<!-- Modal Content: ends -->
+
 							</div>
+
+						</div>
+
+
+
+						<div class="card-footer d-flex justify-content-between">
+							<!-- Pagination (prev) -->
+							<ul class="list-pagination-prev pagination pagination-tabs card-pagination">
+								<li class="page-item">
+									<a class="page-link pl-0 pr-4 border-right" href="#">
+										<i class="fe fe-arrow-left mr-1"></i> Prev
+									</a>
+								</li>
+							</ul>
+							<!-- Pagination -->
+							<ul class="list-pagination pagination pagination-tabs card-pagination">
+								<li class="active"><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">1</a></li>
+								<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">2</a></li>
+								<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">3</a></li>
+							</ul>
+							<!-- Pagination (next) -->
+							<ul class="list-pagination-next pagination pagination-tabs card-pagination">
+								<li class="page-item">
+									<a class="page-link pl-4 pr-0 border-left" href="#">
+										Next <i class="fe fe-arrow-right ml-1"></i>
+									</a>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+	</div>
 	</div>
 	</div>
 
@@ -252,14 +306,7 @@ if ($_SESSION['role'] != "Abuja") {
 	<!-- Theme JS -->
 	<script src="../assets/js/theme.bundle.js"></script>
 	<!-- Delete Popup -->
-	<script>
-		var myModal = document.getElementById('myModal')
-		var myInput = document.getElementById('myInput')
 
-		myModal.addEventListener('shown.bs.modal', function() {
-			myInput.focus()
-		})
-	</script>
 
 </body>
 
