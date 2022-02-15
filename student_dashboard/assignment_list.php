@@ -157,7 +157,7 @@ if ($_SESSION['role'] != "Abuja") {
 
 															<?php
 															} else if ($row['AssignmentSubmissionDate'] < gmdate("Y-m-d")) { ?>
-																<span class="badge bg-soft-success">Close</span>
+																<span class="badge bg-soft-success">Closed</span>
 															<?php
 															}
 															?>
@@ -172,14 +172,14 @@ if ($_SESSION['role'] != "Abuja") {
 														$a = $row['AssignmentStatus'];
 														if ($a == 0) { ?>
 															<a href="#" class="btn btn-sm btn-white">
-																Submit
+																Download
 															</a>
 														<?php
 														}
 														if ($a == 1) { ?>
-															<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-																Download
-															</button>
+															<a href="#" class="btn btn-sm btn-white">
+																Submit
+															</a>
 														<?php
 														}
 														?>

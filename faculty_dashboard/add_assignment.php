@@ -1,20 +1,22 @@
 <?php
-	session_start();
-	if ($_SESSION['role'] != "Lagos") {
-		header("Location: ../default.php");
-	} else {
-		include_once("../config.php");
-		$_SESSION["userrole"] = "Faculty";
-	
-		$username = $_SESSION['id'];
-		$subsel = "SELECT * FROM subjectmaster INNER JOIN facultymaster ON `subjectmaster`.`SubjectFacultyId` = `facultymaster`.`FacultyId` WHERE `FacultyUserName` = '$username'";
-		$subresult = mysqli_query($conn, $subsel);
-	?>
-<!DOCTYPE html>
-<html lang="en">
+session_start();
+if ($_SESSION['role'] != "Lagos") {
+	header("Location: ../default.php");
+} else {
+	include_once("../config.php");
+	$_SESSION["userrole"] = "Faculty";
+
+	$username = $_SESSION['id'];
+	$subsel = "SELECT * FROM subjectmaster INNER JOIN facultymaster ON `subjectmaster`.`SubjectFacultyId` = `facultymaster`.`FacultyId` WHERE `FacultyUserName` = '$username'";
+	$subresult = mysqli_query($conn, $subsel);
+?>
+	<!DOCTYPE html>
+	<html lang="en">
+
 	<head>
 		<?php include_once("../head.php"); ?>
 	</head>
+
 	<body>
 		<!-- NAVIGATION -->
 		<?php include_once("nav.php"); ?>
@@ -54,7 +56,7 @@
 											</h4>
 											<!-- Text -->
 											<small class="text-muted">
-											Only allowed PDF less than 5MB
+												Only allowed PDF less than 5MB
 											</small>
 										</div>
 									</div>
@@ -105,21 +107,20 @@
 									<select class="form-control" aria-label="Default select example" name="asssubject" required>
 										<option hidden>Select Subject</option>
 										<?php
-											while($subrow = mysqli_fetch_assoc($subresult)){ ?>
-										<option value="<?php echo $subrow['SubjectName']; ?>">
-											<?php echo $subrow['SubjectName']; ?> 
-										</option>
+										while ($subrow = mysqli_fetch_assoc($subresult)) { ?>
+											<option value="<?php echo $subrow['SubjectName']; ?>">
+												<?php echo $subrow['SubjectName']; ?>
+											</option>
 										<?php
 											$assupd = $subrow['SubjectFacultyId'];
-												} 
-												?>
+										}
+										?>
 									</select>
 									<br>
 								</div>
 								<div class="col-md-6">
 									<label for="validationCustom01" class="form-label">Assignment Submission Date</label>
-									<input type="date" id="validationCustom01" class="form-control" name="assldate" required
-										data-flatpickr placeholder="YYYY-MM-DD"><br>
+									<input type="date" id="validationCustom01" class="form-control" name="assldate" required data-flatpickr placeholder="YYYY-MM-DD"><br>
 								</div>
 							</div>
 							<!-- Divider -->
@@ -127,7 +128,7 @@
 							<div class="d-flex justify">
 								<!-- Button -->
 								<button class="btn btn-primary" type="submit" value="sub" name="subbed">
-								Add Assignment
+									Add Assignment
 								</button>
 							</div>
 							<!-- / .row -->
@@ -138,7 +139,8 @@
 				<!-- / .row -->
 			</div>
 		</div>
-		<?php #include("context.php");?>
+		<?php #include("context.php");
+		?>
 		<!-- Map JS -->
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 		<!-- Vendor JS -->
@@ -146,25 +148,27 @@
 		<!-- Theme JS -->
 		<script src="../assets/js/theme.bundle.js"></script>
 	</body>
-</html>
+
+	</html>
 <?php
 	if (isset($_POST['subbed'])) {
-	
+
 		$fs_name = $_FILES['assfile']['tmp_name'];
 		$fs_size = $_FILES['assfile']['size'];
 		$fs_error = $_FILES['assfile']['error'];
-	
+
 		$assname = $_POST['asstitle'];
 		$assdesc = $_POST['assdesc'];
 		$asssubject = $_POST['asssubject'];
 		$assldate = $_POST['assldate'];
 		$dt = date('Y-m-d');
-		$xsql="SELECT SubjectSemester from subjectmaster where SubjectName='$asssubject'";
-		$xresult=mysqli_query($conn,$xsql);
-		$xrow=mysqli_fetch_assoc($xresult);
+		$xsql = "SELECT SubjectSemester,SubjectBranch from subjectmaster where SubjectName='$asssubject'";
+		$xresult = mysqli_query($conn, $xsql);
+		$xrow = mysqli_fetch_assoc($xresult);
 		$sem = $xrow['SubjectSemester'];
-		$assfile = $assname.$dt . ".pdf";
-	
+		$branch = $xrow['SubjectBranch'];
+		$assfile = $assname . $dt . ".pdf";
+
 		if ($fs_error === 0) {
 			if ($fs_size <= 5000000) {
 				move_uploaded_file($fs_name, "../src/uploads/assignments/" . $assfile); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
@@ -174,9 +178,9 @@
 		} else {
 			echo "Something went wrong .. !";
 		}
-	
-		$sql = "INSERT INTO assignmentmaster (AssignmentTitle, AssignmentDesc, AssignmentSubject, AssignmentUploadedBy, AssignmentFile, AssignmentUploaddate, AssignmentForSemester, AssignmentSubmissionDate) 
-		VALUES ('$assname', '$assdesc', '$asssubject', '$assupd', '$assfile', '$dt', '$sem', '$assldate')";
+
+		$sql = "INSERT INTO assignmentmaster (AssignmentStatus,AssignmentBranch,AssignmentTitle, AssignmentDesc, AssignmentSubject, AssignmentUploadedBy, AssignmentFile, AssignmentUploaddate, AssignmentForSemester, AssignmentSubmissionDate) 
+		VALUES (1,'$branch','$assname', '$assdesc', '$asssubject', '$assupd', '$assfile', '$dt', '$sem', '$assldate')";
 		$run = mysqli_query($conn, $sql);
 		if ($run == true) {
 			echo "<script>alert('Assignment Added Successfully')</script>";
@@ -188,5 +192,5 @@
 	} else {
 		echo "<script>window.open('assignment_list.php','_self')";
 	}
-	}
-	?>
+}
+?>
