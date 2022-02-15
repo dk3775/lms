@@ -17,7 +17,7 @@
             header("Location: acc_related.php");
         } else {
             echo "<script>alert('Failed');</script>";
-            header("Location: acc_related.php.php");
+            header("Location: acc_related.php");
         }
     }
     ?>

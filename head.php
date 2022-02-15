@@ -20,5 +20,5 @@
 }
 	</style>
 	<?php
-	//error_reporting(E_ALL ^ E_ALL);
+	error_reporting(E_ALL ^ E_WARNING);
 	?>

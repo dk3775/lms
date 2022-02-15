@@ -11,6 +11,7 @@ if ($_SESSION['role'] != "Abuja") {
 	$res = mysqli_query($conn, $qur);
 	$row = mysqli_fetch_assoc($res);
 	$_SESSION["userid"] = $row["StudentId"];
+	$_SESSION["bcode"] = $row["StudentBranchCode"];
 	// Branch
 	$uqur = "SELECT * FROM updatemaster";
 	$ures = mysqli_query($conn, $uqur);

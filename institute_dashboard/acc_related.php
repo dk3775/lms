@@ -135,7 +135,6 @@ if ($_SESSION['role'] != "Texas") {
 																<td>
 																	<!-- Badge -->
 																	<a href="#" type="button" class="btn btn-sm btn-white">View</a>
-																	<a href="#" type="button" class="btn btn-sm btn-white">Download</a>
                                                                     <a href="qrystatus.php?qid=<?php echo $urow['QueryId']; ?>" type="button" class="btn btn-sm btn-white">Close</a>
 																</td>
 															<tr id="demo<?php echo $j++; ?>" class="collapse">
