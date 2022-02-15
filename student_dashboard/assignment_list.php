@@ -241,14 +241,37 @@ if ($_SESSION['role'] != "Abuja") {
 									<div class="modal-dialog">
 										<div class="modal-content">
 											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-												<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												<h5 class="modal-title h2" id="exampleModalLabel">Upload</h5>
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 											</div>
 											<div class="modal-body">
-												...
+												<div class="row justify-content-between align-items-center">
+													<div class="col">
+														<div class="row align-items-center">
+															<div class="col-auto">
+																<!-- Personal details -->
+															</div>
+															<div class="col ml-n2">
+																<!-- Heading -->
+																<h4 class="mb-1">
+																	File Upload
+																</h4>
+																<!-- Text -->
+																<small class="text-muted">
+																	Only PDF allowed less than 10MB
+																</small>
+															</div>
+														</div>
+														<!-- / .row -->
+													</div>
+													<div class="col-auto">
+														<!-- Button -->
+														<input type="file" id="img" name="stuprofile" class="btn btn-sm" onchange="showPreview(event);" accept="application/pdf">
+													</div>
+												</div>
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 												<button type="button" class="btn btn-primary">Save changes</button>
 											</div>
 										</div>
@@ -306,7 +329,14 @@ if ($_SESSION['role'] != "Abuja") {
 	<!-- Theme JS -->
 	<script src="../assets/js/theme.bundle.js"></script>
 	<!-- Delete Popup -->
+	<script>
+		var myModal = document.getElementById('myModal')
+		var myInput = document.getElementById('myInput')
 
+		myModal.addEventListener('shown.bs.modal', function() {
+			myInput.focus()
+		})
+	</script>
 
 </body>
 
