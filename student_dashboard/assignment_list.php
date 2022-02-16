@@ -16,9 +16,6 @@ if ($_SESSION['role'] != "Abuja") {
 	$xqur = "SELECT * FROM assignmentmaster WHERE AssignmentBranch = '$bid' AND AssignmentForSemester = '$sem'";
 
 	$xres = mysqli_query($conn, $xqur);
-
-	$squr = "SELECT * FROM studentassignment WHERE SAssignmentUploaderId = '$stuid'";
-	$sres = mysqli_query($conn, $squr);
 }
 ?>
 <!DOCTYPE html>
@@ -115,42 +112,39 @@ if ($_SESSION['role'] != "Abuja") {
 										</thead>
 										<tbody class="list font-size-base">
 											<?php
-											$a=0;
-											$submite=0;
-											while (
-												$row = mysqli_fetch_assoc($xres) or
-												$ssrow = mysqli_fetch_assoc($sres)
-											) {
-												$assignment_id = $row['AssignmentId'];
-												if ($row['AssignmentTitle'] == "") {
-													continue;
-												}
-												?>
+											$a = 0;
+											$submite = 0;
+											while ($row = mysqli_fetch_assoc($xres)) {
+											?>
+
 												<tr>
 													<td>
-														<a class="item-name text-reset"><?php  echo $row['AssignmentTitle']; ?></a>
+														<a class="item-name text-reset"><?php echo $row['AssignmentTitle']; ?></a>
 													</td>
 													<td>
-														<!-- Email -->
 														<span class="item-email text-reset"><?php echo $row['AssignmentSubject']; ?></span>
 													</td>
 													<td>
 														<?php
+														$assid = $row['AssignmentId'];
+														$squr = "SELECT * FROM studentassignment WHERE SAssignmentUploaderId = '$stuid' AND AssignmentId = '$assid'";
+														$sres = mysqli_query($conn, $squr);
+														$ssrow = mysqli_fetch_assoc($sres);
 														$a = $ssrow['SAssignmentStatus'];
-														if ($a == 0) { ?>
+														if ($a == 0) {
+														?>
 															<span class="badge bg-soft-primary">New</span>
 														<?php
-														}
-														else if ($a == 1) { ?>
+														} else if ($a == 1) {
+														?>
 															<span class="badge bg-soft-success">Submited</span>
 														<?php
-													
-														}
-														else if ($a == 2) { ?>
+														} else if ($a == 2) {
+														?>
 															<span class="badge bg-soft-warning">Rejected</span>
 														<?php
-														}
-														else if ($a == 3) { ?>
+														} else if ($a == 3) {
+														?>
 															<span class="badge bg-soft-warning">Completed</span>
 														<?php
 														}
@@ -185,16 +179,15 @@ if ($_SESSION['role'] != "Abuja") {
 																Download
 															</a>
 														<?php
-														}
-														else if ($ssrow['SAssignmentStatus'] == 0) { ?>
+														} else if ($ssrow['SAssignmentStatus'] == 0) { ?>
 															<form enctype="multipart/form-data" method="POST" style="display: none;">
 																<input type="file" id="assignmentupload" name="upload" accept="application/pdf" onchange="clickSubmit();" />
 																<input type="submit" id="submit" name="submit" />
-																
+
 															</form>
 															<a class="btn btn-sm btn-white" onclick="assSubmit();">Submit</a>
 														<?php
-														$submite=1;
+															$submite = 1;
 														}
 														?>
 													</td>
@@ -257,6 +250,7 @@ if ($_SESSION['role'] != "Abuja") {
 		function assSubmit() {
 			document.getElementById('assignmentupload').click();
 		}
+
 		function clickSubmit() {
 			var file = document.getElementById('assignmentupload');
 			if (file.files.length > 0) {
@@ -284,7 +278,7 @@ if (isset($_POST['submit'])) {
 		echo "Something went wrong .. !";
 	}
 	#upload to database
-	$filename = $enroll.$assignment_id . ".pdf";
+	$filename = $enroll . $assignment_id . ".pdf";
 	$date = gmdate("Y-m-d");
 	$assignmentstatus = "Submitted";
 	$sql = "INSERT INTO studentassignment(SAssignmentUploaderId, AssignmentId, SAssignmentFile, SAssignmentUploadDate, SAssignmentStatus) VALUES ('$stuid','$assignment_id','$filename','$date','$submite')";
@@ -294,6 +288,5 @@ if (isset($_POST['submit'])) {
 	} else {
 		echo "<script>alert('Something went wrong .. !');</script>";
 	}
-
 }
 ?>
