@@ -5,14 +5,18 @@ if ($_SESSION['role'] != "Abuja") {
 } else {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Student";
-	$qur = "SELECT *,BranchName FROM studentmaster INNER JOIN branchmaster ON studentmaster.StudentBranchCode = branchmaster.BranchCode WHERE StudentID = '" . $_SESSION["userid"] . "'";
+	$qur = "SELECT * FROM studentmaster INNER JOIN branchmaster ON studentmaster.StudentBranchCode = branchmaster.BranchCode WHERE StudentID = '" . $_SESSION["userid"] . "'";
 	$res = mysqli_query($conn, $qur);
 	$srow = mysqli_fetch_assoc($res);
+	$enroll = $srow["StudentEnrollmentNo"];
 	$bid = $srow["BranchId"];
 	$sem = $srow["StudentSemester"];
 	$stuid = $_SESSION["userid"];
-	$qur = "SELECT *,AssignmentUploadedBy FROM assignmentmaster INNER JOIN facultymaster ON assignmentmaster.AssignmentUploadedBy = facultymaster.FacultyId WHERE AssignmentBranch = '$bid' AND AssignmentForSemester = '$sem'";
-	$res = mysqli_query($conn, $qur);
+	// $xqur = "SELECT *,AssignmentUploadedBy FROM assignmentmaster INNER JOIN facultymaster ON assignmentmaster.AssignmentUploadedBy = facultymaster.FacultyId WHERE AssignmentBranch = '$bid' AND AssignmentForSemester = '$sem'";
+	$xqur = "SELECT * FROM assignmentmaster WHERE AssignmentBranch = '$bid' AND AssignmentForSemester = '$sem'";
+
+	$xres = mysqli_query($conn, $xqur);
+
 	$squr = "SELECT * FROM studentassignment WHERE SAssignmentUploaderId = '$stuid'";
 	$sres = mysqli_query($conn, $squr);
 }
@@ -22,51 +26,6 @@ if ($_SESSION['role'] != "Abuja") {
 
 <head>
 	<?php include_once("../head.php"); ?>
-	<style>
-		.wrap {
-			padding: 15px;
-		}
-
-		h1 {
-			font-size: 28px;
-		}
-
-		h4,
-		modal-title {
-			font-size: 18px;
-			font-weight: bold;
-		}
-
-		.no-borders {
-			border: 0px;
-		}
-
-		.body-message {
-			font-size: 18px;
-		}
-
-		.centered {
-			text-align: center;
-		}
-
-		.btn-primary {
-			background-color: #2086c1;
-			border-color: transparent;
-			outline: none;
-			border-radius: 8px;
-			font-size: 15px;
-			padding: 10px 25px;
-		}
-
-		.btn-primary:hover {
-			background-color: #2086c1;
-			border-color: transparent;
-		}
-
-		.btn-primary:focus {
-			outline: none;
-		}
-	</style>
 </head>
 
 <body>
@@ -99,7 +58,7 @@ if ($_SESSION['role'] != "Abuja") {
 									<ul class="nav nav-tabs nav-overflow header-tabs">
 										<li class="nav-item">
 											<a href="#!" class="nav-link text-nowrap active">
-												All Assignment <span class="badge rounded-pill bg-soft-secondary"><?php echo mysqli_num_rows($res); ?></span>
+												All Assignment <span class="badge rounded-pill bg-soft-secondary"><?php echo mysqli_num_rows($xres); ?></span>
 											</a>
 										</li>
 									</ul>
@@ -156,13 +115,20 @@ if ($_SESSION['role'] != "Abuja") {
 										</thead>
 										<tbody class="list font-size-base">
 											<?php
+											$a=0;
+											$submite=0;
 											while (
-												$row = mysqli_fetch_assoc($res) and
+												$row = mysqli_fetch_assoc($xres) or
 												$ssrow = mysqli_fetch_assoc($sres)
-											) { ?>
+											) {
+												$assignment_id = $row['AssignmentId'];
+												if ($row['AssignmentTitle'] == "") {
+													continue;
+												}
+												?>
 												<tr>
 													<td>
-														<a class="item-name text-reset"><?php echo $row['AssignmentTitle']; ?></a>
+														<a class="item-name text-reset"><?php  echo $row['AssignmentTitle']; ?></a>
 													</td>
 													<td>
 														<!-- Email -->
@@ -175,15 +141,16 @@ if ($_SESSION['role'] != "Abuja") {
 															<span class="badge bg-soft-primary">New</span>
 														<?php
 														}
-														if ($a == 1) { ?>
+														else if ($a == 1) { ?>
 															<span class="badge bg-soft-success">Submited</span>
 														<?php
+													
 														}
-														if ($a == 2) { ?>
+														else if ($a == 2) { ?>
 															<span class="badge bg-soft-warning">Rejected</span>
 														<?php
 														}
-														if ($a == 3) { ?>
+														else if ($a == 3) { ?>
 															<span class="badge bg-soft-warning">Completed</span>
 														<?php
 														}
@@ -213,20 +180,21 @@ if ($_SESSION['role'] != "Abuja") {
 														</a>
 														&nbsp;
 														<?php
-														$a = $row['AssignmentStatus'];
-														if ($a == 0) { ?>
+														if ($ssrow['SAssignmentStatus'] == 1) { ?>
 															<a href="../src/uploads/assignments/<?php echo $row['AssignmentFile']; ?>" download="<?php echo $row['AssignmentFile']; ?>" class="btn btn-sm btn-white" name="Download">
 																Download
 															</a>
 														<?php
 														}
-														if ($a == 1) { ?>
+														else if ($ssrow['SAssignmentStatus'] == 0) { ?>
 															<form enctype="multipart/form-data" method="POST" style="display: none;">
 																<input type="file" id="assignmentupload" name="upload" accept="application/pdf" onchange="clickSubmit();" />
 																<input type="submit" id="submit" name="submit" />
+																
 															</form>
 															<a class="btn btn-sm btn-white" onclick="assSubmit();">Submit</a>
 														<?php
+														$submite=1;
 														}
 														?>
 													</td>
@@ -235,72 +203,31 @@ if ($_SESSION['role'] != "Abuja") {
 											<!--over-->
 									</table>
 								</div>
-								<div class="modal fade bs-example-modal-new" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title h2" id="exampleModalLabel">Upload</h5>
-												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-											</div>
-											<div class="modal-body">
-												<div class="row justify-content-between align-items-center">
-													<div class="col">
-														<div class="row align-items-center">
-															<div class="col-auto">
-																<!-- Personal details -->
-															</div>
-															<div class="col ml-n2">
-																<!-- Heading -->
-																<h4 class="mb-1">
-																	File Upload
-																</h4>
-																<!-- Text -->
-																<small class="text-muted">
-																	Only PDF allowed less than 10MB
-																</small>
-															</div>
-														</div>
-														<!-- / .row -->
-													</div>
-													<div class="col-auto">
-														<!-- Button -->
-														<input type="file" id="img" name="upload" class="btn btn-sm" accept="application/pdf">
-													</div>
-												</div>
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-												<button type="button" class="btn btn-primary">Save changes</button>
-											</div>
-										</div>
-									</div>
+								<div class="card-footer d-flex justify-content-between">
+									<!-- Pagination (prev) -->
+									<ul class="list-pagination-prev pagination pagination-tabs card-pagination">
+										<li class="page-item">
+											<a class="page-link pl-0 pr-4 border-right" href="#">
+												<i class="fe fe-arrow-left mr-1"></i> Prev
+											</a>
+										</li>
+									</ul>
+									<!-- Pagination -->
+									<ul class="list-pagination pagination pagination-tabs card-pagination">
+										<li class="active"><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">1</a></li>
+										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">2</a></li>
+										<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">3</a></li>
+									</ul>
+									<!-- Pagination (next) -->
+									<ul class="list-pagination-next pagination pagination-tabs card-pagination">
+										<li class="page-item">
+											<a class="page-link pl-4 pr-0 border-left" href="#">
+												Next <i class="fe fe-arrow-right ml-1"></i>
+											</a>
+										</li>
+									</ul>
 								</div>
-								<!-- Modal Content: ends -->
 							</div>
-						</div>
-						<div class="card-footer d-flex justify-content-between">
-							<!-- Pagination (prev) -->
-							<ul class="list-pagination-prev pagination pagination-tabs card-pagination">
-								<li class="page-item">
-									<a class="page-link pl-0 pr-4 border-right" href="#">
-										<i class="fe fe-arrow-left mr-1"></i> Prev
-									</a>
-								</li>
-							</ul>
-							<!-- Pagination -->
-							<ul class="list-pagination pagination pagination-tabs card-pagination">
-								<li class="active"><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">1</a></li>
-								<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">2</a></li>
-								<li><a class="page" href="javascript:function Z(){Z=&quot;&quot;}Z()">3</a></li>
-							</ul>
-							<!-- Pagination (next) -->
-							<ul class="list-pagination-next pagination pagination-tabs card-pagination">
-								<li class="page-item">
-									<a class="page-link pl-4 pr-0 border-left" href="#">
-										Next <i class="fe fe-arrow-right ml-1"></i>
-									</a>
-								</li>
-							</ul>
 						</div>
 					</div>
 				</div>
@@ -330,7 +257,6 @@ if ($_SESSION['role'] != "Abuja") {
 		function assSubmit() {
 			document.getElementById('assignmentupload').click();
 		}
-
 		function clickSubmit() {
 			var file = document.getElementById('assignmentupload');
 			if (file.files.length > 0) {
@@ -351,12 +277,23 @@ if (isset($_POST['submit'])) {
 	if ($f_error === 0) {
 		if ($f_size <= 10000000) {
 			move_uploaded_file($f_tmp_name, "../src/uploads/studentAssignment/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
-			echo "<script>alert('Assignment Submitted Successfully .. !');</script>";
 		} else {
 			echo "<script>alert(File size is to big .. !);</script>";
 		}
 	} else {
 		echo "Something went wrong .. !";
 	}
+	#upload to database
+	$filename = $enroll.$assignment_id . ".pdf";
+	$date = gmdate("Y-m-d");
+	$assignmentstatus = "Submitted";
+	$sql = "INSERT INTO studentassignment(SAssignmentUploaderId, AssignmentId, SAssignmentFile, SAssignmentUploadDate, SAssignmentStatus) VALUES ('$stuid','$assignment_id','$filename','$date','$submite')";
+	$result = mysqli_query($conn, $sql);
+	if ($result) {
+		echo "<script>alert('Assignment Submitted Successfully .. !');</script>";
+	} else {
+		echo "<script>alert('Something went wrong .. !');</script>";
+	}
+
 }
 ?>
