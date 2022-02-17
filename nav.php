@@ -29,42 +29,42 @@
 				<!-- Navigation -->
 				<ul class="navbar-nav">
 					<li class="nav-item">
-						<a href="../institute_dashboard" class="nav-link">
+						<a href="../institute_dashboard" class="nav-link <?php if($nav_role == "Dashboard"){echo "active";} ?>">
 							<i class="fe fe-home"></i> Dashboard
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="student_list.php" class="nav-link">
+						<a href="student_list.php" class="nav-link <?php if($nav_role == "Student"){echo "active";} ?>">
 						<i class="fe uil-user"></i> Student
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="faculty_list.php" class="nav-link">
+						<a href="faculty_list.php" class="nav-link <?php if($nav_role == "Faculty"){echo "active";} ?>">
 						<i class="fe uil-graduation-cap"></i> Faculty
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="branch_list.php" class="nav-link">
+						<a href="branch_list.php" class="nav-link <?php if($nav_role == "Branch"){echo "active";} ?>">
 						<i class="fe uil-code-branch"></i> Branch
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="update_list.php" class="nav-link ">
+						<a href="update_list.php" class="nav-link <?php if($nav_role == "Updates"){echo "active";} ?>">
 						<i class="fe fe-bell"></i>Updates
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="#timetable" class="nav-link" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="timetable">
+						<a href="#timetable" class="nav-link <?php if($nav_role == "Time Table"){echo "active";} ?>" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="timetable">
 						<i class="fe uil-calendar-alt"></i>Time Table
 						</a>
-						<div class="collapse" id="timetable">
+						<div class="collapse <?php if($nav_role == "View Time Table List"){echo "active";} ?>" id="timetable">
 							<ul class="nav nav-sm flex-column">
 								<li class="nav-item">
 									<a href="timetable_list.php" class="nav-link">
 										View Time Table List
 									</a>
 								</li>
-								<li class="nav-item">
+								<li class="nav-item <?php if($nav_role == "Add Time Table"){echo "active";} ?>">
 									<a href="add_timetable.php" class="nav-link">
 										Add Time Table
 									</a>
@@ -82,8 +82,8 @@
 				<!-- Navigation -->
 				<ul class="navbar-nav mb-md-4">
 					<li class="nav-item">
-						<a href="acc_related.php" class="nav-link ">
-							<i class="fe fe-user"></i>Account related Details
+						<a href="acc_related.php" class="nav-link <?php if($nav_role == "Student Queries"){echo "active";} ?>">
+							<i class="fe fe-user"></i>Student Queries
 						</a>
 					</li>
 				</ul>

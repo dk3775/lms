@@ -28,33 +28,28 @@
 					<!-- Navigation -->
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a href="../student_dashboard" class="nav-link">
+							<a href="../student_dashboard" class="nav-link <?php if($nav_role == "Dashboard"){echo "active";} ?>">
 							<i class="fe fe-home"></i> Dashboard
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="subjects.php" class="nav-link">
+							<a href="subjects.php" class="nav-link <?php if($nav_role == "Subjects"){echo "active";} ?>">
 							<i class="fe fe-file"></i>Subjects
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="assignment_list.php" class="nav-link ">
+							<a href="assignment_list.php" class="nav-link <?php if($nav_role == "Assignments"){echo "active";} ?>">
 							<i class="fe fe-percent"></i> Assignments
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="update_list.php" class="nav-link ">
+							<a href="update_list.php" class="nav-link <?php if($nav_role == "Updates"){echo "active";} ?>">
 							<i class="fe fe-bell"></i>Updates 
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="attendance.php" class="nav-link ">
+							<a href="attendance.php" class="nav-link <?php if($nav_role == "Attendance"){echo "active";} ?>">
 							<i class="fe fe-clipboard"></i>Attendance 
-							</a>
-						</li>
-						<li class="nav-item d-md-none">
-							<a class="nav-link" href="#" data-toggle="modal">
-							<span class="fe fe-bell"></span> Notifications
 							</a>
 						</li>
 					</ul>
@@ -67,17 +62,17 @@
 					<!-- Navigation -->
 					<ul class="navbar-nav mb-md-4">
 						<li class="nav-item">
-							<a href="account_related.php" class="nav-link ">
+							<a href="account_related.php" class="nav-link <?php if($nav_role == "Account related Details"){echo "active";} ?>">
 							<i class="fe fe-user"></i>Account related Details
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="study_related.php" class="nav-link ">
+							<a href="study_related.php" class="nav-link <?php if($nav_role == "Study related querys"){echo "active";} ?>">
 							<i class="fe fe-book"></i>Study related querys
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="query_list.php" class="nav-link ">
+							<a href="query_list.php" class="nav-link <?php if($nav_role == "All querys"){echo "active";} ?>">
 							<i class="fe uil-file-question-alt"></i>All querys
 							</a>
 						</li>

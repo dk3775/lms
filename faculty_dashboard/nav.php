@@ -29,38 +29,33 @@
 			<!-- Navigation -->
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a href="../faculty_dashboard" class="nav-link">
+					<a href="../faculty_dashboard" class="nav-link <?php if($nav_role == "Dashboard"){echo "active";} ?>">
 						<i class="fe fe-home"></i> Dashboard
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="student_list.php" class="nav-link">
+					<a href="student_list.php" class="nav-link <?php if($nav_role == "Student"){echo "active";} ?>">
 						<i class="fe uil-user"></i> Student
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="branch_profile.php" class="nav-link">
+					<a href="branch_profile.php" class="nav-link <?php if($nav_role == "Branch"){echo "active";} ?>">
 						<i class="fe uil-code-branch"></i> Branch
 					</a>
 				</li>
 
 				<li class="nav-item">
-					<a href="assignment_list.php" class="nav-link ">
+					<a href="assignment_list.php" class="nav-link <?php if($nav_role == "Assignment"){echo "active";} ?>">
 						<i class="fe uil-file"></i> Assignment
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="update_list.php" class="nav-link ">
+					<a href="update_list.php" class="nav-link <?php if($nav_role == "Updates"){echo "active";} ?>">
 						<i class="fe fe-bell"></i>Updates
 					</a>
 				</li>
-				<li class="nav-item d-md-none">
-					<a class="nav-link" href="#" data-toggle="modal">
-						<span class="fe fe-bell"></span> Notifications
-					</a>
-				</li>
 				<li class="nav-item">
-					<a href="timetable_list.php" class="nav-link ">
+					<a href="timetable_list.php" class="nav-link <?php if($nav_role == "Time Table"){echo "active";} ?>">
 						<i class="fe uil-calendar-alt"></i>Time Table
 					</a>
 				</li>
@@ -74,7 +69,7 @@
 			<!-- Navigation -->
 			<ul class="navbar-nav mb-md-4">
 				<li class="nav-item">
-					<a href="Study_related.php" class="nav-link ">
+					<a href="Study_related.php" class="nav-link <?php if($nav_role == "Study related querys"){echo "active";} ?>">
 						<i class="fe fe-book"></i>Study related querys
 					</a>
 				</li>
