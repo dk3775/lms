@@ -114,6 +114,7 @@ if ($_SESSION['role'] != "Abuja") {
 											<?php
 											$a = 0;
 											$submite = 0;
+											$assid = 0;
 											while ($row = mysqli_fetch_assoc($xres)) {
 											?>
 
@@ -131,6 +132,7 @@ if ($_SESSION['role'] != "Abuja") {
 														$sres = mysqli_query($conn, $squr);
 														$ssrow = mysqli_fetch_assoc($sres);
 														$a = $ssrow['SAssignmentStatus'];
+														echo $assid;
 														if ($a == 0) {
 														?>
 															<span class="badge bg-soft-primary">New</span>
@@ -278,15 +280,18 @@ if (isset($_POST['submit'])) {
 		echo "Something went wrong .. !";
 	}
 	#upload to database
-	$filename = $enroll . $assignment_id . ".pdf";
+	$filename = $enroll . $assid . ".pdf";
 	$date = gmdate("Y-m-d");
 	$assignmentstatus = "Submitted";
-	$sql = "INSERT INTO studentassignment(SAssignmentUploaderId, AssignmentId, SAssignmentFile, SAssignmentUploadDate, SAssignmentStatus) VALUES ('$stuid','$assignment_id','$filename','$date','$submite')";
+	$sql = "INSERT INTO studentassignment(SAssignmentUploaderId, AssignmentId, SAssignmentFile, SAssignmentUploadDate, SAssignmentStatus)
+	 VALUES ('$stuid','$assid','$filename','$date','$submite')";
 	$result = mysqli_query($conn, $sql);
 	if ($result) {
 		echo "<script>alert('Assignment Submitted Successfully .. !');</script>";
+		echo '<script>showAlert();window.setTimeout(function () {HideAlert();},1000);</script>';  echo "<meta http-equiv='refresh' content='0;url=assignment_list.php'>";
 	} else {
 		echo "<script>alert('Something went wrong .. !');</script>";
+		echo '<script>showAlert();window.setTimeout(function () {HideAlert();},1000);</script>';  echo "<meta http-equiv='refresh' content='0;url=assignment_list.php'>";
 	}
 }
 ?>
