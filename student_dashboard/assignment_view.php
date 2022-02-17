@@ -3,16 +3,25 @@ error_reporting(E_ALL ^ E_WARNING);
 session_start();
 if ($_SESSION['role'] != "Abuja") {
 	header("Location: ../default.php");
-} else {
-?>
+} else { ?>
 	<!DOCTYPE html>
 	<html lang="en">
 
 	<head>
 		<?php include_once "../head.php"; ?>
+		<script>
+			function action() {
+				<?php
+				if (!isset($_GET['action'])) { ?>
+					document.getElementById('btnsub').style.display = 'none';
+				<?php
+				}
+				?>
+			}
+		</script>
 	</head>
 
-	<body>
+	<body onload="action();">
 		<!-- NAVIGATION -->
 		<?php include_once 'nav.php'; ?>
 		<!-- MAIN CONTENT -->
@@ -44,7 +53,11 @@ if ($_SESSION['role'] != "Abuja") {
 									$sql = "SELECT * FROM assignmentmaster WHERE AssignmentId = '$ttid'";
 									$result = mysqli_query($conn, $sql);
 									$row = mysqli_fetch_assoc($result);
-
+									$u = $_SESSION['id'];
+									$sql1 = "SELECT * FROM studentmaster WHERE StudentUserName = '$u'";
+									$srow = mysqli_fetch_assoc(mysqli_query($conn, $sql1));
+									$stuid =  $srow['StudentId'];
+									$enroll =  $srow['StudentEnrollmentNo'];
 								?>
 									<!-- CONTENT -->
 									<div class="container-fluid">
@@ -84,6 +97,13 @@ if ($_SESSION['role'] != "Abuja") {
 											<a href="../src/uploads/assignments/<?php echo $row['AssignmentFile']; ?>" download="<?php echo $row['AssignmentFile']; ?>" class="btn btn-primary" name="Download">
 												Download
 											</a>
+											<form enctype="multipart/form-data" method="POST" style="display: none;">
+												<input type="file" id="assignmentupload" name="upload" accept="application/pdf" onchange="clickSubmit();" />
+												<input type="submit" id="submit" name="submit" />
+											</form>
+											<a class="btn btn-primary ml-5" name="btnsub" id="btnsub" onclick="assSubmit();">
+												Submit
+											</a>
 										</div>
 									</div>
 									<hr>
@@ -93,6 +113,7 @@ if ($_SESSION['role'] != "Abuja") {
 				</div>
 			</div>
 		</div>
+
 
 		<?php include("context.php"); ?>
 		<!-- / .main-content -->
@@ -104,7 +125,54 @@ if ($_SESSION['role'] != "Abuja") {
 	<script src="../assets/js/vendor.bundle.js"></script>
 	<!-- Theme JS -->
 	<script src="../assets/js/theme.bundle.js"></script>
+	<script>
+		function assSubmit() {
+			document.getElementById('assignmentupload').click();
+		}
+
+		function clickSubmit() {
+			var file = document.getElementById('assignmentupload');
+			if (file.files.length > 0) {
+				document.getElementById('submit').click();
+			}
+		}
+	</script>
 	</body>
 
 	</html>
-<?php } ?>
+<?php }
+if (isset($_POST['submit'])) {
+
+	$f_tmp_name = $_FILES['upload']['tmp_name'];
+	$f_size = $_FILES['upload']['size'];
+	$f_error = $_FILES['upload']['error'];
+
+	$uploadsubmit = $_POST['id'];
+	$submite = 1;
+
+	#upload to database
+	$filename = $enroll . "_" . $ttid . ".pdf";
+	$date = gmdate("Y-m-d");
+
+	$sql = "INSERT INTO studentassignment(SAssignmentUploaderId, AssignmentId, SAssignmentFile, SAssignmentUploadDate, SAssignmentStatus)
+	 VALUES ('$stuid','$ttid','$filename','$date','$submite')";
+	// echo $sql;
+	$result = mysqli_query($conn, $sql);
+	if ($result) {
+		echo "<script>alert('Assignment Submitted Successfully .. !');</script>";
+		if ($f_error === 0) {
+			if ($f_size <= 10000000) {
+				move_uploaded_file($f_tmp_name, "../src/uploads/studentAssignment/" . $filename); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
+			} else {
+				echo "<script>alert(File size is to big .. !);</script>";
+			}
+		} else {
+			echo "Something went wrong .. !";
+		}
+		echo "<script>window.open('assignment_list.php','_self')</script>";
+	} else {
+		echo "<script>alert('Something went wrong .. !');</script>";
+		echo "<script>window.open('assignment_list.php','_self')</script>";
+	}
+}
+?>
