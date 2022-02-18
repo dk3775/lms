@@ -103,6 +103,7 @@ if ($_SESSION['role'] != "Abuja") {
 													<a class="list-sort text-muted" data-sort="item-phone">Upload Date</a>
 												</th>
 												<th>
+
 													<a class="list-sort text-muted" data-sort="item-phone">Submission Date</a>
 												</th>
 												<th>
@@ -132,7 +133,7 @@ if ($_SESSION['role'] != "Abuja") {
 														$sres = mysqli_query($conn, $squr);
 														$ssrow = mysqli_fetch_assoc($sres);
 														$a = $ssrow['SAssignmentStatus'];
-														echo $assid;
+														// echo $assid;
 														if ($a == 0) {
 														?>
 															<span class="badge bg-soft-primary">New</span>
@@ -177,19 +178,18 @@ if ($_SESSION['role'] != "Abuja") {
 														&nbsp;
 														<?php
 														if ($ssrow['SAssignmentStatus'] == 1) { ?>
-															<a href="../src/uploads/assignments/<?php echo $row['AssignmentFile']; ?>" download="<?php echo $row['AssignmentFile']; ?>" class="btn btn-sm btn-white" name="Download">
+															<a href="../src/uploads/studentAssignment/<?php echo $ssrow['SAssignmentFile']; ?>" download="<?php echo $ssrow['SAssignmentFile']; ?>" class="btn btn-sm btn-white" name="Download">
 																Download
 															</a>
+															<?php
+														} else if ($ssrow['SAssignmentStatus'] == 0 || $ssrow['SAssignmentStatus'] == 2) {
+															if ($row['AssignmentSubmissionDate'] > gmdate("Y-m-d")) { ?>
+																<a href="assignment_view.php?updateid=<?php echo $row['AssignmentId']; ?>&action=sub" class="btn btn-sm btn-white" onclick="assSubmit();">
+																	Submit
+																</a>
 														<?php
-														} else if ($ssrow['SAssignmentStatus'] == 0) { ?>
-															<form enctype="multipart/form-data" method="POST" style="display: none;">
-																<input type="file" id="assignmentupload" name="upload" accept="application/pdf" onchange="clickSubmit();" />
-																<input type="submit" id="submit" name="submit" />
-
-															</form>
-															<a class="btn btn-sm btn-white" onclick="assSubmit();">Submit</a>
-														<?php
-															$submite = 1;
+																$submite = 1;
+															}
 														}
 														?>
 													</td>
@@ -248,50 +248,47 @@ if ($_SESSION['role'] != "Abuja") {
 			myInput.focus()
 		})
 	</script>
-	<script>
-		function assSubmit() {
-			document.getElementById('assignmentupload').click();
-		}
-
-		function clickSubmit() {
-			var file = document.getElementById('assignmentupload');
-			if (file.files.length > 0) {
-				document.getElementById('submit').click();
-			}
-		}
-	</script>
 </body>
 
 </html>
 <?php
-if (isset($_POST['submit'])) {
+// if (isset($_GET['submit'])) {
+// 	if (isset($_GET['id'])) {
 
-	$f_tmp_name = $_FILES['upload']['tmp_name'];
-	$f_size = $_FILES['upload']['size'];
-	$f_error = $_FILES['upload']['error'];
-	$fs_name = $_FILES['upload']['name'];
-	if ($f_error === 0) {
-		if ($f_size <= 10000000) {
-			move_uploaded_file($f_tmp_name, "../src/uploads/studentAssignment/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
-		} else {
-			echo "<script>alert(File size is to big .. !);</script>";
-		}
-	} else {
-		echo "Something went wrong .. !";
-	}
-	#upload to database
-	$filename = $enroll . $assid . ".pdf";
-	$date = gmdate("Y-m-d");
-	$assignmentstatus = "Submitted";
-	$sql = "INSERT INTO studentassignment(SAssignmentUploaderId, AssignmentId, SAssignmentFile, SAssignmentUploadDate, SAssignmentStatus)
-	 VALUES ('$stuid','$assid','$filename','$date','$submite')";
-	$result = mysqli_query($conn, $sql);
-	if ($result) {
-		echo "<script>alert('Assignment Submitted Successfully .. !');</script>";
-		echo '<script>showAlert();window.setTimeout(function () {HideAlert();},1000);</script>';  echo "<meta http-equiv='refresh' content='0;url=assignment_list.php'>";
-	} else {
-		echo "<script>alert('Something went wrong .. !');</script>";
-		echo '<script>showAlert();window.setTimeout(function () {HideAlert();},1000);</script>';  echo "<meta http-equiv='refresh' content='0;url=assignment_list.php'>";
-	}
-}
+
+// 		$f_tmp_name = $_FILES['upload']['tmp_name'];
+// 		$f_size = $_FILES['upload']['size'];
+// 		$f_error = $_FILES['upload']['error'];
+// 		$fs_name = $_FILES['upload']['name'];
+
+// 		$uploadsubmit = $_GET['id'];
+
+// 		echo "<script>alert($uploadsubmit);</script>";
+// 		if ($f_error === 0) {
+// 			if ($f_size <= 10000000) {
+// 				move_uploaded_file($f_tmp_name, "../src/uploads/studentAssignment/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
+// 			} else {
+// 				echo "<script>alert(File size is to big .. !);</script>";
+// 			}
+// 		} else {
+// 			echo "Something went wrong .. !";
+// 		}
+// 	}
+// 	#upload to database
+// 	$filename = $enroll . $assid . ".pdf";
+// 	$date = gmdate("Y-m-d");
+
+// 	// $sql = "INSERT INTO studentassignment(SAssignmentUploaderId, AssignmentId, SAssignmentFile, SAssignmentUploadDate, SAssignmentStatus)
+// 	//  VALUES ('$stuid','$xy','$filename','$date','$submite')";
+// 	// $result = mysqli_query($conn, $sql);
+// 	// if ($result) {
+// 	// 	echo "<script>alert('Assignment Submitted Successfully .. !');</script>";
+// 	// 	echo '<script>showAlert();window.setTimeout(function () {HideAlert();},1000);</script>';
+// 	// 	echo "<meta http-equiv='refresh' content='0;url=assignment_list.php'>";
+// 	// } else {
+// 	// 	echo "<script>alert('Something went wrong .. !');</script>";
+// 	// 	echo '<script>showAlert();window.setTimeout(function () {HideAlert();},1000);</script>';
+// 	// 	echo "<meta http-equiv='refresh' content='0;url=assignment_list.php'>";
+// 	// }
+// }
 ?>

@@ -20,7 +20,9 @@ if ($_SESSION['role'] != "Abuja") {
 
 <body>
    <!-- NAVIGATION -->
-   <?php include_once "nav.php"; ?>
+   <?php
+   $nav_role="All querys";
+   include_once "nav.php"; ?>
    <!-- MAIN CONTENT -->
    <div class="main-content">
       <div class="container-fluid">

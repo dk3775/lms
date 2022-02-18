@@ -47,11 +47,6 @@
 							<i class="fe fe-bell"></i>Updates 
 							</a>
 						</li>
-						<li class="nav-item">
-							<a href="attendance.php" class="nav-link <?php if($nav_role == "Attendance"){echo "active";} ?>">
-							<i class="fe fe-clipboard"></i>Attendance 
-							</a>
-						</li>
 					</ul>
 					<!-- Divider -->
 					<hr class="navbar-divider my-3">

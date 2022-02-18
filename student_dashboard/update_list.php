@@ -15,7 +15,9 @@ if ($_SESSION['role'] != "Abuja") {
 <html lang="en">
 
 <head>
-   <?php include_once "../head.php"; ?>
+   <?php
+   $nav_role="Updates";
+   include_once "../head.php"; ?>
 </head>
 
 <body>

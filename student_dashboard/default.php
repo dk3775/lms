@@ -32,7 +32,9 @@ if ($_SESSION['role'] != "Abuja") {
 
 	<body>
 		<!-- NAVIGATION -->
-		<?php require_once('nav.php'); ?>
+		<?php
+		$nav_role="Dashboard";
+		require_once('nav.php'); ?>
 		<!-- MAIN CONTENT -->
 		<div class="main-content">
 			<!-- HEADER -->
