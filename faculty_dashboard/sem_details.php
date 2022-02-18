@@ -62,12 +62,6 @@
 									<?php echo $row['BranchCode']; ?>
 								</h5>
 							</div>
-							<div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
-								<!-- Button -->
-								<a href="edit_branch.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-primary d-block d-md-inline-block btn-md">
-								Edit Details
-								</a>
-							</div>
 						</div>
 						<hr class="navbar-divider my-4">
 						<!-- / .row -->
@@ -107,12 +101,16 @@
 					<div class="col-12 col-md-4 mb-md-5">
 						<div class="card-group">
 							<div class="card">
-							<img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic']; ?>" class="card-img-top img-fluid" alt="...">
+								<img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic']; ?>" class="card-img-top img-fluid" alt="...">
 								<div class="card-body">
 									<h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
 									<p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
 									<p class="card-text"><?php echo $roww['FacultyFirstName']." ".$roww['FacultyLastName']; ?></p>
-									<a href="edit_subject.php?semid=<?php echo $semid;?>&brid=<?php echo $xbrid;?>&subid=<?php echo $roww['SubjectCode'];?>" class="">Edit</a>
+									<a href="#" class="btn btn-sm btn-primary">View</a>
+									<?php
+										if($roww['SubjectFacultyId']==$_SESSION['fid']){ ?>
+											<a href="edit_subject.php?semid=<?php echo $semid;?>&brid=<?php echo $xbrid;?>&subid=<?php echo $roww['SubjectCode'];?>" class="btn btn-sm btn-primary">Edit</a>
+										<?php } ?>
 								</div>
 							</div>
 						</div>
@@ -159,8 +157,7 @@
 				}
 				?>
 		</div>
-		
-	<?php include("context.php");?>
+		<?php include("context.php");?>
 		<!-- / .main-content -->
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->

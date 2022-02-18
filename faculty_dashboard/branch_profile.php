@@ -43,9 +43,9 @@ if ($_SESSION['role'] != "Lagos") {
 				<!-- / .header -->
 				<?php
 				include_once("../config.php");
-				$studentenr = $_GET['brid'];
-				$_SESSION["userrole"] = "Institute";
-				$fqur = "SELECT * FROM facultymaster";
+				$_SESSION["userrole"] = "Faculty";
+				$studentenr = $_SESSION['fid'];
+				$fqur = "SELECT * FROM facultymaster where FacultyID = '$studentenr'";
 				$fres = mysqli_query($conn, $fqur);
 				$frow = mysqli_fetch_assoc($fres);
 				$bcode = $frow['FacultyBranchCode'];
