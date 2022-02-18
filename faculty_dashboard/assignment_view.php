@@ -45,6 +45,9 @@ if ($_SESSION['role'] != "Lagos") {
 									$result = mysqli_query($conn, $sql);
 									$row = mysqli_fetch_assoc($result);
 
+									$asql = "SELECT * FROM studentassignment INNER JOIN studentmaster ON studentassignment.SAssignmentUploaderId = studentmaster.StudentId WHERE AssignmentId = '$ttid';";
+									$aresult = mysqli_query($conn, $asql);
+
 								?>
 									<!-- CONTENT -->
 									<div class="container-fluid">
@@ -87,7 +90,114 @@ if ($_SESSION['role'] != "Lagos") {
 										</div>
 									</div>
 									<hr>
+									<!-- CONTENT -->
+									<!-- Tab content -->
+									<div class="tab-content">
+										<div class="tab-pane fade show active" id="contactsListPane" role="tabpanel" aria-labelledby="contactsListTab">
+											<!-- Card -->
+											<div class="card" data-list='{"valueNames": ["item-name", "item-title", "item-email", "item-phone", "item-score", "item-company"], "page": 10, "pagination": {"paginationClass": "list-pagination"}}' id="contactsList">
+												<div class="card-header">
+													<div class="row align-items-center">
+														<div class="col">
+															<!-- Form -->
+															<form>
+																<div class="input-group input-group-flush input-group-merge input-group-reverse">
+																	<input class="form-control list-search" type="search" placeholder="Search">
+																	<span class="input-group-text">
+																		<i class="fe fe-search"></i>
+																	</span>
+																</div>
+															</form>
+														</div>
+														<div class="col-auto">
+														</div>
+													</div>
+													<!-- / .row -->
+												</div>
+												<div class="table-responsive">
+													<table class="table table-sm table-hover table-nowrap card-table">
+														<thead>
+															<tr>
+																<th>
+																	<a class="list-sort text-muted" data-sort="item-name">No</a>
+																</th>
+																<th>
+																	<a class="list-sort text-muted" data-sort="item-name">Student Name</a>
+																</th>
+																<th>
+																	<a class="list-sort text-muted" data-sort="item-score">Assignment Status</a>
+																</th>
+																<th>
+																	<a class="list-sort text-muted" data-sort="item-phone">Upload Date</a>
+																</th>
+																<th>
+																	<a class="list-sort text-muted justify-content-center">Action</a>
+																</th>
+
+															</tr>
+														</thead>
+														<tbody class="list font-size-base">
+															<?php
+															$a++;
+															while ($row = mysqli_fetch_assoc($aresult)) { ?>
+																<tr>
+																	<td>
+																		<span class="text-reset item-score"><?php echo $a++; ?></span>
+																	</td>
+																	<td>
+																		<span type="text" class="text-reset item-name"><?php echo $row['StudentFirstName']; ?> <?php echo $row['StudentLastName']; ?></span>
+																	</td>
+																	<td>
+																		<?php
+																		$a = $row['SAssignmentStatus'];
+																		if ($a == 0) {
+																		?>
+																			<span class="badge bg-soft-primary">New</span>
+																		<?php
+																		} else if ($a == 1) {
+																		?>
+																			<span class="badge bg-soft-success">Submited</span>
+																		<?php
+																		} else if ($a == 2) {
+																		?>
+																			<span class="badge bg-soft-warning">Rejected</span>
+																		<?php
+																		} else if ($a == 3) {
+																		?>
+																			<span class="badge bg-soft-warning">Completed</span>
+																		<?php
+																		}
+																		?>
+																	</td>
+																	<td>
+																		<!-- Email -->
+																		<span type="text" class="text-reset item-phone" name="bsem" required><?php echo $row['SAssignmentUploadDate']; ?></span>
+																	</td>
+																	<td>
+																		<a href="assign_status.php?upid=<?php echo $row['SAssignmentUploaderId']; ?>&asid=<?php echo $ttid; ?>&a=<?php echo 1; ?>" class="btn btn-sm btn-white">
+																			Reject
+																		</a>
+																		&nbsp;
+																		<a class="btn btn-sm btn-white" href="assign_status.php?upid=<?php echo $row['SAssignmentUploaderId']; ?>&asid=<?php echo $ttid; ?>&a=<?php echo 2; ?>">
+																			Complete
+																			<!--changes-->
+																		</a>
+																		&nbsp;
+																		<a href="../src/uploads/studentAssignment/<?php echo $row['SAssignmentFile']; ?>" download="<?php echo $row['SAssignmentFile']; ?>" class="btn btn-sm btn-white" name="Download">
+																			Download
+																		</a>
+																	</td>
+
+																</tr>
+															<?php } ?>
+															<!--over-->
+													</table>
+												</div>
+											</div>
+										</div>
+									</div>
 							</div>
+						<?php } ?>
 						</div>
 					</div>
 				</div>
@@ -96,14 +206,14 @@ if ($_SESSION['role'] != "Lagos") {
 
 		<?php include("context.php"); ?>
 		<!-- / .main-content -->
-	<?php } ?>
-	<!-- JAVASCRIPT -->
-	<!-- Map JS -->
-	<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-	<!-- Vendor JS -->
-	<script src="../assets/js/vendor.bundle.js"></script>
-	<!-- Theme JS -->
-	<script src="../assets/js/theme.bundle.js"></script>
+
+		<!-- JAVASCRIPT -->
+		<!-- Map JS -->
+		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+		<!-- Vendor JS -->
+		<script src="../assets/js/vendor.bundle.js"></script>
+		<!-- Theme JS -->
+		<script src="../assets/js/theme.bundle.js"></script>
 	</body>
 
 	</html>

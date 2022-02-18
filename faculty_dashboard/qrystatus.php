@@ -17,7 +17,7 @@
             header("Location: study_related.php");
         } else {
             echo "<script>alert('Failed');</script>";
-            header("Location: study_related.php.php");
+            header("Location: study_related.php");
         }
     }
     ?>
