@@ -5,7 +5,7 @@ if ($_SESSION['role'] != "Texas") {
 } else {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Faculty";
-	$qur = "SELECT *, StudentFirstName, StudentLastName FROM querymaster INNER JOIN studentmaster on querymaster.QueryFromId = studentmaster.StudentId";
+	$qur = "SELECT *, StudentFirstName, StudentLastName FROM querymaster INNER JOIN studentmaster on querymaster.QueryFromId = studentmaster.StudentId WHERE QueryType = 1";
 
 	$res = mysqli_query($conn, $qur);
     
