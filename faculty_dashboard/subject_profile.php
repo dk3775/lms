@@ -202,7 +202,7 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 						<?php
 						} else { ?>
 							<div class="col-12">
-								<h1 class="card header-title m-5 p-5"> Oops, No Subject To Show</h1>
+								<h1 class="card header-title m-5 p-5"> Oops, No Materials To Show</h1>
 							</div>
 						<?php
 						}

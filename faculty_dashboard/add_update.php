@@ -13,6 +13,7 @@ if ($_SESSION['role'] != "Lagos") {
       <?php include_once "../head.php";?>
    </head>
    <body>
+      <?php $nav_role = "Updates"; ?>
       <!-- NAVIGATION -->
       <?php include_once "../nav.php";?>
       <!-- MAIN CONTENT -->

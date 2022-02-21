@@ -24,6 +24,7 @@ if ($_SESSION['role'] != "Lagos") {
 <?php include("../head.php"); ?>
 
 <body>
+	<?php $nav_role="Dashboard"; ?>
 	<!-- NAVIGATION -->
 	<?php include("nav.php"); ?>
 	<!-- MAIN CONTENT -->

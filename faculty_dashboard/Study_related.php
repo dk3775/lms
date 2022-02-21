@@ -21,6 +21,7 @@ if ($_SESSION['role'] != "Lagos") {
 </head>
 
 <body>
+	<?php $nav_role = "Study related querys"; ?>
 	<!-- NAVIGATION -->
 	<?php include_once("nav.php"); ?>
 	<!-- MAIN CONTENT -->

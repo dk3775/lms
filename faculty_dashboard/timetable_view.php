@@ -13,6 +13,7 @@ if ($_SESSION['role'] != "Lagos") {
 	</head>
 
 	<body>
+		<?php $nav_role = "Time Table"; ?>
 		<!-- NAVIGATION -->
 		<?php include_once("nav.php"); ?>
 		<!-- MAIN CONTENT -->

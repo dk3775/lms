@@ -11,6 +11,7 @@
 		<?php include_once "../head.php"; ?>
 	</head>
 	<body>
+		<?php $nav_role = "Updates"; ?>
 		<!-- NAVIGATION -->
 		<?php include_once 'nav.php'; ?>
 		<!-- MAIN CONTENT -->
@@ -58,6 +59,8 @@
 													<div class="input-group">
 														<span class="input-group-text col-3 text-dark">Title</span>
 														<input type="text" value="<?php echo $row['UpdateTitle']; ?>" aria-label="First name" class="form-control" disabled>
+													</div><br>
+													<div class="input-group">
 														<span class="input-group-text col-3 text-dark">Description</span>
 														<input type="text" value="<?php echo $row['UpdateDescription']; ?>" aria-label="Last name" class="form-control disable" disabled>
 													</div>

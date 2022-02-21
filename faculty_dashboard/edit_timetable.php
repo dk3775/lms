@@ -25,6 +25,7 @@ $row = mysqli_fetch_assoc($timetableresult);
 </head>
 
 <body>
+   <?php $nav_role = "Time Table"; ?>
    <!-- NAVIGATION -->
    <?php include_once "../nav.php"; ?>
    <!-- MAIN CONTENT -->
