@@ -58,8 +58,8 @@ if ($_SESSION['role'] != "Lagos") {
 							<div class="row align-items-center">
 								<div class="col-auto">
 									<!-- Avatar -->
-									<div class="../avatar avatar-xxl header-avatar-top">
-										<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" alt="..." class="avatar-img rounded-circle border border-4 border-body">
+									<div class="../avatar avatar-xxl position-relative">
+										<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" alt="..." style="border-radius: 10px;" class="w-100 h-100 border-radius-lg shadow-sm">
 									</div>
 								</div>
 								<div class="col mb-3 ml-n3 ml-md-n2">
@@ -73,12 +73,7 @@ if ($_SESSION['role'] != "Lagos") {
 										<?php echo "Sem : ".$row['StudentSemester']; ?>
 									</h5>
 								</div>
-								<div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
-									<!-- Button -->
-									<a href="edit_student.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" class="btn btn-primary d-block d-md-inline-block btn-md">
-										Edit Details
-									</a>
-								</div>
+								
 							</div>
 							<!-- / .row -->
 							<div class="row align-items-center">
