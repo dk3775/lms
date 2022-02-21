@@ -7,11 +7,9 @@ if ($_SESSION['role'] != "Lagos") {
 ?>
 	<!DOCTYPE html>
 	<html lang="en">
-
 	<head>
 		<?php include_once("../head.php"); ?>
 	</head>
-
 	<body>
 		<!-- NAVIGATION -->
 		<?php include_once('nav.php'); ?>

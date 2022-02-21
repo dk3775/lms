@@ -7,12 +7,11 @@ if ($_SESSION['role'] != "Lagos") {
 ?>
 	<!DOCTYPE html>
 	<html lang="en">
-
 	<head>
 		<?php include_once("../head.php"); ?>
 	</head>
-
 	<body>
+		<?php $nav_role = "Branch"; ?>
 		<!-- NAVIGATION -->
 		<?php include_once("nav.php"); ?>
 		<!-- MAIN CONTENT -->
@@ -73,12 +72,6 @@ if ($_SESSION['role'] != "Lagos") {
 								<h5 class="header-pretitle mt-2">
 									<?php echo $row['BranchCode']; ?>
 								</h5>
-							</div>
-							<div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
-								<!-- Button -->
-								<a href="edit_branch.php?brid=<?php echo $studentenr; ?>" class="btn btn-primary d-block d-md-inline-block btn-md">
-									Edit Details
-								</a>
 							</div>
 						</div>
 						<hr class="navbar-divider my-4">

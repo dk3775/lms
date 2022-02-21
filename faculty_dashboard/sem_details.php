@@ -11,6 +11,7 @@
 		<?php include_once("../head.php"); ?>
 	</head>
 	<body>
+	<?php $nav_role = "Branch"; ?>
 		<!-- NAVIGATION -->
 		<?php include_once("nav.php"); ?>
 		<!-- MAIN CONTENT -->
@@ -106,7 +107,7 @@
 									<h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
 									<p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
 									<p class="card-text"><?php echo $roww['FacultyFirstName']." ".$roww['FacultyLastName']; ?></p>
-									<a href="#" class="btn btn-sm btn-primary">View</a>
+									<a href="subject_profile.php?subid=<?php echo $roww['SubjectId'];?>" class="btn btn-sm btn-primary">View</a>
 									<?php
 										if($roww['SubjectFacultyId']==$_SESSION['fid']){ ?>
 											<a href="edit_subject.php?semid=<?php echo $semid;?>&brid=<?php echo $xbrid;?>&subid=<?php echo $roww['SubjectCode'];?>" class="btn btn-sm btn-primary">Edit</a>
