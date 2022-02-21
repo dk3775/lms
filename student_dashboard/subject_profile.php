@@ -2,7 +2,7 @@
 error_reporting(E_ALL ^ E_WARNING);
 session_start();
 require_once("../config.php");
-if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
+if ($_SESSION['role'] != "Abuja" or !isset($_GET['subid'])) {
 	header("Location: ../default.php");
 } else {
 	$xbrid = $_GET['subid'];
@@ -207,8 +207,7 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 					</div>
 				</div>
 			</div>
-			<?php include_once("context.php"); 
-			?>
+			<?php include_once("context.php"); ?>
 			<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 			<script src="../assets/js/vendor.bundle.js"></script>
 			<script src="../assets/js/theme.bundle.js"></script>
