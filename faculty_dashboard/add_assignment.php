@@ -169,28 +169,25 @@ if ($_SESSION['role'] != "Lagos") {
 		$branch = $xrow['SubjectBranch'];
 		$assfile = $assname . $dt . ".pdf";
 
-		if ($fs_error === 0) {
-			if ($fs_size <= 5000000) {
-				move_uploaded_file($fs_name, "../src/uploads/assignments/" . $assfile); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
-			} else {
-				echo "<script>alert('File size is to big .. !');</script>";
-			}
-		} else {
-			echo "Something went wrong .. !";
-		}
-
 		$sql = "INSERT INTO assignmentmaster (AssignmentStatus,AssignmentBranch,AssignmentTitle, AssignmentDesc, AssignmentSubject, AssignmentUploadedBy, AssignmentFile, AssignmentUploaddate, AssignmentForSemester, AssignmentSubmissionDate) 
 		VALUES (1,'$branch','$assname', '$assdesc', '$asssubject', '$assupd', '$assfile', '$dt', '$sem', '$assldate')";
 		$run = mysqli_query($conn, $sql);
 		if ($run == true) {
-			echo "<script>alert('Assignment Added Successfully')</script>";
-			echo "<script>window.open('assignment_list.php','_self')</script>";
+			if ($fs_error === 0) {
+				if ($fs_size <= 5000000) {
+					move_uploaded_file($fs_name, "../src/uploads/assignments/" . $assfile); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
+				} else {
+					echo "<script>alert('File size is to big .. !');</script>";
+				}
+			} else {
+				echo "Something went wrong .. !";
+			}
+			echo "<script>alert('Assignment Added Successfully');</script>";
+			echo "<script>window.open('assignment_list.php','_self');</script>";
 		} else {
-			echo "<script>alert('Error Occured, Assignment Not Added')</script>";
-			echo "<script>window.open('add_assignment.php','_self')</script>";
+			echo "<script>alert('Error Occured, Assignment Not Added');</script>";
+			echo "<script>window.open('add_assignment.php','_self');</script>";
 		}
-	} else {
-		echo "<script>window.open('assignment_list.php','_self')";
 	}
 }
 ?>
