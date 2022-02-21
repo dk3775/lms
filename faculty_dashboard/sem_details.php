@@ -44,7 +44,7 @@
 					include_once("../config.php");
 					$xbrid = $_GET['brid'];
 					$semid = $_GET['semid'];
-					$_SESSION["userrole"] = "Institute";
+					$_SESSION["userrole"] = "Faculty";
 					if (isset($xbrid)) {
 						$sql = "SELECT * FROM branchmaster WHERE BranchCode = '$xbrid'";
 						$result = mysqli_query($conn, $sql);

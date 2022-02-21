@@ -33,11 +33,14 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 								Profile
 							</h1>
 						</div>
-						<div class="col-auto">
-							<a href="add_material.php?subcode=<?php echo $row['SubjectCode'];?>&brid=<?php echo $row['BranchCode'];?>" class="btn btn-primary ml-2">
-								Add Material
-							</a>
-						</div>
+						<?php
+						if ($roww['SubjectFacultyId'] == $_SESSION['fid']) { ?>
+							<div class="col-auto">
+								<a href="add_material.php?subcode=<?php echo $row['SubjectCode']; ?>&brid=<?php echo $row['BranchCode']; ?>" class="btn btn-primary ml-2">
+									Add Material
+								</a>
+							</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
@@ -207,7 +210,7 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 					</div>
 				</div>
 			</div>
-			<?php include_once("context.php"); 
+			<?php include_once("context.php");
 			?>
 			<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 			<script src="../assets/js/vendor.bundle.js"></script>
