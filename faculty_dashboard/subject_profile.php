@@ -33,6 +33,11 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 								Profile
 							</h1>
 						</div>
+						<div class="col-auto">
+							<a href="add_material.php?subcode=<?php echo $row['SubjectCode'];?>&brid=<?php echo $row['BranchCode'];?>" class="btn btn-primary ml-2">
+								Add Material
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -71,6 +76,11 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 				</div>
 				<hr class="navbar-divider my-4">
 			</div>
+			<?php
+			$xsubid = $row['SubjectCode'];
+			$qurr = "SELECT * FROM studymaterialmaster WHERE SubjectCode = '$xsubid'";
+			$ress = mysqli_query($conn, $qurr);
+			?>
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<div class="col-12">
@@ -80,8 +90,8 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 									<div class="col">
 										<ul class="nav nav-tabs nav-overflow header-tabs">
 											<li class="nav-item">
-												<a href="#!" class="nav-link text-nowrap active">
-													Subject Material <span class="badge rounded-pill bg-soft-secondary"><?php echo mysqli_num_rows($res); ?></span>
+												<a href="#" class="nav-link text-nowrap active">
+													Subject Materials <span class="badge rounded-pill bg-soft-secondary"><?php echo mysqli_num_rows($ress); ?></span>
 												</a>
 											</li>
 										</ul>
@@ -91,9 +101,7 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 						</div>
 						<!-- Tab content -->
 						<?php
-						$xsubid = $row['SubjectCode'];
-						$qurr = "SELECT * FROM studymaterialmaster WHERE SubjectCode = '$xsubid'";
-						$ress = mysqli_query($conn, $qurr);
+
 						if (mysqli_num_rows($ress) > 0) { ?>
 							<div class="tab-content">
 								<div class="tab-pane fade show active" id="contactsListPane" role="tabpanel" aria-labelledby="contactsListTab">
@@ -127,9 +135,10 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 														<th colspan="3">
 															<a class="list-sort text-muted" data-sort="item-company">Unit Name</a>
 														</th>
-														<th></th><th></th>
+														<th></th>
+														<th></th>
 														<th>
-															<a class="list-sort text-muted justify-content-center">Action</a>
+															<a class="list-sort text-muted justify-content-center">Download</a>
 														</th>
 													</tr>
 												</thead>
@@ -144,14 +153,15 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 																<!-- Email -->
 																<span class="item-company text-reset"><?php echo $roww['MaterialCode']; ?></span>
 															</td>
-															<td></td><td></td>
+															<td></td>
+															<td></td>
 															<td>
-																<a href="edit_assignment.php?assid=<?php echo $roww['AssignmentId']; ?>" class="btn btn-sm btn-white">
+																<a href="../src/uploads/studymaterial/" download="<?php echo $roww['EngMaterialFile']; ?>" class="btn btn-sm btn-white">
 																	English
 																</a>
 																&nbsp;
-																<a href="assdelete.php?assid=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-white" onclick="if (! confirm('Are you sure to delete Assignment ?')) return false;">
-																	Gujarti
+																<a href="../src/uploads/studymaterial/" download="<?php echo $roww['GujMaterialFile']; ?>" class="btn btn-sm btn-white">
+																	Gujarati
 																</a>
 															</td>
 														</tr>

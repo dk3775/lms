@@ -5,23 +5,20 @@ if ($_SESSION['role'] != "Lagos") {
 } else {
     include_once("../config.php");
     $_SESSION["userrole"] = "Faculty";
-    // $subcode = $_GET['subcode'];
-    $subcode = "3330707";
+    $subcode = $_GET['subcode'];
     $subsql = "SELECT * FROM subjectmaster WHERE SubjectCode = '$subcode'";
     $subrow = mysqli_fetch_assoc(mysqli_query($conn, $subsql));
-    // $brid = $_GET['brid'];
-    $brid = "AI";
+    $brid = $_GET['brid'];
     $brsql = "SELECT * FROM branchmaster WHERE BranchCode = '$brid'";
     $brrow = mysqli_fetch_assoc(mysqli_query($conn, $brsql));
 ?>
     <!DOCTYPE html>
     <html lang="en">
-
     <head>
         <?php include_once("../head.php"); ?>
     </head>
-
     <body>
+    <?php $nav_role = "Branch"; ?>
         <!-- NAVIGATION -->
         <?php include_once("nav.php"); ?>
         <!-- MAIN CONTENT -->
