@@ -62,7 +62,7 @@
 								</div>
 								<div class="col-auto">
 									<!-- Button -->
-									<input type="file" id="img" name="assfile" class="btn btn-sm" onchange="showPreview(event);" accept="appliction/pdf">
+									<input type="file" id="img" name="assfile" class="btn btn-sm" onchange="showPreview(event);" accept="application/pdf">
 								</div>
 							</div>
 							<!-- Priview Profile pic  -->
