@@ -18,7 +18,9 @@ $branchresult = mysqli_query($conn, $branchsel);
 
 <body>
 	<!-- NAVIGATION -->
-	<?php include_once("../nav.php"); ?>
+	<?php
+	$nav_role = "Faculty";
+	include_once("../nav.php"); ?>
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<div class="container-fluid">
@@ -203,15 +205,7 @@ $branchresult = mysqli_query($conn, $branchsel);
 									<input type="text" id="myInput" oninput="cp()" class="form-control" name="fcode" required>
 								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-12 col-md-6">
-								<label class="form-label">
-									Faculty Subject
-								</label>
-								<input type="text" class="form-control" name="fsubject" required>
-							</div>
-						</div>
+									</div>
 						<hr class="my-5">
 						<!-- / .row -->
 						<div class="row">
@@ -343,7 +337,6 @@ if (isset($_POST['subbed'])) {
 	$foffice = $_POST['foffice'];
 	$fbranch = $_POST['fbranch'];
 	$fquali = $_POST['fqualification'];
-	$fsubject = $_POST['fsubject'];
 	$fpassword = $_POST['fpassword'];
 	$fcode = $_POST['fcode'];
 	$fid = $_POST['fid'];
@@ -362,7 +355,6 @@ if (isset($_POST['subbed'])) {
 			FacultyEmail,
 			FacultyContactNo,
 			FacultyQualification,
-			FacultySubject,
 			FacultyOffice,
 			FacultyCode
 		)
@@ -377,7 +369,6 @@ if (isset($_POST['subbed'])) {
 			'$femail',
 			'$fcontact',
 			'$fquali',
-			'$fsubject',
 			'$foffice',
 			'$fcode'
 	);";

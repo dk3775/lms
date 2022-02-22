@@ -54,23 +54,10 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="#timetable" class="nav-link <?php if($nav_role == "Time Table"){echo "active";} ?>" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="timetable">
+						<a href="#timetable" class="nav-link <?php if($nav_role == "Time Table"){echo "active";} ?>">
 						<i class="fe uil-calendar-alt"></i>Time Table
 						</a>
-						<div class="collapse <?php if($nav_role == "View Time Table List"){echo "active";} ?>" id="timetable">
-							<ul class="nav nav-sm flex-column">
-								<li class="nav-item">
-									<a href="timetable_list.php" class="nav-link">
-										View Time Table List
-									</a>
-								</li>
-								<li class="nav-item <?php if($nav_role == "Add Time Table"){echo "active";} ?>">
-									<a href="add_timetable.php" class="nav-link">
-										Add Time Table
-									</a>
-								</li>
-							</ul>
-						</div>
+			
 					</li>
 				</ul>
 				<!-- Divider -->

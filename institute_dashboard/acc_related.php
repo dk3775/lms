@@ -23,7 +23,9 @@ if ($_SESSION['role'] != "Texas") {
 
 <body>
 	<!-- NAVIGATION -->
-	<?php include_once("../nav.php"); ?>
+	<?php 
+	$nav_role = "Student Queries";
+	include_once("../nav.php"); ?>
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<div class="container-fluid">

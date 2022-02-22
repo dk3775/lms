@@ -20,7 +20,9 @@
 	</head>
 	<body>
 		<!-- NAVIGATION -->
-		<?php include_once("../nav.php"); ?>
+		<?php 
+		$nav_role = "Branch";
+		include_once("../nav.php"); ?>
 		<!-- MAIN CONTENT -->
 		<div class="main-content">
 			<div class="container-fluid">

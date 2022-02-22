@@ -13,7 +13,9 @@ if ($_SESSION['role'] != "Texas") {
 <html lang="en">
 
 <head>
-	<?php include_once("../head.php"); ?>
+	<?php 
+	$nav_role = "Student";
+	include_once("../head.php"); ?>
 </head>
 
 <body>

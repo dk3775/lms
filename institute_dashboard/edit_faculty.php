@@ -14,7 +14,9 @@ if ($_SESSION['role'] != "Texas") {
 
 	<body>
 		<!-- NAVIGATION -->
-		<?php include_once("../nav.php"); ?>
+		<?php
+		$nav_role = "Faculty";
+		include_once("../nav.php"); ?>
 		<!-- MAIN CONTENT -->
 		<div class="main-content">
 			<div class="container-fluid">
@@ -214,14 +216,6 @@ if ($_SESSION['role'] != "Texas") {
 										</div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-12 col-md-6">
-										<label class="form-label">
-											Faculty Subject
-										</label>
-										<input type="text" class="form-control" name="fsubject" value="<?php echo $row['FacultySubject']; ?>" required>
-									</div>
-								</div>
 								<hr class="my-5">
 								<!-- / .row -->
 								<div class="row">
@@ -359,7 +353,6 @@ if ($_SESSION['role'] != "Texas") {
 		$foffice = $_POST['foffice'];
 		$fbranch = $_POST['fbranch'];
 		$fquali = $_POST['fqualification'];
-		$fsubject = $_POST['fsubject'];
 		$fpassword = $_POST['fpassword'];
 		$fcode = $_POST['fcode'];
 		$fuid = $_POST['ec'];
@@ -376,7 +369,7 @@ if ($_SESSION['role'] != "Texas") {
 		} else {
 			echo "Something went wrong .. !";
 		}
-		$sqli = "UPDATE facultymaster SET FacultyUserName='$fuid',FacultyFirstName='$fname', FacultyMiddleName='$mname',FacultyLastName='$lname', FacultyContactNo='$fcontact', FacultyEmail='$femail', FacultyOffice='$foffice', FacultyBranchCode='$fbranch', FacultyQualification='$fquali', FacultySubject='$fsubject', FacultyPassword='$fpassword', FacultyCode='$fcode'  WHERE FacultyId = '$fid';";
+		$sqli = "UPDATE facultymaster SET FacultyUserName='$fuid',FacultyFirstName='$fname', FacultyMiddleName='$mname',FacultyLastName='$lname', FacultyContactNo='$fcontact', FacultyEmail='$femail', FacultyOffice='$foffice', FacultyBranchCode='$fbranch', FacultyQualification='$fquali', FacultyPassword='$fpassword', FacultyCode='$fcode'  WHERE FacultyId = '$fid';";
 		$runed = mysqli_query($conn, $sqli);
 		if ($runed == true) {
 			echo "<script>alert('Faculty Details Edited Successfully')</script>";

@@ -24,7 +24,9 @@ $row = mysqli_fetch_assoc($timetableresult);
    </head>
    <body>
       <!-- NAVIGATION -->
-      <?php include_once "../nav.php";?>
+      <?php 
+      $nav_role = "Time Table";
+      include_once "../nav.php";?>
       <!-- MAIN CONTENT -->
       <div class="main-content">
          <div class="container-fluid">
