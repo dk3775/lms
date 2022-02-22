@@ -26,6 +26,7 @@ if ($_SESSION['role'] != "Abuja") {
 </head>
 
 <body>
+	<?php $nav_role = "Assignments"; ?>
 	<!-- NAVIGATION -->
 	<?php include_once("nav.php"); ?>
 	<!-- MAIN CONTENT -->

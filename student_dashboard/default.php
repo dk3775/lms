@@ -204,7 +204,7 @@ if ($_SESSION['role'] != "Abuja") {
 											SPI
 										</h6>
 										<span class="h2 mb-0">
-											<?php echo $row['SPI']; ?>
+											<?php //echo $row['SPI']; ?>-
 										</span>
 									</div>
 									<div class="col-auto">
@@ -223,7 +223,7 @@ if ($_SESSION['role'] != "Abuja") {
 											CGPA
 										</h6>
 										<span class="h2 mb-0">
-											<?php echo $row['CGPA']; ?>
+											<?php //echo $row['CGPA']; ?>-
 										</span>
 									</div>
 									<div class="col-auto">
@@ -242,7 +242,7 @@ if ($_SESSION['role'] != "Abuja") {
 											assignment
 										</h6>
 										<span class="h2 mb-0">
-											10/<?php echo $acrow ?>
+											<?php //echo $acrow ?>-
 										</span>
 									</div>
 									<div class="col-auto">
@@ -260,7 +260,7 @@ if ($_SESSION['role'] != "Abuja") {
 											Attendance
 										</h6>
 										<span class="h2 mb-0">
-											2:38
+											-
 										</span>
 									</div>
 									<div class="col-auto">

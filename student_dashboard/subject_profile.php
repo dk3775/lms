@@ -19,7 +19,7 @@ if ($_SESSION['role'] != "Abuja" or !isset($_GET['subid'])) {
 
 	<body>
 		<?php
-		$nav_role = "Branch";
+		$nav_role = "Subjects";
 		include_once('nav.php'); ?>
 		<div class="main-content">
 			<div class="container-fluid">
@@ -32,11 +32,6 @@ if ($_SESSION['role'] != "Abuja" or !isset($_GET['subid'])) {
 							<h1 class="header-title">
 								Profile
 							</h1>
-						</div>
-						<div class="col-auto">
-							<a href="add_material.php?subcode=<?php echo $row['SubjectCode'];?>&brid=<?php echo $row['BranchCode'];?>" class="btn btn-primary ml-2">
-								Add Material
-							</a>
 						</div>
 					</div>
 				</div>

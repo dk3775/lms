@@ -23,7 +23,9 @@ if ($_SESSION['role'] != "Abuja") {
 
 	<body onload="action();">
 		<!-- NAVIGATION -->
-		<?php include_once 'nav.php'; ?>
+		<?php 
+		$nav_role ="Assignments";
+		include_once 'nav.php'; ?>
 		<!-- MAIN CONTENT -->
 		<div class="main-content">
 			<div class="container-fluid">
@@ -95,7 +97,7 @@ if ($_SESSION['role'] != "Abuja") {
 										<div class="d-flex justify">
 											<!-- Button -->
 											<a href="../src/uploads/assignments/<?php echo $row['AssignmentFile']; ?>" download="<?php echo $row['AssignmentFile']; ?>" class="btn btn-primary" name="Download">
-												Download
+												Download 
 											</a>
 											<form enctype="multipart/form-data" method="POST" style="display: none;">
 												<input type="file" id="assignmentupload" name="upload" accept="application/pdf" onchange="clickSubmit();" />

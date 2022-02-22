@@ -34,7 +34,7 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 							</h1>
 						</div>
 						<?php
-						if ($roww['SubjectFacultyId'] == $_SESSION['fid']) { ?>
+						if ($row['SubjectFacultyId'] == $_SESSION['fid']) { ?>
 							<div class="col-auto">
 								<a href="add_material.php?subcode=<?php echo $row['SubjectCode']; ?>&brid=<?php echo $row['BranchCode']; ?>" class="btn btn-primary ml-2">
 									Add Material
