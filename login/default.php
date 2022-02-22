@@ -107,6 +107,7 @@ if (isset($_POST['login'])) {
 		if ($row['InstituteUserName'] == $u and $row['InstitutePassword'] === $hp) {
 			session_start();
 			$_SESSION['id'] = $u;
+			$_SESSION['name'] = $row['InstituteId'];
 			$_SESSION['role'] = "Texas";
 			header("location:../institute_dashboard/");
 		} else {
