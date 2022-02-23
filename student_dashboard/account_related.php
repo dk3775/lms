@@ -34,7 +34,7 @@ if ($_SESSION['role'] != "Abuja") {
 <body>
 	<!-- NAVIGATION -->
 	<?php
-	$nav_role="Account related Details";
+	$nav_role = "Account related Details";
 	include_once('nav.php'); ?>
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
@@ -59,31 +59,31 @@ if ($_SESSION['role'] != "Abuja") {
 							<!-- / .row -->
 						</div>
 					</div>
-						<form method="POST" class="row g-3 needs-validation" novalidate>
-							<div class="form-group">
-								<!-- Label  -->
-								<label class="form-label">
-									Your Name
-								</label>
-								<!-- Input -->
-								<input type="text" value="<?php echo $sturesult['StudentFirstName'] . " " . $sturesult['StudentLastName']; ?>" name="arname" class="form-control" readonly>
-								<input type="hidden" value="<?php echo $qrsub; ?>" name="qrsub">
-							</div>
-							<!-- Project description -->
-							<div class="form-group">
-								<!-- Label -->
-								<label class="form-label">
-									Detail
-									<small class="form-text text-muted">
-										Enter details you want to edit
-									</small>
-								</label>
-								<textarea id="demo" rows="4" class="form-control fs-2" name="ardetails" required></textarea>
-							</div>
-							<hr class="mt-3">
-							<!-- Buttons -->
-							<input class="btn btn-block btn-primary mb-5" type="submit" name="sub">
-						</form>
+					<form method="POST" class="row g-3 needs-validation" novalidate>
+						<div class="form-group">
+							<!-- Label  -->
+							<label class="form-label">
+								Your Name
+							</label>
+							<!-- Input -->
+							<input type="text" value="<?php echo $sturesult['StudentFirstName'] . " " . $sturesult['StudentLastName']; ?>" name="arname" class="form-control" readonly>
+							<input type="hidden" value="<?php echo $qrsub; ?>" name="qrsub">
+						</div>
+						<!-- Project description -->
+						<div class="form-group">
+							<!-- Label -->
+							<label class="form-label">
+								Detail
+								<small class="form-text text-muted">
+									Enter details you want to edit
+								</small>
+							</label>
+							<textarea id="demo" rows="4" class="form-control fs-2" name="ardetails" required></textarea>
+						</div>
+						<hr class="mt-3">
+						<!-- Buttons -->
+						<input class="btn btn-block btn-primary mb-5" type="submit" name="sub">
+					</form>
 				</div>
 			</div>
 			<!-- / .row -->
@@ -114,11 +114,11 @@ if (isset($_POST['sub'])) {
 	$qrsub = $_POST['qrsub'];
 	$qrfrom = $sturesult['StudentId'];
 	$qrto = 0;
-	$qrstatus = 0;
+	$qrstatus = 1;
 	$dt = date('Y-m-d');
 
-	$sql = "INSERT INTO `querymaster`(`QueryFromId`, `QueryToId`, `QueryQuestion`, `Querystatus`, `QuerySubject`, `QueryGenDate`) 
-	VALUES ('$qrfrom','$qrto','$qrdetails','$qrstatus','$qrsub','$dt')";
+	$sql = "INSERT INTO `querymaster`(`QueryFromId`, `QueryToId`, `QueryQuestion`, `Querystatus`, `QuerySubject`, `QueryGenDate`, `QueryType`, `QuerySubject`) 
+	VALUES ('$qrfrom','$qrto','$qrdetails','$qrstatus','$qrsub','$dt','1','-')";
 	$run = mysqli_query($conn, $sql);
 	if ($run == true) {
 		echo "<script>alert('Request Sent .. ')</script>";
