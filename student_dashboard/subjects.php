@@ -12,13 +12,15 @@ if ($_SESSION['role'] != "Abuja") {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <?php require_once('../head.php'); ?>
 </head>
+
 <body>
     <!-- NAVIGATION -->
-    <?php 
-    $nav_role="Subjects";
+    <?php
+    $nav_role = "Subjects";
     require_once('nav.php'); ?>
     <!-- MAIN CONTENT -->
     <div class="main-content">
@@ -48,10 +50,10 @@ if ($_SESSION['role'] != "Abuja") {
         <div class="container-fluid">
             <div class="row">
                 <?php
-                $C = $row['StudentBranchCode']."_".$row['StudentSemester'];
+                $C = $row['StudentBranchCode'] . "_" . $row['StudentSemester'];
                 $subsql = "SELECT *, FacultyFirstName, FacultyLastname FROM subjectmaster INNER JOIN facultymaster ON subjectmaster.SubjectFacultyId=facultymaster.FacultyId WHERE SemCode = '$C'";
                 $subresult = mysqli_query($conn, $subsql);
-                if(mysqli_num_rows($subresult)>0){
+                if (mysqli_num_rows($subresult) > 0) {
                     while ($roww = mysqli_fetch_assoc($subresult)) { ?>
                         <div class="col-12 col-md-4">
                             <div class="card-group">
@@ -66,16 +68,15 @@ if ($_SESSION['role'] != "Abuja") {
                                 </div>
                             </div>
                         </div>
-                <?php
+                    <?php
                     }
-                }
-                else{ ?>
+                } else { ?>
                     <div class="col-12">
                         <h1 class="card header-title m-5 p-5"> Oops, No Subject To Show</h1>
                     </div>
                 <?php
                 }
-                ?>  
+                ?>
             </div>
         </div>
     </div>
