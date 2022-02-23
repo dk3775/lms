@@ -78,6 +78,9 @@ if ($_SESSION['role'] != "Abuja") {
                                           <thead>
                                              <tr>
                                                 <th>
+                                                   <a class="list-sort text-muted" data-sort="item-score">#</a>
+                                                </th>
+                                                <th>
                                                    <a class="list-sort text-muted" data-sort="item-score">Date</a>
                                                 </th>
                                                 <th>
@@ -101,8 +104,12 @@ if ($_SESSION['role'] != "Abuja") {
                                           </thead>
                                           <tbody class="list font-size-base">
                                              <?php
+                                             $a = 1;
                                              while ($urow = mysqli_fetch_assoc($ures)) { ?>
                                                 <tr>
+                                                   <td>
+                                                      <?php echo $a++; ?>
+                                                   </td>
                                                    <td>
                                                       <span class="item-score"><?php echo $urow['QueryGenDate']; ?></span>
                                                    </td>
@@ -135,6 +142,7 @@ if ($_SESSION['role'] != "Abuja") {
                                                       ?>
                                                    </td>
                                                    <td>
+                                                      <a class="btn btn-sm btn-white">View</a>
                                                       <a download="<?php echo $urow['QueryDocument']; ?>" href="../src/uploads/querydocument/<?php echo $urow['QueryDocument']; ?>" type="button" class="btn btn-sm btn-white">Download</a>
                                                    </td>
                                                    <td></td>
