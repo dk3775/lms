@@ -310,7 +310,7 @@ if ($_SESSION['role'] != "Texas") {
 												</div>
 												<div class="col-auto">
 													<!-- Button -->
-													<a href="edit_faculty.php?facid=<?php echo $row['FacultyCode']; ?>" class="btn btn-m btn-primary d-none d-md-inline-block">
+													<a href="edit_faculty.php?facid=<?php echo $row['FacultyId']; ?>" class="btn btn-m btn-primary d-none d-md-inline-block">
 														Edit
 													</a>
 												</div>
@@ -330,9 +330,6 @@ if ($_SESSION['role'] != "Texas") {
 			</div>
 		</div>
 		<?php include_once("context.php"); ?>
-		<!-- / .main-content -->
-		<!-- JAVASCRIPT -->
-		<!-- Map JS -->
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 		<!-- Vendor JS -->
 		<script src="../assets/js/vendor.bundle.js"></script>
@@ -353,7 +350,13 @@ if ($_SESSION['role'] != "Texas") {
 		$foffice = $_POST['foffice'];
 		$fbranch = $_POST['fbranch'];
 		$fquali = $_POST['fqualification'];
-		$fpassword = $_POST['fpassword'];
+
+		if($_POST['fpassword'] != null){
+			$fpassword = $_POST['fpassword'];
+		}else{
+			$fpassword = $row['FacultyPassword'];
+		}
+		
 		$fcode = $_POST['fcode'];
 		$fuid = $_POST['ec'];
 		$fid = $row['FacultyId'];

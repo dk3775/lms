@@ -54,7 +54,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="#timetable" class="nav-link <?php if($nav_role == "Time Table"){echo "active";} ?>">
+						<a href="timetable_list.php" class="nav-link <?php if($nav_role == "Time Table"){echo "active";} ?>">
 						<i class="fe uil-calendar-alt"></i>Time Table
 						</a>
 			

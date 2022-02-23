@@ -13,8 +13,8 @@
 	<body>
 		<!-- NAVIGATION -->
 		<?php
-		$nav_role = "Student";
-		include_once("../nav.php"); ?>
+			$nav_role = "Student";
+			include_once("../nav.php"); ?>
 		<!-- MAIN CONTENT -->
 		<div class="main-content">
 			<div class="container-fluid">
@@ -223,7 +223,7 @@
 							<?php
 								$branchsel = "SELECT * FROM branchmaster";
 								$branchresult = mysqli_query($conn, $branchsel);
-							?>
+								?>
 							<div class="row">
 								<div class="col-12 col-md-6">
 									<div class="form-group">
@@ -385,7 +385,7 @@
 </html>
 <?php
 	if (isset($_POST['subbed'])) {
-
+	
 		$f_tmp_name = $_FILES['stuprofile']['tmp_name'];
 		$f_size = $_FILES['stuprofile']['size'];
 		$f_error = $_FILES['stuprofile']['error'];
