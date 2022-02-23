@@ -1,5 +1,6 @@
 <?php
     //this is the main config file
+    // $server = "localhost";
     $server = "sql284.main-hosting.eu";
     $conn = mysqli_connect($server, "u877822597_lmsadmin", "#TitansDKALAJdedenge79", "u877822597_lms");
     if(!isset($conn)){

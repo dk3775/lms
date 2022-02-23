@@ -81,7 +81,7 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 			</div>
 			<?php
 			$xsubid = $row['SubjectCode'];
-			$qurr = "SELECT * FROM studymaterialmaster WHERE SubjectCode = '$xsubid'";
+			$qurr = "SELECT * FROM studymaterialmaster WHERE SubjectCode = '$xsubid' Order by SubjectUnitNo ASC";
 			$ress = mysqli_query($conn, $qurr);
 			?>
 			<div class="container-fluid">
