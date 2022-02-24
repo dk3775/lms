@@ -5,7 +5,7 @@ if ($_SESSION['role'] != "Abuja") {
    header("Location: ../default.php");
 } else {
    include_once "../config.php";
-   $_SESSION["userrole"] = "Institute";
+   $_SESSION["userrole"] = "student";
    $id = $_SESSION["userid"];
    $uqur = "SELECT * FROM querymaster WHERE QueryFromId = '$id'";
    $ures = mysqli_query($conn, $uqur);
@@ -104,11 +104,11 @@ if ($_SESSION['role'] != "Abuja") {
                                           </thead>
                                           <tbody class="list font-size-base">
                                              <?php
-                                             $a = 1;
+                                             $x = 1;
                                              while ($urow = mysqli_fetch_assoc($ures)) { ?>
                                                 <tr>
                                                    <td>
-                                                      <?php echo $a++; ?>
+                                                      <?php echo $x++; ?>
                                                    </td>
                                                    <td>
                                                       <span class="item-score"><?php echo $urow['QueryGenDate']; ?></span>
@@ -127,7 +127,16 @@ if ($_SESSION['role'] != "Abuja") {
                                                    </td>
                                                    <td>
                                                       <!-- Text -->
-                                                      <span class="item-name"><?php echo $urow['QuerySubject']; ?></span>
+                                                      <?php
+                                                      $a = $urow['QuerySubject'];
+                                                      if ($a == "") { ?>
+                                                         <center><span class="">-</span></center>
+                                                      <?php
+                                                      } else { ?>
+                                                         <span class="item-name"><?php echo $urow['QuerySubject']; ?></span>
+                                                      <?php
+                                                      }
+                                                      ?>
                                                    </td>
                                                    <td>
                                                       <?php
@@ -142,7 +151,7 @@ if ($_SESSION['role'] != "Abuja") {
                                                       ?>
                                                    </td>
                                                    <td>
-                                                      <a class="btn btn-sm btn-white">View</a>
+                                                   <a href="query_profile.php?qid=<?php echo $urow['QueryId']; ?>" type="button" class="btn btn-sm btn-white">View</a>
                                                       <a download="<?php echo $urow['QueryDocument']; ?>" href="../src/uploads/querydocument/<?php echo $urow['QueryDocument']; ?>" type="button" class="btn btn-sm btn-white">Download</a>
                                                    </td>
                                                    <td></td>
@@ -201,12 +210,12 @@ if ($_SESSION['role'] != "Abuja") {
             <script src="../assets/js/vendor.bundle.js"></script>
             <!-- Theme JS -->
             <script src="../assets/js/theme.bundle.js"></script>
-            <script>
+            <!--<script>
                var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
                var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
                   return new bootstrap.Tooltip(tooltipTriggerEl)
                })
-            </script>
+            </script> what the fuck is this-->
 </body>
 
 </html>

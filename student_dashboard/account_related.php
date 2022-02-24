@@ -117,8 +117,9 @@ if (isset($_POST['sub'])) {
 	$qrstatus = 1;
 	$dt = date('Y-m-d');
 
-	$sql = "INSERT INTO `querymaster`(`QueryFromId`, `QueryToId`, `QueryQuestion`, `Querystatus`, `QuerySubject`, `QueryGenDate`, `QueryType`, `QuerySubject`) 
-	VALUES ('$qrfrom','$qrto','$qrdetails','$qrstatus','$qrsub','$dt','1','-')";
+	$qrtopic = "Account Related Help";
+	$sql = "INSERT INTO `querymaster`(`QueryTopic`,`QueryFromId`, `QueryToId`, `QueryQuestion`, `Querystatus`, `QuerySubject`, `QueryGenDate`, `QueryType`) 
+	VALUES ('$qrtopic','$qrfrom','$qrto','$qrdetails','$qrstatus','$qrsub','$dt','1')";
 	$run = mysqli_query($conn, $sql);
 	if ($run == true) {
 		echo "<script>alert('Request Sent .. ')</script>";

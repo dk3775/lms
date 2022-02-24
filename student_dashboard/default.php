@@ -15,7 +15,6 @@ if ($_SESSION['role'] != "Abuja") {
 	// Branch
 	$uqur = "SELECT * FROM updatemaster";
 	$ures = mysqli_query($conn, $uqur);
-	$urow = mysqli_fetch_assoc($ures);
 	$bid= $row["BranchId"];
 	//Assignment
 	$aqur = "SELECT * FROM assignmentmaster WHERE AssignmentBranch = '$bid'";

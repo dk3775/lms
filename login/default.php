@@ -3,6 +3,15 @@
 
 <head>
 	<?php include_once('../head.php'); ?>
+	<?php
+	if (isset($_POST['login'])) { ?>
+		<style>
+			input:invalid {
+				border-color: red;
+			}
+		</style>
+
+	<?php } ?>
 </head>
 <?php
 error_reporting(E_ALL ^ E_WARNING);
@@ -31,15 +40,15 @@ error_reporting(E_ALL ^ E_WARNING);
 					access to your dashboard.
 				</p>
 				<!-- Form -->
-				<form method="post">
+				<form method="post" name="myform">
 					<!-- Email address -->
-					<div class="form-group">
+					<div class="form-group ">
 						<!-- Label -->
 						<label class="form-label">
 							Username
 						</label>
 						<!-- Input -->
-						<input type="text" class="form-control" placeholder="Username" name="name" required>
+						<input type="text" class="form-control" placeholder="Username" id="ffname" name="name" value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>" required>
 					</div>
 					<label class="form-label">
 						Password
@@ -56,9 +65,14 @@ error_reporting(E_ALL ^ E_WARNING);
 							</div>
 						</div>
 					</div>
+					<div class="alert alert-danger" id="test" role="alert" style="display: none;">
+						Incorrect username or password!!
+					</div>
 					<!-- Submit -->
 					<input type="submit" class="btn btn-lg btn-block btn-primary mb-3" name="login" value="Login">
 				</form>
+
+
 				<script>
 					function password_show_hide() {
 						var x = document.getElementById("password");
@@ -111,7 +125,7 @@ if (isset($_POST['login'])) {
 			$_SESSION['role'] = "Texas";
 			header("location:../institute_dashboard/");
 		} else {
-			echo "<script>alert('Invalid Login ID or Password');</script>";
+			echo "<script>document.getElementById('test').style.display = 'block';</script>";
 		}
 	} else if ($na2 == "FA") {
 		$sql = "SELECT * FROM facultymaster WHERE FacultyUserName = '$u'";
@@ -124,7 +138,7 @@ if (isset($_POST['login'])) {
 			$_SESSION['role'] = "Lagos";
 			header("location:../faculty_dashboard/");
 		} else {
-			echo "<script>alert('Invalid Login ID or Password');</script>";
+			echo "<script>document.getElementById('test').style.display = 'block';</script>";
 		}
 	} else if ($na2 == "ST") {
 		$sql = "SELECT * FROM studentmaster WHERE StudentUserName = '$u'";
@@ -138,10 +152,10 @@ if (isset($_POST['login'])) {
 			$_SESSION['role'] = "Abuja";
 			header("location:../student_dashboard/");
 		} else {
-			echo "<script>alert('Invalid Login ID or Password');</script>";
+			echo "<script>document.getElementById('test').style.display = 'block';</script>";
 		}
 	} else {
-		echo "<script>alert('Invalid Login ID or Password');</script>";
+		echo "<script>document.getElementById('test').style.display = 'block';</script>";
 	}
 }
 ?>
