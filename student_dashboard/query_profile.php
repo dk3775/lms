@@ -68,26 +68,6 @@ if ($_SESSION['role'] != "Abuja") {
                                         <span class="input-group-text col-2 text-dark">Query Reply</span>
                                         <textarea rows="2" aria-label="First name" class="form-control" disabled><?php echo $row['QueryReply']; ?></textarea>
                                     </div>
-                                <?php } else { ?>
-                                    <div class="d-flex justify mt-5">
-                                        <a class="btn btn-primary" id="btnreply">
-                                            Reply
-                                        </a>
-                                    </div>
-                                    <form id="replyform" class="d-none" method="POST">
-                                        <hr class="md-5">
-                                        <h2 class="header-title my-5">
-                                            Query Reply :
-                                        </h2>
-                                        <div class="input-group">
-                                            <span class="input-group-text col-2 text-dark">Query Reply</span>
-                                            <textarea rows="2" name="queryreply" aria-label="First name" class="form-control" required></textarea>
-                                        </div>
-                                        <div class="d-flex justify mt-5">
-                                            <input type="submit" class="btn btn-primary" value="Submit Reply" name="subreply">
-                                        </div>
-                                    </form>
-
                                 <?php } ?>
                             </div>
                         </div>

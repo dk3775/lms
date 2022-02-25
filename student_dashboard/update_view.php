@@ -8,13 +8,13 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php include_once "../head.php"; ?>
+		<?php include_once "head.php"; ?>
 	</head>
 	<body>
 		<!-- NAVIGATION -->
 		<?php 
 		$nav_role = "Updates";
-		include_once '../nav.php'; ?>
+		include_once 'nav.php'; ?>
 		<!-- MAIN CONTENT -->
 		<div class="main-content">
 			<div class="container-fluid">
