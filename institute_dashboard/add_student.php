@@ -238,7 +238,7 @@ $branchresult = mysqli_query($conn, $branchsel);
 							<div class="col-12 col-md-6">
 								<div class="form-group">
 									<label for="validationCustom01" class="form-label">
-										Student Spi
+										Student SPI
 									</label>
 									<input id="validationCustom01" type="number" pattern="[0-9]{12}" id="validationCustom01" class="form-control" name="sspi" placeholder="Optional">
 								</div>

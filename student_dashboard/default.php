@@ -204,8 +204,7 @@ if ($_SESSION['role'] != "Abuja") {
 											SPI
 										</h6>
 										<span class="h2 mb-0">
-											<?php //echo $row['SPI']; 
-											?>-
+											<?php //echo $row['SPI']; ?>-
 										</span>
 									</div>
 									<div class="col-auto">
@@ -224,8 +223,7 @@ if ($_SESSION['role'] != "Abuja") {
 											CGPA
 										</h6>
 										<span class="h2 mb-0">
-											<?php //echo $row['CGPA']; 
-											?>-
+											<?php //echo $row['CGPA']; ?>-
 										</span>
 									</div>
 									<div class="col-auto">
@@ -244,8 +242,7 @@ if ($_SESSION['role'] != "Abuja") {
 											assignment
 										</h6>
 										<span class="h2 mb-0">
-											<?php //echo $acrow 
-											?>-
+											<?php //echo $acrow ?>-
 										</span>
 									</div>
 									<div class="col-auto">
@@ -275,8 +272,9 @@ if ($_SESSION['role'] != "Abuja") {
 					</div>
 				</div>
 			</div>
-
-			<!-- MAIN CONTENT -->
+		</div>
+		<!-- MAIN CONTENT -->
+		<div class="main-content">
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<!-- Table -->
@@ -337,8 +335,8 @@ if ($_SESSION['role'] != "Abuja") {
 											</thead>
 											<tbody class="list font-size-base">
 												<?php
-												$j = 1;
-												$i = 1;
+												$j=1;
+												$i=1;
 												while ($urow = mysqli_fetch_assoc($ures)) { ?>
 													<tr>
 														<td>
@@ -443,6 +441,7 @@ if ($_SESSION['role'] != "Abuja") {
 											</form>
 										</div>
 									</div>
+									<!-- / .row -->
 								</div>
 							</div>
 						</div>
@@ -451,6 +450,9 @@ if ($_SESSION['role'] != "Abuja") {
 			</div>
 		</div>
 
+		<!-- / .main-content -->
+		<!-- JAVASCRIPT -->
+		<!-- Map JS -->
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 		<!-- Vendor JS -->
 		<script src="../assets/js/vendor.bundle.js"></script>
