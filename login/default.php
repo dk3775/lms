@@ -47,7 +47,6 @@ error_reporting(E_ALL ^ E_WARNING);
 						<label class="form-label">
 							Username
 						</label>
-						<!-- Input -->
 						<input type="text" class="form-control" placeholder="Username" id="ffname" name="name" value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>" required>
 					</div>
 					<label class="form-label">
@@ -56,7 +55,7 @@ error_reporting(E_ALL ^ E_WARNING);
 					<!-- Password -->
 					<div class="col-12 logo_outer">
 						<div class="input-group mb-3">
-							<input name="password" type="password" value="" class="input form-control" id="password" placeholder="Password" required="true" aria-label="password" aria-describedby="basic-addon1" />
+							<input name="password" type="password" value="" class="input form-control" id="password" placeholder="Password" required aria-label="password" aria-describedby="basic-addon1" />
 							<div class="input-group-append ">
 								<span class="input-group-text" style="border-radius: 1px 5px 5px 1px;" onclick="password_show_hide();">
 									<i class="fe uil-eye-slash" id="show_eye"></i>
@@ -75,8 +74,8 @@ error_reporting(E_ALL ^ E_WARNING);
 
 				<script>
 					function password_show_hide() {
-						var x = document.getElementById("password");
-						var show_eye = document.getElementById("show_eye");
+                        const x = document.getElementById("password");
+                        var show_eye = document.getElementById("show_eye");
 						var hide_eye = document.getElementById("hide_eye");
 						hide_eye.classList.remove("d-none");
 						if (x.type === "password") {
@@ -96,8 +95,6 @@ error_reporting(E_ALL ^ E_WARNING);
 	</div>
 	<!-- / .container -->
 	<!-- JAVASCRIPT -->
-	<!-- Map JS -->
-	<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 	<!-- Vendor JS -->
 	<script src="../assets/js/vendor.bundle.js"></script>
 	<!-- Theme JS -->
