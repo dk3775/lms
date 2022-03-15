@@ -73,7 +73,7 @@ if ($_SESSION['role'] != "Abuja") {
 					<div class="row gx-4">
 						<div class="col-auto">
 							<div class="avatar avatar-xxl position-relative">
-								<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" style="border-radius: 10px;" class="w-100 border-radius-lg shadow-sm">
+								<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']."?t"; ?>" style="border-radius: 10px;" class="w-100 border-radius-lg shadow-sm">
 							</div>
 						</div>
 						<div class="col-auto my-auto">
