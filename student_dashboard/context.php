@@ -97,10 +97,10 @@
                     <i class="fe uil-code-branch"></i>
                     Updates</a>
             </div>
-            <div class="item" onclick="window.location.href='attendance.php';">
+            <div class="item" onclick="window.location.href='assignment_list.php';">
                 <a class="nav-item" style="color: #6F6F6F;">
                     <i class="fe uil-book"></i>
-                    Attendance</a>
+                    Assignment list</a>
             </div>
         </div>
         <div class="list">

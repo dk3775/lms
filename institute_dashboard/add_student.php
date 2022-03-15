@@ -403,6 +403,7 @@ if (isset($_POST['subbed'])) {
 	// $slid = $_POST['slid'];
 	$add = $_POST['add'];
 	$dob = $_POST['dob'];
+	$ec = $_POST['ec'];
 
 	$fs_name = $senr . ".png";
 
@@ -415,12 +416,12 @@ if (isset($_POST['subbed'])) {
 	} else {
 		echo "Something went wrong .. !";
 	}
-	$sql = "INSERT INTO studentmaster (StudentDOB, StudentEnrollmentNo, StudentPassword, StudentFirstName, StudentMiddleName, StudentLastName, StudentProfilePic, StudentBranchCode, StudentSemester, StudentEmail, StudentContactNo, StudentAddress, ParentEmail, ParentContactNo, StudentRollNo, SPI, CGPA) 
-		VALUES ('$dob','$senr','$spassword','$fname','$mname','$lname','$fs_name','$sbranch','$ssem','$semail','$scontact','$add','$pmail','$pcontact','$sroll','$spi','$cgpa');";
+	$sql = "INSERT INTO studentmaster (StudentUserName, StudentDOB, StudentEnrollmentNo, StudentPassword, StudentFirstName, StudentMiddleName, StudentLastName, StudentProfilePic, StudentBranchCode, StudentSemester, StudentEmail, StudentContactNo, StudentAddress, ParentEmail, ParentContactNo, StudentRollNo, SPI, CGPA) 
+		VALUES ('$ec','$dob','$senr','$spassword','$fname','$mname','$lname','$fs_name','$sbranch','$ssem','$semail','$scontact','$add','$pmail','$pcontact','$sroll','$spi','$cgpa');";
 	$run = mysqli_query($conn, $sql);
 	if ($run == true) {
 		echo "<script>alert('Student Added Successfully')</script>";
-		echo "<script>window.open('add_student.php','_self')</script>";
+		echo "<script>window.open('student_list.php','_self')</script>";
 	} else {
 		echo "<script>alert('Student Not Added')</script>";
 		echo "<script>window.open('add_student.php','_self')</script>";
