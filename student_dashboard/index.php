@@ -73,7 +73,7 @@ if ($_SESSION['role'] != "Abuja") {
 					<div class="row gx-4">
 						<div class="col-auto">
 							<div class="avatar avatar-xxl position-relative">
-								<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']."?t"; ?>" style="border-radius: 10px;" class="w-100 border-radius-lg shadow-sm">
+								<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic'] . "?t"; ?>" style="border-radius: 10px;" class="w-100 border-radius-lg shadow-sm">
 							</div>
 						</div>
 						<div class="col-auto my-auto">
@@ -203,7 +203,7 @@ if ($_SESSION['role'] != "Abuja") {
 											SPI
 										</h6>
 										<span class="h2 mb-0">
-											<?php echo $row['SPI']?$row['SPI']:"-"; ?>
+											<?php echo $row['SPI'] ? $row['SPI'] : "-"; ?>
 										</span>
 									</div>
 									<div class="col-auto">
@@ -222,7 +222,7 @@ if ($_SESSION['role'] != "Abuja") {
 											CGPA
 										</h6>
 										<span class="h2 mb-0">
-											<?php echo $row['CGPA']?$row['CGPA']:"-"; ?>
+											<?php echo $row['CGPA'] ? $row['CGPA'] : "-"; ?>
 										</span>
 									</div>
 									<div class="col-auto">
@@ -315,12 +315,13 @@ if ($_SESSION['role'] != "Abuja") {
 											</thead>
 											<tbody class="list font-size-base">
 												<?php
-												$j=1;
-												$i=1;
+												$j = 1;
+												$i = 1;
+												$index = 1;
 												while ($urow = mysqli_fetch_assoc($ures)) { ?>
 													<tr>
 														<td>
-															<?php echo $urow['UpdateId']; ?>
+															<?php echo $index++; ?>
 														</td>
 														<td>
 															<span class="item-phone"><?php echo $urow['UpdateUploadDate']; ?></span>
