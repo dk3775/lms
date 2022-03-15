@@ -54,7 +54,7 @@ $row = mysqli_fetch_assoc($updateresult);
                                  <h2 class="mb-3">
                                     Update Image
                                  </h2>
-                                 <img src="../src/uploads/updates/<?php echo $row['UpdateFile']; ?>" id="IMG-preview" alt="..." class="img-fluid mb-3 rounded" style="margin:auto; max-width: 80%;">
+                                 <img src="../src/uploads/updates/<?php echo $row['UpdateFile']."?t"; ?>" id="IMG-preview" alt="..." class="img-fluid mb-3 rounded" style="margin:auto; max-width: 80%;">
                                  <!-- Title -->
                               </div>
                               <div class="row justify-content-center">

@@ -106,7 +106,7 @@ if ($_SESSION['role'] != "Lagos") {
 						<div class="col-12 col-md-4 mb-md-5">
 							<div class="card-group">
 								<div class="card">
-									<img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic']; ?>" class="card-img-top img-fluid" alt="...">
+									<img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic']."?t"; ?>" class="card-img-top img-fluid" alt="...">
 									<div class="card-body">
 										<h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
 										<p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
