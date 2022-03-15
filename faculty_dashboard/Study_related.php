@@ -5,7 +5,7 @@ if ($_SESSION['role'] != "Lagos") {
 } else {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Faculty";
-	$fqur = "SELECT * FROM facultymaster";
+	$fqur = "SELECT * FROM facultymaster WHERE FacultyId = '" . $_SESSION['fid'] . "'";
 	$fres = mysqli_query($conn, $fqur);
 	$frow = mysqli_fetch_assoc($fres);
 	$bcode = $frow['FacultyId'];
