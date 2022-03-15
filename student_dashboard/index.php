@@ -15,7 +15,6 @@ if ($_SESSION['role'] != "Abuja") {
 	// Branch
 	$uqur = "SELECT * FROM updatemaster";
 	$ures = mysqli_query($conn, $uqur);
-	$urow = mysqli_fetch_assoc($ures);
 	$bid = $row["BranchId"];
 	//Assignment
 	$aqur = "SELECT * FROM assignmentmaster WHERE AssignmentBranch = '$bid'";
@@ -204,7 +203,7 @@ if ($_SESSION['role'] != "Abuja") {
 											SPI
 										</h6>
 										<span class="h2 mb-0">
-											<?php //echo $row['SPI']; ?>-
+											<?php echo $row['SPI']?$row['SPI']:"-"; ?>
 										</span>
 									</div>
 									<div class="col-auto">
@@ -223,7 +222,7 @@ if ($_SESSION['role'] != "Abuja") {
 											CGPA
 										</h6>
 										<span class="h2 mb-0">
-											<?php //echo $row['CGPA']; ?>-
+											<?php echo $row['CGPA']?$row['CGPA']:"-"; ?>
 										</span>
 									</div>
 									<div class="col-auto">
@@ -239,32 +238,13 @@ if ($_SESSION['role'] != "Abuja") {
 								<div class="row align-items-center">
 									<div class="col">
 										<h6 class="text-uppercase text-muted mb-2">
-											assignment
+											Pending assignments
 										</h6>
 										<span class="h2 mb-0">
-											<?php //echo $acrow ?>-
+											<?php echo $acrow ?>
 										</span>
 									</div>
 									<div class="col-auto">
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-12 col-lg-6 col-xl">
-						<div class="card">
-							<div class="card-body">
-								<div class="row align-items-center">
-									<div class="col">
-										<h6 class="text-uppercase text-muted mb-2">
-											Attendance
-										</h6>
-										<span class="h2 mb-0">
-											-
-										</span>
-									</div>
-									<div class="col-auto">
-										<span class="h2 fe fe-clock text-muted mb-0"></span>
 									</div>
 								</div>
 							</div>
