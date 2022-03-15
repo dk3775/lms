@@ -186,7 +186,7 @@ if ($_SESSION['role'] != "Lagos") {
 								<div class="row align-items-center">
 									<div class="col-auto">
 										<a href="profile-posts.html" class="avatar avatar-lg">
-											<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" alt="..." class="avatar-img rounded-circle">
+											<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']."?t"; ?>" alt="..." class="avatar-img rounded-circle">
 										</a>
 									</div>
 									<div class="col" >

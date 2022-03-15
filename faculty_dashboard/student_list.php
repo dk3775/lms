@@ -108,7 +108,7 @@ if ($_SESSION['role'] != "Lagos") {
 													<td>
 														<!-- Avatar -->
 														<div class="avatar avatar-xs align-middle mr-2">
-															<img class="avatar-img rounded-circle" src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" alt="...">
+															<img class="avatar-img rounded-circle" src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']."?t"; ?>" alt="...">
 														</div>
 														<a class="item-name text-reset"><?php echo $row['StudentFirstName'] . " " . $row['StudentLastName']; ?></a>
 													</td>

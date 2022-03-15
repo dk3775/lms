@@ -102,6 +102,7 @@ if ($_SESSION['role'] != "Lagos") {
 					$subresult = mysqli_query($conn, $subsql);
 					//$rowww=mysqli_fetch_assoc($sresult);
 					$sac = 1;
+<<<<<<< HEAD
 					if (mysqli_num_rows($subresult) > 0) {
 						while ($roww = mysqli_fetch_assoc($subresult)) { ?>
 							<div class="col-12 col-md-4 mb-md-5">
@@ -113,6 +114,18 @@ if ($_SESSION['role'] != "Lagos") {
 											<p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
 											<p class="card-text"><?php echo $roww['FacultyFirstName'] . " " . $roww['FacultyLastName']; ?></p>
 											<a href="subject_profile.php?subid=<?php echo $roww['SubjectId']; ?>" class="btn btn-sm btn-primary">View</a>
+=======
+					while ($roww = mysqli_fetch_assoc($subresult)) { ?>
+						<div class="col-12 col-md-4 mb-md-5">
+							<div class="card-group">
+								<div class="card">
+									<img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic']."?t"; ?>" class="card-img-top img-fluid" alt="...">
+									<div class="card-body">
+										<h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
+										<p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
+										<p class="card-text"><?php echo $roww['FacultyFirstName'] . " " . $roww['FacultyLastName']; ?></p>
+										<a href="subject_profile.php?subid=<?php echo $roww['SubjectId']; ?>" class="btn btn-sm btn-primary">View</a>
+>>>>>>> a452c4f6d6689607c6db61032b28e65e749daaf9
 
 										</div>
 									</div>
