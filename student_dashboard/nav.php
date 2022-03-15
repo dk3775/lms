@@ -45,7 +45,7 @@
 					<a href="assignment_list.php" class="nav-link <?php if ($nav_role == "Assignments") {
 																		echo "active";
 																	} ?>">
-						<i class="fe fe-percent"></i> Assignments
+						<i class="fe uil-book"></i></i> Assignments
 					</a>
 				</li>
 				<li class="nav-item">

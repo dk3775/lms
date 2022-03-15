@@ -89,18 +89,23 @@
         <div class="list">
             <div class="item" onclick="window.location.href='subject.php';">
                 <a class="nav-item" style="color: #6F6F6F;">
-                    <i class="fe uil-user"></i>
-                    Subject</a>
+                <i class="fe fe-file"></i>
+                    Subjects</a>
             </div>
-            <div class="item" onclick="window.location.href='Updates';">
+            <div class="item" onclick="window.location.href='update_list.php';">
                 <a class="nav-item" style="color: #6F6F6F;">
-                    <i class="fe uil-code-branch"></i>
+                <i class="fe fe-bell"></i></i>
                     Updates</a>
             </div>
             <div class="item" onclick="window.location.href='assignment_list.php';">
                 <a class="nav-item" style="color: #6F6F6F;">
                     <i class="fe uil-book"></i>
                     Assignment list</a>
+            </div>
+            <div class="item" onclick="window.location.href='timetable_view.php';">
+                <a class="nav-item" style="color: #6F6F6F;">
+                <i class="fe uil-calendar-alt"></i>
+                    Time Table</a>
             </div>
         </div>
         <div class="list">
