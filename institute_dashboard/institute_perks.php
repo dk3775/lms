@@ -35,20 +35,16 @@ error_reporting(E_ALL ^ E_WARNING);
             </div>
         </div>
         <!-- CARDS -->
-    </div>
-    <!-- / .main-content -->
-    <!-- MAIN CONTENT -->
-    <div class="main-content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="card-title">Logo Changer </h3>
+                            <h3 class="card-title">Change the main logo</h3>
                             <!-- add text or remove it -->
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <p class="card-text">To change the main logo of the university click the button below.</p>
                             <a href="change_logo.php" class="btn btn-sm btn-primary">
-                                Open
+                                Change
                             </a>
                         </div>
                     </div>
@@ -56,9 +52,9 @@ error_reporting(E_ALL ^ E_WARNING);
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="card-title">Institute Staff List</h3>
+                            <h3 class="card-title">Manage institute administrators</h3>
                             <!-- add text or remove it -->
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <p class="card-text">Various functionalities that can be used to manage admins.</p>
                             <a href="add_institute.php" class="btn btn-sm btn-primary">
                                 Add
                             </a>&nbsp;
