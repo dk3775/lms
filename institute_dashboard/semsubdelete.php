@@ -14,6 +14,7 @@
         }
     </style>
 </head>
+
 <body>
     <?php
     session_start();
@@ -23,16 +24,17 @@
         include_once("../config.php");
         $_SESSION["userrole"] = "institute";
         $fid = $_GET['subcode'];
+        $semid = $_GET['semid'];
+        $xbrid = $_GET['brid'];
         echo $sid;
         $qur = "DELETE FROM subjectmaster WHERE SubjectCode = '$fid'";
         $res = mysqli_query($conn, $qur);
         if ($res) {
             echo "<script>alert('Subject Deleted Successfully');</script>";
-            header("Location: ../institute_dashboard/sem_details.php");
-        }
-        else {
+            header("Location: ../institute_dashboard/sem_details.php?semid=$semid&brid=$xbrid");
+        } else {
             echo "<script>alert('Subject Deletion Failed');</script>";
-            header("Location: ../institute_dashboard/sem_details.php");
+            header("Location: ../institute_dashboard/sem_details.php?semid=$semid&brid=$xbrid");
         }
     }
     ?>
