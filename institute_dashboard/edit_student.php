@@ -1,20 +1,22 @@
 <?php
-	error_reporting(E_ALL ^ E_WARNING);
-	session_start();
-	if ($_SESSION['role'] != "Texas") {
-		header("Location: ../index.php");
-	} else {
-	?>
-<!DOCTYPE html>
-<html lang="en">
+error_reporting(E_ALL ^ E_WARNING);
+session_start();
+if ($_SESSION['role'] != "Texas") {
+	header("Location: ../index.php");
+} else {
+?>
+	<!DOCTYPE html>
+	<html lang="en">
+
 	<head>
 		<?php include_once("../head.php"); ?>
 	</head>
+
 	<body>
 		<!-- NAVIGATION -->
 		<?php
-			$nav_role = "Student";
-			include_once("../nav.php"); ?>
+		$nav_role = "Student";
+		include_once("../nav.php"); ?>
 		<!-- MAIN CONTENT -->
 		<div class="main-content">
 			<div class="container-fluid">
@@ -40,333 +42,349 @@
 						</div>
 						<!-- Form -->
 						<?php
-							include_once("../config.php");
-							$studentenr = $_GET['studentenr'];
-							$_SESSION["userrole"] = "Faculty";
-							if (isset($studentenr)) {
-								$sql = "SELECT * FROM studentmaster WHERE StudentEnrollmentNo = '$studentenr'";
-								$result = mysqli_query($conn, $sql);
-								$row = mysqli_fetch_assoc($result);
-							
-							?>
-						<form method="POST" enctype="multipart/form-data">
-							<div class="row justify-content-between align-items-center">
-								<div class="col">
-									<div class="row align-items-center">
-										<div class="col-auto">
-											<!-- Personal details -->
-											<!-- Avatar -->
-											<div class="avatar">
-												<img id="IMG-preview" class="avatar-img rounded-circle" src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" alt="...">
+						include_once("../config.php");
+						$studentenr = $_GET['studentenr'];
+						$_SESSION["userrole"] = "Faculty";
+						if (isset($studentenr)) {
+							$sql = "SELECT * FROM studentmaster WHERE StudentEnrollmentNo = '$studentenr'";
+							$result = mysqli_query($conn, $sql);
+							$row = mysqli_fetch_assoc($result);
+
+						?>
+							<form method="POST" enctype="multipart/form-data">
+								<div class="row justify-content-between align-items-center">
+									<div class="col">
+										<div class="row align-items-center">
+											<div class="col-auto">
+												<!-- Personal details -->
+												<!-- Avatar -->
+												<div class="avatar">
+													<img id="IMG-preview" class="avatar-img rounded-circle" src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" alt="...">
+												</div>
+											</div>
+											<div class="col ml-n2">
+												<!-- Heading -->
+												<h4 class="mb-1">
+													Student Photo
+												</h4>
+												<!-- Text -->
+												<small class="text-muted">
+													Only allowed PNG or JPG less than 2MB
+												</small>
 											</div>
 										</div>
-										<div class="col ml-n2">
-											<!-- Heading -->
-											<h4 class="mb-1">
-												Student Photo
-											</h4>
-											<!-- Text -->
-											<small class="text-muted">
-											Only allowed PNG or JPG less than 2MB
-											</small>
+										<!-- / .row -->
+									</div>
+									<div class="col-auto">
+										<!-- Button -->
+										<input type="file" id="img" name="stuprofile" class="btn btn-sm" onchange="showPreview(event);" accept="image/jpg, image/jpeg, image/png">
+									</div>
+								</div>
+								<!-- Priview Profile pic  -->
+								<script>
+									function showPreview(event) {
+										var file = document.getElementById('img');
+										if (file.files.length > 0) {
+											// RUN A LOOP TO CHECK EACH SELECTED FILE.
+											for (var i = 0; i <= file.files.length - 1; i++) {
+												var fsize = file.files.item(i).size; // THE SIZE OF THE FILE.	
+											}
+											if (fsize <= 2000000) {
+												var src = URL.createObjectURL(event.target.files[0]);
+												var preview = document.getElementById("IMG-preview");
+												preview.src = src;
+												preview.style.display = "block";
+											} else {
+												alert("Only allowed less then 2MB.. !");
+												file.value = '';
+											}
+										}
+									}
+								</script>
+								<!-- / .row -->
+								<!-- Divider -->
+								<hr class="my-5">
+								<div class="row">
+									<div class="col-12 col-md-4">
+										<!-- First name -->
+										<div class="form-group">
+											<!-- Label -->
+											<label class="form-label">
+												First name
+											</label>
+											<!-- Input -->
+											<input type="text" class="form-control" name="fname" value="<?php echo $row['StudentFirstName']; ?>" required>
 										</div>
 									</div>
-									<!-- / .row -->
-								</div>
-								<div class="col-auto">
-									<!-- Button -->
-									<input type="file" id="img" name="stuprofile" class="btn btn-sm"
-										onchange="showPreview(event);" accept="image/jpg, image/jpeg, image/png">
-								</div>
-							</div>
-							<!-- Priview Profile pic  -->
-							<script>
-								function showPreview(event) {
-								    var file = document.getElementById('img');
-								    if (file.files.length > 0) {
-								        // RUN A LOOP TO CHECK EACH SELECTED FILE.
-								        for (var i = 0; i <= file.files.length - 1; i++) {
-								            var fsize = file.files.item(i).size; // THE SIZE OF THE FILE.	
-								        }
-								        if (fsize <= 2000000) {
-								            var src = URL.createObjectURL(event.target.files[0]);
-								            var preview = document.getElementById("IMG-preview");
-								            preview.src = src;
-								            preview.style.display = "block";
-								        } else {
-								            alert("Only allowed less then 2MB.. !");
-								            file.value = '';
-								        }
-								    }
-								}
-							</script>
-							<!-- / .row -->
-							<!-- Divider -->
-							<hr class="my-5">
-							<div class="row">
-								<div class="col-12 col-md-4">
-									<!-- First name -->
-									<div class="form-group">
-										<!-- Label -->
-										<label class="form-label">
-										First name
-										</label>
-										<!-- Input -->
-										<input type="text" class="form-control" name="fname" value="<?php echo $row['StudentFirstName']; ?>" required>
+									<div class="col-12 col-md-4">
+										<!-- Middle name -->
+										<div class="form-group">
+											<!-- Label -->
+											<label class="form-label">
+												Middle name
+											</label>
+											<!-- Input -->
+											<input type="text" class="form-control" name="mname" value="<?php echo $row['StudentMiddleName']; ?>" required>
+										</div>
+									</div>
+									<div class="col-12 col-md-4">
+										<!-- Last name -->
+										<div class="form-group">
+											<!-- Label -->
+											<label class="form-label">
+												Last name
+											</label>
+											<!-- Input -->
+											<input type="text" class="form-control" name="lname" value="<?php echo $row['StudentLastName']; ?>" required>
+										</div>
 									</div>
 								</div>
-								<div class="col-12 col-md-4">
-									<!-- Middle name -->
-									<div class="form-group">
-										<!-- Label -->
+								<!-- / .row -->
+								<div class="row">
+									<div class="col-12 col-md-6">
+										<!-- Email address -->
+										<div class="form-group">
+											<!-- Label -->
+											<label class="form-label">
+												Student Email address
+											</label>
+											<!-- Input -->
+											<input type="email" class="form-control" name="semail" value="<?php echo $row['StudentEmail']; ?>" required>
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
 										<label class="form-label">
-										Middle name
+											Student Contact Number
 										</label>
-										<!-- Input -->
-										<input type="text" class="form-control" name="mname" value="<?php echo $row['StudentMiddleName']; ?>" required>
+										<input type="tel" pattern="[0-9]{10}" class="form-control" maxlength="10" name="scontact" value="<?php echo $row['StudentContactNo']; ?>" required>
 									</div>
 								</div>
-								<div class="col-12 col-md-4">
-									<!-- Last name -->
-									<div class="form-group">
-										<!-- Label -->
-										<label class="form-label">
-										Last name
-										</label>
-										<!-- Input -->
-										<input type="text" class="form-control" name="lname" value="<?php echo $row['StudentLastName']; ?>" required>
+								<div class="row">
+									<div class="col-12 col-md-6">
+										<!-- Email address -->
+										<div class="form-group">
+											<!-- Label -->
+											<label class="form-label">
+												Student Address
+											</label>
+											<!-- Input -->
+											<input type="text" class="form-control" name="add" value="<?php echo $row['StudentAddress']; ?>" required>
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<!-- Email address -->
+										<div class="form-group">
+											<!-- Label -->
+											<label class="form-label">
+												Date of Birth
+											</label>
+											<!-- Input -->
+											<input type="date" class="form-control" name="dob" required data-flatpickr value="<?php echo $row['StudentDOB']; ?>" placeholder="YYYY-MM-DD">
+										</div>
 									</div>
 								</div>
-							</div>
-							<!-- / .row -->
-							<div class="row">
-								<div class="col-12 col-md-6">
-									<!-- Email address -->
-									<div class="form-group">
-										<!-- Label -->
+								<!-- / Personal details-->
+								<hr class="my-5">
+								<div class="row">
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label class="form-label">
+												Parent's Contact Number
+											</label>
+											<input type="tel" class="form-control" pattern="[0-9]{10}" maxlength="10" name="pcontact" value="<?php echo $row['ParentContactNo']; ?>" required>
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
 										<label class="form-label">
-										Student Email address
+											Parent's Email
 										</label>
-										<!-- Input -->
-										<input type="email" class="form-control" name="semail" value="<?php echo $row['StudentEmail']; ?>" required>
+										<input type="email" class="form-control" name="pmail" value="<?php echo $row['ParentEmail']; ?>" required>
 									</div>
 								</div>
-								<div class="col-12 col-md-6">
-									<label class="form-label">
-									Student Contact Number
-									</label>
-									<input type="tel" pattern="[0-9]{10}" class="form-control" maxlength="10" name="scontact" value="<?php echo $row['StudentContactNo']; ?>" required>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-12 col-md-6">
-									<!-- Email address -->
-									<div class="form-group">
-										<!-- Label -->
-										<label class="form-label">
-										Student Address
-										</label>
-										<!-- Input -->
-										<input type="text" class="form-control" name="add" value="<?php echo $row['StudentAddress']; ?>" required>
+								<hr class="my-5">
+								<!-- / .row -->
+								<div class="row">
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label class="form-label">
+												Student Enrollment No
+											</label>
+											<input type="tel" pattern="[0-9]{12}" class="form-control" name="senr" value="<?php echo $row['StudentEnrollmentNo']; ?>" required>
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label class="form-label">
+												Student Roll No
+											</label>
+											<input type="text" maxlength="3" class="form-control" name="sroll" value="<?php echo $row['StudentRollNo']; ?>" required>
+										</div>
 									</div>
 								</div>
-								<div class="col-12 col-md-6">
-									<!-- Email address -->
-									<div class="form-group">
-										<!-- Label -->
-										<label class="form-label">
-										Date of Birth
-										</label>
-										<!-- Input -->
-										<input type="date" class="form-control" name="dob" required data-flatpickr value="<?php echo $row['StudentDOB']; ?>" placeholder="YYYY-MM-DD">
-									</div>
-								</div>
-							</div>
-							<!-- / Personal details-->
-							<hr class="my-5">
-							<div class="row">
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label class="form-label">
-										Parent's Contact Number
-										</label>
-										<input type="tel" class="form-control" pattern="[0-9]{10}" maxlength="10" name="pcontact" value="<?php echo $row['ParentContactNo']; ?>" required>
-									</div>
-								</div>
-								<div class="col-12 col-md-6">
-									<label class="form-label">
-									Parent's Email
-									</label>
-									<input type="email" class="form-control" name="pmail" value="<?php echo $row['ParentEmail']; ?>" required>
-								</div>
-							</div>
-							<hr class="my-5">
-							<!-- / .row -->
-							<div class="row">
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label class="form-label">
-										Student Enrollment No
-										</label>
-										<input type="tel" pattern="[0-9]{12}" class="form-control" name="senr" value="<?php echo $row['StudentEnrollmentNo']; ?>" required>
-									</div>
-								</div>
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label class="form-label">
-										Student Roll No
-										</label>
-										<input type="text" maxlength="3" class="form-control" name="sroll" value="<?php echo $row['StudentRollNo']; ?>" required>
-									</div>
-								</div>
-							</div>
-							<?php
+								<?php
 								$branchsel = "SELECT * FROM branchmaster";
 								$branchresult = mysqli_query($conn, $branchsel);
 								?>
-							<div class="row">
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label class="form-label">
-										Student Branch
-										</label>
-										<select id="validationCustom01" class="form-control" name="sbranch" required>
-											<option value="" hidden="">Select Branch</option>
-											<?php
-												while($brrow = mysqli_fetch_assoc($branchresult)){ ?>
-											<option <?php if($brrow['BranchCode'] == $row['StudentBranchCode']){ ?> selected <?php } ?> value="<?php echo $brrow['BranchCode']; ?>">
-												<?php echo $brrow['BranchName']; ?> 
-											</option>
-											<?php
+								<div class="row">
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label class="form-label">
+												Student Branch
+											</label>
+											<select id="validationCustom01" class="form-control" name="sbranch" required>
+												<option value="" hidden="">Select Branch</option>
+												<?php
+												while ($brrow = mysqli_fetch_assoc($branchresult)) { ?>
+													<option <?php if ($brrow['BranchCode'] == $row['StudentBranchCode']) { ?> selected <?php } ?> value="<?php echo $brrow['BranchCode']; ?>">
+														<?php echo $brrow['BranchName']; ?>
+													</option>
+												<?php
 												} ?>
-										</select>
+											</select>
+										</div>
 									</div>
-								</div>
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<label class="form-label">
-										Student Semester
-										</label>
-										<select class="form-control" name="ssem" required>
-											<option hidden value="<?php echo $row['StudentSemester']; ?>"><?php echo $row['StudentSemester']; ?></option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-										</select>
-									</div>
-								</div>
-							</div>
-							<!-- Divider -->
-							<hr class="mt-4 mb-5">
-							<div class="row">
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										<p class="form-label">
-											Student Login ID
-										</p>
-									</div>
-								</div>
-								<div class="col-auto col-6">
-									<div class="input-group input-group-sm mb-3 ">
-										<textarea id="demo" class="form-control fs-2" name="ec" readonly maxlength="4">ST<?php echo $row['StudentEnrollmentNo']; ?></textarea>
-										<button class="btn btn-primary" onclick="cp1()"><i class="fe fe-copy"></i></button>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-12 col-md-6">
-									<div class="form-group">
-										Student Password
-									</div>
-								</div>
-								<div class="col-auto col-6">
-									<div class="input-group input-group-sm mb-3">
-										<textarea type="text" class="form-control" name="spassword" id="myInput2"><?php echo $row['StudentPassword']; ?></textarea>
-										<button class="btn btn-primary" onclick="cp2()"><i class="fe fe-copy"></i></button>
-									</div>
-								</div>
-							</div>
-							<div class="d-flex justify">
-								<!-- Button -->
-								<button class="btn btn-primary" type="submit" value="sub" name="subbed">
-								Save Changes
-								</button>
-							</div>
-							<!-- / .row -->
-						</form>
-						<?php
-							} else { ?>
-						<form class="mb-4" method="post">
-							<div class="row">
-								<div class="col-md-10">
-									<div class="input-group input-group-merge input-group-reverse">
-										<input class="form-control list-search" type="text" name="enr" placeholder="Enter Student Enrollment Number">
-										<div class="input-group-text">
-											<span class="fe fe-search"></span>
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label class="form-label">
+												Student Semester
+											</label>
+											<select class="form-control" name="ssem" required>
+												<option hidden value="<?php echo $row['StudentSemester']; ?>"><?php echo $row['StudentSemester']; ?></option>
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
+											</select>
 										</div>
 									</div>
 								</div>
-								<div class="col-md-2">
-									<div class="col-auto">
-										<!-- Button -->
-										<button class="btn btn-primary " type="submit" name="ser" value="2">
-										Search
-										</button>
+								<div class="row">
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label for="validationCustom01" class="form-label">
+												Student SPI
+											</label>
+											<input id="validationCustom01" type="number" pattern="[0-9]{12}" id="validationCustom01" class="form-control" name="sspi" placeholder="Optional">
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<label class="form-label">
+												Student CGPA
+											</label>
+											<input type="number" id="validationCustom01" class="form-control" name="scgpa" placeholder="Optional">
+										</div>
 									</div>
 								</div>
-							</div>
-						</form>
+								<hr class="mt-4 mb-5">
+								<div class="row">
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											<p class="form-label">
+												Student Login ID
+											</p>
+										</div>
+									</div>
+									<div class="col-auto col-6">
+										<div class="input-group input-group-sm mb-3 ">
+											<textarea id="demo" class="form-control fs-2" name="ec" readonly maxlength="4">ST<?php echo $row['StudentEnrollmentNo']; ?></textarea>
+											<button class="btn btn-primary" onclick="cp1()"><i class="fe fe-copy"></i></button>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-12 col-md-6">
+										<div class="form-group">
+											Student Password
+										</div>
+									</div>
+									<div class="col-auto col-6">
+										<div class="input-group input-group-sm mb-3">
+											<textarea type="text" class="form-control" name="spassword" id="myInput2"><?php echo $row['StudentPassword']; ?></textarea>
+											<button class="btn btn-primary" onclick="cp2()"><i class="fe fe-copy"></i></button>
+										</div>
+									</div>
+								</div>
+								<div class="d-flex justify">
+									<!-- Button -->
+									<button class="btn btn-primary" type="submit" value="sub" name="subbed">
+										Save Changes
+									</button>
+								</div>
+								<!-- / .row -->
+							</form>
 						<?php
+						} else { ?>
+							<form class="mb-4" method="post">
+								<div class="row">
+									<div class="col-md-10">
+										<div class="input-group input-group-merge input-group-reverse">
+											<input class="form-control list-search" type="text" name="enr" placeholder="Enter Student Enrollment Number">
+											<div class="input-group-text">
+												<span class="fe fe-search"></span>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="col-auto">
+											<!-- Button -->
+											<button class="btn btn-primary " type="submit" name="ser" value="2">
+												Search
+											</button>
+										</div>
+									</div>
+								</div>
+							</form>
+							<?php
 							if (isset($_POST['ser'])) {
 								$er = $_POST['enr'];
 								$qur = "SELECT * FROM studentmaster WHERE StudentEnrollmentNo = '$er';";
 								$res = mysqli_query($conn, $qur);
 								$row = mysqli_fetch_assoc($res);
 								if (isset($row)) { ?>
-						<hr class="navbar-divider my-4">
-						<div class="card">
-							<div class="card-body">
-								<div class="row align-items-center">
-									<div class="col-auto">
-										<a href="profile-posts.html" class="avatar avatar-lg">
-										<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" alt="..." class="avatar-img rounded-circle">
-										</a>
+									<hr class="navbar-divider my-4">
+									<div class="card">
+										<div class="card-body">
+											<div class="row align-items-center">
+												<div class="col-auto">
+													<a href="profile-posts.html" class="avatar avatar-lg">
+														<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']; ?>" alt="..." class="avatar-img rounded-circle">
+													</a>
+												</div>
+												<div class="col ml-n2">
+													<!-- Title -->
+													<h4 class="mb-1">
+														<a href="profile-posts.html"><?php echo $row['StudentFirstName'] . " " . $row['StudentLastName']; ?></a>
+													</h4>
+													<!-- Text -->
+													<p class="small mb-1">
+														<?php echo $row['StudentEnrollmentNo']; ?>
+													</p>
+													<!-- Status -->
+													<p class="small mb-1">
+														<?php echo $row['StudentRollNo']; ?>
+													</p>
+												</div>
+												<div class="col-auto">
+													<!-- Button -->
+													<a href="edit_student.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" class="btn btn-m btn-primary d-none d-md-inline-block">
+														Edit
+													</a>
+												</div>
+											</div>
+											<!-- / .row -->
+										</div>
+										<!-- / .card-body -->
 									</div>
-									<div class="col ml-n2">
-										<!-- Title -->
-										<h4 class="mb-1">
-											<a href="profile-posts.html"><?php echo $row['StudentFirstName'] . " " . $row['StudentLastName']; ?></a>
-										</h4>
-										<!-- Text -->
-										<p class="small mb-1">
-											<?php echo $row['StudentEnrollmentNo']; ?>
-										</p>
-										<!-- Status -->
-										<p class="small mb-1">
-											<?php echo $row['StudentRollNo']; ?>
-										</p>
-									</div>
-									<div class="col-auto">
-										<!-- Button -->
-										<a href="edit_student.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" class="btn btn-m btn-primary d-none d-md-inline-block">
-										Edit
-										</a>
-									</div>
-								</div>
-								<!-- / .row -->
-							</div>
-							<!-- / .card-body -->
-						</div>
-						<?php
+					<?php
+								}
 							}
-							}
-							}
-							}
-							?>
-						<br>
+						}
+					}
+					?>
+					<br>
 					</div>
 				</div>
 				<!-- / .row -->
@@ -382,14 +400,15 @@
 		<!-- Theme JS -->
 		<script src="../assets/js/theme.bundle.js"></script>
 	</body>
-</html>
-<?php
+
+	</html>
+	<?php
 	if (isset($_POST['subbed'])) {
-	
+
 		$f_tmp_name = $_FILES['stuprofile']['tmp_name'];
 		$f_size = $_FILES['stuprofile']['size'];
 		$f_error = $_FILES['stuprofile']['error'];
-	
+
 		$fname = $_POST['fname'];
 		$mname = $_POST['mname'];
 		$lname = $_POST['lname'];
@@ -407,9 +426,9 @@
 		$add = $_POST['add'];
 		$dob = $_POST['dob'];
 		$stid = $row['StudentId'];
-	
-		$fs_name = $senr.".png";
-	
+
+		$fs_name = $senr . ".png";
+
 		if ($f_error === 0) {
 			if ($f_size <= 1000000) {
 				move_uploaded_file($f_tmp_name, "../src/uploads/stuprofile/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
