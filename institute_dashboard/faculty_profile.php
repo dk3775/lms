@@ -136,9 +136,14 @@ if ($_SESSION['role'] != "Texas") {
 									<input type="text" value="<?php echo $row['FacultyOffice']; ?>" aria-label="Last name" class="form-control" disabled>
 								</div>
 								<br>
+								<?php
+									$ffid = $row['FacultyId'];
+									$xssql = "SELECT SubjectName FROM subjectmaster INNER JOIN facultymaster ON subjectmaster.SubjectFacultyId = facultymaster.FacultyId WHERE facultymaster.FacultyId = '$ffid';";
+									$xssqlresult = mysqli_query($conn, $xssql);
+								?>
 								<div class="input-group  input-group-lg mb-3">
 									<span class="input-group-text col-2 text-dark">Subject</span>
-									<input class="form-control" value="<?php echo $row['FacultySubject']; ?>" aria-label="With textarea" disabled>
+									<input class="form-control" value="<?php while($roww=mysqli_fetch_assoc($xssqlresult)){echo $roww['SubjectName'].", " ;} ?>" aria-label="With textarea" disabled>
 								</div>
 							</div>
 						</div>
