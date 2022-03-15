@@ -3,7 +3,7 @@ error_reporting(E_ALL ^ E_WARNING);
 session_start();
 require_once("../config.php");
 if ($_SESSION['role'] != "Texas") {
-    header("Location: ../default.php");
+    header("Location: ../index.php");
 } else {
     $qid = $_GET['qid'];
     $qur = "SELECT * FROM querymaster INNER JOIN studentmaster ON querymaster.QueryFromId = studentmaster.StudentId WHERE QueryId = '$qid'";

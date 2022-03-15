@@ -18,7 +18,7 @@
 <?php 
 session_start();
 if ($_SESSION['role'] != "Abuja") {
-    header("Location: ../default.php");
+    header("Location: ../index.php");
 } else {
 	
 	$f_tmp_name = $_FILES['upload']['tmp_name'];

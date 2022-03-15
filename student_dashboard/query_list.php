@@ -2,7 +2,7 @@
 session_start();
 error_reporting(E_ALL ^ E_WARNING);
 if ($_SESSION['role'] != "Abuja") {
-   header("Location: ../default.php");
+   header("Location: ../index.php");
 } else {
    include_once "../config.php";
    $_SESSION["userrole"] = "student";

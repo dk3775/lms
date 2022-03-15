@@ -2,5 +2,5 @@
     //file to logout
     session_start();
     session_destroy();
-    header("Location: default.php");
+    header("Location: index.php");
 ?>

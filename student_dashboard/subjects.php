@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SESSION['role'] != "Abuja") {
-    header("Location: ../default.php");
+    header("Location: ../index.php");
 } else {
     include_once("../config.php");
     $u = $_SESSION["id"];

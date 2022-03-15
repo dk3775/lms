@@ -3,7 +3,7 @@ error_reporting(E_ALL ^ E_WARNING);
 session_start();
 require_once("../config.php");
 if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
-	header("Location: ../default.php");
+	header("Location: ../index.php");
 } else {
 	$xbrid = $_GET['subid'];
 	$qur = "SELECT *,BranchName,FacultyFirstName,FacultyLastName FROM ((subjectmaster INNER JOIN branchmaster ON subjectmaster.SubjectBranch = branchmaster.BranchId) INNER JOIN facultymaster ON subjectmaster.SubjectFacultyId = facultymaster.FacultyId) WHERE SubjectId = '$xbrid'";
