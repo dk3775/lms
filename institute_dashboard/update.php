@@ -21,7 +21,7 @@ if ($_SESSION['role'] != "Texas") {
 	<?php include_once("../nav.php"); ?>
 	
 	<!-- MAIN CONTENT -->
-	<div class="main-content bg-fixed-bottom" style="background-image: url(../assets/img/illustrations/sticky.svg);">
+	<div class="main-content bg-fixed-bottom" style="background-image: url(../assets/img/illustrations/sticky.svg?t);">
 		<div class="container-fluid">
 			<div class="row justify-content-center">
 				<div class="col-12 col-lg-10 col-xl-8">
@@ -44,7 +44,7 @@ if ($_SESSION['role'] != "Texas") {
 							<div class="row justify-content-center">
 								<div class="col-12 col-md-12 col-xl-8">
 									<!-- Image -->
-									<img src="../assets/img/illustrations/happiness.svg" alt="..." class="img-fluid mt-n5 mb-4" style="max-width: 272px;">
+									<img src="../assets/img/illustrations/happiness.svg?t" alt="..." class="img-fluid mt-n5 mb-4" style="max-width: 272px;">
 									<!-- Title -->
 									<h2>
 										We released 2008 new versions of our theme to make the world a better place.
@@ -69,7 +69,7 @@ if ($_SESSION['role'] != "Texas") {
 	</div>
 	<!-- / .main-content -->
 	<!-- MAIN CONTENT -->
-	<div class="main-content bg-fixed-bottom" style="background-image: url(../assets/img/illustrations/sticky.svg);">
+	<div class="main-content bg-fixed-bottom" style="background-image: url(../assets/img/illustrations/sticky.svg?t);">
 		<div class="container-fluid">
 			<div class="row justify-content-center">
 				<div class="col-12 col-lg-10 col-xl-8">
@@ -92,7 +92,7 @@ if ($_SESSION['role'] != "Texas") {
 							<div class="row justify-content-center">
 								<div class="col-12 col-md-12 col-xl-8">
 									<!-- Image -->
-									<img src="../assets/img/illustrations/happiness.svg" alt="..." class="img-fluid mt-n5 mb-4" style="max-width: 272px;">
+									<img src="../assets/img/illustrations/happiness.svg?t" alt="..." class="img-fluid mt-n5 mb-4" style="max-width: 272px;">
 									<!-- Title -->
 									<h2>
 										We released 2008 new versions of our theme to make the world a better place.

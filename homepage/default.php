@@ -27,7 +27,7 @@
 				</button>
 				<!-- Brand -->
 				<a class="navbar-brand" href="dashboard.html">
-				<img src="../assets/img/logo.svg" class="navbar-brand-img mx-auto" alt="...">
+				<img src="../assets/img/logo.svg?t" class="navbar-brand-img mx-auto" alt="...">
 				</a>
 				<!-- User (xs) -->
 				<div class="navbar-user d-md-none">

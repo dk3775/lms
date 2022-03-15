@@ -61,7 +61,7 @@
 									<div class="row align-items-center">
 										<div class="col-auto">
 											<div class="avatar">
-												<img name="simg" class="w-100 border-radius-lg shadow-sm rounded" src="../src/uploads/subprofile/<?php echo $row['SubjectPic']; ?>" alt	="..." id="IMG-preview">
+												<img name="simg" class="w-100 border-radius-lg shadow-sm rounded" src="../src/uploads/subprofile/<?php echo $row['SubjectPic']."?t"; ?>" alt	="..." id="IMG-preview">
 											</div>
 										</div>
 										<div class="col ml-n2">

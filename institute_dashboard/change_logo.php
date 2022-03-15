@@ -49,7 +49,7 @@
                               <div class="col-12 col-md-12 col-xl-5">
                                  <!-- Image -->
                                  
-                                 <img src="../assets/img/logo.svg" id="IMG-preview" alt="..." class="img-fluid mb-3 rounded" style="margin:auto; max-width: 80%;">
+                                 <img src="../assets/img/logo.svg?t" id="IMG-preview" alt="..." class="img-fluid mb-3 rounded" style="margin:auto; max-width: 80%;">
                                  <!-- Title -->
                               </div>
                               <div class="row justify-content-center">

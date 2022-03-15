@@ -61,7 +61,7 @@ if ($_SESSION['role'] != "Texas") {
 								<div class="col-auto">
 									<!-- Avatar -->
 									<div class="../avatar avatar-xxl header-avatar-top">
-										<img src="../src/uploads/facprofile/<?php echo $row['FacultyProfilePic']; ?>" alt="..." class="avatar-img rounded-circle border border-4 border-body">
+										<img src="../src/uploads/facprofile/<?php echo $row['FacultyProfilePic']."?t"; ?>" alt="..." class="avatar-img rounded-circle border border-4 border-body">
 									</div>
 								</div>
 								<div class="col mb-3 ml-n3 ml-md-n2">
@@ -191,7 +191,7 @@ if ($_SESSION['role'] != "Texas") {
 								<div class="row align-items-center">
 									<div class="col-auto">
 										<a href="profile-posts.html" class="avatar avatar-lg">
-											<img src="../src/uploads/facprofile/<?php echo $row['FacultyProfilePic']; ?>" alt="..." class="avatar-img rounded-circle">
+											<img src="../src/uploads/facprofile/<?php echo $row['FacultyProfilePic']."?t"; ?>" alt="..." class="avatar-img rounded-circle">
 										</a>
 									</div>
 									<div class="col ml-n2">

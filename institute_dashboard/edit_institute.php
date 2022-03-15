@@ -56,7 +56,7 @@
                                  <!-- Avatar -->
                                  <div class="avatar">
                                     <img name="inIMG" class="avatar-img rounded-circle"
-                                       src="../src/uploads/inprofile/<?php echo $row['InstituteProfilePic'] ?>" alt="..."
+                                       src="../src/uploads/inprofile/<?php echo $row['InstituteProfilePic']."?t";?>" alt="..."
                                        id="IMG-preview">
                                  </div>
                               </div>
@@ -231,7 +231,7 @@
 								<div class="row align-items-center">
 									<div class="col-auto">
 										<a href="profile-posts.html" class="avatar avatar-lg">
-										<img src="../src/uploads/inprofile/<?php echo $row['InstituteProfilePic']; ?>" alt="..." class="avatar-img rounded-circle">
+										<img src="../src/uploads/inprofile/<?php echo $row['InstituteProfilePic']."?t"; ?>" alt="..." class="avatar-img rounded-circle">
 										</a>
 									</div>
 									<div class="col ml-n2">

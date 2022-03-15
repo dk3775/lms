@@ -66,7 +66,7 @@ if ($_SESSION['role'] != "Texas") {
 				<div class="row gx-4">
 					<div class="col-auto">
 						<div class="avatar avatar-xl position-relative">
-							<img src="../src/uploads/inprofile/<?php echo $iqurrow['InstituteProfilePic']; ?>" class="w-100 border-radius-lg shadow-sm" style="border-radius: 10px;">
+							<img src="../src/uploads/inprofile/<?php echo $iqurrow['InstituteProfilePic']."?t"; ?>" class="w-100 border-radius-lg shadow-sm" style="border-radius: 10px;">
 						</div>
 					</div>
 					<div class="col-auto my-auto">
@@ -117,7 +117,7 @@ if ($_SESSION['role'] != "Texas") {
 															<div class="col-auto">
 																<!-- Avatar -->
 																<div class="avatar avatar-sm align-middle mr-2">
-																	<img src="../src/uploads/facprofile/<?php echo $frow['FacultyProfilePic']; ?>" alt="..." class="avatar-img rounded-circle">
+																	<img src="../src/uploads/facprofile/<?php echo $frow['FacultyProfilePic']."?t"; ?>" alt="..." class="avatar-img rounded-circle">
 																</div>
 															</div>
 															<div class="col ml-n2">

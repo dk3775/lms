@@ -60,7 +60,7 @@ $row = mysqli_fetch_assoc($timetableresult);
                                  <h2 class="mb-3">
                                     Time Table Image
                                  </h2>
-                                 <img src="../src/uploads/timetables/<?php echo $row['TimetableImage']; ?>" id="IMG-preview" alt="..." class="img-fluid mb-3 rounded" style="margin:auto; max-width: 80%;">
+                                 <img src="../src/uploads/timetables/<?php echo $row['TimetableImage']."?t"; ?>" id="IMG-preview" alt="..." class="img-fluid mb-3 rounded" style="margin:auto; max-width: 80%;">
                                  <!-- Title -->
                               </div>
                               <div class="row justify-content-center">

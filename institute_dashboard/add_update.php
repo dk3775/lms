@@ -50,7 +50,7 @@ if ($_SESSION['role'] != "Texas") {
                                  <h2 class="mb-3">
                                     Update Image
                                  </h2>
-                                 <img src="../assets/img/illustrations/happiness.svg" id="IMG-preview" alt="..." class="img-fluid mb-3 rounded" style="margin:auto; max-width: 80%;">
+                                 <img src="../assets/img/illustrations/happiness.svg?t" id="IMG-preview" alt="..." class="img-fluid mb-3 rounded" style="margin:auto; max-width: 80%;">
                                  <!-- Title -->
                               </div>
                               <div class="row justify-content-center">

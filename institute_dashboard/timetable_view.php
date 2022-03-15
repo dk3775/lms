@@ -79,7 +79,7 @@ if ($_SESSION['role'] != "Texas") {
 										</div>
 										<!-- Image -->
 										<p class="text-center mb-3">
-											<img src="../src/uploads/timetables/<?php echo $row['TimetableImage']; ?>" alt="..." class="img-fluid rounded">
+											<img src="../src/uploads/timetables/<?php echo $row['TimetableImage']."?t"; ?>" alt="..." class="img-fluid rounded">
 										</p>
 										 <div class="d-flex justify">
                         <!-- Button -->

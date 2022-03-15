@@ -82,7 +82,7 @@ if ($_SESSION['role'] != "Texas") {
 										</div>
 										<!-- Image -->
 										<p class="text-center mb-3">
-											<img src="../src/uploads/updates/<?php echo $row['UpdateFile']; ?>" alt="..." class="img-fluid rounded">
+											<img src="../src/uploads/updates/<?php echo $row['UpdateFile']."?t"; ?>" alt="..." class="img-fluid rounded">
 										</p>
 										<div class="d-flex justify">
 											<!-- Button -->
