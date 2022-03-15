@@ -21,7 +21,7 @@ if ($_SESSION['role'] != "Texas") {
 
 	<body>
 		<!-- NAVIGATION -->
-		<?php 
+		<?php
 		$nav_role = "Branch";
 		include_once("../nav.php"); ?>
 		<!-- MAIN CONTENT -->
@@ -91,8 +91,8 @@ if ($_SESSION['role'] != "Texas") {
 										while ($a <= $row['BranchSemesters']) { ?>
 											<li class="nav-item">
 												<a href="sem_details.php?semid=<?php echo $row['BranchCode'] . "_" . $a; ?>&brid=<?php echo $row['BranchCode']; ?>" class="nav-link h3 <?php if ($_GET['semid'] == $row['BranchCode'] . "_" . $a) {
-																																														echo "active";
-																																													} ?>">
+																																															echo "active";
+																																														} ?>">
 													Sem <?php echo $a; ?>
 												</a>
 											</li>
@@ -121,26 +121,33 @@ if ($_SESSION['role'] != "Texas") {
 					$subsql = "Select *, FacultyFirstName, FacultyLastname from subjectmaster INNER JOIN facultymaster on subjectmaster.SubjectFacultyId=facultymaster.FacultyId where SemCode = '$C'";
 					$subresult = mysqli_query($conn, $subsql);
 					$sac = 1;
-					while ($roww = mysqli_fetch_assoc($subresult)) { ?>
-						<div class="col-12 col-md-4 mb-md-5">
-							<div class="card-group">
-								<div class="card">
-									<img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic']; ?>" class="card-img-top img-fluid" alt="...">
-									<div class="card-body">
-										<h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
-										<p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
-										<p class="card-text"><?php echo $roww['FacultyFirstName'] . " " . $roww['FacultyLastName']; ?></p>
-										<a href="edit_subject.php?semid=<?php echo $semid; ?>&brid=<?php echo $xbrid; ?>&subid=<?php echo $roww['SubjectCode']; ?>" class="">Edit</a> | 
-										<a class="" href="semsubdelete.php?subcode=<?php echo $roww['SubjectCode']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
-															Delete
-															<!--changes-->
-														</a>
+					if (mysqli_num_rows($subresult) > 0) {
+						while ($roww = mysqli_fetch_assoc($subresult)) { ?>
+							<div class="col-12 col-md-4 mb-md-5">
+								<div class="card-group">
+									<div class="card">
+										<img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic']; ?>" class="card-img-top img-fluid" alt="...">
+										<div class="card-body">
+											<h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
+											<p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
+											<p class="card-text"><?php echo $roww['FacultyFirstName'] . " " . $roww['FacultyLastName']; ?></p>
+											<a href="edit_subject.php?semid=<?php echo $semid; ?>&brid=<?php echo $xbrid; ?>&subcode=<?php echo $roww['SubjectCode']; ?>" class="">Edit</a> |
+											<a class="" href="semsubdelete.php?subcode=<?php echo $roww['SubjectCode']; ?>&semid=<?php echo $semid; ?>&brid=<?php echo $xbrid; ?>" onclick="if (! confirm('Are you sure , you want to delete this subject ?')) return false;">
+												Delete
+												<!--changes-->
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
+						<?php
+							$sac++;
+						}
+					} else { ?>
+						<div class="col-12">
+							<h1 class="card header-title m-5 p-5">No Subjects Added</h1>
 						</div>
 					<?php
-						$sac++;
 					}
 					?>
 				</div>

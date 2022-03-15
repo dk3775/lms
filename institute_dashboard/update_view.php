@@ -14,7 +14,7 @@ if ($_SESSION['role'] != "Texas") {
 
 	<body>
 		<!-- NAVIGATION -->
-		<?php 
+		<?php
 		$nav_role = "Updates";
 		include_once '../nav.php'; ?>
 		<!-- MAIN CONTENT -->
@@ -66,7 +66,7 @@ if ($_SESSION['role'] != "Texas") {
 														</div>
 														<br>
 														<div class="input-group"><span class="input-group-text col-3 text-dark">Description</span>
-															<input type="text" value="<?php echo $row['UpdateDescription']; ?>" aria-label="Last name" class="form-control disable" disabled>
+															<textarea class="form-control disable" rows="3" disabled><?php echo $row['UpdateDescription']; ?></textarea>
 														</div>
 														<br>
 														<div class="input-group">
@@ -76,7 +76,7 @@ if ($_SESSION['role'] != "Texas") {
 															<input type="text" value="<?php echo $row['UpdateType']; ?>" aria-label="Last name" class="form-control disable" disabled>
 														</div>
 
-													</div>	
+													</div>
 												</div>
 											</div>
 										</div>
