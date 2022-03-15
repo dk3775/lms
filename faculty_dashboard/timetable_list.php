@@ -15,9 +15,11 @@ if ($_SESSION['role'] != "Lagos") {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<?php include_once "../head.php"; ?>
 </head>
+
 <body>
 	<?php $nav_role = "Time Table"; ?>
 	<!-- NAVIGATION -->
@@ -42,7 +44,7 @@ if ($_SESSION['role'] != "Lagos") {
 									</h1>
 								</div>
 								<div class="col-auto">
-									<a href="add_timetable.php" class="btn btn-primary ml-2">
+									<a href="add_timetable.php?brcode=<?php echo $bcode; ?>" class="btn btn-primary ml-2">
 										Add Time Table
 									</a>
 								</div>

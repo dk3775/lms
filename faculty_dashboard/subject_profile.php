@@ -64,14 +64,14 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 									<span class="input-group-text col-2 text-dark">Subject Sem</span>
 									<input type="text" value="<?php echo $row['SubjectSemester']; ?>" aria-label="First name" class="form-control" disabled>
 									<span class="input-group-text col-2 text-dark">Subject Branch</span>
-									<input type="text" value="<?php echo $row['BranchName']; ?>" aria-label="Last name" class="form-control disable">
+									<input type="text" value="<?php echo $row['BranchName']; ?>" aria-label="Last name" class="form-control" disabled>
 								</div>
 								<br>
 								<div class="input-group">
 									<span class="input-group-text col-2 text-dark">Subject Faculty</span>
 									<input type="text" value="<?php echo $row['FacultyFirstName'] . " " . $row['FacultyLastName']; ?>" aria-label="First name" class="form-control" disabled>
 									<span class="input-group-text col-2 text-dark">Subject Code</span>
-									<input type="text" value="<?php echo $row['SubjectCode']; ?>" aria-label="Last name" class="form-control disable">
+									<input type="text" value="<?php echo $row['SubjectCode']; ?>" aria-label="Last name" class="form-control" disabled>
 								</div>
 							</div>
 						</div>
@@ -159,11 +159,11 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 															<td></td>
 															<td></td>
 															<td>
-																<a href="../src/uploads/studymaterial/" download="<?php echo $roww['EngMaterialFile']; ?>" class="btn btn-sm btn-white">
+																<a href="../src/uploads/studymaterial/<?php echo $roww['EngMaterialFile']; ?>" download="<?php echo $roww['EngMaterialFile']; ?>" class="btn btn-sm btn-white">
 																	English
 																</a>
 																&nbsp;
-																<a href="../src/uploads/studymaterial/" download="<?php echo $roww['GujMaterialFile']; ?>" class="btn btn-sm btn-white">
+																<a href="../src/uploads/studymaterial/<?php echo $roww['GujMaterialFile']; ?>" download="<?php echo $roww['GujMaterialFile']; ?>" class="btn btn-sm btn-white">
 																	Gujarati
 																</a>
 															</td>

@@ -92,10 +92,10 @@
                     <i class="fe uil-user"></i>
                     Student List</a>
             </div>
-            <div class="item" onclick="window.location.href='';">
+            <div class="item" onclick="window.location.href='branch_profile.php';">
                 <a class="nav-item" style="color: #6F6F6F;">
                     <i class="fe uil-code-branch"></i>
-                    Branch list</a>
+                    Branch Profile</a>
             </div>
             <div class="item" onclick="window.location.href='assignment_list.php';">
                 <a class="nav-item" style="color: #6F6F6F;">
@@ -104,12 +104,12 @@
             </div>
         </div>
         <div class="list">
-            <div class="item" onclick="window.location.href='account_related.php';">
+            <!-- <div class="item" onclick="window.location.href='account_related.php';">
                 <a class="nav-item" style="color: #6F6F6F;">
                     <i class="fa uil-user"></i>
                     Account related Details</a>
-            </div>
-            <div class="item" onclick="window.location.href='';">
+            </div> -->
+            <div class="item" onclick="window.location.href='Study_related.php';">
                 <a class="nav-item" style="color: #6F6F6F;">
                     <i class="fa uil-question-circle"></i>
                     Study related querys</a>
