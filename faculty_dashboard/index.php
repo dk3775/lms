@@ -24,7 +24,7 @@ if ($_SESSION['role'] != "Lagos") {
 <?php include("../head.php"); ?>
 
 <body>
-	<?php $nav_role="Dashboard"; ?>
+	<?php $nav_role = "Dashboard"; ?>
 	<!-- NAVIGATION -->
 	<?php include("nav.php"); ?>
 	<!-- MAIN CONTENT -->
@@ -213,7 +213,7 @@ if ($_SESSION['role'] != "Lagos") {
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="col-12 col-lg-6 col-xl">
 					<!-- Time -->
 					<div class="card">
@@ -279,34 +279,35 @@ if ($_SESSION['role'] != "Lagos") {
 									</div>
 									<div class="table-responsive">
 										<table class="table table-sm table-hover table-nowrap card-table" id="myTable">
-										<thead>
-											<tr>
-												<th>
-													<a class="list-sort text-muted" data-sort="item-phone">#</a>
-												</th>
-												<th>
-													<a class="list-sort text-muted" data-sort="item-phone">Date</a>
-												</th>
-												<th>
-													<a class="list-sort text-muted" data-sort="item-name">Title</a>
-												</th>
-												<th>
-													<a class="list-sort text-muted" data-sort="item-company">Uploaded By</a>
-												</th>
-												<th>
-													<a class="list-sort text-muted">Info</a>
-												</th>
-												<th colspan="2">
-													<a class="list-sort text-muted">Download</a>
-												</th>
-											</tr>
-										</thead>
+											<thead>
+												<tr>
+													<th>
+														<a class="list-sort text-muted" data-sort="item-phone">#</a>
+													</th>
+													<th>
+														<a class="list-sort text-muted" data-sort="item-phone">Date</a>
+													</th>
+													<th>
+														<a class="list-sort text-muted" data-sort="item-name">Title</a>
+													</th>
+													<th>
+														<a class="list-sort text-muted" data-sort="item-company">Uploaded By</a>
+													</th>
+													<th>
+														<a class="list-sort text-muted">Info</a>
+													</th>
+													<th colspan="2">
+														<a class="list-sort text-muted">Download</a>
+													</th>
+												</tr>
+											</thead>
 											<tbody class="list font-size-base">
 												<?php
+												$index = 1;
 												while ($urow = mysqli_fetch_assoc($ures)) { ?>
 													<tr>
 														<td>
-															<?php echo $urow['UpdateId']; ?>
+															<?php echo $index++; ?>
 														</td>
 														<td>
 															<span class="item-phone"><?php echo $urow['UpdateUploadDate']; ?></span>
@@ -328,7 +329,7 @@ if ($_SESSION['role'] != "Lagos") {
 														</td>
 													<tr id="demo<?php echo $j++; ?>" class="collapse">
 														<td colspan="6" class="hiddenRow">
-														<div><?php echo $urow['UpdateDescription']; ?></div>
+															<div><?php echo $urow['UpdateDescription']; ?></div>
 														</td>
 													</tr>
 													</tr>
@@ -424,4 +425,5 @@ if ($_SESSION['role'] != "Lagos") {
 		<!-- Theme JS -->
 		<script src="../assets/js/theme.bundle.js"></script>
 </body>
+
 </html>

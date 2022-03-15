@@ -102,23 +102,29 @@ if ($_SESSION['role'] != "Lagos") {
 					$subresult = mysqli_query($conn, $subsql);
 					//$rowww=mysqli_fetch_assoc($sresult);
 					$sac = 1;
-					while ($roww = mysqli_fetch_assoc($subresult)) { ?>
-						<div class="col-12 col-md-4 mb-md-5">
-							<div class="card-group">
-								<div class="card">
-									<img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic']."?t"; ?>" class="card-img-top img-fluid" alt="...">
-									<div class="card-body">
-										<h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
-										<p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
-										<p class="card-text"><?php echo $roww['FacultyFirstName'] . " " . $roww['FacultyLastName']; ?></p>
-										<a href="subject_profile.php?subid=<?php echo $roww['SubjectId']; ?>" class="btn btn-sm btn-primary">View</a>
-
+					if (mysqli_num_rows($subresult) > 0) {
+						while ($roww = mysqli_fetch_assoc($subresult)) { ?>
+							<div class="col-12 col-md-4 mb-md-5">
+								<div class="card-group">
+									<div class="card">
+										<img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic']; ?>" class="card-img-top img-fluid" alt="...">
+										<div class="card-body">
+											<h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
+											<p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
+											<p class="card-text"><?php echo $roww['FacultyFirstName'] . " " . $roww['FacultyLastName']; ?></p>
+											<a href="subject_profile.php?subid=<?php echo $roww['SubjectId']; ?>" class="btn btn-sm btn-primary">View</a>
+										</div>
 									</div>
 								</div>
 							</div>
+						<?php
+							$sac++;
+						}
+					} else { ?>
+						<div class="col-12">
+							<h1 class="card header-title m-5 p-5">No Subjects Added</h1>
 						</div>
 					<?php
-						$sac++;
 					}
 					?>
 				</div>
