@@ -266,7 +266,7 @@ if ($_SESSION['role'] != "Texas") {
 											<label for="validationCustom01" class="form-label">
 												Student SPI
 											</label>
-											<input id="validationCustom01" type="number" pattern="[0-9]{12}" id="validationCustom01" class="form-control" name="sspi" placeholder="Optional">
+											<input id="validationCustom01" type="number" pattern="[0-9]{12}" id="validationCustom01" class="form-control" name="sspi" placeholder="Optional" value="<?php echo $row['SPI']; ?>">
 										</div>
 									</div>
 									<div class="col-12 col-md-6">
@@ -274,7 +274,7 @@ if ($_SESSION['role'] != "Texas") {
 											<label class="form-label">
 												Student CGPA
 											</label>
-											<input type="number" id="validationCustom01" class="form-control" name="scgpa" placeholder="Optional">
+											<input type="number" id="validationCustom01" class="form-control" name="scgpa" placeholder="Optional" value="<?php echo $row['CGPA']; ?>">
 										</div>
 									</div>
 								</div>
