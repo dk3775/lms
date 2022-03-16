@@ -95,13 +95,13 @@ if ($_SESSION['role'] != "Texas") {
 													<a class="list-sort text-muted" data-sort="item-phone">Time Table Semester</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-name">Time Table Uploaded By</a>
+													<a class="text-muted">Time Table Uploaded By</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-phone">Time Table Upload Time</a>
+													<a class="text-muted">Time Table Upload Time</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted justify-content-center">Action</a>
+													<a class="text-muted justify-content-center">Action</a>
 												</th>
 												<th>
 												</th>
@@ -113,19 +113,19 @@ if ($_SESSION['role'] != "Texas") {
 												<tr>
 													<td>
 														<!-- Email -->
-														<span class="item-email text-reset"><?php echo $row['TimetableBranchCode']; ?></span>
+														<span class="item-name text-reset"><?php echo $row['TimetableBranchCode']; ?></span>
 													</td>
 													<td>
 														<!-- Email -->
-														<span class="item-email text-reset"><?php echo $row['TimetableSemester']; ?></span>
+														<span class="item-phone text-reset"><?php echo $row['TimetableSemester']; ?></span>
 													</td>
 													<td>
 														<!-- Phone -->
-														<span class="item-phone text-reset"><?php echo $row['TimetableUploadedBy']; ?></span>
+														<span class="text-reset"><?php echo $row['TimetableUploadedBy']; ?></span>
 													</td>
 													<td>
 														<!-- Badge -->
-														<span class="item-phone text-reset"><?php echo $row['TimetableUploadTime']; ?></span>
+														<span class="text-reset"><?php echo $row['TimetableUploadTime']; ?></span>
 													</td>
 													<td>
 														<a href="edit_timetable.php?ttid=<?php echo $row['TimetableId']; ?>" class="btn btn-sm btn-white">
