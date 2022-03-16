@@ -207,7 +207,7 @@ if ($_SESSION['role'] != "Abuja") {
 										</span>
 									</div>
 									<div class="col-auto">
-										<span></span>
+										<span class="h2 uil uil-percentage text-muted mb-0"></span>
 									</div>
 								</div>
 							</div>
@@ -226,7 +226,7 @@ if ($_SESSION['role'] != "Abuja") {
 										</span>
 									</div>
 									<div class="col-auto">
-										<span class="h2 fe fe-briefcase text-muted mb-0"></span>
+										<span class="h2 uil uil-percentage text-muted mb-0"></span>
 									</div>
 								</div>
 							</div>
@@ -245,6 +245,7 @@ if ($_SESSION['role'] != "Abuja") {
 										</span>
 									</div>
 									<div class="col-auto">
+										<span class="h2 uil-files-landscapes-alt text-muted mb-0"></span>
 									</div>
 								</div>
 							</div>
@@ -435,8 +436,7 @@ if ($_SESSION['role'] != "Abuja") {
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-		<!-- Vendor JS -->
-		<script src="../assets/js/vendor.bundle.js"></script>
+			<script src = "../assets/js/vendor.bundle.js"></script>
 		<!-- Theme JS -->
 		<script src="../assets/js/theme.bundle.js"></script>
 		<?php include("context.php"); ?>

@@ -116,6 +116,13 @@
                     Study related querys</a>
             </div>
         </div>
+        <div class="list">
+            <div class="item" onclick="window.location.href='institute_perks.php';">
+                <a class="nav-item" style="color: #6F6F6F;">
+                    <i class="fa uil-user"></i>
+                    Institute Perks</a>
+            </div>
+        </div>
     </div>
 
     <script>
