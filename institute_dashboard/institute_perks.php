@@ -40,6 +40,7 @@ error_reporting(E_ALL ^ E_WARNING);
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
+                        <img class="card-img-top" src="https://www.logomoose.com/wp-content/uploads/2015/10/Change.jpg" alt="Card image cap">
                             <h3 class="card-title">Change the main logo</h3>
                             <!-- add text or remove it -->
                             <p class="card-text">To change the main logo of the university click the button below.</p>
@@ -52,6 +53,7 @@ error_reporting(E_ALL ^ E_WARNING);
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
+                        <img class="card-img-top" src="../assets/favicon/Manager.png"  alt="Card image cap">
                             <h3 class="card-title">Manage institute administrators</h3>
                             <!-- add text or remove it -->
                             <p class="card-text">Various functionalities that can be used to manage admins.</p>

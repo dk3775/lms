@@ -168,6 +168,7 @@ if ($_SESSION['role'] != "Texas") {
                               </label>
                               <input type="text" maxlength="10" id="validationCustom01" value="<?php echo $row['InstituteOffice']; ?>" class="form-control" name="inoffice" required>
                            </div>
+
                         </div>
                         <div class="row">
                            <div class="col-12">

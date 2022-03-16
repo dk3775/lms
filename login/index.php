@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-	<?php include_once('../head.php'); ?>
 	<?php
 	if (isset($_POST['login'])) { ?>
 		<style>
