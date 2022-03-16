@@ -14,11 +14,42 @@
 	<title>LMS by Titanslab</title>
 	<style>
 		.card-img-top {
-    width: 100%;
-    height: 15vw;
-    object-fit: cover;
-}
+			width: 100%;
+			height: 15vw;
+			object-fit: cover;
+		}
+
+		body {
+			scrollbar-width: thin;
+			/* "auto" or "thin" */
+			scrollbar-color: blue orange;
+			/* scroll thumb and track */
+		}
+
+		/* Works on Firefox */
+		* {
+			scrollbar-width: thin;
+			scrollbar-color: blue orange;
+		}
+
+		/* Works on Chrome, Edge, and Safari */
+		*::-webkit-scrollbar {
+			width: 8px;
+			background-color: #F5F5F5;
+		}
+
+		*::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			background-color: #F5F5F5;
+			
+		}
+
+		*::-webkit-scrollbar-thumb {
+			border-radius: 10px;
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+			background-color: blueviolet;
+		}
 	</style>
 	<?php
-	error_reporting(E_ALL ^ E_WARNING);
+	error_reporting(E_ALL ^ E_ALL);
 	?>

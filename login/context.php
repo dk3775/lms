@@ -80,11 +80,6 @@
                     <i class="fa uil-refresh"></i>
                     Refresh</a>
             </div>
-            <div class="item" onclick="window.location.href='logout.php';">
-                <a class="nav-item" style="color: #6F6F6F;">
-                    <i class="fa uil-signout"></i>
-                    Help</a>
-            </div>
         </div>
     </div>
 
