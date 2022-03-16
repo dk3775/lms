@@ -209,7 +209,7 @@ if ($_SESSION['role'] != "Texas") {
 											<label class="form-label">
 												Student Enrollment No
 											</label>
-											<input type="tel" pattern="[0-9]{12}" class="form-control" name="senr" value="<?php echo $row['StudentEnrollmentNo']; ?>" required>
+											<input type="tel" pattern="[0-9]{12}" id="myInput" onchange="cp()" on oninput="cp()" class="form-control" name="senr" value="<?php echo $row['StudentEnrollmentNo']; ?>" required>
 										</div>
 									</div>
 									<div class="col-12 col-md-6">
@@ -289,7 +289,7 @@ if ($_SESSION['role'] != "Texas") {
 									</div>
 									<div class="col-auto col-6">
 										<div class="input-group input-group-sm mb-3 ">
-											<textarea id="demo" class="form-control fs-2" name="ec" readonly maxlength="4">ST<?php echo $row['StudentEnrollmentNo']; ?></textarea>
+											<textarea id="demo" class="form-control fs-2" name="slogin" readonly maxlength="4">ST<?php echo $row['StudentEnrollmentNo']; ?></textarea>
 											<button class="btn btn-primary" onclick="cp1()"><i class="fe fe-copy"></i></button>
 										</div>
 									</div>
@@ -302,7 +302,7 @@ if ($_SESSION['role'] != "Texas") {
 									</div>
 									<div class="col-auto col-6">
 										<div class="input-group input-group-sm mb-3">
-											<textarea type="text" class="form-control" name="spassword" id="myInput2"><?php echo $row['StudentPassword']; ?></textarea>
+											<textarea id="myInput2" type="text" class="form-control" name="spassword" id="myInput2"><?php echo $row['StudentPassword']; ?></textarea>
 											<button class="btn btn-primary" onclick="cp2()"><i class="fe fe-copy"></i></button>
 										</div>
 									</div>
@@ -390,6 +390,20 @@ if ($_SESSION['role'] != "Texas") {
 				<!-- / .row -->
 			</div>
 		</div>
+		<script>
+		function cp() {
+			var xx = document.getElementById("myInput").value;
+			document.getElementById("demo").innerHTML = "ST" + xx;
+
+			let nnum = document.getElementById("myInput").value;
+			let ss = nnum.toString();
+			let sstr = ss.toString().split('').reverse().join('');
+			let rrev = sstr.substr(0, 4);
+
+			document.getElementById("myInput2").innerHTML = rrev;
+
+		}
+		</script>
 		<?php include_once("context.php"); ?>
 		<!-- / .main-content -->
 		<!-- JAVASCRIPT -->
@@ -408,7 +422,7 @@ if ($_SESSION['role'] != "Texas") {
 		$f_tmp_name = $_FILES['stuprofile']['tmp_name'];
 		$f_size = $_FILES['stuprofile']['size'];
 		$f_error = $_FILES['stuprofile']['error'];
-
+		$ec = $_POST['slogin'];
 		$fname = $_POST['fname'];
 		$mname = $_POST['mname'];
 		$lname = $_POST['lname'];
@@ -426,22 +440,20 @@ if ($_SESSION['role'] != "Texas") {
 		$add = $_POST['add'];
 		$dob = $_POST['dob'];
 		$stid = $row['StudentId'];
-
 		$fs_name = $senr . ".png";
-
-		if ($f_error === 0) {
-			if ($f_size <= 1000000) {
-				move_uploaded_file($f_tmp_name, "../src/uploads/stuprofile/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
-			} else {
-				echo "<script>alert(File size is to big .. !);</script>";
-			}
-		} else {
-			echo "Something went wrong .. !";
-		}
-		$sqli = "UPDATE studentmaster SET StudentEnrollmentNo='$senr',StudentPassword='$spassword',StudentFirstName='$fname',StudentMiddleName='$mname',StudentLastName='$lname',StudentProfilePic='$fs_name',StudentBranchCode='$sbranch',StudentSemester='$ssem',StudentEmail='$semail',StudentContactNo='$scontact',StudentAddress='$add',ParentEmail='$pmail',ParentContactNo='$pcontact',StudentRollNo='$sroll',StudentDOB='$dob' WHERE StudentId = '$stid';";
+		$sqli = "UPDATE studentmaster SET StudentUserName='$ec',StudentEnrollmentNo='$senr',StudentPassword='$spassword',StudentFirstName='$fname',StudentMiddleName='$mname',StudentLastName='$lname',StudentProfilePic='$fs_name',StudentBranchCode='$sbranch',StudentSemester='$ssem',StudentEmail='$semail',StudentContactNo='$scontact',StudentAddress='$add',ParentEmail='$pmail',ParentContactNo='$pcontact',StudentRollNo='$sroll',StudentDOB='$dob' WHERE StudentId = '$stid';";
 		$runed = mysqli_query($conn, $sqli);
 		if ($runed == true) {
 			echo "<script>alert('Student Details Edited Successfully')</script>";
+			if ($f_error === 0) {
+				if ($f_size <= 1000000) {
+					move_uploaded_file($f_tmp_name, "../src/uploads/stuprofile/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
+				} else {
+					echo "<script>alert(File size is to big .. !);</script>";
+				}
+			} else {
+				echo "Something went wrong .. !";
+			}
 			echo "<script>window.open('student_list.php','_self')</script>";
 		} else {
 			echo "<script>alert('Error Occured')</script>";
