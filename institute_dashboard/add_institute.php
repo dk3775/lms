@@ -100,14 +100,14 @@ if ($_SESSION['role'] != "Texas") {
                            <label for="validationCustom01" class="form-label">
                               Institute User Name <small class="text-muted"> ( For Login ) </small>
                            </label>
-                           <input type="text" class="form-control" id="validationCustom01" value="IN" name="inusername" required>
+                           <input oninput="cp()" type="text" class="form-control" id="inusername" name="inusername" required>
                         </div>
                      </div>
                      <div class="col-12 col-md-6">
                         <label for="validationCustom01" class="form-label">
                            Password
                         </label>
-                        <input type="password" class="form-control" id="validationCustom01" name="inpass" required>
+                        <input oninput="cp()" type="password" class="form-control" id="inpass" name="inpass" required>
                      </div>
                   </div>
                   <hr class="md-5">
@@ -173,7 +173,35 @@ if ($_SESSION['role'] != "Texas") {
                            <textarea id="validationCustom01" rows="2" maxlength="200" class="form-control" name="add" required></textarea>
                         </div>
                      </div>
-
+                  </div>
+                  <hr class="mt-4 mb-5">
+                  <div class="row">
+                     <div class="col-12 col-md-6">
+                        <div class="form-group">
+                           <p class="form-label">
+                              Institute User Login ID
+                           </p>
+                        </div>
+                     </div>
+                     <div class="col-auto col-6">
+                        <div class="input-group input-group-sm mb-3 ">
+                           <textarea id="demo" class="form-control fs-2" name="ec" readonly maxlength="4"></textarea>
+                           <button class="btn btn-primary" onclick="cp1()"><i class="fe fe-copy"></i></button>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-12 col-md-6">
+                        <div class="form-group">
+                           Institute User Password
+                        </div>
+                     </div>
+                     <div class="col-auto col-6">
+                        <div class="input-group input-group-sm mb-3">
+                           <textarea type="text" class="form-control" readonly name="spassword" id="myInput2"></textarea>
+                           <button class="btn btn-primary" onclick="cp2()"><i class="fe fe-copy"></i></button>
+                        </div>
+                     </div>
                   </div>
                   <hr class="mt-4 mb-5">
                   <div class="d-flex justify">
@@ -197,37 +225,46 @@ if ($_SESSION['role'] != "Texas") {
    <script src="../assets/js/vendor.bundle.js"></script>
    <!-- Theme JS -->
    <script src="../assets/js/theme.bundle.js"></script>
-   <!-- <script>
-         function cp1() {
-             /* Get the text field */
-             var copyText = document.getElementById("demo");
-         
-             /* Select the text field */
-             copyText.select();
-             copyText.setSelectionRange(0, 99999); /* For mobile devices */
-         
-             /* Copy the text inside the text field */
-             navigator.clipboard.writeText(copyText.value);
-         
-             /* Alert the copied text */
-             alert("Copied the text: " + copyText.value);
-         }
-         
-         function cp2() {
-             /* Get the text field */
-             var copyText = document.getElementById("myInput2");
-         
-             /* Select the text field */
-             copyText.select();
-             copyText.setSelectionRange(0, 99999); /* For mobile devices */
-         
-             /* Copy the text inside the text field */
-             navigator.clipboard.writeText(copyText.value);
-         
-             /* Alert the copied text */
-             alert("Copied the text: " + copyText.value);
-         }
-      </script> -->
+   <script>
+      function cp() {
+         var x = document.getElementById("inusername").value;
+         document.getElementById("demo").innerHTML = "IN" + x;
+
+         let num = document.getElementById("inpass").value;
+         document.getElementById("myInput2").innerHTML = num;
+
+      }
+
+      function cp1() {
+         /* Get the text field */
+         var copyText = document.getElementById("demo");
+
+         /* Select the text field */
+         copyText.select();
+         copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+         /* Copy the text inside the text field */
+         navigator.clipboard.writeText(copyText.value);
+
+         /* Alert the copied text */
+         alert("Copied the text: " + copyText.value);
+      }
+
+      function cp2() {
+         /* Get the text field */
+         var copyText = document.getElementById("myInput2");
+
+         /* Select the text field */
+         copyText.select();
+         copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+         /* Copy the text inside the text field */
+         navigator.clipboard.writeText(copyText.value);
+
+         /* Alert the copied text */
+         alert("Copied the text: " + copyText.value);
+      }
+   </script>
    <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
@@ -291,7 +328,7 @@ if (isset($_POST['subbed'])) {
       echo "<script>window.open('institute_list.php','_self')</script>";
    } else {
       echo "<script>alert('Institute User Not Added')</script>";
-      // echo "<script>window.open('add_student.php','_self')</script>";
+      echo "<script>window.open('add_student.php','_self')</script>";
    }
 }
 ?>
