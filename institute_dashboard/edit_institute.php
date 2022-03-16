@@ -308,7 +308,7 @@ if ($_SESSION['role'] != "Texas") {
       <script>
          function cp() {
             var x = document.getElementById("inusername").value;
-            document.getElementById("demo").innerHTML = "IN" + x;
+            document.getElementById("demo").innerHTML = x;
 
             let num = document.getElementById("inpass").value;
             document.getElementById("myInput2").innerHTML = num;
