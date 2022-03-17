@@ -13,7 +13,7 @@ if ($_SESSION['role'] != "Texas") {
 <html lang="en">
 
 <head>
-	<?php 
+	<?php
 	$nav_role = "Student";
 	include_once("../head.php"); ?>
 </head>
@@ -27,14 +27,16 @@ if ($_SESSION['role'] != "Texas") {
 			<div class="row justify-content-center">
 				<div class="col-12">
 					<!-- Header -->
+
 					<div class="header">
 						<div class="header-body">
 							<div class="row align-items-center">
 								<div class="col">
+
 									<!-- Pretitle -->
-									<h6 class="header-pretitle">
-										View
-									</h6>
+									<h5 class="header-pretitle">
+										<a class=" btn-link" onclick="history.back()"><i class=" fe uil-angle-double-left"></i>Back</a>
+									</h5>
 									<!-- Title -->
 									<h1 class="header-title text-truncate">
 										Student List

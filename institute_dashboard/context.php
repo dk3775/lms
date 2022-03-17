@@ -93,6 +93,11 @@
                     <i class="fe uil-user"></i>
                     Student List</a>
             </div>
+            <div class="item" onclick="window.location.href='faculty_list.php';">
+                <a class="nav-item" style="color: #6F6F6F;">
+                    <i class="fe uil-graduation-cap"></i>
+                    Faculty list</a>
+            </div>
             <div class="item" onclick="window.location.href='';">
                 <a class="nav-item" style="color: #6F6F6F;">
                     <i class="fe uil-code-branch"></i>
@@ -102,6 +107,11 @@
                 <a class="nav-item" style="color: #6F6F6F;">
                     <i class="fe uil-book"></i>
                     Subject list</a>
+            </div>
+            <div class="item" onclick="window.location.href='update_list.php';">
+                <a class="nav-item" style="color: #6F6F6F;">
+                    <i class="fe fe-bell"></i>
+                    Updates</a>
             </div>
         </div>
         <div class="list">
