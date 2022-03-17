@@ -9,6 +9,8 @@ if ($_SESSION['role'] != "Texas") {
 
 $branchsel = "SELECT * FROM branchmaster";
 $branchresult = mysqli_query($conn, $branchsel);
+$sqlsem = "SELECT * FROM branchmaster WHERE BranchCode = ";
+$sqldata = "";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +21,7 @@ $branchresult = mysqli_query($conn, $branchsel);
 
 <body>
 	<!-- NAVIGATION -->
-	<?php 
+	<?php
 	$nav_role = "Student";
 	include_once("../nav.php"); ?>
 	<!-- MAIN CONTENT -->
@@ -203,10 +205,10 @@ $branchresult = mysqli_query($conn, $branchsel);
 							<div class="col-12 col-md-6">
 								<div class="form-group">
 									<label for="validationCustom01" class="form-label">
-										Student Branch Code
+										Student Branch
 									</label>
 									<select id="validationCustom01" class="form-control" name="sbranch" required>
-										<option value="" hidden="">Select Branch</option>
+										<option value="" hidden>Select Branch</option>
 										<?php
 										while ($brrow = mysqli_fetch_assoc($branchresult)) { ?>
 											<option value="<?php echo $brrow['BranchCode']; ?>">
@@ -217,11 +219,13 @@ $branchresult = mysqli_query($conn, $branchsel);
 									</select>
 								</div>
 							</div>
+
 							<div class="col-12 col-md-6">
 								<div class="form-group">
 									<label for="validationCustom01" class="form-label">
 										Student Semester
 									</label>
+
 									<select class="form-control" id="validationCustom01" name="ssem" required>
 										<option value="" hidden>Select Semester</option>
 										<option value="1">1</option>
@@ -231,24 +235,6 @@ $branchresult = mysqli_query($conn, $branchsel);
 										<option value="5">5</option>
 										<option value="6">6</option>
 									</select>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-12 col-md-6">
-								<div class="form-group">
-									<label for="validationCustom01" class="form-label">
-										Student SPI
-									</label>
-									<input id="validationCustom01" type="number" pattern="[0-9]{12}" id="validationCustom01" class="form-control" name="sspi" placeholder="Optional">
-								</div>
-							</div>
-							<div class="col-12 col-md-6">
-								<div class="form-group">
-									<label class="form-label">
-										Student CGPA
-									</label>
-									<input type="number" id="validationCustom01" class="form-control" name="scgpa" placeholder="Optional">
 								</div>
 							</div>
 						</div>
@@ -397,8 +383,7 @@ if (isset($_POST['subbed'])) {
 	$sroll = $_POST['sroll'];
 	$sbranch = $_POST['sbranch'];
 	$spassword = $_POST['spassword'];
-	$spi= $_POST['sspi'];
-	$cgpa = $_POST['scgpa'];
+
 	$spass = password_hash($spassword, PASSWORD_BCRYPT); //hashing the $spassword 
 	// $slid = $_POST['slid'];
 	$add = $_POST['add'];
@@ -416,8 +401,8 @@ if (isset($_POST['subbed'])) {
 	} else {
 		echo "Something went wrong .. !";
 	}
-	$sql = "INSERT INTO studentmaster (StudentUserName, StudentDOB, StudentEnrollmentNo, StudentPassword, StudentFirstName, StudentMiddleName, StudentLastName, StudentProfilePic, StudentBranchCode, StudentSemester, StudentEmail, StudentContactNo, StudentAddress, ParentEmail, ParentContactNo, StudentRollNo, SPI, CGPA) 
-		VALUES ('$ec','$dob','$senr','$spassword','$fname','$mname','$lname','$fs_name','$sbranch','$ssem','$semail','$scontact','$add','$pmail','$pcontact','$sroll','$spi','$cgpa');";
+	$sql = "INSERT INTO studentmaster (StudentUserName, StudentDOB, StudentEnrollmentNo, StudentPassword, StudentFirstName, StudentMiddleName, StudentLastName, StudentProfilePic, StudentBranchCode, StudentSemester, StudentEmail, StudentContactNo, StudentAddress, ParentEmail, ParentContactNo, StudentRollNo) 
+		VALUES ('$ec','$dob','$senr','$spassword','$fname','$mname','$lname','$fs_name','$sbranch','$ssem','$semail','$scontact','$add','$pmail','$pcontact','$sroll');";
 	$run = mysqli_query($conn, $sql);
 	if ($run == true) {
 		echo "<script>alert('Student Added Successfully')</script>";

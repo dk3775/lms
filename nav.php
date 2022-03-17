@@ -99,12 +99,12 @@
 			<div class="navbar-user d-md-flex" style="overflow: hidden;" id="sidebarUser">
 
 				<hgroup class="text-center navbar-heading " style="margin: -30px;">
-					<button type="button" class="btn btn-link" href="../logout.php">Logout</button>
+					<a href="logout.php"><button class="btn btn-link">Logout</button></a>
 					<h6 style="margin: -1px;">
 						Version 1.0.0
 					</h6>
 					<h6 class="">
-						Developed By <a style="color: #1A68D1;" href="http://titanslab.in/">Titanslab</a>
+						Developed By <a style="color: #1A68D1;" href="http://titanslab.in/" target="_blank">Titanslab</a>
 					</h6>
 				</hgroup>
 			</div>

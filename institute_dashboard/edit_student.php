@@ -59,7 +59,7 @@ if ($_SESSION['role'] != "Texas") {
 												<!-- Personal details -->
 												<!-- Avatar -->
 												<div class="avatar">
-													<img id="IMG-preview" class="avatar-img rounded-circle" src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']."?t"; ?>" alt="...">
+													<img id="IMG-preview" class="avatar-img rounded-circle" src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic'] . "?t"; ?>" alt="...">
 												</div>
 											</div>
 											<div class="col ml-n2">
@@ -260,24 +260,6 @@ if ($_SESSION['role'] != "Texas") {
 										</div>
 									</div>
 								</div>
-								<div class="row">
-									<div class="col-12 col-md-6">
-										<div class="form-group">
-											<label for="validationCustom01" class="form-label">
-												Student SPI
-											</label>
-											<input id="validationCustom01" type="number" pattern="[0-9]{12}" id="validationCustom01" class="form-control" name="sspi" placeholder="Optional" value="<?php echo $row['SPI']; ?>">
-										</div>
-									</div>
-									<div class="col-12 col-md-6">
-										<div class="form-group">
-											<label class="form-label">
-												Student CGPA
-											</label>
-											<input type="number" id="validationCustom01" class="form-control" name="scgpa" placeholder="Optional" value="<?php echo $row['CGPA']; ?>">
-										</div>
-									</div>
-								</div>
 								<hr class="mt-4 mb-5">
 								<div class="row">
 									<div class="col-12 col-md-6">
@@ -330,7 +312,7 @@ if ($_SESSION['role'] != "Texas") {
 									<div class="col-md-2">
 										<div class="col-auto">
 											<!-- Button -->
-											<button class="btn btn-primary " type="submit" name="ser" value="2">
+											<button class="btn btn-primary" type="submit" name="ser" value="2">
 												Search
 											</button>
 										</div>
@@ -350,7 +332,7 @@ if ($_SESSION['role'] != "Texas") {
 											<div class="row align-items-center">
 												<div class="col-auto">
 													<a href="profile-posts.html" class="avatar avatar-lg">
-														<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']."?t"; ?>" alt="..." class="avatar-img rounded-circle">
+														<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic'] . "?t"; ?>" alt="..." class="avatar-img rounded-circle">
 													</a>
 												</div>
 												<div class="col ml-n2">
@@ -391,18 +373,18 @@ if ($_SESSION['role'] != "Texas") {
 			</div>
 		</div>
 		<script>
-		function cp() {
-			var xx = document.getElementById("myInput").value;
-			document.getElementById("demo").innerHTML = "ST" + xx;
+			function cp() {
+				var xx = document.getElementById("myInput").value;
+				document.getElementById("demo").innerHTML = "ST" + xx;
 
-			let nnum = document.getElementById("myInput").value;
-			let ss = nnum.toString();
-			let sstr = ss.toString().split('').reverse().join('');
-			let rrev = sstr.substr(0, 4);
+				let nnum = document.getElementById("myInput").value;
+				let ss = nnum.toString();
+				let sstr = ss.toString().split('').reverse().join('');
+				let rrev = sstr.substr(0, 4);
 
-			document.getElementById("myInput2").innerHTML = rrev;
+				document.getElementById("myInput2").innerHTML = rrev;
 
-		}
+			}
 		</script>
 		<?php include_once("context.php"); ?>
 		<!-- / .main-content -->
@@ -429,8 +411,7 @@ if ($_SESSION['role'] != "Texas") {
 		$scontact = $_POST['scontact'];
 		$semail = $_POST['semail'];
 		$dob = $_POST['dob'];
-		$sspi = $_POST['sspi'];
-		$scgpa = $_POST['scgpa'];
+
 		$pcontact = $_POST['pcontact'];
 		$pmail = $_POST['pmail'];
 		$ssem = $_POST['ssem'];
@@ -443,7 +424,7 @@ if ($_SESSION['role'] != "Texas") {
 		$dob = $_POST['dob'];
 		$stid = $row['StudentId'];
 		$fs_name = $senr . ".png";
-		$sqli = "UPDATE studentmaster SET SPI='$sspi',CGPA='$scgpa',StudentUserName='$ec',StudentEnrollmentNo='$senr',StudentPassword='$spassword',StudentFirstName='$fname',StudentMiddleName='$mname',StudentLastName='$lname',StudentProfilePic='$fs_name',StudentBranchCode='$sbranch',StudentSemester='$ssem',StudentEmail='$semail',StudentContactNo='$scontact',StudentAddress='$add',ParentEmail='$pmail',ParentContactNo='$pcontact',StudentRollNo='$sroll',StudentDOB='$dob' WHERE StudentId = '$stid';";
+		$sqli = "UPDATE studentmaster SET StudentUserName='$ec',StudentEnrollmentNo='$senr',StudentPassword='$spassword',StudentFirstName='$fname',StudentMiddleName='$mname',StudentLastName='$lname',StudentProfilePic='$fs_name',StudentBranchCode='$sbranch',StudentSemester='$ssem',StudentEmail='$semail',StudentContactNo='$scontact',StudentAddress='$add',ParentEmail='$pmail',ParentContactNo='$pcontact',StudentRollNo='$sroll',StudentDOB='$dob' WHERE StudentId = '$stid';";
 		$runed = mysqli_query($conn, $sqli);
 		if ($runed == true) {
 			echo "<script>alert('Student Details Edited Successfully')</script>";
