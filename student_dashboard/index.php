@@ -238,7 +238,7 @@ if ($_SESSION['role'] != "Abuja") {
 								<div class="row align-items-center">
 									<div class="col">
 										<h6 class="text-uppercase text-muted mb-2">
-											Pending assignments
+											Assignments
 										</h6>
 										<span class="h2 mb-0">
 											<?php echo $acrow ?>
