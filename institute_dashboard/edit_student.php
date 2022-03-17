@@ -429,6 +429,8 @@ if ($_SESSION['role'] != "Texas") {
 		$scontact = $_POST['scontact'];
 		$semail = $_POST['semail'];
 		$dob = $_POST['dob'];
+		$sspi = $_POST['sspi'];
+		$scgpa = $_POST['scgpa'];
 		$pcontact = $_POST['pcontact'];
 		$pmail = $_POST['pmail'];
 		$ssem = $_POST['ssem'];
@@ -441,7 +443,7 @@ if ($_SESSION['role'] != "Texas") {
 		$dob = $_POST['dob'];
 		$stid = $row['StudentId'];
 		$fs_name = $senr . ".png";
-		$sqli = "UPDATE studentmaster SET StudentUserName='$ec',StudentEnrollmentNo='$senr',StudentPassword='$spassword',StudentFirstName='$fname',StudentMiddleName='$mname',StudentLastName='$lname',StudentProfilePic='$fs_name',StudentBranchCode='$sbranch',StudentSemester='$ssem',StudentEmail='$semail',StudentContactNo='$scontact',StudentAddress='$add',ParentEmail='$pmail',ParentContactNo='$pcontact',StudentRollNo='$sroll',StudentDOB='$dob' WHERE StudentId = '$stid';";
+		$sqli = "UPDATE studentmaster SET SPI='$sspi',CGPA='$scgpa',StudentUserName='$ec',StudentEnrollmentNo='$senr',StudentPassword='$spassword',StudentFirstName='$fname',StudentMiddleName='$mname',StudentLastName='$lname',StudentProfilePic='$fs_name',StudentBranchCode='$sbranch',StudentSemester='$ssem',StudentEmail='$semail',StudentContactNo='$scontact',StudentAddress='$add',ParentEmail='$pmail',ParentContactNo='$pcontact',StudentRollNo='$sroll',StudentDOB='$dob' WHERE StudentId = '$stid';";
 		$runed = mysqli_query($conn, $sqli);
 		if ($runed == true) {
 			echo "<script>alert('Student Details Edited Successfully')</script>";

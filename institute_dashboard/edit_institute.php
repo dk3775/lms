@@ -365,7 +365,7 @@ if ($_SESSION['role'] != "Texas") {
       $inrole = $_POST['inrole'];
       $inoffice = $_POST['inoffice'];
 
-      $fs_name = $inusername . ".png";
+      $fs_name = $inusername.".png";
 
       $sql = "UPDATE `institutemaster` SET `InstituteUserName`='$inusername',
         `InstitutePassword`='$inpass',
