@@ -41,7 +41,7 @@ if ($_SESSION['role'] != "Texas") {
 			<div class="container-fluid">
 				<div class="header-body">
 					<div class="row align-items-end">
-						
+
 						<div class="col">
 							<h6 class="header-pretitle">
 								<?php echo $_SESSION['userrole']; ?>
@@ -67,7 +67,7 @@ if ($_SESSION['role'] != "Texas") {
 				<div class="row gx-4">
 					<div class="col-auto">
 						<div class="avatar avatar-xl position-relative">
-							<img src="../src/uploads/inprofile/<?php echo $iqurrow['InstituteProfilePic'] . "?t"; ?>" class="w-100 border-radius-lg shadow-sm" style="border-radius: 10px;">
+							<img src="../src/uploads/inprofile/<?php echo $iqurrow['InstituteProfilePic'] . "?t=" . time(); ?>" class="w-100 border-radius-lg shadow-sm" style="border-radius: 10px;">
 						</div>
 					</div>
 					<div class="col-auto my-auto">

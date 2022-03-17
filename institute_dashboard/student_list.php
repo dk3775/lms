@@ -31,21 +31,24 @@ if ($_SESSION['role'] != "Texas") {
 					<div class="header">
 						<div class="header-body">
 							<div class="row align-items-center">
-								<div class="col">
+								<div class="d-flex justify-content-between mb-5">
+
 
 									<!-- Pretitle -->
 									<h5 class="header-pretitle">
-										<a class=" btn-link" onclick="history.back()"><i class=" fe uil-angle-double-left"></i>Back</a>
+										<a class="btn btn-sm btn-outline-primary" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
 									</h5>
+
 									<!-- Title -->
-									<h1 class="header-title text-truncate">
-										Student List
-									</h1>
-								</div>
-								<div class="col-auto">
 									<a href="add_student.php" class="btn btn-primary ml-2">
 										Add Student
 									</a>
+
+								</div>
+								<div class="row-auto">
+									<h1 class="header-title text-truncate">
+										Student List
+									</h1>
 								</div>
 							</div>
 							<!-- / .row -->
