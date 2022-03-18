@@ -15,7 +15,7 @@ if ($_SESSION['role'] != "Abuja") {
     <html lang="en">
 
     <head>
-        <?php include_once("head.php"); ?>
+        <?php include_once("../head.php"); ?>
     </head>
 
     <body>
@@ -67,6 +67,11 @@ if ($_SESSION['role'] != "Abuja") {
                                     <div class="input-group">
                                         <span class="input-group-text col-2 text-dark">Query Reply</span>
                                         <textarea rows="2" aria-label="First name" class="form-control" disabled><?php echo $row['QueryReply']; ?></textarea>
+                                    </div>
+                                <?php } ?>
+                                <?php if ($row['QueryDocument'] != "") { ?>
+                                    <div class="d-flex justify mt-5">
+                                        <a download="<?php echo $row['QueryDocument']; ?>" href="../src/uploads/querydocument/<?php echo $row['QueryDocument']; ?>" type="button" class="btn btn-sm btn-primary">Download Attachment</a>
                                     </div>
                                 <?php } ?>
                             </div>

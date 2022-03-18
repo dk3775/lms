@@ -136,7 +136,7 @@ $sqldata = "";
 								<label for="validationCustom01" class="form-label">
 									Student Contact Number
 								</label>
-								<input type="tel" pattern="[0-9]{10}" maxlength="10" id="validationCustom01" class="form-control" name="scontact" required>
+								<input type="number" pattern="[0-9]{10}" maxlength="10" id="validationCustom01" class="form-control" name="scontact" required>
 							</div>
 						</div>
 						<div class="row">
@@ -171,7 +171,7 @@ $sqldata = "";
 									<label for="validationCustom01" class="form-label">
 										Parent's Contact Number
 									</label>
-									<input type="tel" id="validationCustom01" maxlength="10" class="form-control" pattern="[0-9]{10}" name="pcontact" required>
+									<input type="number" id="validationCustom01" maxlength="10" class="form-control" pattern="[0-9]{10}" name="pcontact" required>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
@@ -189,7 +189,7 @@ $sqldata = "";
 									<label for="validationCustom01" class="form-label">
 										Student Enrollment No
 									</label>
-									<input id="myInput" oninput="cp()" type="tel" pattern="[0-9]{12}" id="validationCustom01" class="form-control" name="senr" required>
+									<input id="myInput" oninput="cp()" type="number" pattern="[0-9]{12}" id="validationCustom01" class="form-control" name="senr" required>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
@@ -197,7 +197,7 @@ $sqldata = "";
 									<label class="form-label">
 										Student Roll No
 									</label>
-									<input type="tel" maxlength="3" id="validationCustom01" class="form-control" name="sroll" required>
+									<input type="number" maxlength="3" id="validationCustom01" class="form-control" name="sroll" required>
 								</div>
 							</div>
 						</div>

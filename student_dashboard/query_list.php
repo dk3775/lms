@@ -151,8 +151,10 @@ if ($_SESSION['role'] != "Abuja") {
                                                       ?>
                                                    </td>
                                                    <td>
-                                                   <a href="query_profile.php?qid=<?php echo $urow['QueryId']; ?>" type="button" class="btn btn-sm btn-white">View</a>
-                                                      <a download="<?php echo $urow['QueryDocument']; ?>" href="../src/uploads/querydocument/<?php echo $urow['QueryDocument']; ?>" type="button" class="btn btn-sm btn-white">Download</a>
+                                                      <a href="query_profile.php?qid=<?php echo $urow['QueryId']; ?>" type="button" class="btn btn-sm btn-white">View</a>
+                                                      <?php if ($urow['QueryDocument'] != "") { ?>
+                                                         <a download="<?php echo $urow['QueryDocument']; ?>" href="../src/uploads/querydocument/<?php echo $urow['QueryDocument']; ?>" type="button" class="btn btn-sm btn-white">Download</a>
+                                                      <?php } ?>
                                                    </td>
                                                    <td></td>
                                                 </tr>

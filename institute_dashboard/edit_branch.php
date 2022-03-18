@@ -76,7 +76,13 @@ if ($_SESSION['role'] != "Texas") {
 								<div class="row">
 									<div class="col-md-6">
 										<label for="validationCustom01" class="form-label">No of Semesters</label>
-										<input type="text" class="form-control" id="validationCustom01" name="bsem" value="<?php echo $row['BranchSemesters']; ?>" required><br>
+										<!-- <i nput type="text" class="form-control" id="validationCustom01" name="bsem" value="<?php echo $row['BranchSemesters']; ?>" required> -->
+										<select id="validationCustom01" class="form-control" name="bsem" required>
+											<option value="" hidden="">Select Semesters</option>
+											<?php for ($count = 1; $count < 9; $count++) { ?>
+												<option value="<?php echo $count; ?>" <?php if ($row['BranchSemesters'] == $count) { ?>selected <?php } ?>><?php echo $count; ?></option>
+											<?php } ?>
+										</select><br>
 									</div>
 								</div>
 								<div class="d-flex justify">
