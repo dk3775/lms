@@ -12,12 +12,12 @@ if ($_SESSION['role'] != "Texas") {
 <html lang="en">
 
 <head>
-<?php include_once("../head.php"); ?>
+	<?php include_once("../head.php"); ?>
 </head>
 
 <body>
 	<!-- NAVIGATION -->
-	<?php 
+	<?php
 	$nav_role = "Branch";
 	include_once("../nav.php"); ?>
 	<!-- MAIN CONTENT -->
@@ -50,17 +50,22 @@ if ($_SESSION['role'] != "Texas") {
 						<div class="row">
 							<div class="col-md-6">
 								<label for="validationCustom01" class="form-label">Branch code</label>
-								<input type="text" class="form-control" id="validationCustom01" name="icode" placeholder="CE" required><br>
+								<input type="text" class="form-control" id="validationCustom01" name="icode" placeholder="001" required><br>
 							</div>
 							<div class="col-md-6">
 								<label for="validationCustom01" class="form-label">Branch name</label>
-								<input type="text" class="form-control" id="validationCustom01" name="iname" placeholder="Computer Engg." required><br>
+								<input type="text" class="form-control" id="validationCustom01" name="iname" placeholder="Computer Engineering" required><br>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6">
 								<label for="validationCustom01" class="form-label">No of Semesters</label>
-								<input type="number" class="form-control" id="validationCustom01" name="isem" placeholder="06" required><br>
+								<select id="validationCustom01" class="form-control" name="isem" required>
+									<option value="" hidden="">Select Semesters</option>
+									<?php for ($count = 1; $count < 9; $count++) { ?>
+										<option value="<?php echo $count; ?>"><?php echo $count; ?></option>
+									<?php } ?>
+								</select>
 							</div>
 						</div>
 						<!-- Divider -->
@@ -95,7 +100,7 @@ if ($_SESSION['role'] != "Texas") {
 if (isset($_POST['subbed'])) {
 
 	extract($_POST);
-	
+
 	$sql = "INSERT INTO branchmaster (BranchName,BranchCode,BranchSemesters) VALUES ('$iname', '$icode','$isem' );";
 	$run = mysqli_query($conn, $sql);
 	if ($run == true) {

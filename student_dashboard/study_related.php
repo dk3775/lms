@@ -21,14 +21,16 @@ if ($_SESSION['role'] != "Abuja") {
     $sqry = mysqli_query($conn, $ssql);
 }
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <?php
-        $nav_role = "Study related querys";
-        require_once('../head.php'); ?>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php
+    $nav_role = "Study related querys";
+    require_once('../head.php'); ?>
+</head>
+
+<body>
     <!-- NAVIGATION -->
     <?php include_once('nav.php'); ?>
     <!-- MAIN CONTENT -->
@@ -184,8 +186,9 @@ if ($_SESSION['role'] != "Abuja") {
     <script src="../assets/js/vendor.bundle.js"></script>
     <!-- Theme JS -->
     <script src="../assets/js/theme.bundle.js"></script>
-    </body>
-    </html>
+</body>
+
+</html>
 <?php
 if (isset($_POST['sub'])) {
 
@@ -213,7 +216,7 @@ if (isset($_POST['sub'])) {
         $f_extension = end($f_ext);
         $qrdoc = $qrfrom . "_" . time() . "." . $f_extension;
     }
-    $f_path ="../src/uploads/querydocument/" . $qrdoc;
+    $f_path = "../src/uploads/querydocument/" . $qrdoc;
 
     $sql = "INSERT INTO `querymaster`(`QueryFromId`, `QueryToId`, `QueryTopic`, `QueryQuestion`, `Querystatus`, `QuerySubject`, `QueryDocument`, `QueryGenDate`, `QueryType`) 
 		VALUES ('$qrfrom','$qrto','$srtopic','$srdetail','$qrstatus','$srsub','$qrdoc','$dt','2')";
@@ -225,18 +228,20 @@ if (isset($_POST['sub'])) {
 
         if ($f_error === 0) {
             if ($f_size <= 2000000) {
-                $flag = move_uploaded_file($f_tmp_name, $f_path); // Moving Uploaded File to Server ... to uploades folder by file name f_name ...
+                if (move_uploaded_file($f_tmp_name, $f_path)) { // Moving Uploaded File to Server ... to uploades folder by file name f_name ...
+                    $flag = true;
+                } else {
+                    echo "<script>alert('Error in uploading file .. !');</script>";
+                }
             } else {
                 echo "<script>alert('File size is to big .. !');</script>";
             }
             if ($flag == true) {
                 domail($facresult['FacultyEmail'], $facresult['FacultyFirstName'] . " " . $facresult['FacultyLastName'], "New query from " . $sturesult['StudentFirstName'] . " " . $sturesult['StudentLastName'] . ", For topic -> " . $srtopic, $srdetail, $f_path);
             }
-        } else {
-            echo "<script>alert('Error in uploading file .. !');</script>";
         }
         if ($flag == false) {
-            domail( $facresult['FacultyEmail'], $facresult['FacultyFirstName']." ".$facresult['FacultyLastName'],"New query from ".$sturesult['StudentFirstName']." ".$sturesult['StudentLastName'].", For topic -> ". $srtopic, $srdetail, '');
+            domail($facresult['FacultyEmail'], $facresult['FacultyFirstName'] . " " . $facresult['FacultyLastName'], "New query from " . $sturesult['StudentFirstName'] . " " . $sturesult['StudentLastName'] . ", For topic -> " . $srtopic, $srdetail, '');
         }
         echo "<script>window.open('query_list.php','_self')</script>";
     } else {

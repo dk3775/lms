@@ -156,7 +156,7 @@ if ($_SESSION['role'] != "Texas") {
 										<label class="form-label">
 											Student Contact Number
 										</label>
-										<input type="tel" pattern="[0-9]{10}" class="form-control" maxlength="10" name="scontact" value="<?php echo $row['StudentContactNo']; ?>" required>
+										<input type="number" pattern="[0-9]{10}" class="form-control" maxlength="10" name="scontact" value="<?php echo $row['StudentContactNo']; ?>" required>
 									</div>
 								</div>
 								<div class="row">
@@ -191,7 +191,7 @@ if ($_SESSION['role'] != "Texas") {
 											<label class="form-label">
 												Parent's Contact Number
 											</label>
-											<input type="tel" class="form-control" pattern="[0-9]{10}" maxlength="10" name="pcontact" value="<?php echo $row['ParentContactNo']; ?>" required>
+											<input type="number" class="form-control" pattern="[0-9]{10}" maxlength="10" name="pcontact" value="<?php echo $row['ParentContactNo']; ?>" required>
 										</div>
 									</div>
 									<div class="col-12 col-md-6">
@@ -209,7 +209,7 @@ if ($_SESSION['role'] != "Texas") {
 											<label class="form-label">
 												Student Enrollment No
 											</label>
-											<input type="tel" pattern="[0-9]{12}" id="myInput" onchange="cp()" on oninput="cp()" class="form-control" name="senr" value="<?php echo $row['StudentEnrollmentNo']; ?>" required>
+											<input type="number" pattern="[0-9]{12}" id="myInput" onchange="cp()" on oninput="cp()" class="form-control" name="senr" value="<?php echo $row['StudentEnrollmentNo']; ?>" required>
 										</div>
 									</div>
 									<div class="col-12 col-md-6">
@@ -217,7 +217,7 @@ if ($_SESSION['role'] != "Texas") {
 											<label class="form-label">
 												Student Roll No
 											</label>
-											<input type="text" maxlength="3" class="form-control" name="sroll" value="<?php echo $row['StudentRollNo']; ?>" required>
+											<input type="number" maxlength="3" class="form-control" name="sroll" value="<?php echo $row['StudentRollNo']; ?>" required>
 										</div>
 									</div>
 								</div>
