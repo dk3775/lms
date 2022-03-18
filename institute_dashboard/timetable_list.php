@@ -5,7 +5,7 @@ if ($_SESSION['role'] != "Texas") {
 } else {
 	include_once "../config.php";
 	$_SESSION["userrole"] = "institute";
-	$qur = "SELECT * FROM timetablemaster ";
+	$qur = "SELECT * from timetablemaster inner join branchmaster on timetablemaster.TimetableBranchCode = branchmaster.BranchCode ORDER BY BranchName  ASC, Timetableimage ;";
 	$res = mysqli_query($conn, $qur);
 }
 ?>
@@ -113,7 +113,7 @@ if ($_SESSION['role'] != "Texas") {
 												<tr>
 													<td>
 														<!-- Email -->
-														<span class="item-name text-reset"><?php echo $row['TimetableBranchCode']; ?></span>
+														<span class="item-name text-reset"><?php echo $row['BranchName']; ?></span>
 													</td>
 													<td>
 														<!-- Email -->

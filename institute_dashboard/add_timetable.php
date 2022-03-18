@@ -4,7 +4,7 @@
    	header("Location: ../index.php");
    } else {
    	include_once("../config.php");
-   	$_SESSION["userrole"] = "Faculty";
+   	$_SESSION["userrole"] = "Institute";
    }
    #fetching tables
    $branchsel = "SELECT * FROM branchmaster";
@@ -65,7 +65,7 @@
                                     </small>
                                  </div>
                                  <div class="col-12 col-md-6">
-                                    <input type="file" id="img" name="tpic" class="btn btn-sm"
+                                    <input type="file" id="img" name="tpic" required class="btn btn-sm"
                                        onchange="showPreview(event);" accept="image/jpg, image/jpeg, image/png">
                                  </div>
                               </div>
@@ -205,10 +205,10 @@
    		if ($f_size <= 2000000) {
    			move_uploaded_file($f_tmp_name, "../src/uploads/timetables/" . $tt_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
    		} else {
-   			echo "<script>alert(File size is to big .. !);</script>";
+   			echo "<script>alert("File size is to big .. !");</script>";
    		}
    	} else {
-   		echo "Something went wrong .. !";
+   		echo "<script>alert("Error in uploading file .. !");</script>";
    	}
    	$sql="INSERT INTO timetablemaster(TimetableBranchCode, TimetableSemester, TimetableUploadedBy, TimetableUploadTime, TimetableImage) 
     VALUES ('$tbranch','$tsem','$tupd','$tupdtime','$tt_name')";

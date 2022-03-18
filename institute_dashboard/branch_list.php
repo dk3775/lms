@@ -6,7 +6,7 @@ if ($_SESSION['role'] != "Texas") {
 } else {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "institute";
-	$qur = "SELECT * FROM branchmaster";
+	$qur = "SELECT * FROM branchmaster ORDER BY BranchName";
 	$res = mysqli_query($conn, $qur);
 }
 ?>

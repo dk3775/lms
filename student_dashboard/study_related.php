@@ -230,12 +230,13 @@ if (isset($_POST['sub'])) {
                 echo "<script>alert('File size is to big .. !');</script>";
             }
             if ($flag == true) {
-                domail( $facresult['FacultyEmail'], $facresult['FacultyFirstName']." ".$facresult['FacultyLastName'],"New query from ".$sturesult['StudentFirstName']." ".$sturesult['StudentLastName'].", For topic -> ". $srtopic, $srdetail, $f_path);
-            } else {
-                domail( $facresult['FacultyEmail'], $facresult['FacultyFirstName']." ".$facresult['FacultyLastName'],"New query from ".$sturesult['StudentFirstName']." ".$sturesult['StudentLastName'].", For topic -> ". $srtopic, $srdetail, '');
+                domail($facresult['FacultyEmail'], $facresult['FacultyFirstName'] . " " . $facresult['FacultyLastName'], "New query from " . $sturesult['StudentFirstName'] . " " . $sturesult['StudentLastName'] . ", For topic -> " . $srtopic, $srdetail, $f_path);
             }
         } else {
-            echo "Something went wrong .. !";
+            echo "<script>alert('Error in uploading file .. !');</script>";
+        }
+        if ($flag == false) {
+            domail( $facresult['FacultyEmail'], $facresult['FacultyFirstName']." ".$facresult['FacultyLastName'],"New query from ".$sturesult['StudentFirstName']." ".$sturesult['StudentLastName'].", For topic -> ". $srtopic, $srdetail, '');
         }
         echo "<script>window.open('query_list.php','_self')</script>";
     } else {

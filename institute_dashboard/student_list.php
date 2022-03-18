@@ -5,7 +5,7 @@ if ($_SESSION['role'] != "Texas") {
 } else {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Faculty";
-	$qur = "SELECT * FROM studentmaster";
+	$qur = "SELECT * FROM studentmaster ORDER BY StudentFirstName";
 	$res = mysqli_query($conn, $qur);
 }
 ?>
