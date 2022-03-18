@@ -219,21 +219,25 @@ if (isset($_POST['sub'])) {
 		VALUES ('$qrfrom','$qrto','$srtopic','$srdetail','$qrstatus','$srsub','$qrdoc','$dt','2')";
     // echo $sql;
     $run = mysqli_query($conn, $sql);
-
+    $flag = false;
     if ($run == true) {
         echo "<script>alert('Request Sent .. ')</script>";
 
         if ($f_error === 0) {
             if ($f_size <= 2000000) {
-                move_uploaded_file($f_tmp_name, $f_path); // Moving Uploaded File to Server ... to uploades folder by file name f_name ...
+                $flag = move_uploaded_file($f_tmp_name, $f_path); // Moving Uploaded File to Server ... to uploades folder by file name f_name ...
             } else {
                 echo "<script>alert('File size is to big .. !');</script>";
             }
-            domail( $facresult['FacultyEmail'], $sturesult['StudentFirstName']." ".$sturesult['StudentLastName'],"New query from ".$sturesult['StudentFirstName']." ".$sturesult['StudentLastName'].", For topic -> ". $srtopic, $srdetail, $f_path);
+            if ($flag == true) {
+                domail( $facresult['FacultyEmail'], $facresult['FacultyFirstName']." ".$facresult['FacultyLastName'],"New query from ".$sturesult['StudentFirstName']." ".$sturesult['StudentLastName'].", For topic -> ". $srtopic, $srdetail, $f_path);
+            } else {
+                domail( $facresult['FacultyEmail'], $facresult['FacultyFirstName']." ".$facresult['FacultyLastName'],"New query from ".$sturesult['StudentFirstName']." ".$sturesult['StudentLastName'].", For topic -> ". $srtopic, $srdetail, '');
+            }
         } else {
             echo "Something went wrong .. !";
         }
-        echo "<script>window.open('study_related.php','_self')</script>";
+        echo "<script>window.open('query_list.php','_self')</script>";
     } else {
         echo "<script>alert('Error to Send Request .. ')</script>";
         echo "<script>window.open('study_related.php','_self')</script>";

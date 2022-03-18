@@ -1,8 +1,12 @@
 <?php
     //this is the main config file
     // $server = "localhost";
-    $server = "sql284.main-hosting.eu";
-    $conn = mysqli_connect($server, "u877822597_lmsadmin", "#TitansDKALAJdedenge79", "u877822597_lms");
+    declare(strict_types=1);
+    require_once('vendor/autoload.php');
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+//    $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
+    $conn = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
     if(!isset($conn)){
         die("Connection failed: " . mysqli_connect_error());
     }

@@ -1,8 +1,12 @@
 <?php
+declare(strict_types=1);
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-require 'vendor/autoload.php';
+
+require_once('vendor/autoload.php');
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->safeLoad();
 
 function domail( $to,$toname, $subject, $body, $attachment = '', $cc = '', $bcc = '' ) {
     $mail = new PHPMailer(true);
@@ -10,12 +14,12 @@ function domail( $to,$toname, $subject, $body, $attachment = '', $cc = '', $bcc 
     try {
         $mail->SMTPDebug = 0;                      //Enable verbose debug output
         $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'smtp.hostinger.com';                     //Set the SMTP server to send through
+        $mail->Host       = $_ENV['SMTP_HOST'];                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'no-reply@lms.titanslab.in';                     //SMTP username
-        $mail->Password   = '#TitansDKALAJdedenge79';                               //SMTP password
+        $mail->Username   = $_ENV['SMTP_USER'];                     //SMTP username
+        $mail->Password   = $_ENV['SMTP_PASS'];                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-        $mail->Port       = 465;
+        $mail->Port       = $_ENV['SMTP_PORT'];                     //Set the SMTP port
         $mail->addCustomHeader('MIME-Version', '1.0');
         $mail->addCustomHeader('DATE', date('r'));
 
