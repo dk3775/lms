@@ -25,6 +25,9 @@
 						<div class="header-body">
 							<div class="row align-items-end">
 								<div class="col">
+                                    <h5 class="header-pretitle mb-5">
+                                        <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                                    </h5>
 									<!-- Pretitle -->
 									<h6 class="header-pretitle">
 										Branch
@@ -70,7 +73,7 @@
 							</div>
 							<div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
 								<!-- Button -->
-								<a href="edit_branch.php?brid=<?php echo $studentenr; ?>" class="btn btn-primary d-block d-md-inline-block btn-md">
+								<a href="edit_branch.php?brid=<?php echo $studentenr; ?>" class="btn btn-warning d-block d-md-inline-block btn-md">
 								Edit Details
 								</a>
 							</div>

@@ -19,13 +19,16 @@ if ($_SESSION['role'] != "Texas") {
       <div class="main-content">
          <div class="container-fluid">
             <div class="row justify-content-center">
-               <div class="col-12 col-lg-10 col-xl-8">
+               <div class="col-12 col-xl-10">
                   <!-- Header -->
                   <div class="header mt-md-5">
                      <div class="header-body">
                         <div class="row align-items-center">
                            <div class="col">
                               <!-- Pretitle -->
+                               <h5 class="header-pretitle mb-5">
+                                   <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                               </h5>
                               <h6 class="header-pretitle">
                                  Edit
                               </h6>
@@ -216,7 +219,7 @@ if ($_SESSION['role'] != "Texas") {
                         <div class="d-flex justify">
                            <!-- Button -->
                            <button class="btn btn-primary" type="submit" value="sub" name="subbed">
-                              Edit Institute User
+                              Save Changes
                            </button>
                         </div>
                         <!-- / .row -->

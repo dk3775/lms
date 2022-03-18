@@ -34,6 +34,9 @@ if ($_SESSION['role'] != "Texas") {
 						<div class="header-body">
 							<div class="row align-items-end">
 								<div class="col">
+                                    <h5 class="header-pretitle mb-5">
+                                        <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                                    </h5>
 									<!-- Pretitle -->
 									<h6 class="header-pretitle">
 										Branch
@@ -75,7 +78,7 @@ if ($_SESSION['role'] != "Texas") {
 								</div>
 								<div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
 									<!-- Button -->
-									<a href="edit_branch.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-primary d-block d-md-inline-block btn-md">
+									<a href="edit_branch.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-warning d-block d-md-inline-block btn-md">
 										Edit Details
 									</a>
 								</div>
@@ -131,8 +134,8 @@ if ($_SESSION['role'] != "Texas") {
 											<h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
 											<p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
 											<p class="card-text"><?php echo $roww['FacultyFirstName'] . " " . $roww['FacultyLastName']; ?></p>
-											<a href="edit_subject.php?semid=<?php echo $semid; ?>&brid=<?php echo $xbrid; ?>&subcode=<?php echo $roww['SubjectCode']; ?>" class="">Edit</a> |
-											<a class="" href="semsubdelete.php?subcode=<?php echo $roww['SubjectCode']; ?>&semid=<?php echo $semid; ?>&brid=<?php echo $xbrid; ?>" onclick="if (! confirm('Are you sure , you want to delete this subject ?')) return false;">
+											<a href="edit_subject.php?semid=<?php echo $semid; ?>&brid=<?php echo $xbrid; ?>&subcode=<?php echo $roww['SubjectCode']; ?>" class="btn btn-sm btn-warning">Edit</a> |
+											<a class="btn btn-sm btn-danger" href="semsubdelete.php?subcode=<?php echo $roww['SubjectCode']; ?>&semid=<?php echo $semid; ?>&brid=<?php echo $xbrid; ?>" onclick="if (! confirm('Are you sure , you want to delete this subject ?')) return false;">
 												Delete
 												<!--changes-->
 											</a>

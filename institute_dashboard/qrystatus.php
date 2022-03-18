@@ -14,10 +14,10 @@
         $res = mysqli_query($conn, $qur);
         if ($res) {
             echo "<script>alert('Successfully');</script>";
-            header("Location: acc_related.php");
+            header("Location: student_queries.php");
         } else {
             echo "<script>alert('Failed');</script>";
-            header("Location: acc_related.php");
+            header("Location: student_queries.php");
         }
     }
     ?>

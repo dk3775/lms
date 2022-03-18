@@ -40,8 +40,14 @@ if ($_SESSION['role'] != "Texas") {
 		<div class="header">
 			<div class="container-fluid">
 				<div class="header-body">
+                    <div class="row align-items-end mb-3 ">
+                        <div class="col">
+                            <h5 class="header-pretitle">
+                                <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                            </h5>
+                        </div>
+                    </div>
 					<div class="row align-items-end">
-
 						<div class="col">
 							<h6 class="header-pretitle">
 								<?php echo $_SESSION['userrole']; ?>
@@ -49,11 +55,6 @@ if ($_SESSION['role'] != "Texas") {
 							<h1 class="header-title">
 								Dashboard
 							</h1>
-						</div>
-						<div class="col-auto">
-							<a href="../logout.php" class="btn btn-primary lift">
-								logout
-							</a>
 						</div>
 					</div>
 				</div>

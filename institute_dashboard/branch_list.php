@@ -30,23 +30,28 @@ if ($_SESSION['role'] != "Texas") {
 					<!-- Header -->
 					<div class="header">
 						<div class="header-body">
-							<div class="row align-items-center">
-								<div class="col">
-									<!-- Pretitle -->
-									<h6 class="header-pretitle">
-										View
-									</h6>
-									<!-- Title -->
-									<h1 class="header-title text-truncate">
-										Branch List
-									</h1>
-								</div>
-								<div class="col-auto">
-									<a href="add_branch.php" class="btn btn-primary ml-2">
-										Add Branch
-									</a>
-								</div>
-							</div>
+                            <div class="row align-items-center">
+                                <div class="d-flex justify-content-between mb-5">
+                                    <!-- Pretitle -->
+                                    <h5 class="header-pretitle">
+                                        <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                                    </h5>
+                                    <!-- Title -->
+                                    <a href="add_branch.php" class="btn btn-primary ml-2">
+                                        Add Branch
+                                    </a>
+                                </div>
+                                <div class="row-auto">
+                                    <h6 class="header-pretitle">
+                                        View
+                                    </h6>
+                                    <!-- Title -->
+                                    <h1 class="header-title text-truncate">
+                                        Branch List
+                                    </h1>
+                                </div>
+                            </div>
+
 							<!-- / .row -->
 							<div class="row align-items-center">
 								<div class="col">
@@ -120,16 +125,16 @@ if ($_SESSION['role'] != "Texas") {
 														<span type="text" class="form-control item-number" name="bsem"><?php echo $row['BranchSemesters']; ?></span>
 													</td>
 													<td>
-														<a href="edit_branch.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-sm btn-white">
+														<a href="edit_branch.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-sm btn-warning">
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="branch_delete.php?brid=<?php echo $row['BranchId']; ?>" onclick="if (! confirm('Are You Sure, You want to Delete this Branch ?')) return false;">
+														<a class="btn btn-sm btn-danger" href="branch_delete.php?brid=<?php echo $row['BranchId']; ?>" onclick="if (! confirm('Are You Sure, You want to Delete this Branch ?')) return false;">
 															Delete
 															<!--changes-->
 														</a>
 														&nbsp;
-														<a href="branch_profile.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-sm btn-white">
+														<a href="branch_profile.php?brid=<?php echo $row['BranchId']; ?>" class="btn btn-sm btn-info">
 															View
 														</a>
 													</td>

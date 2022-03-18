@@ -26,7 +26,15 @@ if ($_SESSION['role'] != "Texas") {
             <div class="container-fluid">
                 <div class="header-body">
                     <div class="row align-items-end">
-                        <div class="col">
+                        <div class="d-flex justify-content-between mb-5">
+                            <!-- Pretitle -->
+                            <h5 class="header-pretitle">
+                                <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i
+                                            class="fe uil-angle-double-left"></i>Back</a>
+                            </h5>
+                            <!-- Title -->
+                        </div>
+                        <div class="row-auto">
                             <h6 class="header-pretitle">
                                 Query
                             </h6>

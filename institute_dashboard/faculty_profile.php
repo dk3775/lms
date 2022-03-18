@@ -28,6 +28,10 @@ if ($_SESSION['role'] != "Texas") {
 							<div class="row align-items-end">
 								<div class="col">
 									<!-- Pretitle -->
+                                    <h5 class="header-pretitle mb-5">
+                                        <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i
+                                                    class="fe uil-angle-double-left"></i>Back</a>
+                                    </h5>
 									<h6 class="header-pretitle">
 										Faculty
 									</h6>
@@ -71,13 +75,13 @@ if ($_SESSION['role'] != "Texas") {
 									<h5 class="header-pretitle mt-2">
 										<?php echo $row['FacultyCode']; ?>
 									</h5>
-									<h5 class="header-pretitle mt-2">
+									<h5 class="header-pretitle text-lowercase mt-2">
 										<?php echo $row['FacultyEmail']; ?>
 									</h5>
 								</div>
 								<div class="col-12 col-md-auto mt-2 mt-md-0 mb-md-3">
 									<!-- Button -->
-									<a href="edit_faculty.php?facid=<?php echo $row['FacultyId']; ?>" class="btn btn-primary d-block d-md-inline-block btn-md">
+									<a href="edit_faculty.php?facid=<?php echo $row['FacultyId']; ?>" class="btn btn-warning d-block d-md-inline-block btn-md">
 										Edit Details
 									</a>
 								</div>

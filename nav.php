@@ -82,7 +82,7 @@
 			<!-- Navigation -->
 			<ul class="navbar-nav mb-md-4">
 				<li class="nav-item">
-					<a href="acc_related.php" class="nav-link <?php if ($nav_role == "Student Queries") {
+					<a href="student_queries.php" class="nav-link <?php if ($nav_role == "Student Queries") {
 																	echo "active";
 																} ?>">
 						<i class="fe fe-user"></i>Student Queries
