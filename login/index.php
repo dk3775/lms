@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="en">
-
 <head>
 	<?php
-	// include_once("../head.php");
+    include_once("../head.php");
 	if (isset($_POST['login'])) { ?>
 		<style>
 			input:invalid {
@@ -13,9 +12,6 @@
 
 	<?php } ?>
 </head>
-<?php
-error_reporting(E_ALL ^ E_WARNING);
-?>
 
 <body class="d-flex align-items-center bg-auth border-top border-top-2 border-primary">
 	<!-- CONTENT
