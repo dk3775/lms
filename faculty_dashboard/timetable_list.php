@@ -182,7 +182,7 @@ if ($_SESSION['role'] != "Lagos") {
 			</div>
 		</div>
 	</div>
-	<?php include_once("context.php"); ?>
+	
 	<!-- / .main-content -->
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->

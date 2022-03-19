@@ -69,3 +69,50 @@
 	<button id="btntheme" onclick=" toggleTheme()" type="button" class="btn btn-dark btn-floating btn-lg btn-back-to-top">
 		<i class="fe uil-moon"></i>
 	</button>
+	<script>
+		// check for saved 'darkMode' in localStorage
+		let darkMode = localStorage.getItem('darkMode');
+
+		const darkModeToggle = document.querySelector('#btntheme');
+
+		const enableDarkMode = () => {
+			theme.setAttribute('href', '../assets/css/theme-dark.bundle.css');
+			let btn = document.getElementById('btntheme');
+			btn.className = 'btn btn-info btn-floating btn-lg btn-back-to-top';
+			// 2. Update darkMode in localStorage
+			localStorage.setItem('darkMode', 'enabled');
+		}
+
+		const disableDarkMode = () => {
+			theme.setAttribute('href', '../assets/css/theme.bundle.css');
+			let btn = document.getElementById('btntheme');
+			btn.className = 'btn btn-dark btn-floating btn-lg btn-back-to-top';
+			btn.innerHTML = '<i class="fe uil-moon"></i>';
+			// 2. Update darkMode in localStorage 
+			localStorage.setItem('darkMode', null);
+		}
+
+		// If the user already visited and enabled darkMode
+		// start things off with it on
+		if (darkMode === 'enabled') {
+			enableDarkMode();
+		}
+
+		// When someone clicks the button
+		btntheme.addEventListener('click', () => {
+			// get their darkMode setting
+			darkMode = localStorage.getItem('darkMode');
+
+			// if it not current enabled, enable it
+			if (darkMode != 'enabled') {
+				enableDarkMode();
+				// if it has been enabled, turn it off  
+			} else {
+				disableDarkMode();
+				
+			}
+		});
+	</script>
+	<?php
+	include_once 'context.php';
+	?>

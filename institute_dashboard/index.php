@@ -31,9 +31,7 @@ if ($_SESSION['role'] != "Texas") {
 
 <body>
 	<!-- NAVIGATION -->
-	<?php
-	$nav_role = "Dashboard";
-	include_once("../nav.php"); ?>
+	
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<!-- HEADER -->
@@ -337,11 +335,11 @@ if ($_SESSION['role'] != "Texas") {
 													</td>
 													<td>
 														<!-- Phone -->
-														<button type="button" class="btn btn-sm btn-outline-primary" data-toggle="collapse" data-target="#demo<?php echo $i++; ?>" data-parent="#myTable">View</button>
+														<button type="button" class="btn btn-sm btn-outline-info" data-toggle="collapse" data-target="#demo<?php echo $i++; ?>" data-parent="#myTable">View</button>
 													</td>
 													<td>
 														<!-- Badge -->
-														<a download="<?php echo $urow['UpdateFile']; ?>" href="../src/uploads/updates/<?php echo $urow['UpdateFile']; ?>" type="button" class="btn btn-sm btn-outline-primary">Download</a>
+														<a download="<?php echo $urow['UpdateFile']; ?>" href="../src/uploads/updates/<?php echo $urow['UpdateFile']; ?>" type="button" class="btn btn-sm btn-outline-success">Download</a>
 													</td>
 												<tr id="demo<?php echo $j++; ?>" class="collapse">
 													<td colspan="6" class="hiddenRow">
@@ -445,7 +443,7 @@ if ($_SESSION['role'] != "Texas") {
 			return new bootstrap.Tooltip(tooltipTriggerEl)
 		})
 	</script>
-	<?php include_once("context.php"); ?>
+	
 </body>
 
 </html>

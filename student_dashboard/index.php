@@ -52,12 +52,6 @@ if ($_SESSION['role'] != "Abuja") {
 									Dashboard
 								</h1>
 							</div>
-							<div class="col-auto">
-								<!-- Button -->
-								<a href="../logout.php" class="btn btn-primary lift">
-									logout
-								</a>
-							</div>
 						</div>
 						<!-- / .row -->
 					</div>
