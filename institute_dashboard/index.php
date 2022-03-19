@@ -68,7 +68,7 @@ if ($_SESSION['role'] != "Texas") {
 				<div class="row gx-4">
 					<div class="col-auto">
 						<div class="avatar avatar-xl position-relative">
-							<img src="../src/uploads/inprofile/<?php echo $iqurrow['InstituteProfilePic'] . "?t=" . time(); ?>" class="w-100 border-radius-lg shadow-sm" style="border-radius: 10px;">
+							<img src="../src/uploads/inprofile/<?php echo $iqurrow['InstituteProfilePic'] . "?t=" . time(); ?>" class="w-100 h-100 border-radius-lg shadow-sm" style="border-radius: 10px;">
 						</div>
 					</div>
 					<div class="col-auto my-auto">
