@@ -111,3 +111,18 @@
 		</div>
 	</div>
 </nav>
+<script>
+	function toggleTheme() {
+		if (theme.getAttribute('href') == '../assets/css/theme.bundle.css') {
+			theme.setAttribute('href', '../assets/css/theme-dark.bundle.css');
+			let btn = document.getElementById('btntheme');
+			btn.className = 'btn btn-info btn-floating btn-lg btn-back-to-top';
+			btn.innerHTML = '<i class="fe uil-sun"></i>';
+		} else {
+			theme.setAttribute('href', '../assets/css/theme.bundle.css');
+			let btn = document.getElementById('btntheme');
+			btn.className = 'btn btn-dark btn-floating btn-lg btn-back-to-top';
+			btn.innerHTML = '<i class="fe uil-moon"></i>';
+		}
+	}
+</script>
