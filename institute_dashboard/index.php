@@ -31,7 +31,10 @@ if ($_SESSION['role'] != "Texas") {
 
 <body>
 	<!-- NAVIGATION -->
-	
+	<?php
+	$nav_role = "Dashboard";
+	include_once("../nav.php");
+	?>
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<!-- HEADER -->
