@@ -1,5 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <?php include_once("../head.php"); ?>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
     <style>
         @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 
@@ -7,9 +13,10 @@
             position: fixed;
             top: 100px;
             left: 10px;
-            background: #fdfdfd;
+            background: #152e4d;
+            /*this  */
             width: 250px;
-            box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
             transform: scale(0);
             transform-origin: top left;
@@ -24,14 +31,14 @@
         }
 
         #context-menu .list {
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #ecb365;
         }
 
         #context-menu .item {
             position: relative;
             padding: 10px;
             font-size: 14px;
-            color: #555;
+            color: #555555;
             cursor: pointer;
         }
 
@@ -48,7 +55,8 @@
             left: 0px;
             width: 0%;
             height: 100%;
-            background: #eee;
+            background: #04293a;
+            /*this  */
             z-index: -1;
             transition: all 150ms ease-in-out;
         }
@@ -57,64 +65,63 @@
             width: 100%;
         }
     </style>
+    <?php include_once("../head.php"); ?>
 </head>
-
 
 <body>
     <div id="context-menu">
         <div class="list">
             <div class="item" onclick="javascript:history.go(0);">
-                <a class="nav-item" style="color: #6F6F6F;">
+                <a class="nav-item" style="color: white;">
                     <i class="fa uil-refresh"></i>
                     Refresh</a>
             </div>
             <div class="item" onclick="window.location.href='logout.php';">
-                <a class="nav-item" style="color: #6F6F6F;">
+                <a class="nav-item" style="color: white;">
                     <i class="fa uil-signout"></i>
                     Logout</a>
             </div>
         </div>
         <div class="list">
             <div class="item" onclick="window.location.href='student_list.php';">
-                <a class="nav-item" style="color: #6F6F6F;">
+                <a class="nav-item color" style="color: white;">
                     <i class="fe uil-user"></i>
                     Student List</a>
             </div>
             <div class="item" onclick="window.location.href='faculty_list.php';">
-                <a class="nav-item" style="color: #6F6F6F;">
+                <a class="nav-item" style="color: white;">
                     <i class="fe uil-graduation-cap"></i>
                     Faculty list</a>
             </div>
             <div class="item" onclick="window.location.href='';">
-                <a class="nav-item" style="color: #6F6F6F;">
+                <a class="nav-item" style="color: white;">
                     <i class="fe uil-code-branch"></i>
                     Branch list</a>
             </div>
             <div class="item" onclick="window.location.href='subject_list.php';">
-                <a class="nav-item" style="color: #6F6F6F;">
+                <a class="nav-item" style="color: white;">
                     <i class="fe uil-book"></i>
                     Subject list</a>
             </div>
             <div class="item" onclick="window.location.href='update_list.php';">
-                <a class="nav-item" style="color: #6F6F6F;">
+                <a class="nav-item" style="color: white;">
                     <i class="fe fe-bell"></i>
                     Updates</a>
             </div>
         </div>
         <div class="list">
             <div class="item" onclick="window.location.href='student_queries.php';">
-                <a class="nav-item" style="color: #6F6F6F;">
+                <a class="nav-item" style="color: white;">
                     <i class="fa uil-question-circle"></i>
                     Student Queries</a>
             </div>
         </div>
-        <div class="list">
-            <div class="item" onclick="window.location.href='institute_perks.php';">
-                <a class="nav-item" style="color: #6F6F6F;">
-                    <i class="fa uil-user"></i>
-                    Institute Perks</a>
-            </div>
+        <div class="item" onclick="window.location.href='institute_perks.php';">
+            <a class="nav-item" style="color: white;">
+                <i class="fa uil-user"></i>
+                Institute Perks</a>
         </div>
+    </div>
     </div>
 
     <script>
@@ -194,3 +201,5 @@
         });
     </script>
 </body>
+
+</html>

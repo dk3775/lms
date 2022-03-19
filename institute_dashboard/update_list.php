@@ -173,7 +173,7 @@ include_once "../nav.php"; ?>
         </div>
     </div>
 </div>
-<?php include_once("context.php"); ?>
+
 <!-- / .main-content -->
 <!-- JAVASCRIPT -->
 <!-- Map JS -->

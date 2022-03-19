@@ -89,7 +89,7 @@ error_reporting(E_ALL ^ E_WARNING);
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
     </script>
-    <?php include_once("context.php"); ?>
+    
 </body>
 
 </html>

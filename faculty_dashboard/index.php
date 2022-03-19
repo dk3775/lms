@@ -45,14 +45,6 @@ if ($_SESSION['role'] != "Lagos") {
 								Dashboard
 							</h1>
 						</div>
-						<div class="col-auto">
-							<!-- Button -->
-							<form method="GET">
-								<a href="logout.php" class="btn btn-primary lift" name="logout">
-									logout
-								</a>
-							</form>
-						</div>
 					</div>
 					<!-- / .row -->
 				</div>

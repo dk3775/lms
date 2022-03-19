@@ -160,7 +160,7 @@
 				<!-- / .row -->
 			</div>
 		</div>
-		<?php include_once("context.php"); ?>
+		
 		<!-- Map JS -->
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 		<!-- Vendor JS -->
