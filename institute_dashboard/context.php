@@ -1,7 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <?php include_once("../head.php"); ?>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
     <style>
         @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+
+        html,
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
 
         #context-menu {
             position: fixed;
@@ -9,7 +22,7 @@
             left: 10px;
             background: #fdfdfd;
             width: 250px;
-            box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 0.10);
             border-radius: 5px;
             transform: scale(0);
             transform-origin: top left;
@@ -57,8 +70,8 @@
             width: 100%;
         }
     </style>
+    <?php include_once("../head.php"); ?>
 </head>
-
 
 <body>
     <div id="context-menu">
@@ -194,3 +207,5 @@
         });
     </script>
 </body>
+
+</html>

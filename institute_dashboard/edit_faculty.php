@@ -330,7 +330,7 @@ if ($_SESSION['role'] != "Texas") {
 				<!-- / .row -->
 			</div>
 		</div>
-		
+		<?php include_once("context.php"); ?>
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 		<!-- Vendor JS -->
 		<script src="../assets/js/vendor.bundle.js"></script>
