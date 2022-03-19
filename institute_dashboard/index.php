@@ -40,13 +40,7 @@ if ($_SESSION['role'] != "Texas") {
 		<div class="header">
 			<div class="container-fluid">
 				<div class="header-body">
-					<div class="row align-items-end mb-3 ">
-						<div class="col">
-							<h5 class="header-pretitle">
-								<a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-							</h5>
-						</div>
-					</div>
+					
 					<div class="row align-items-end">
 						<div class="col">
 							<h6 class="header-pretitle">
@@ -136,7 +130,7 @@ if ($_SESSION['role'] != "Texas") {
 															</div>
 															<div class="col-auto">
 																<!-- Dropdown -->
-																<a href="edit_faculty.php?facid=<?php echo $frow['FacultyId']; ?>" class="btn btn-sm btn-white">
+																<a href="edit_faculty.php?facid=<?php echo $frow['FacultyId']; ?>" class="btn btn-sm btn-info">
 																	Edit
 																</a>
 															</div>
@@ -337,11 +331,11 @@ if ($_SESSION['role'] != "Texas") {
 													</td>
 													<td>
 														<!-- Phone -->
-														<button type="button" class="btn btn-sm btn-outline-primary" data-toggle="collapse" data-target="#demo<?php echo $i++; ?>" data-parent="#myTable">View</button>
+														<button type="button" class="btn btn-sm btn-info" data-toggle="collapse" data-target="#demo<?php echo $i++; ?>" data-parent="#myTable">View</button>
 													</td>
 													<td>
 														<!-- Badge -->
-														<a download="<?php echo $urow['UpdateFile']; ?>" href="../src/uploads/updates/<?php echo $urow['UpdateFile']; ?>" type="button" class="btn btn-sm btn-outline-primary">Download</a>
+														<a download="<?php echo $urow['UpdateFile']; ?>" href="../src/uploads/updates/<?php echo $urow['UpdateFile']; ?>" type="button" class="btn btn-sm btn-success">Download</a>
 													</td>
 												<tr id="demo<?php echo $j++; ?>" class="collapse">
 													<td colspan="6" class="hiddenRow">
