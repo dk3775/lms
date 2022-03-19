@@ -62,7 +62,6 @@ if ($_SESSION['role'] != "Lagos") {
 						</div>
 					</div>
 					<!-- Tab content -->
-					<?php echo $qur; ?>
 					<?php
 					if (mysqli_num_rows($res) > 0) { ?>
 						<div class="tab-content">
