@@ -9,6 +9,7 @@
 	<!-- Theme CSS -->
 	<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 	<link rel="stylesheet" id="theme" href="../assets/css/theme.bundle.css" />
+	<!-- <link rel="text/html" href="/institute_dashboard/context.html" id="context-sel"> -->
 	<!-- Title -->
 	<title>LMS by Titanslab</title>
 	<style>
@@ -76,46 +77,42 @@
 		const darkModeToggle = document.querySelector('#btntheme');
 
 		const enableDarkMode = () => {
-				theme.setAttribute('href', '../assets/css/theme-dark.bundle.css');
-				let btn = document.getElementById('btntheme');
-				btn.className = 'btn btn-info btn-floating btn-lg btn-back-to-top';
-				btn.innerHTML = '<i class="fe uil-sun"></i>';
-				// 2. Update darkMode in localStorage
-				localStorage.setItem('darkMode', 'enabled');
+			theme.setAttribute('href', '../assets/css/theme-dark.bundle.css');
+			let btn = document.getElementById('btntheme');
+			btn.className = 'btn btn-info btn-floating btn-lg btn-back-to-top';
+			btn.innerHTML = '<i class="fe uil-sun"></i>';
+			// 2. Update darkMode in localStorage
+			localStorage.setItem('darkMode', 'enabled');
+			// context-sel.setAttribute('href', 'context-dark.html');
 		}
 
 		const disableDarkMode = () => {
-				theme.setAttribute('href', '../assets/css/theme.bundle.css');
-				let btn = document.getElementById('btntheme');
-				btn.className = 'btn btn-dark btn-floating btn-lg btn-back-to-top';
-				btn.innerHTML = '<i class="fe uil-moon"></i>';
-				// 2. Update darkMode in localStorage
-				localStorage.setItem('darkMode', null);
+			theme.setAttribute('href', '../assets/css/theme.bundle.css');
+			let btn = document.getElementById('btntheme');
+			btn.className = 'btn btn-dark btn-floating btn-lg btn-back-to-top';
+			btn.innerHTML = '<i class="fe uil-moon"></i>';
+			// 2. Update darkMode in localStorage
+			localStorage.setItem('darkMode', null);
+			// context-sel.setAttribute('href', 'context.html');
 
-	}
+		}
 
-	// If the user already visited and enabled darkMode
-	// start things off with it on
-	if (darkMode === 'enabled') {
-	enableDarkMode();
-	}
-
-	// When someone clicks the button
-	btntheme.addEventListener('click', () => {
-	// get their darkMode setting
-	darkMode = localStorage.getItem('darkMode');
-
-	// if it not current enabled, enable it
-	if (darkMode != 'enabled') {
-	enableDarkMode();
-	// if it has been enabled, turn it off
-	} else {
-	disableDarkMode();
-
-	}
-	});
+		// If the user already visited and enabled darkMode
+		// start things off with it on
+		if (darkMode === 'enabled') {
+			enableDarkMode();
+		}
+		// When someone clicks the button
+		btntheme.addEventListener('click', () => {
+			// get their darkMode setting
+			darkMode = localStorage.getItem('darkMode');
+			// if it not current enabled, enable it
+			if (darkMode != 'enabled') {
+				enableDarkMode();
+				// if it has been enabled, turn it off
+			} else {
+				disableDarkMode();
+			}
+		});
 	</script>
-	<?php
-	include_once 'context.php';
-	?>
-	
+	<?php include_once 'dark-context.html'; ?>
