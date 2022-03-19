@@ -59,21 +59,21 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 								</h2>
 								<br>
 								<div class="input-group">
-									<span class="input-group-text col-2 text-dark">Subject name</span>
+									<span class="input-group-text col-2 ">Subject name</span>
 									<input type="text" value="<?php echo $row['SubjectName']; ?>" aria-label="First name" class="form-control" disabled>
 								</div>
 								<br>
 								<div class="input-group">
-									<span class="input-group-text col-2 text-dark">Subject Sem</span>
+									<span class="input-group-text col-2 ">Subject Sem</span>
 									<input type="text" value="<?php echo $row['SubjectSemester']; ?>" aria-label="First name" class="form-control" disabled>
-									<span class="input-group-text col-2 text-dark">Subject Branch</span>
+									<span class="input-group-text col-2 ">Subject Branch</span>
 									<input type="text" value="<?php echo $row['BranchName']; ?>" aria-label="Last name" class="form-control" disabled>
 								</div>
 								<br>
 								<div class="input-group">
-									<span class="input-group-text col-2 text-dark">Subject Faculty</span>
+									<span class="input-group-text col-2 ">Subject Faculty</span>
 									<input type="text" value="<?php echo $row['FacultyFirstName'] . " " . $row['FacultyLastName']; ?>" aria-label="First name" class="form-control" disabled>
-									<span class="input-group-text col-2 text-dark">Subject Code</span>
+									<span class="input-group-text col-2 ">Subject Code</span>
 									<input type="text" value="<?php echo $row['SubjectCode']; ?>" aria-label="Last name" class="form-control" disabled>
 								</div>
 							</div>

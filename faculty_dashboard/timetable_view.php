@@ -59,21 +59,21 @@ if ($_SESSION['role'] != "Lagos") {
                                     </h3>
                                     <br>
                                     <div class="input-group">
-                                        <span class="input-group-text col-3 text-dark">Time Table Branch Code</span>
+                                        <span class="input-group-text col-3 ">Time Table Branch Code</span>
                                         <input type="text"
                                                value="<?php echo $row['TimetableBranchCode']; ?>"
                                                aria-label="First name" class="form-control" disabled>
-                                        <span class="input-group-text col-3 text-dark">Time Table Semester</span>
+                                        <span class="input-group-text col-3 ">Time Table Semester</span>
                                         <input type="text" value="<?php echo $row['TimetableSemester']; ?>"
                                                aria-label="Last name" class="form-control disable" disabled>
                                     </div>
                                     <br>
                                     <div class="input-group">
-                                        <span class="input-group-text col-3 text-dark">Time Table Uploaded By</span>
+                                        <span class="input-group-text col-3 ">Time Table Uploaded By</span>
                                         <input type="text"
                                                value="<?php echo $row['TimetableUploadedBy']; ?>"
                                                aria-label="First name" class="form-control" disabled>
-                                        <span class="input-group-text col-3 text-dark">Time Table Upload Time</span>
+                                        <span class="input-group-text col-3 ">Time Table Upload Time</span>
                                         <input type="text"
                                                value="<?php echo $row['TimetableUploadTime']; ?>"
                                                aria-label="Last name" class="form-control disable" disabled>

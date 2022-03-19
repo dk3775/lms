@@ -116,33 +116,33 @@ if ($_SESSION['role'] != "Texas") {
               </h1>
               <br>
               <div class="input-group">
-                <span class="input-group-text col-2 text-dark">First name</span>
+                <span class="input-group-text col-2 ">First name</span>
                 <input type="text" value="Arshit Jolapara" aria-label="First name" class="form-control" disabled>
               </div>
               <br>
               <div class="input-group">
-                <span class="input-group-text col-2 text-dark">Sem</span>
+                <span class="input-group-text col-2 ">Sem</span>
                 <input type="text" value="5" aria-label="First name" class="form-control" disabled>
-                <span class="input-group-text col-2 text-dark">Branch</span>
+                <span class="input-group-text col-2 ">Branch</span>
                 <input type="text" value="VI-DCX" aria-label="Last name" class="form-control disable">
               </div>
               <br>
               <div class="input-group">
-                <span class="input-group-text col-2 text-dark">Phone no.</span>
+                <span class="input-group-text col-2 ">Phone no.</span>
                 <input type="text" value="9638684082" aria-label="First name" class="form-control" disabled>
-                <span class="input-group-text col-2 text-dark">Email</span>
+                <span class="input-group-text col-2 ">Email</span>
                 <input type="text" value="aarshitjolapara11@gmail.com" aria-label="Last name" class="form-control disable">
               </div>
               <br>
               <div class="input-group">
-                <span class="input-group-text col-2 text-dark">Enrollment No.</span>
+                <span class="input-group-text col-2 ">Enrollment No.</span>
                 <input type="text" value="Jolapara" aria-label="First name" class="form-control" disabled>
-                <span class="input-group-text col-2 text-dark">Roll No.</span>
+                <span class="input-group-text col-2 ">Roll No.</span>
                 <input type="text" value="Arshit" aria-label="Last name" class="form-control disable">
               </div>
               <br>
               <div class="input-group  input-group-lg mb-3">
-                <span class="input-group-text col-2 text-dark">Address</span>
+                <span class="input-group-text col-2 ">Address</span>
                 <textarea class="form-control" aria-label="With textarea" disabled>abc hello nubs</textarea>
               </div>
               <div class="card-body">
@@ -151,16 +151,16 @@ if ($_SESSION['role'] != "Texas") {
                 </h1>
                 <br>
                 <div class="input-group">
-                  <span class="input-group-text col-2 text-dark">Father name</span>
+                  <span class="input-group-text col-2 ">Father name</span>
                   <input type="text" value="123" aria-label="First name" class="form-control" disabled>
-                  <span class="input-group-text col-2 text-dark">Phone No.</span>
+                  <span class="input-group-text col-2 ">Phone No.</span>
                   <input type="text" value="123" aria-label="First name" class="form-control" disabled>
                 </div>
                 <br>
                 <div class="input-group">
-                  <span class="input-group-text col-2 text-dark">Mother name</span>
+                  <span class="input-group-text col-2 ">Mother name</span>
                   <input type="text" value="123" aria-label="First name" class="form-control" disabled>
-                  <span class="input-group-text col-2 text-dark">Phone No.</span>
+                  <span class="input-group-text col-2 ">Phone No.</span>
                   <input type="text" value="123" aria-label="Last name" class="form-control disable">
                 </div>
                 <br>

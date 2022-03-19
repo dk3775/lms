@@ -49,23 +49,23 @@ if ($_SESSION['role'] != "Abuja") {
                                 </h2>
                                 <br>
                                 <div class="input-group">
-                                    <span class="input-group-text col-2 text-dark">Query Topic</span>
+                                    <span class="input-group-text col-2 ">Query Topic</span>
                                     <input type="text" value="<?php echo $row['QueryTopic']; ?>" aria-label="First name" class="form-control" disabled>
                                 </div>
                                 <br>
                                 <div class="input-group">
-                                    <span class="input-group-text col-2 text-dark">Query Uploader</span>
+                                    <span class="input-group-text col-2 ">Query Uploader</span>
                                     <input type="text" value="<?php echo $row['StudentFirstName'] . " " . $row['StudentLastName']; ?>" aria-label="First name" class="form-control" disabled>
                                 </div>
                                 <br>
                                 <div class="input-group">
-                                    <span class="input-group-text col-2 text-dark">Query Question</span>
+                                    <span class="input-group-text col-2 ">Query Question</span>
                                     <textarea rows="2" aria-label="First name" class="form-control" disabled><?php echo $row['QueryQuestion']; ?></textarea>
                                 </div>
                                 <?php if ($row['QueryReply'] != "") { ?>
                                     <br>
                                     <div class="input-group">
-                                        <span class="input-group-text col-2 text-dark">Query Reply</span>
+                                        <span class="input-group-text col-2 ">Query Reply</span>
                                         <textarea rows="2" aria-label="First name" class="form-control" disabled><?php echo $row['QueryReply']; ?></textarea>
                                     </div>
                                 <?php } ?>

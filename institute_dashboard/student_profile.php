@@ -112,47 +112,47 @@ if ($_SESSION['role'] != "Texas") {
                                 </h1>
                                 <br>
                                 <div class="input-group">
-                                    <span class="input-group-text col-2 text-dark">Student Name</span>
+                                    <span class="input-group-text col-2 ">Student Name</span>
                                     <input type="text" value="<?php echo $row['StudentFirstName'] . " " . $row['StudentMiddleName'] . " " . $row['StudentLastName']; ?>" aria-label="First name" class="form-control" disabled>
                                 </div>
                                 <br>
                                 <div class="input-group">
-                                    <span class="input-group-text col-2 text-dark">SPI</span>
+                                    <span class="input-group-text col-2 ">SPI</span>
                                     <input type="text" value="<?php echo $row['SPI']; ?>" aria-label="First name" class="form-control" disabled>
-                                    <span class="input-group-text col-2 text-dark">CGPA</span>
+                                    <span class="input-group-text col-2 ">CGPA</span>
                                     <input type="text" value="<?php echo $row['CGPA']; ?>" aria-label="Last name" class="form-control" disabled>
                                 </div>
                                 <br>
                                 <div class="input-group">
-                                    <span class="input-group-text col-2 text-dark">Enrollment No.</span>
+                                    <span class="input-group-text col-2 ">Enrollment No.</span>
                                     <input type="text" value="<?php echo $row['StudentEnrollmentNo']; ?>" aria-label="First name" class="form-control" disabled>
-                                    <span class="input-group-text col-2 text-dark">Branch</span>
+                                    <span class="input-group-text col-2 ">Branch</span>
                                     <input type="text" value="<?php echo $row['StudentBranchCode']; ?>" aria-label="Last name" class="form-control" disabled>
                                 </div>
                                 <br>
                                 <div class="input-group">
-                                    <span class="input-group-text col-2 text-dark">Semester</span>
+                                    <span class="input-group-text col-2 ">Semester</span>
                                     <input type="text" value="<?php echo $row['StudentSemester']; ?>" aria-label="First name" class="form-control" disabled>
-                                    <span class="input-group-text col-2 text-dark">Date Of Birth</span>
+                                    <span class="input-group-text col-2 ">Date Of Birth</span>
                                     <input type="text" value="<?php echo $row['StudentDOB']; ?>" aria-label="Last name" class="form-control" disabled>
                                 </div>
                                 <br>
                                 <div class="input-group">
-                                    <span class="input-group-text col-2 text-dark">Roll No.</span>
+                                    <span class="input-group-text col-2 ">Roll No.</span>
                                     <input type="text" value="<?php echo $row['StudentRollNo']; ?>" aria-label="Last name" class="form-control" disabled>
-                                    <span class="input-group-text col-2 text-dark">E-mail</span>
+                                    <span class="input-group-text col-2 ">E-mail</span>
                                     <input type="text" value="<?php echo $row['StudentEmail']; ?>" aria-label="Last name" class="form-control" disabled>
                                 </div>
                                 <br>
                                 <div class="input-group">
-                                    <span class="input-group-text col-2 text-dark">Contact No.</span>
+                                    <span class="input-group-text col-2 ">Contact No.</span>
                                     <input type="text" value="<?php echo $row['StudentContactNo']; ?>" aria-label="First name" class="form-control" disabled>
-                                    <span class="input-group-text col-2 text-dark">Parent Contact No.</span>
+                                    <span class="input-group-text col-2 ">Parent Contact No.</span>
                                     <input type="text" value="<?php echo $row['ParentContactNo']; ?>" aria-label="First name" class="form-control" disabled>
                                 </div>
                                 <br>
                                 <div class="input-group  input-group-lg mb-3">
-                                    <span class="input-group-text col-2 text-dark">Address</span>
+                                    <span class="input-group-text col-2 ">Address</span>
                                     <input type="text" value="<?php echo $row['StudentAddress']; ?>" aria-label="Last name" class="form-control" disabled>
                                 </div>
                             </div>

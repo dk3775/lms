@@ -73,21 +73,21 @@ if ($_SESSION['role'] != "Abuja") {
 														</h3>
 														<br>
 														<div class="input-group">
-															<span class="input-group-text col-3 text-dark">Title</span>
+															<span class="input-group-text col-3 ">Title</span>
 															<input type="text" value="<?php echo $row['AssignmentTitle']; ?>" aria-label="First name" class="form-control" disabled>
-															<span class="input-group-text col-3 text-dark">Subject</span>
+															<span class="input-group-text col-3 ">Subject</span>
 															<input type="text" value="<?php echo $row['AssignmentSubject']; ?>" aria-label="Last name" class="form-control disable" disabled>
 														</div>
 														<br>
 														<div class="input-group">
-															<span class="input-group-text col-3 text-dark">Upload date</span>
+															<span class="input-group-text col-3 ">Upload date</span>
 															<input type="text" value="<?php echo $row['AssignmentUploaddate']; ?>" aria-label="First name" class="form-control" disabled>
-															<span class="input-group-text col-3 text-dark">Submission Date</span>
+															<span class="input-group-text col-3 ">Submission Date</span>
 															<input type="text" value="<?php echo $row['AssignmentSubmissionDate']; ?>" aria-label="Last name" class="form-control disable" disabled>
 														</div>
 														<br>
 														<div class="input-group">
-															<span class="input-group-text col-3 text-dark">Description</span>
+															<span class="input-group-text col-3 ">Description</span>
 															<textarea aria-label="First name" class="form-control" disabled><?php echo $row['AssignmentDesc']; ?></textarea>
 														</div>
 													</div>

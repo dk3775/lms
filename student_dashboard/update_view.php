@@ -60,18 +60,18 @@ if ($_SESSION['role'] != "Abuja") {
 														</h3>
 														<br>
 														<div class="input-group">
-															<span class="input-group-text col-3 text-dark">Title</span>
+															<span class="input-group-text col-3 ">Title</span>
 															<input type="text" value="<?php echo $row['UpdateTitle']; ?>" aria-label="First name" class="form-control" disabled>
 														</div><br>
 														<div class="input-group">
-															<span class="input-group-text col-3 text-dark">Description</span>
+															<span class="input-group-text col-3 ">Description</span>
 															<textarea class="form-control disable" rows="3" disabled><?php echo $row['UpdateDescription']; ?></textarea>
 														</div>
 														<br>
 														<div class="input-group">
-															<span class="input-group-text col-3 text-dark">Uploaded By</span>
+															<span class="input-group-text col-3 ">Uploaded By</span>
 															<input type="text" value="<?php echo $row['UpdateUploadedBy']; ?>" aria-label="First name" class="form-control" disabled>
-															<span class="input-group-text col-3 text-dark">Update Type</span>
+															<span class="input-group-text col-3 ">Update Type</span>
 															<input type="text" value="<?php echo $row['UpdateType']; ?>" aria-label="Last name" class="form-control disable" disabled>
 														</div>
 													</div>

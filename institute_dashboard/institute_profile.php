@@ -112,33 +112,33 @@ if ($_SESSION['role'] != "Texas") {
                             </h1>
                             <br>
                             <div class="input-group">
-                                <span class="input-group-text col-2 text-dark">User Name</span>
+                                <span class="input-group-text col-2 ">User Name</span>
                                 <input type="text" value="<?php echo $row['InstituteName']; ?>" aria-label="First name"
                                        class="form-control" disabled>
                             </div>
                             <br>
                             <div class="input-group">
-                                <span class="input-group-text col-2 text-dark">User Role</span>
+                                <span class="input-group-text col-2 ">User Role</span>
                                 <input type="text" value="<?php echo $row['InstituteRole']; ?>" aria-label="First name"
                                        class="form-control" disabled>
-                                <span class="input-group-text col-2 text-dark">Institute Office</span>
+                                <span class="input-group-text col-2 ">Institute Office</span>
                                 <input type="text" value="<?php echo $row['InstituteOffice']; ?>" aria-label="Last name"
                                        class="form-control disable" disabled>
                             </div>
 
                             <br>
                             <div class="input-group">
-                                <span class="input-group-text col-2 text-dark">E-mail</span>
+                                <span class="input-group-text col-2 ">E-mail</span>
                                 <input type="text" value="<?php echo $row['InstituteEmail']; ?>" aria-label="Last name"
                                        class="form-control disable" disabled>
-                                <span class="input-group-text col-2 text-dark">Contact No.</span>
+                                <span class="input-group-text col-2 ">Contact No.</span>
                                 <input type="text" value="<?php echo $row['InstituteContactNo']; ?>"
                                        aria-label="First name" class="form-control" disabled>
                             </div>
 
                             <br>
                             <div class="input-group  input-group-lg mb-3">
-                                <span class="input-group-text col-2 text-dark">Address</span>
+                                <span class="input-group-text col-2 ">Address</span>
                                 <input type="text" value="<?php echo $row['InstituteAddress']; ?>"
                                        aria-label="Last name" class="form-control disable" disabled>
                             </div>

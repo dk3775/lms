@@ -115,28 +115,28 @@ if ($_SESSION['role'] != "Texas") {
 								</h1>
 								<br>
 								<div class="input-group">
-									<span class="input-group-text col-2 text-dark">Faculty Name</span>
+									<span class="input-group-text col-2 ">Faculty Name</span>
 									<input type="text" value="<?php echo $row['FacultyFirstName'] . " " . $row['FacultyMiddleName'] . " " . $row['FacultyLastName']; ?>" aria-label="First name" class="form-control" disabled>
 								</div>
 								<br>
 								<div class="input-group">
-									<span class="input-group-text col-2 text-dark">Faculty Code</span>
+									<span class="input-group-text col-2 ">Faculty Code</span>
 									<input type="text" value="<?php echo $row['FacultyCode']; ?>" aria-label="First name" class="form-control" disabled>
-									<span class="input-group-text col-2 text-dark">Branch</span>
+									<span class="input-group-text col-2 ">Branch</span>
 									<input type="text" value="<?php echo $row['FacultyBranchCode']; ?>" aria-label="Last name" class="form-control" disabled>
 								</div>
 								<br>
 								<div class="input-group">
-									<span class="input-group-text col-2 text-dark">Phone No</span>
+									<span class="input-group-text col-2 ">Phone No</span>
 									<input type="text" value="<?php echo $row['FacultyContactNo']; ?>" aria-label="First name" class="form-control" disabled>
-									<span class="input-group-text col-2 text-dark">Email</span>
+									<span class="input-group-text col-2 ">Email</span>
 									<input type="text" value="<?php echo $row['FacultyEmail']; ?>" aria-label="Last name" class="form-control" disabled>
 								</div>
 								<br>
 								<div class="input-group">
-									<span class="input-group-text col-2 text-dark">Faculty Qualification</span>
+									<span class="input-group-text col-2 ">Faculty Qualification</span>
 									<input type="text" value="<?php echo $row['FacultyQualification']; ?>" aria-label="First name" class="form-control" disabled>
-									<span class="input-group-text col-2 text-dark">Faculty Office</span>
+									<span class="input-group-text col-2 ">Faculty Office</span>
 									<input type="text" value="<?php echo $row['FacultyOffice']; ?>" aria-label="Last name" class="form-control" disabled>
 								</div>
 								<br>
@@ -146,7 +146,7 @@ if ($_SESSION['role'] != "Texas") {
 									$xssqlresult = mysqli_query($conn, $xssql);
 								?>
 								<div class="input-group  input-group-lg mb-3">
-									<span class="input-group-text col-2 text-dark">Subject</span>
+									<span class="input-group-text col-2 ">Subject</span>
 									<input class="form-control" value="<?php while($roww=mysqli_fetch_assoc($xssqlresult)){echo $roww['SubjectName'].", " ;} ?>" aria-label="With textarea" disabled>
 								</div>
 							</div>
