@@ -228,7 +228,7 @@ if ($_SESSION['role'] != "Lagos") {
 									</h6>
 									<!-- Heading -->
 									<span class="h2 mb-0">
-										<?php echo $frow['FacultyBranchCode']; ?>
+										<?php echo $frow['BranchName']; ?>
 									</span>
 								</div>
 								<div class="col-auto">
