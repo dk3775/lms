@@ -27,7 +27,9 @@ if ($_SESSION['role'] != "Lagos") {
 					<!-- Header -->
 					<div class="header mt-md-5">
 						<div class="header-body">
-							<!-- Pretitle -->
+							<h5 class="header-pretitle">
+									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+								</h5>
 							<h6 class="header-pretitle">
 								GTU
 							</h6>

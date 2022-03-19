@@ -14,11 +14,13 @@ if ($_SESSION['role'] != "Lagos") {
 ?>
     <!DOCTYPE html>
     <html lang="en">
+
     <head>
         <?php include_once("../head.php"); ?>
     </head>
+
     <body>
-    <?php $nav_role = "Branch"; ?>
+        <?php $nav_role = "Branch"; ?>
         <!-- NAVIGATION -->
         <?php include_once("nav.php"); ?>
         <!-- MAIN CONTENT -->
@@ -31,10 +33,9 @@ if ($_SESSION['role'] != "Lagos") {
                             <div class="header-body">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <h5 class="header-pretitle mb-5">
-                                            <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                                        <h5 class="header-pretitle">
+                                            <a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
                                         </h5>
-                                        <!-- Pretitle -->
                                         <h6 class="header-pretitle">
                                             Add New
                                         </h6>

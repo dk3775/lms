@@ -36,6 +36,9 @@ if ($_SESSION['role'] != "Abuja") {
 										<div class="row align-items-center">
 											<div class="col ml-n2">
 												<!-- Title -->
+												<h5 class="header-pretitle">
+													<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+												</h5>
 												<h1 class="mb-1">
 													Time Table
 												</h1>
@@ -98,7 +101,7 @@ if ($_SESSION['role'] != "Abuja") {
 						}
 	?>
 	<!-- / .main-content -->
-	
+
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->
 	<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>

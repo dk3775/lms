@@ -33,7 +33,9 @@ if ($_SESSION['role'] != "Abuja") {
                   <div class="header-body">
                      <div class="row align-items-center">
                         <div class="col">
-                           <!-- Pretitle -->
+                           <h5 class="header-pretitle">
+									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+								</h5>
                            <h6 class="header-pretitle">
                               View
                            </h6>
@@ -151,9 +153,9 @@ if ($_SESSION['role'] != "Abuja") {
                                                       ?>
                                                    </td>
                                                    <td>
-                                                      <a href="query_profile.php?qid=<?php echo $urow['QueryId']; ?>" type="button" class="btn btn-sm btn-white">View</a>
+                                                      <a href="query_profile.php?qid=<?php echo $urow['QueryId']; ?>" type="button" class="btn btn-sm btn-info">View</a>&nbsp;
                                                       <?php if ($urow['QueryDocument'] != "") { ?>
-                                                         <a download="<?php echo $urow['QueryDocument']; ?>" href="../src/uploads/querydocument/<?php echo $urow['QueryDocument']; ?>" type="button" class="btn btn-sm btn-white">Download</a>
+                                                         <a download="<?php echo $urow['QueryDocument']; ?>" href="../src/uploads/querydocument/<?php echo $urow['QueryDocument']; ?>" type="button" class="btn btn-sm btn-success">Download</a>
                                                       <?php } ?>
                                                    </td>
                                                    <td></td>

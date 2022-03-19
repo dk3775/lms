@@ -31,6 +31,9 @@ if ($_SESSION['role'] != "Abuja") {
 									<div class="row align-items-center">
 										<div class="col ml-n2">
 											<!-- Title -->
+											<h5 class="header-pretitle">
+												<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+											</h5>
 											<h1 class="mb-1">
 												Update
 											</h1>

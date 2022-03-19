@@ -26,6 +26,9 @@ if ($_SESSION['role'] != "Abuja" or !isset($_GET['subid'])) {
 				<div class="header-body">
 					<div class="row align-items-end">
 						<div class="col">
+							<h5 class="header-pretitle">
+								<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+							</h5>
 							<h6 class="header-pretitle">
 								Subject
 							</h6>
@@ -151,11 +154,11 @@ if ($_SESSION['role'] != "Abuja" or !isset($_GET['subid'])) {
 															<td></td>
 															<td></td>
 															<td>
-																<a href="../src/uploads/studymaterial/<?php echo $roww['EngMaterialFile']; ?>" download="<?php echo $roww['EngMaterialFile']; ?>" class="btn btn-sm btn-white">
+																<a href="../src/uploads/studymaterial/<?php echo $roww['EngMaterialFile']; ?>" download="<?php echo $roww['EngMaterialFile']; ?>" class="btn btn-sm btn-outline-info">
 																	English
 																</a>
 																&nbsp;
-																<a href="../src/uploads/studymaterial/<?php echo $roww['GujMaterialFile']; ?>" download="<?php echo $roww['GujMaterialFile']; ?>" class="btn btn-sm btn-white">
+																<a href="../src/uploads/studymaterial/<?php echo $roww['GujMaterialFile']; ?>" download="<?php echo $roww['GujMaterialFile']; ?>" class="btn btn-sm btn-outline-info">
 																	Gujarati
 																</a>
 															</td>
@@ -202,7 +205,7 @@ if ($_SESSION['role'] != "Abuja" or !isset($_GET['subid'])) {
 					</div>
 				</div>
 			</div>
-			
+
 			<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 			<script src="../assets/js/vendor.bundle.js"></script>
 			<script src="../assets/js/theme.bundle.js"></script>

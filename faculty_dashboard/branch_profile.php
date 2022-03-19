@@ -7,9 +7,11 @@ if ($_SESSION['role'] != "Lagos") {
 ?>
 	<!DOCTYPE html>
 	<html lang="en">
+
 	<head>
 		<?php include_once("../head.php"); ?>
 	</head>
+
 	<body>
 		<?php $nav_role = "Branch"; ?>
 		<!-- NAVIGATION -->
@@ -24,7 +26,9 @@ if ($_SESSION['role'] != "Lagos") {
 						<div class="header-body">
 							<div class="row align-items-end">
 								<div class="col">
-									<!-- Pretitle -->
+									<h5 class="header-pretitle">
+										<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+									</h5>
 									<h6 class="header-pretitle">
 										Branch
 									</h6>
@@ -55,7 +59,7 @@ if ($_SESSION['role'] != "Lagos") {
 				$row = mysqli_fetch_assoc($result);
 				$c = isset($result) ? mysqli_num_rows($result) : 0;
 				$cc = isset($reesult) ? mysqli_num_rows($reesult) : 0;
-				
+
 				$squr = "SELECT * FROM studentmaster WHERE StudentBranchCode = '$bcode'";
 				$sres = mysqli_query($conn, $squr);
 				$srow = mysqli_num_rows($sres);

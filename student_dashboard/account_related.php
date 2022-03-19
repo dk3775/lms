@@ -46,7 +46,12 @@ if ($_SESSION['role'] != "Abuja") {
 						<div class="header-body">
 							<div class="row align-items-center">
 								<div class="col">
-									<!-- Pretitle -->
+									<h5 class="header-pretitle">
+									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+								</h5>
+									<h5 class="header-pretitle">
+										<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+									</h5>
 									<h6 class="header-pretitle">
 										New Request
 									</h6>
