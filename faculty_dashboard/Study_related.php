@@ -9,7 +9,7 @@ if ($_SESSION['role'] != "Lagos") {
 	$fres = mysqli_query($conn, $fqur);
 	$frow = mysqli_fetch_assoc($fres);
 	$bcode = $frow['FacultyId'];
-	$qur = "SELECT *, StudentFirstName, StudentLastName FROM querymaster INNER JOIN studentmaster on querymaster.QueryFromId = studentmaster.StudentId WHERE QueryToId = '$bcode'";
+	$qur = "SELECT *, StudentFirstName, StudentLastName FROM studyquerymaster INNER JOIN studentmaster ON studyquerymaster.QueryFromId = studentmaster.StudentId WHERE QueryToId = '$bcode' ORDER BY studyquerymaster.QueryTopic ASC";
 	$res = mysqli_query($conn, $qur);
 }
 ?>
@@ -145,7 +145,9 @@ if ($_SESSION['role'] != "Lagos") {
 																	<td>
 																		<!-- Badge -->
 																		<a href="query_profile.php?qid=<?php echo $urow['QueryId']; ?>" type="button" class="btn btn-sm btn-info">View</a>&nbsp;
-																		<a download="<?php echo $urow['QueryDocument']; ?>" href="../src/uploads/querydocument/<?php echo $urow['QueryDocument']; ?>" type="button" class="btn btn-sm btn-success">Download</a>&nbsp;
+																		<?php if ($urow['QueryDocument'] != "") { ?>
+																			<a download="<?php echo $urow['QueryDocument']; ?>" href="../src/uploads/querydocument/<?php echo $urow['QueryDocument']; ?>" type="button" class="btn btn-sm btn-success">Download</a>&nbsp;
+																		<?php } ?>
 																		<a href="qrystatus.php?qid=<?php echo $urow['QueryId']; ?>" type="button" class="btn btn-sm btn-danger">Close</a>&nbsp;
 																	</td>
 																<tr id="demo<?php echo $j++; ?>" class="collapse">

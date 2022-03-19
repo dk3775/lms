@@ -69,7 +69,6 @@ if ($_SESSION['role'] != "Abuja") {
 							</label>
 							<!-- Input -->
 							<input type="text" value="<?php echo $sturesult['StudentFirstName'] . " " . $sturesult['StudentLastName']; ?>" name="arname" class="form-control" readonly>
-							<input type="hidden" value="<?php echo $qrsub; ?>" name="qrsub">
 						</div>
 						<!-- Project description -->
 						<div class="form-group">
@@ -113,19 +112,18 @@ if ($_SESSION['role'] != "Abuja") {
 if (isset($_POST['sub'])) {
 
 	$qrdetails = $_POST['ardetails'];
-	$qrsub = $_POST['qrsub'];
 	$qrfrom = $sturesult['StudentId'];
-	$qrto = 0;
+
 	$qrstatus = 1;
 	$dt = date('Y-m-d');
 
 	$qrtopic = "Account Related Help";
-	$sql = "INSERT INTO `querymaster`(`QueryTopic`,`QueryFromId`, `QueryToId`, `QueryQuestion`, `Querystatus`, `QuerySubject`, `QueryGenDate`, `QueryType`) 
-	VALUES ('$qrtopic','$qrfrom','$qrto','$qrdetails','$qrstatus','$qrsub','$dt','1')";
+	$sql = "INSERT INTO `accountquerymaster`(`QueryTopic`,`QueryFromId`, `QueryQuestion`, `Querystatus`, `QueryGenDate`)
+	VALUES ('$qrtopic','$qrfrom','$qrdetails','$qrstatus','$dt')";
 	$run = mysqli_query($conn, $sql);
 	if ($run == true) {
 		echo "<script>alert('Request Sent .. ')</script>";
-		echo "<script>window.open('account_related.php','_self')</script>";
+		echo "<script>window.open('query_list.php','_self')</script>";
 	} else {
 		echo "<script>alert('Error to Send Request .. ')</script>";
 		echo "<script>window.open('account_related.php','_self')</script>";

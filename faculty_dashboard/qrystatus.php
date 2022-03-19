@@ -1,6 +1,9 @@
 <html>
-    <head></head>
+
+<head></head>
+
 </html>
+
 <body>
     <?php
     session_start();
@@ -9,8 +12,8 @@
     } else {
         include_once("../config.php");
         $_SESSION["userrole"] = "Faculty";
-        $id= $_GET['qid'];
-        $qur = "UPDATE querymaster SET Querystatus = '2' WHERE QueryId = '$id'";
+        $id = $_GET['qid'];
+        $qur = "UPDATE studyquerymaster SET Querystatus = '2' WHERE QueryId = '$id'";
         $res = mysqli_query($conn, $qur);
         if ($res) {
             echo "<script>alert('Successfully');</script>";
@@ -21,6 +24,7 @@
         }
     }
     ?>
-    
+
 </body>
+
 </html>

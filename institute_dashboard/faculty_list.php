@@ -186,27 +186,26 @@ if ($_SESSION['role'] != "Texas") {
         </div>
     </div>
 
-            <!-- / .main-content -->
-            <!-- JAVASCRIPT -->
-            <!-- Map JS -->
-            <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-            <!-- Vendor JS -->
-            <script src="../assets/js/vendor.bundle.js"></script>
-            <!-- Theme JS -->
-            <script src="../assets/js/theme.bundle.js"></script>
-            <!-- Delete Popup -->
-            =======
-            <?php include_once("context.php"); ?>
-            <!-- / .main-content -->
-            <!-- JAVASCRIPT -->
-            <!-- Map JS -->
-            <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-            <!-- Vendor JS -->
-            <script src="../assets/js/vendor.bundle.js"></script>
-            <!-- Theme JS -->
-            <script src="../assets/js/theme.bundle.js"></script>
-            <!-- Delete Popup -->
-            
+    <!-- / .main-content -->
+    <!-- JAVASCRIPT -->
+    <!-- Map JS -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    <!-- Vendor JS -->
+    <script src="../assets/js/vendor.bundle.js"></script>
+    <!-- Theme JS -->
+    <script src="../assets/js/theme.bundle.js"></script>
+
+    <?php include_once("context.php"); ?>
+    <!-- / .main-content -->
+    <!-- JAVASCRIPT -->
+    <!-- Map JS -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    <!-- Vendor JS -->
+    <script src="../assets/js/vendor.bundle.js"></script>
+    <!-- Theme JS -->
+    <script src="../assets/js/theme.bundle.js"></script>
+    <!-- Delete Popup -->
+
 </body>
 
 </html>

@@ -64,7 +64,7 @@
 					</label>
 					<!-- Password -->
 					<div class="col-12 logo_outer">
-						<div class="input-group mb-3">
+						<div class="input-group mb-4">
 							<input name="password" type="password" value="" class="input form-control" id="password" placeholder="Password" required aria-label="password" aria-describedby="basic-addon1" />
 							<div class="input-group-append ">
 								<span class="input-group-text" style="border-radius: 1px 5px 5px 1px;" onclick="password_show_hide();">

@@ -6,7 +6,7 @@ if ($_SESSION['role'] != "Texas") {
     header("Location: ../index.php");
 } else {
     $qid = $_GET['qid'];
-    $qur = "SELECT * FROM querymaster INNER JOIN studentmaster ON querymaster.QueryFromId = studentmaster.StudentId WHERE QueryId = '$qid'";
+    $qur = "SELECT * FROM accountquerymaster INNER JOIN studentmaster ON accountquerymaster.QueryFromId = studentmaster.StudentId WHERE QueryId = '$qid'";
     $res = mysqli_query($conn, $qur);
     $row = mysqli_fetch_assoc($res);
 
@@ -123,7 +123,7 @@ if (isset($_POST['subreply'])) {
     $reply = $_POST['queryreply'];
     $qrstatus = 2;
     $dt = date('Y-m-d');
-    $qur = "UPDATE `querymaster` SET `QueryReply`='$reply',`Querystatus`='$qrstatus',`QueryRepDate`='$dt'WHERE QueryId = '$qid'";
+    $qur = "UPDATE `accountquerymaster` SET `QueryReply`='$reply',`Querystatus`='$qrstatus',`QueryRepDate`='$dt'WHERE QueryId = '$qid'";
     $res = mysqli_query($conn, $qur);
     if ($res) {
         echo "<script>alert('Reply Successfully Sent .. !');</script>";

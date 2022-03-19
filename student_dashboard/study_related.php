@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(E_ALL ^ E_WARNING);
+// error_reporting(E_ALL ^ E_WARNING);
 if ($_SESSION['role'] != "Abuja") {
     header("Location: ../index.php");
 } else {
@@ -16,7 +16,7 @@ if ($_SESSION['role'] != "Abuja") {
     $branchId = $result['branchId'];
     $semester = $result['StudentSemester'];
     // $ssql = "SELECT SubjectName,StudentId FROM studentmaster INNER JOIN subjectmaster ON studentmaster.StudentSemester = subjectmaster.SubjectSemester WHERE SubjectBranch = '$branchId'";
-    $ssql = "SELECT SubjectName FROM subjectmaster WHERE SubjectBranch = '$branchId' AND SubjectSemester = '$semester'";
+    $ssql = "SELECT * FROM subjectmaster WHERE SubjectBranch = '$branchId' AND SubjectSemester = '$semester'";
     // echo $ssql;
     $sqry = mysqli_query($conn, $ssql);
 }
@@ -66,7 +66,7 @@ if ($_SESSION['role'] != "Abuja") {
                                     <option value="ABC" selected hidden>Select Subject</option>
                                     <?php
                                     while ($sresult = mysqli_fetch_assoc($sqry)) { ?>
-                                        <option value="<?php echo $sresult['SubjectName']; ?>"><?php echo $sresult['SubjectName']; ?></option>
+                                        <option value="<?php echo $sresult['SubjectCode']; ?>"><?php echo $sresult['SubjectName']; ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -80,12 +80,16 @@ if ($_SESSION['role'] != "Abuja") {
                             </div>
                         </div>
                     </form>
-                    <?php if (isset($_POST['ser']) and $_POST['sec'] != 'ABC') { ?>
+                    <?php if (isset($_POST['ser']) and $_POST['sec'] != 'ABC') {
+                        $subsql = "SELECT * FROM subjectmaster WHERE SubjectCode = '$_POST[sec]'";
+                        $subqry = mysqli_fetch_assoc(mysqli_query($conn, $subsql));
+                        $subname = $subqry['SubjectName'];
+                    ?>
                         <form class="mb-4" method="POST" enctype="multipart/form-data">
                             <!-- Divider -->
                             <hr class="mt-5 mb-5">
                             <h1 class="header-title">
-                                <?php echo $_POST['sec']; ?>
+                                <?php echo $subname; ?>
                             </h1>
                             <br>
                             <!-- Project name -->
@@ -103,7 +107,8 @@ if ($_SESSION['role'] != "Abuja") {
                                     Subject
                                 </label>
                                 <!-- Input -->
-                                <input type="text" name="srsub" class="form-control" Value="<?php echo $_POST['sec']; ?>" readonly>
+                                <input type="text" class="form-control" Value="<?php echo $subname; ?>" readonly>
+                                <input type="hidden" name="srsub" class="form-control" Value="<?php echo $_POST['sec']; ?>" readonly>
                             </div>
                             <!-- Project description -->
                             <div class="form-group">
@@ -204,7 +209,7 @@ if (isset($_POST['sub'])) {
     $qrfrom = $sturesult['StudentId'];
 
     $srsub = $_POST['srsub'];
-    $facqry = "SELECT * FROM `subjectmaster` INNER JOIN facultymaster ON subjectmaster.SubjectFacultyID = facultymaster.FacultyID WHERE SubjectName = '$srsub'";
+    $facqry = "SELECT * FROM `subjectmaster` INNER JOIN facultymaster ON subjectmaster.SubjectFacultyID = facultymaster.FacultyID WHERE SubjectCode = '$srsub'";
     $facresult = mysqli_fetch_assoc(mysqli_query($conn, $facqry));
     $qrto = $facresult['SubjectFacultyId'];
 
@@ -220,8 +225,8 @@ if (isset($_POST['sub'])) {
     }
     $f_path = "../src/uploads/querydocument/" . $qrdoc;
 
-    $sql = "INSERT INTO `querymaster`(`QueryFromId`, `QueryToId`, `QueryTopic`, `QueryQuestion`, `Querystatus`, `QuerySubject`, `QueryDocument`, `QueryGenDate`, `QueryType`) 
-		VALUES ('$qrfrom','$qrto','$srtopic','$srdetail','$qrstatus','$srsub','$qrdoc','$dt','2')";
+    $sql = "INSERT INTO `studyquerymaster`(`QueryFromId`, `QueryToId`, `QueryTopic`, `QueryQuestion`, `Querystatus`, `QuerySubject`, `QueryDocument`, `QueryGenDate`) 
+		VALUES ('$qrfrom','$qrto','$srtopic','$srdetail','$qrstatus','$srsub','$qrdoc','$dt')";
     // echo $sql;
     $run = mysqli_query($conn, $sql);
     $flag = false;

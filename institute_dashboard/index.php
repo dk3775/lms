@@ -18,7 +18,7 @@ if ($_SESSION['role'] != "Texas") {
 	$bres = mysqli_query($conn, $bqur);
 	$uqur = "SELECT * FROM updatemaster";
 	$ures = mysqli_query($conn, $uqur);
-	$qqur = "SELECT * FROM querymaster WHERE QueryType = 1";
+	$qqur = "SELECT * FROM accountquerymaster";
 	$qres = mysqli_query($conn, $qqur);
 }
 ?>
@@ -40,7 +40,7 @@ if ($_SESSION['role'] != "Texas") {
 		<div class="header">
 			<div class="container-fluid">
 				<div class="header-body">
-					
+
 					<div class="row align-items-end">
 						<div class="col">
 							<h6 class="header-pretitle">
