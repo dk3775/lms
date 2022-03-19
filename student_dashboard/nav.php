@@ -103,7 +103,7 @@
 						Version 1.0.0
 					</h6>
 					<h6 class="">
-						Developed By <a style="color: #1A68D1;" href="http://titanslab.in/" target="_blank">Titanslab</a>
+						Developed By <a style="color: #1A68D1;" href="titanslab.in" target="_blank">Titanslab</a>
 					</h6>
 				</hgroup>
 			</div>
