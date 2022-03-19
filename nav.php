@@ -7,7 +7,7 @@
 		</button>
 		<!-- Brand -->
 		<a class="navbar-brand" href="../institute_dashboard/">
-			<img src="../assets/img/logo.svg?t?t" class="navbar-brand-img mx-auto" alt="...">
+			<img src="../assets/img/logo.svg?t=<?php time(); ?>" class="navbar-brand-img mx-auto" alt="...">
 		</a>
 		<!-- User (xs) -->
 		<div class="navbar-user d-md-none">
@@ -89,7 +89,7 @@
 					</a>
 				</li>
 			</ul>
-			
+
 			<div class="mt-auto"></div>
 
 

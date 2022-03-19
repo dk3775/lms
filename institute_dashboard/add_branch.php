@@ -49,35 +49,60 @@ if ($_SESSION['role'] != "Texas") {
 					<!-- Form -->
 					<br>
 					<form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+						<div class="row justify-content-between align-items-center">
 
-						<div class="row">
-							<div class="col-md-6">
-								<label for="validationCustom01" class="form-label">Branch code</label>
-								<input type="text" class="form-control" id="validationCustom01" name="icode" placeholder="001" required><br>
+							<div class="row">
+								<div class="col-12 col-md-6">
+									<!-- First name -->
+									<div class="form-group">
+										<!-- Label -->
+										<label class="form-label">
+											Branch Code
+										</label>
+										<!-- Input -->
+										<input type="text" class="form-control" name="icode" placeholder="001" required>
+									</div>
+								</div>
+								<div class="col-12 col-md-6">
+									<!-- Middle name -->
+									<div class="form-group">
+										<!-- Label -->
+										<label class="form-label">
+											Branch Name
+										</label>
+										<!-- Input -->
+										<input type="text" class="form-control" name="iname" placeholder="Computer Engineering" required>
+									</div>
+								</div>
 							</div>
-							<div class="col-md-6">
-								<label for="validationCustom01" class="form-label">Branch name</label>
-								<input type="text" class="form-control" id="validationCustom01" name="iname" placeholder="Computer Engineering" required><br>
+							<!-- / .row -->
+							<div class="row">
+								<div class="col-12 col-md-6">
+									<!-- Email address -->
+									<div class="form-group">
+										<!-- Label -->
+										<label class="form-label">
+											No of Semesters
+										</label>
+										<!-- Input -->
+										<select class="form-control" name="isem" required>
+											<option value="" hidden="">Select Semesters</option>
+											<?php for ($count = 1; $count < 9; $count++) { ?>
+												<option value="<?php echo $count; ?>"><?php echo $count; ?></option>
+											<?php } ?>
+										</select>
+									</div>
+								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label for="validationCustom01" class="form-label">No of Semesters</label>
-								<select id="validationCustom01" class="form-control" name="isem" required>
-									<option value="" hidden="">Select Semesters</option>
-									<?php for ($count = 1; $count < 9; $count++) { ?>
-										<option value="<?php echo $count; ?>"><?php echo $count; ?></option>
-									<?php } ?>
-								</select>
+							<!-- / Personal details-->
+							<div class="d-flex justify">
+								<!-- Button -->
+								<div class="form-group">
+									<button class="btn btn-primary" type="submit" value="sub" name="subbed">
+										Add Branch
+									</button>
+								</div>
 							</div>
-						</div>
-						<!-- Divider -->
-						<hr class="mt-4 mb-5">
-						<div class="d-flex justify">
-							<!-- Button -->
-							<button class="btn btn-primary" type="submit" value="sub" name="subbed">
-								Add Branch
-							</button>
 						</div>
 						<!-- / .row -->
 					</form>
@@ -94,7 +119,28 @@ if ($_SESSION['role'] != "Texas") {
 	<script src="../assets/js/vendor.bundle.js"></script>
 	<!-- Theme JS -->
 	<script src="../assets/js/theme.bundle.js"></script>
+	<script>
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+		(function() {
+			'use strict'
 
+			// Fetch all the forms we want to apply custom Bootstrap validation styles to
+			var forms = document.querySelectorAll('.needs-validation')
+
+			// Loop over them and prevent submission
+			Array.prototype.slice.call(forms)
+				.forEach(function(form) {
+					form.addEventListener('submit', function(event) {
+						if (!form.checkValidity()) {
+							event.preventDefault()
+							event.stopPropagation()
+						}
+
+						form.classList.add('was-validated')
+					}, false)
+				})
+		})()
+	</script>
 </body>
 
 </html>

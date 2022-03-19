@@ -14,6 +14,7 @@
         }
     </style>
 </head>
+
 <body>
     <?php
     session_start();
@@ -26,12 +27,11 @@
         $qur = "DELETE FROM branchmaster WHERE BranchId = '$fid'";
         $res = mysqli_query($conn, $qur);
         if ($res) {
-            echo "<script>alert('branch Deleted Successfully');</script>";
-            header("Location: branch_list.php");
-        }
-        else {
-            echo "<script>alert('branch Deletion Failed');</script>";
-            header("Location: branch_list.php");
+            echo "<script>alert('Branch Deleted Successfully');</script>";
+            echo "<script>window.open('branch_list.php','_self')</script>";
+        } else {
+            echo "<script>alert('Branch Deletion Failed, Because This Branch is Not Empty');</script>";
+            echo "<script>window.open('branch_list.php','_self')</script>";
         }
     }
     ?>

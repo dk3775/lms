@@ -6,7 +6,7 @@ if ($_SESSION['role'] != "Lagos") {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Faculty";
 	$fid = $_SESSION['fid'];
-	$qur = "SELECT *,AssignmentUploadedBy FROM assignmentmaster INNER JOIN facultymaster ON assignmentmaster.AssignmentUploadedBy = facultymaster.FacultyId WHERE AssignmentUploadedBy = '$fid'";
+	$qur = "SELECT * FROM assignmentmaster INNER JOIN facultymaster INNER JOIN subjectmaster ON assignmentmaster.AssignmentUploadedBy = facultymaster.FacultyId AND assignmentmaster.AssignmentSubject=subjectmaster.SubjectCode WHERE AssignmentUploadedBy = '$fid'";
 	$res = mysqli_query($conn, $qur);
 }
 ?>
@@ -26,7 +26,7 @@ if ($_SESSION['role'] != "Lagos") {
 		<div class="container-fluid">
 			<div class="row justify-content-center">
 				<div class="col-12">
-					<!-- Header -->																									
+					<!-- Header -->
 					<div class="header">
 						<div class="header-body">
 							<div class="row align-items-center">
@@ -62,8 +62,9 @@ if ($_SESSION['role'] != "Lagos") {
 						</div>
 					</div>
 					<!-- Tab content -->
+					<?php echo $qur; ?>
 					<?php
-					if(mysqli_num_rows($res)>0) { ?>
+					if (mysqli_num_rows($res) > 0) { ?>
 						<div class="tab-content">
 							<div class="tab-pane fade show active" id="contactsListPane" role="tabpanel" aria-labelledby="contactsListTab">
 								<!-- Card -->
@@ -119,7 +120,7 @@ if ($_SESSION['role'] != "Lagos") {
 														</td>
 														<td>
 															<!-- Email -->
-															<span class="item-company text-reset"><?php echo $row['AssignmentSubject']; ?></span>
+															<span class="item-company text-reset"><?php echo $row['SubjectName']; ?></span>
 														</td>
 														<td>
 															<!-- Badge -->
@@ -179,8 +180,7 @@ if ($_SESSION['role'] != "Lagos") {
 							</div>
 						</div>
 					<?php
-					}
-					else{ ?>
+					} else { ?>
 						<div class="col-12">
 							<h1 class="card header-title m-5 p-5"> Oops, No Assignment To Show</h1>
 						</div>

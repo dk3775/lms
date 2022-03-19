@@ -14,6 +14,7 @@ if ($_SESSION['role'] != "Texas") {
 		$facresult = mysqli_query($conn, $facsel);
 		$branchsel = "SELECT * FROM branchmaster where BranchCode = '$brid'";
 		$branchresult = mysqli_query($conn, $branchsel);
+		$brrow = mysqli_fetch_assoc($branchresult);
 ?>
 		<!DOCTYPE html>
 		<html lang="en">
@@ -35,9 +36,9 @@ if ($_SESSION['role'] != "Texas") {
 								<div class="header-body">
 									<div class="row align-items-center">
 										<div class="col">
-                                            <h5 class="header-pretitle mb-5">
-                                                <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-                                            </h5>
+											<h5 class="header-pretitle mb-5">
+												<a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+											</h5>
 											<!-- Pretitle -->
 											<h6 class="header-pretitle">
 												Edit
@@ -128,33 +129,27 @@ if ($_SESSION['role'] != "Texas") {
 										<div class="col-12 col-md-6">
 											<div class="form-group">
 												<label class="form-label">
-													Branch ID
+													Subject Branch
 												</label>
-												<select id="validationCustom01" class="form-control" name="ibranch" required>
-													<option value="" hidden="">Select Branch</option>
-													<?php
-													while ($brrow = mysqli_fetch_assoc($branchresult)) { ?>
-														<option <?php if ($row['SubjectBranch'] == $brrow['BranchId']) { ?> selected <?php } ?> value="<?php echo $row['SubjectBranch']; ?>">
-															<?php echo $brrow['BranchName']; ?>
-														</option>
-													<?php
-													} ?>
+												<select id="validationCustom01" class="form-control" name="ibranch" required disabled>
+													<option value="<?php echo $row['SubjectBranch']; ?>">
+														<?php echo $brrow['BranchName']; ?>
+													</option>
 												</select>
 											</div>
 										</div>
 										<div class="col-12 col-md-6">
 											<div class="form-group">
 												<label class="form-label">
-													Semester
+													Subject Semester
 												</label>
-												<select class="form-select" aria-label="Default select example" name="isem" required>
-													<option hidden><?php echo $row['SubjectSemester']; ?></option>
-													<option value="1">1</option>
-													<option value="2">2</option>
-													<option value="3">3</option>
-													<option value="4">4</option>
-													<option value="5">5</option>
-													<option value="6">6</option>
+												<select id="validationCustom01" class="form-control" name="isem" required>
+
+													<?php for ($count = 1; $brrow['BranchSemesters'] >= $count; $count++) { ?>
+														<option <?php if ($count == $row['SubjectSemester']) { ?> selected <?php } ?>value="<?php echo $count; ?>">
+															<?php echo $count; ?>
+														</option>
+													<?php } ?>
 												</select>
 												<br>
 											</div>
