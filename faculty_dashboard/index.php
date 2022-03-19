@@ -68,7 +68,7 @@ if ($_SESSION['role'] != "Lagos") {
 				<div class="row gx-4">
 					<div class="col-auto">
 						<div class="avatar avatar-xxl position-relative">
-							<img src="../src/uploads/facprofile/<?php echo $frow['FacultyProfilePic']."?t"; ?>" style="border-radius: 10px;" class="w-100 border-radius-lg shadow-sm">
+							<img src="../src/uploads/facprofile/<?php echo $frow['FacultyProfilePic']."?t"; ?>" style="border-radius: 10px;" class="w-100 h-100 border-radius-lg shadow-sm">
 						</div>
 					</div>
 					<div class="col-auto my-auto">
