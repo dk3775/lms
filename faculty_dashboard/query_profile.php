@@ -1,14 +1,15 @@
 <?php
 error_reporting(E_ALL ^ E_WARNING);
 session_start();
+require_once("../mail.php");
 require_once("../config.php");
 if ($_SESSION['role'] != "Lagos") {
     header("Location: ../index.php");
 } else {
     $qid = $_GET['qid'];
-    $qur = "SELECT * FROM querymaster INNER JOIN studentmaster ON querymaster.QueryFromId = studentmaster.StudentId WHERE QueryId = '$qid'";
-    $res = mysqli_query($conn, $qur);
-    $row = mysqli_fetch_assoc($res);
+    $query = "SELECT * FROM studentmaster INNER JOIN (querymaster INNER JOIN facultymaster ON querymaster.QueryToId = facultymaster.FacultyId ) ON querymaster.QueryFromId = studentmaster.StudentId WHERE QueryId = '$qid'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
 
 ?>
     <!DOCTYPE html>
@@ -121,6 +122,7 @@ if (isset($_POST['subreply'])) {
     $qur = "UPDATE `querymaster` SET `QueryReply`='$reply',`Querystatus`='$qrstatus',`QueryRepDate`='$dt'WHERE QueryId = '$qid'";
     $res = mysqli_query($conn, $qur);
     if ($res) {
+        domail($row['StudentEmail'],$row['StudentFirstName']." ".$row['StudentLastName'],"You have a reply from ".$row['FacultyFirstName']." ".$row['FacultyLastName']." for your query -> ".$row['QueryTopic'],"<h5>Reply -></h5><br>".$reply);
         echo "<script>alert('Reply Successfully Sent .. !');</script>";
         echo "<script>window.location.href='query_profile.php?qid=$qid';</script>";
     } else {
