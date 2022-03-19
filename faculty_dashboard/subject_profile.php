@@ -26,6 +26,9 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 				<div class="header-body">
 					<div class="row align-items-end">
 						<div class="col">
+                            <h5 class="header-pretitle mb-5">
+                                <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                            </h5>
 							<h6 class="header-pretitle">
 								Subject
 							</h6>
@@ -159,11 +162,11 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 															<td></td>
 															<td></td>
 															<td>
-																<a href="../src/uploads/studymaterial/<?php echo $roww['EngMaterialFile']; ?>" download="<?php echo $roww['EngMaterialFile']; ?>" class="btn btn-sm btn-white">
+																<a href="../src/uploads/studymaterial/<?php echo $roww['EngMaterialFile']; ?>" download="<?php echo $roww['EngMaterialFile']; ?>" class="btn btn-sm btn-success">
 																	English
 																</a>
 																&nbsp;
-																<a href="../src/uploads/studymaterial/<?php echo $roww['GujMaterialFile']; ?>" download="<?php echo $roww['GujMaterialFile']; ?>" class="btn btn-sm btn-white">
+																<a href="../src/uploads/studymaterial/<?php echo $roww['GujMaterialFile']; ?>" download="<?php echo $roww['GujMaterialFile']; ?>" class="btn btn-sm btn-success">
 																	Gujarati
 																</a>
 															</td>

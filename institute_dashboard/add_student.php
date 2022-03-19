@@ -28,12 +28,15 @@ $sqldata = "";
 	<div class="main-content">
 		<div class="container-fluid">
 			<div class="row justify-content-center">
-				<div class="col-12 col-lg-10 col-xl-8">
+				<div class="col-12 col-xl-10">
 					<!-- Header -->
 					<div class="header mt-md-5">
 						<div class="header-body">
 							<div class="row align-items-center">
 								<div class="col">
+                                    <h5 class="header-pretitle mb-5">
+                                        <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                                    </h5>
 									<!-- Pretitle -->
 									<h6 class="header-pretitle">
 										Add New

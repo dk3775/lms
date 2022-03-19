@@ -125,7 +125,7 @@ if ($_SESSION['role'] != "Lagos") {
 														<span class="item-score text-reset"><?php echo $row['StudentSemester']; ?></span>
 													</td>
 													<td>	
-														<a href="student_profile.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" class="btn btn-sm btn-white">
+														<a href="student_profile.php?studentenr=<?php echo $row['StudentEnrollmentNo']; ?>" class="btn btn-sm btn-info">
 															View
 														</a>
 													</td>

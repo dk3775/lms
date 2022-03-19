@@ -4,7 +4,7 @@ if ($_SESSION['role'] != "Texas") {
 	header("Location: ../index.php");
 } else {
 	include_once "../config.php";
-	$_SESSION["userrole"] = "Faculty";
+	$_SESSION["userrole"] = "Institute";
 }
 ?>
 <!DOCTYPE html>
@@ -23,7 +23,7 @@ if ($_SESSION['role'] != "Texas") {
 	<div class="main-content">
 		<div class="container-fluid">
 			<div class="row justify-content-center">
-				<div class="col-12 col-lg-10 col-xl-8">
+				<div class="col-12 col-xl-10">
 					<!-- Header -->
 					<div class="header mt-md-5">
 						<div class="header-body">
