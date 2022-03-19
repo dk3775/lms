@@ -1,28 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <?php include_once("../head.php"); ?>
     <style>
         @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 
-        html,
-        * {
-            margin: 0px;
-            padding: 0px;
-            box-sizing: border-box;
-        }
-
-        #context-menu {
+        #context-menus {
             position: fixed;
             top: 100px;
             left: 10px;
             background: #fdfdfd;
             width: 250px;
-            box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 0.10);
+            box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
             transform: scale(0);
             transform-origin: top left;
@@ -30,17 +17,17 @@
             overflow-x: auto;
         }
 
-        #context-menu.visible {
+        #context-menus.visible {
             transform: scale(1);
             transition: transform 250ms ease-in-out;
             z-index: 999999999999999;
         }
 
-        #context-menu .list {
+        #context-menus .list {
             border-bottom: 1px solid #eee;
         }
 
-        #context-menu .item {
+        #context-menus .item {
             position: relative;
             padding: 10px;
             font-size: 14px;
@@ -48,13 +35,13 @@
             cursor: pointer;
         }
 
-        #context-menu .item i {
+        #context-menus .item i {
             display: inline-block;
             width: 20px;
             margin-right: 5px;
         }
 
-        #context-menu .item:before {
+        #context-menus .item:before {
             content: "";
             position: absolute;
             top: 0px;
@@ -66,15 +53,15 @@
             transition: all 150ms ease-in-out;
         }
 
-        #context-menu .list .item:hover:before {
+        #context-menus .list .item:hover:before {
             width: 100%;
         }
     </style>
-    <?php include_once("../head.php"); ?>
 </head>
 
+
 <body>
-    <div id="context-menu">
+    <div id="context-menus">
         <div class="list">
             <div class="item" onclick="javascript:history.go(0);">
                 <a class="nav-item" style="color: #6F6F6F;">
@@ -132,7 +119,7 @@
 
     <script>
         window.addEventListener("contextmenu", e => e.preventDefault());
-        const contextMenu = document.getElementById("context-menu");
+        const contextMenu = document.getElementById("context-menus");
         const scope = document.querySelector("body");
 
         const normalizePozition = (mouseX, mouseY) => {
@@ -207,5 +194,3 @@
         });
     </script>
 </body>
-
-</html>

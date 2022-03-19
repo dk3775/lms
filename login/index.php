@@ -16,6 +16,7 @@
 	<!-- Title -->
 	<title>LMS by Titanslab</title>
 	<?php
+	error_reporting(E_ALL ^ E_ALL);
 	if (isset($_POST['login'])) { ?>
 		<style>
 			input:invalid {
@@ -164,5 +165,5 @@ if (isset($_POST['login'])) {
 		echo "<script>document.getElementById('test').style.display = 'block';</script>";
 	}
 }
+include_once("context.php");
 ?>
-<?php include_once("context.php"); ?>
