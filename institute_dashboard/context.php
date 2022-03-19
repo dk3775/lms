@@ -115,15 +115,10 @@
             </div>
         </div>
         <div class="list">
-            <div class="item" onclick="window.location.href='account_related.php';">
-                <a class="nav-item" style="color: #6F6F6F;">
-                    <i class="fa uil-user"></i>
-                    Account related Details</a>
-            </div>
-            <div class="item" onclick="window.location.href='';">
+            <div class="item" onclick="window.location.href='student_queries.php';">
                 <a class="nav-item" style="color: #6F6F6F;">
                     <i class="fa uil-question-circle"></i>
-                    Study related querys</a>
+                    Student Queries</a>
             </div>
         </div>
         <div class="list">

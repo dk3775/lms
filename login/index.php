@@ -1,8 +1,21 @@
 <!doctype html>
 <html lang="en">
+
 <head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="../assets/favicon/favicon.ico" type="image/x-icon" />
+	<!-- Map CSS -->
+	<!--	<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" />-->
+	<!-- Libs CSS -->
+	<link rel="stylesheet" href="../assets/css/libs.bundle.css" />
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+	<link rel="stylesheet" href="../assets/css/theme-dark.bundle.css" />
+	<!-- Title -->
+	<title>LMS by Titanslab</title>
 	<?php
-    include_once("../head.php");
 	if (isset($_POST['login'])) { ?>
 		<style>
 			input:invalid {
@@ -70,8 +83,8 @@
 
 				<script>
 					function password_show_hide() {
-                        const x = document.getElementById("password");
-                        var show_eye = document.getElementById("show_eye");
+						const x = document.getElementById("password");
+						var show_eye = document.getElementById("show_eye");
 						var hide_eye = document.getElementById("hide_eye");
 						hide_eye.classList.remove("d-none");
 						if (x.type === "password") {

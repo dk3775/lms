@@ -40,13 +40,13 @@ if ($_SESSION['role'] != "Texas") {
 		<div class="header">
 			<div class="container-fluid">
 				<div class="header-body">
-                    <div class="row align-items-end mb-3 ">
-                        <div class="col">
-                            <h5 class="header-pretitle">
-                                <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-                            </h5>
-                        </div>
-                    </div>
+					<div class="row align-items-end mb-3 ">
+						<div class="col">
+							<h5 class="header-pretitle">
+								<a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+							</h5>
+						</div>
+					</div>
 					<div class="row align-items-end">
 						<div class="col">
 							<h6 class="header-pretitle">
@@ -105,7 +105,7 @@ if ($_SESSION['role'] != "Texas") {
 											<!-- Title -->
 											<h4 class="card-header-title">
 												New Facultys
-											</h4>
+											</h4><!-- Default switch -->
 											<!-- Link -->
 											<a href="faculty_list.php" class="small">View all</a>
 										</div>
