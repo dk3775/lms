@@ -18,40 +18,37 @@ if ($_SESSION['role'] != "Texas") {
 
 <body>
 	<!-- NAVIGATION -->
-	<?php 
+	<?php
 	$nav_role = "Time Table";
 	include_once "../nav.php"; ?>
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<div class="container-fluid">
-
 			<div class="row justify-content-center">
 				<div class="col-12">
 					<!-- Header -->
 					<div class="header">
 						<div class="header-body">
-                            <div class="row align-items-center">
-                                <div class="d-flex justify-content-between mb-5">
-                                    <!-- Pretitle -->
-                                    <h5 class="header-pretitle">
-                                        <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-                                    </h5>
-                                    <!-- Title -->
-                                    <a href="add_timetable.php" class="btn btn-primary ml-2">
-                                        Add Time Table
-                                    </a>
-                                </div>
-                                <div class="row-auto">
-                                    <h6 class="header-pretitle">
-                                        View
-                                    </h6>
-                                    <!-- Title -->
-                                    <h1 class="header-title text-truncate">
-                                        Time Table List
-                                    </h1>
-                                </div>
-                            </div>
-                            <!-- / .row -->
+							<div class="row align-items-center">
+								<div class="col">
+									<h5 class="header-pretitle">
+										<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+									</h5>
+									<h6 class="header-pretitle">
+										View
+									</h6>
+									<!-- Title -->
+									<h1 class="header-title text-truncate">
+										Time Table List
+									</h1>
+								</div>
+								<div class="col-auto">
+									<a href="add_timetable.php" class="btn btn-primary ml-2">
+										Add Time Table
+									</a>
+								</div>
+							</div>
+							<!-- / .row -->
 							<div class="row align-items-center">
 								<div class="col">
 									<!-- Nav -->
@@ -184,7 +181,7 @@ if ($_SESSION['role'] != "Texas") {
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- / .main-content -->
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->

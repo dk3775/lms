@@ -17,12 +17,14 @@ $timetablesel = "SELECT * FROM timetablemaster WHERE TimetableId='$ttid'";
 $timetableresult = mysqli_query($conn, $timetablesel);
 $row = mysqli_fetch_assoc($timetableresult);
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <?php include_once "../head.php"; ?>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php include_once "../head.php"; ?>
+</head>
+
+<body>
     <!-- NAVIGATION -->
     <?php
     $nav_role = "Time Table";
@@ -37,8 +39,8 @@ $row = mysqli_fetch_assoc($timetableresult);
                         <div class="header-body">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h5 class="header-pretitle mb-5">
-                                        <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                                    <h5 class="header-pretitle">
+                                        <a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
                                     </h5>
                                     <!-- Pretitle -->
                                     <h6 class="header-pretitle">
@@ -63,9 +65,7 @@ $row = mysqli_fetch_assoc($timetableresult);
                                         <h2 class="mb-3">
                                             Time Table Image
                                         </h2>
-                                        <img src="../src/uploads/timetables/<?php echo $row['TimetableImage'] . "?t"; ?>"
-                                             id="IMG-preview" alt="..." class="img-fluid mb-3 rounded"
-                                             style="margin:auto; max-width: 80%;">
+                                        <img src="../src/uploads/timetables/<?php echo $row['TimetableImage'] . "?t"; ?>" id="IMG-preview" alt="..." class="img-fluid mb-3 rounded" style="margin:auto; max-width: 80%;">
                                         <!-- Title -->
                                     </div>
                                     <div class="row justify-content-center">
@@ -77,9 +77,7 @@ $row = mysqli_fetch_assoc($timetableresult);
                                             </small>
                                         </div>
                                         <div class="col-12 col-md-6">
-                                            <input type="file" id="img" name="tpic" class="btn btn-sm"
-                                                   onchange="showPreview(event);"
-                                                   accept="image/jpg, image/jpeg, image/png">
+                                            <input type="file" id="img" name="tpic" class="btn btn-sm" onchange="showPreview(event);" accept="image/jpg, image/jpeg, image/png">
                                         </div>
                                     </div>
                                 </div>
@@ -123,11 +121,10 @@ $row = mysqli_fetch_assoc($timetableresult);
                                         <option value="" hidden="">Select Branch</option>
                                         <?php
                                         while ($brrow = mysqli_fetch_assoc($branchresult)) { ?>
-                                            <option <?php if ($brrow['BranchCode'] == $row['TimetableBranchCode']) { ?> selected <?php } ?>
-                                                    value="<?php echo $brrow['BranchCode']; ?>">
+                                            <option <?php if ($brrow['BranchCode'] == $row['TimetableBranchCode']) { ?> selected <?php } ?> value="<?php echo $brrow['BranchCode']; ?>">
                                                 <?php echo $brrow['BranchName']; ?>
                                             </option>
-                                            <?php
+                                        <?php
                                         } ?>
                                     </select>
                                 </div>
@@ -140,14 +137,12 @@ $row = mysqli_fetch_assoc($timetableresult);
                                         Time Table Semester
                                     </label>
                                     <!-- Input -->
-                                    <select class="form-control" aria-label="Default select example" name="tsem"
-                                            required>
+                                    <select class="form-control" aria-label="Default select example" name="tsem" required>
                                         <option hidden>Select Semester</option>
                                         <?php
                                         for ($a = 1; $a <= 6; $a++) { ?>
 
-                                            <option <?php if ($a == $row['TimetableSemester']) { ?> selected <?php } ?>
-                                                    value="<?php echo $a; ?>"><?php echo $a; ?>
+                                            <option <?php if ($a == $row['TimetableSemester']) { ?> selected <?php } ?> value="<?php echo $a; ?>"><?php echo $a; ?>
                                             </option>
                                         <?php }
                                         ?>
@@ -190,7 +185,7 @@ $row = mysqli_fetch_assoc($timetableresult);
             <!-- / .row -->
         </div>
     </div>
-    
+
     <!-- Map JS -->
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
     <!-- Vendor JS -->
@@ -199,7 +194,7 @@ $row = mysqli_fetch_assoc($timetableresult);
     <script src="../assets/js/theme.bundle.js"></script>
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function () {
+        (function() {
             'use strict'
 
             // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -207,8 +202,8 @@ $row = mysqli_fetch_assoc($timetableresult);
 
             // Loop over them and prevent submission
             Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                    form.addEventListener('submit', function (event) {
+                .forEach(function(form) {
+                    form.addEventListener('submit', function(event) {
                         if (!form.checkValidity()) {
                             event.preventDefault()
                             event.stopPropagation()
@@ -219,8 +214,9 @@ $row = mysqli_fetch_assoc($timetableresult);
                 })
         })()
     </script>
-    </body>
-    </html>
+</body>
+
+</html>
 <?php
 if (isset($_POST['subbed'])) {
     // $f_name = $_FILES['tpic']['name'];

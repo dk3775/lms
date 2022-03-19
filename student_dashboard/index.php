@@ -41,12 +41,15 @@ if ($_SESSION['role'] != "Abuja") {
 				<div class="container-fluid">
 					<!-- Body -->
 					<div class="header-body">
+
 						<div class="row align-items-end">
 							<div class="col">
-								<!-- Pretitle -->
-								<h6 class="header-pretitle">
+								<h5 class="header-pretitle">
+									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+								</h5>
+								<h5 class="header-pretitle">
 									Student
-								</h6>
+								</h5>
 								<!-- Title -->
 								<h1 class="header-title">
 									Dashboard
@@ -67,7 +70,7 @@ if ($_SESSION['role'] != "Abuja") {
 					<div class="row gx-4">
 						<div class="col-auto">
 							<div class="avatar avatar-xxl position-relative">
-								<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic']."?t"; ?>" style="border-radius: 10px;" class="w-100 h-100 border-radius-lg shadow-sm">
+								<img src="../src/uploads/stuprofile/<?php echo $row['StudentProfilePic'] . "?t"; ?>" style="border-radius: 10px;" class="w-100 h-100 border-radius-lg shadow-sm">
 							</div>
 						</div>
 						<div class="col-auto my-auto">
@@ -430,7 +433,7 @@ if ($_SESSION['role'] != "Abuja") {
 		<!-- JAVASCRIPT -->
 		<!-- Map JS -->
 		<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-			<script src = "../assets/js/vendor.bundle.js"></script>
+		<script src="../assets/js/vendor.bundle.js"></script>
 		<!-- Theme JS -->
 		<script src="../assets/js/theme.bundle.js"></script>
 		<?php include("context.php"); ?>

@@ -26,9 +26,9 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 				<div class="header-body">
 					<div class="row align-items-end">
 						<div class="col">
-                            <h5 class="header-pretitle mb-5">
-                                <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-                            </h5>
+							<h5 class="header-pretitle">
+								<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+							</h5>
 							<h6 class="header-pretitle">
 								Subject
 							</h6>
@@ -39,7 +39,7 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 						<?php
 						if ($row['SubjectFacultyId'] == $_SESSION['fid']) { ?>
 							<div class="col-auto">
-								<a href="add_material.php?subcode=<?php echo $row['SubjectCode']; ?>&brid=<?php echo $row['BranchCode']; ?>" class="btn btn-primary ml-2">
+								<a href="add_material.php?subcode=<?php echo $row['SubjectCode']; ?>&brid=<?php echo $row['BranchCode']; ?>&subid=<?php echo $xbrid; ?>" class="btn btn-primary ml-2">
 									Add Material
 								</a>
 							</div>
@@ -157,7 +157,7 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 															</td>
 															<td colspan="3">
 																<!-- Email -->
-																<span class="item-company text-reset"><?php echo $roww['MaterialCode']; ?></span>
+																<span class="item-company text-reset"><?php echo $roww['SubjectUnitName']; ?></span>
 															</td>
 															<td></td>
 															<td></td>

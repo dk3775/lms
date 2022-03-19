@@ -31,10 +31,9 @@ $branchresult = mysqli_query($conn, $branchsel);
 						<div class="header-body">
 							<div class="row align-items-center">
 								<div class="col">
-                                    <h5 class="header-pretitle mb-5">
-                                        <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-                                    </h5>
-									<!-- Pretitle -->
+									<h5 class="header-pretitle">
+									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+								</h5>
 									<h6 class="header-pretitle">
 										Add New
 									</h6>

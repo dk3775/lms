@@ -2,54 +2,55 @@
 error_reporting(E_ALL ^ E_WARNING);
 session_start();
 if ($_SESSION['role'] != "Texas") {
-    header("Location: ../index.php");
+	header("Location: ../index.php");
 } else {
-    ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <?php include_once("../head.php"); ?>
-    </head>
-    <body>
-    <!-- NAVIGATION -->
-    <?php
-    $nav_role = "Faculty";
-    include_once("../nav.php"); ?>
-    <!-- MAIN CONTENT -->
-    <div class="main-content">
-    <div class="container-fluid">
-    <div class="row justify-content-center">
-    <div class="col-12 col-xl-10">
-    <!-- Header -->
-    <div class="header mt-md-5">
-        <div class="header-body">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h5 class="header-pretitle mb-5">
-                        <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-                    </h5>
-                    <!-- Pretitle -->
-                    <h6 class="header-pretitle">
-                        Edit
-                    </h6>
-                    <!-- Title -->
-                    <h1 class="header-title">
-                        Faculty Details
-                    </h1>
-                </div>
-            </div>
-            <!-- / .row -->
-        </div>
-    </div>
-    <!-- Form -->
-    <?php
-    include_once("../config.php");
-    $studentenr = $_GET['facid'];
-    $_SESSION["userrole"] = "institute";
-    if (isset($studentenr)) {
-        $sql = "SELECT * FROM facultymaster WHERE FacultyId = '$studentenr'";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_assoc($result);
+?>
+	<!DOCTYPE html>
+	<html lang="en">
+
+	<head>
+		<?php include_once("../head.php"); ?>
+	</head>
+
+	<body>
+		<!-- NAVIGATION -->
+		<?php
+		$nav_role = "Faculty";
+		include_once("../nav.php"); ?>
+		<!-- MAIN CONTENT -->
+		<div class="main-content">
+			<div class="container-fluid">
+				<div class="row justify-content-center">
+					<div class="col-12 col-xl-10">
+						<!-- Header -->
+						<div class="header mt-md-5">
+							<div class="header-body">
+								<div class="row align-items-center">
+									<div class="col">
+										<h5 class="header-pretitle">
+											<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+										</h5>
+										<h6 class="header-pretitle">
+											Edit
+										</h6>
+										<!-- Title -->
+										<h1 class="header-title">
+											Faculty Details
+										</h1>
+									</div>
+								</div>
+								<!-- / .row -->
+							</div>
+						</div>
+						<!-- Form -->
+						<?php
+						include_once("../config.php");
+						$studentenr = $_GET['facid'];
+						$_SESSION["userrole"] = "institute";
+						if (isset($studentenr)) {
+							$sql = "SELECT * FROM facultymaster WHERE FacultyId = '$studentenr'";
+							$result = mysqli_query($conn, $sql);
+							$row = mysqli_fetch_assoc($result);
 
 						?>
 							<form method="POST" enctype="multipart/form-data">
@@ -60,7 +61,7 @@ if ($_SESSION['role'] != "Texas") {
 												<!-- Personal details -->
 												<!-- Avatar -->
 												<div class="avatar">
-													<img class="avatar-img rounded-circle" id="IMG-preview" src="../src/uploads/facprofile/<?php echo $row['FacultyProfilePic']."?t"; ?>" alt="...">
+													<img class="avatar-img rounded-circle" id="IMG-preview" src="../src/uploads/facprofile/<?php echo $row['FacultyProfilePic'] . "?t"; ?>" alt="...">
 												</div>
 											</div>
 											<div class="col ml-n2">
@@ -76,33 +77,32 @@ if ($_SESSION['role'] != "Texas") {
 										<!-- / .row -->
 									</div>
 									<div class="col-auto">
-                                <!-- Button -->
-                                <input type="file" id="img" name="stuprofile" class="btn btn-sm"
-                                    onchange="showPreview(event);" accept="image/jpg, image/jpeg, image/png">
-                            </div>
-                        </div>
+										<!-- Button -->
+										<input type="file" id="img" name="stuprofile" class="btn btn-sm" onchange="showPreview(event);" accept="image/jpg, image/jpeg, image/png">
+									</div>
+								</div>
 
-                        <!-- Priview Profile pic  -->
-                        <script>
-                        function showPreview(event) {
-                            var file = document.getElementById('img');
-                            if (file.files.length > 0) {
-                                // RUN A LOOP TO CHECK EACH SELECTED FILE.
-                                for (var i = 0; i <= file.files.length - 1; i++) {
-                                    var fsize = file.files.item(i).size; // THE SIZE OF THE FILE.	
-                                }
-                                if (fsize <= 2000000) {
-                                    var src = URL.createObjectURL(event.target.files[0]);
-                                    var preview = document.getElementById("IMG-preview");
-                                    preview.src = src;
-                                    preview.style.display = "block";
-                                } else {
-                                    alert("Only allowed less then 2MB.. !");
-                                    file.value = '';
-                                }
-                            }
-                        }
-                        </script>
+								<!-- Priview Profile pic  -->
+								<script>
+									function showPreview(event) {
+										var file = document.getElementById('img');
+										if (file.files.length > 0) {
+											// RUN A LOOP TO CHECK EACH SELECTED FILE.
+											for (var i = 0; i <= file.files.length - 1; i++) {
+												var fsize = file.files.item(i).size; // THE SIZE OF THE FILE.	
+											}
+											if (fsize <= 2000000) {
+												var src = URL.createObjectURL(event.target.files[0]);
+												var preview = document.getElementById("IMG-preview");
+												preview.src = src;
+												preview.style.display = "block";
+											} else {
+												alert("Only allowed less then 2MB.. !");
+												file.value = '';
+											}
+										}
+									}
+								</script>
 								<!-- Divider -->
 								<hr class="my-5">
 								<div class="row">
@@ -161,8 +161,8 @@ if ($_SESSION['role'] != "Texas") {
 									</div>
 								</div>
 								<?php
-									$branchsel = "SELECT * FROM branchmaster";
-									$branchresult = mysqli_query($conn, $branchsel);
+								$branchsel = "SELECT * FROM branchmaster";
+								$branchresult = mysqli_query($conn, $branchsel);
 								?>
 								<div class="row">
 									<div class="col-12 col-md-6">
@@ -185,15 +185,15 @@ if ($_SESSION['role'] != "Texas") {
 											</label>
 											<!-- Input -->
 											<select id="validationCustom01" class="form-control" name="fbranch" required>
-											<option value="" hidden="">Select Branch</option>
-											<?php
-												while($brrow = mysqli_fetch_assoc($branchresult)){ ?>
-											<option <?php if($brrow['BranchCode'] == $row['FacultyBranchCode']){ ?> selected <?php } ?> value="<?php echo $brrow['BranchCode']; ?>">
-												<?php echo $brrow['BranchName']; ?> 
-											</option>
-											<?php
+												<option value="" hidden="">Select Branch</option>
+												<?php
+												while ($brrow = mysqli_fetch_assoc($branchresult)) { ?>
+													<option <?php if ($brrow['BranchCode'] == $row['FacultyBranchCode']) { ?> selected <?php } ?> value="<?php echo $brrow['BranchCode']; ?>">
+														<?php echo $brrow['BranchName']; ?>
+													</option>
+												<?php
 												} ?>
-										</select>
+											</select>
 										</div>
 									</div>
 								</div>
@@ -229,7 +229,7 @@ if ($_SESSION['role'] != "Texas") {
 									</div>
 									<div class="col-auto col-6">
 										<div class="input-group input-group-sm mb-3 ">
-											<textarea id="demo" class="form-control fs-2" name="ec" readonly maxlength="4"><?php echo "FA".$row['FacultyCode']; ?></textarea>
+											<textarea id="demo" class="form-control fs-2" name="ec" readonly maxlength="4"><?php echo "FA" . $row['FacultyCode']; ?></textarea>
 											<button class="btn btn-primary" onclick="cp1()"><i class="fe fe-copy"></i></button>
 										</div>
 									</div>
@@ -292,7 +292,7 @@ if ($_SESSION['role'] != "Texas") {
 											<div class="row align-items-center">
 												<div class="col-auto">
 													<a href="profile-posts.html" class="avatar avatar-lg">
-														<img src="../src/uploads/facprofile/<?php echo $row['FacultyProfilePic']."?t"; ?>" alt="..." class="avatar-img rounded-circle">
+														<img src="../src/uploads/facprofile/<?php echo $row['FacultyProfilePic'] . "?t"; ?>" alt="..." class="avatar-img rounded-circle">
 													</a>
 												</div>
 												<div class="col ml-n2">
@@ -337,6 +337,7 @@ if ($_SESSION['role'] != "Texas") {
 		<!-- Theme JS -->
 		<script src="../assets/js/theme.bundle.js"></script>
 	</body>
+
 	</html>
 	<?php
 	if (isset($_POST['subbed'])) {
@@ -352,35 +353,35 @@ if ($_SESSION['role'] != "Texas") {
 		$fbranch = $_POST['fbranch'];
 		$fquali = $_POST['fqualification'];
 
-		if($_POST['fpassword'] != null){
+		if ($_POST['fpassword'] != null) {
 			$fpassword = $_POST['fpassword'];
-		}else{
+		} else {
 			$fpassword = $row['FacultyPassword'];
 		}
-		
+
 		$fcode = $_POST['fcode'];
 		$fuid = $_POST['ec'];
 		$fid = $row['FacultyId'];
 
-    $fs_name = $fcode . ".png";
+		$fs_name = $fcode . ".png";
 
-    if ($f_error === 0) {
-        if ($f_size <= 2000000) {
-            move_uploaded_file($f_tmp_name, "../src/uploads/stuprofile/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ...
-        } else {
-            echo "<script> alert(File size is to big .. !);</script>";
-        }
-    } else {
-        echo "Something went wrong .. !";
-    }
-    $sqli = "UPDATE facultymaster SET FacultyUserName='$fuid',FacultyFirstName='$fname', FacultyMiddleName='$mname',FacultyLastName='$lname', FacultyContactNo='$fcontact', FacultyEmail='$femail', FacultyOffice='$foffice', FacultyBranchCode='$fbranch', FacultyQualification='$fquali', FacultyPassword='$fpassword', FacultyCode='$fcode'  WHERE FacultyId = '$fid';";
-    $runed = mysqli_query($conn, $sqli);
-    if ($runed == true) {
-        echo "<script>alert('Faculty Details Edited Successfully')</script>";
-        echo "<script>window.open('faculty_list.php','_self')</script>";
-    } else {
-        echo "<script>alert('Error Occured')</script>";
-        echo "<script>window.open('edit_faculty.php','_self')</script>";
-    }
-}
-?>
+		if ($f_error === 0) {
+			if ($f_size <= 2000000) {
+				move_uploaded_file($f_tmp_name, "../src/uploads/stuprofile/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ...
+			} else {
+				echo "<script> alert(File size is to big .. !);</script>";
+			}
+		} else {
+			echo "Something went wrong .. !";
+		}
+		$sqli = "UPDATE facultymaster SET FacultyUserName='$fuid',FacultyFirstName='$fname', FacultyMiddleName='$mname',FacultyLastName='$lname', FacultyContactNo='$fcontact', FacultyEmail='$femail', FacultyOffice='$foffice', FacultyBranchCode='$fbranch', FacultyQualification='$fquali', FacultyPassword='$fpassword', FacultyCode='$fcode'  WHERE FacultyId = '$fid';";
+		$runed = mysqli_query($conn, $sqli);
+		if ($runed == true) {
+			echo "<script>alert('Faculty Details Edited Successfully')</script>";
+			echo "<script>window.open('faculty_list.php','_self')</script>";
+		} else {
+			echo "<script>alert('Error Occured')</script>";
+			echo "<script>window.open('edit_faculty.php','_self')</script>";
+		}
+	}
+	?>

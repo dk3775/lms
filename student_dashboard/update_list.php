@@ -33,7 +33,9 @@ if ($_SESSION['role'] != "Abuja") {
                   <div class="header-body">
                      <div class="row align-items-center">
                         <div class="col">
-                           <!-- Pretitle -->
+                           <h5 class="header-pretitle">
+                              <a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                           </h5>
                            <h6 class="header-pretitle">
                               View
                            </h6>
@@ -118,12 +120,12 @@ if ($_SESSION['role'] != "Abuja") {
                                              </td>
                                              <td>
                                                 <!-- Phone -->
-                                                <a href="update_view.php?updateid=<?php echo $urow['UpdateId']; ?>" type="button" class="btn btn-sm btn-white">View</a>
+                                                <a href="update_view.php?updateid=<?php echo $urow['UpdateId']; ?>" type="button" class="btn btn-sm btn-info">View</a>
                                              </td>
                                              <td>
 
                                                 <!-- Badge -->
-                                                <a download="<?php echo $urow['UpdateFile']; ?>" href="../src/uploads/updates/<?php echo $urow['UpdateFile']; ?>" type="button" class="btn btn-sm btn-white">Download</a>
+                                                <a download="<?php echo $urow['UpdateFile']; ?>" href="../src/uploads/updates/<?php echo $urow['UpdateFile']; ?>" type="button" class="btn btn-sm btn-success">Download</a>
                                              </td>
                                              <td></td>
                                           <tr id="demo1" class="collapse">

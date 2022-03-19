@@ -28,7 +28,7 @@ if ($_SESSION['role'] != "Texas") {
                             <div class="row align-items-end">
                                 <div class="col">
                                     <h5 class="header-pretitle">
-                                        <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                                        <a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
                                     </h5>
                                     <!-- Pretitle -->
                                     <h6 class="header-pretitle">

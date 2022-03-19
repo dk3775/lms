@@ -31,7 +31,9 @@ if ($_SESSION['role'] != "Abuja") {
                 <div class="header-body">
                     <div class="row align-items-end">
                         <div class="col">
-                            <!-- Pretitle -->
+                            <h5 class="header-pretitle">
+                                <a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                            </h5>
                             <h6 class="header-pretitle">
                                 Subject
                             </h6>
@@ -58,12 +60,12 @@ if ($_SESSION['role'] != "Abuja") {
                         <div class="col-12 col-md-4">
                             <div class="card-group">
                                 <div class="card">
-                                    <img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic']."?t"; ?>" class="card-img-top" alt="...">
+                                    <img src="../src/uploads/subprofile/<?php echo $roww['SubjectPic'] . "?t"; ?>" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo $roww['SubjectName']; ?></h5>
                                         <p class="card-text"><?php echo $roww['SubjectCode']; ?></p>
                                         <p class="card-text"><?php echo $roww['FacultyFirstName'] . " " . $roww['FacultyLastName']; ?></p>
-                                        <a href="subject_profile.php?subid=<?php echo $roww['SubjectId']; ?>" class="small">Details</a>
+                                        <a href="subject_profile.php?subid=<?php echo $roww['SubjectId']; ?>" class="small btn-sm btn btn-outline-info">Details</a>
                                     </div>
                                 </div>
                             </div>

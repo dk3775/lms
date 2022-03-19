@@ -38,10 +38,10 @@ $row = mysqli_fetch_assoc($timetableresult);
                   <div class="header-body">
                      <div class="row align-items-center">
                         <div class="col">
-                            <h5 class="header-pretitle mb-5">
-                                <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-                            </h5>
-                           <!-- Pretitle -->
+                          
+                           <h5 class="header-pretitle">
+                              <a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                           </h5>
                            <h6 class="header-pretitle">
                               Edit
                            </h6>
@@ -64,7 +64,7 @@ $row = mysqli_fetch_assoc($timetableresult);
                               <h2 class="mb-3">
                                  Time Table Image
                               </h2>
-                              <img src="../src/uploads/timetables/<?php echo $row['TimetableImage']."?t"; ?>" id="IMG-preview" alt="..." class="img-fluid mb-3 rounded" style="margin:auto; max-width: 80%;">
+                              <img src="../src/uploads/timetables/<?php echo $row['TimetableImage'] . "?t"; ?>" id="IMG-preview" alt="..." class="img-fluid mb-3 rounded" style="margin:auto; max-width: 80%;">
                               <!-- Title -->
                            </div>
                            <div class="row justify-content-center">

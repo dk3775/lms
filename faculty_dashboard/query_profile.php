@@ -28,6 +28,9 @@ if ($_SESSION['role'] != "Lagos") {
                 <div class="header-body">
                     <div class="row align-items-end">
                         <div class="col">
+                            <h5 class="header-pretitle">
+                                <a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                            </h5>
                             <h6 class="header-pretitle">
                                 Query
                             </h6>
@@ -122,7 +125,7 @@ if (isset($_POST['subreply'])) {
     $qur = "UPDATE `querymaster` SET `QueryReply`='$reply',`Querystatus`='$qrstatus',`QueryRepDate`='$dt'WHERE QueryId = '$qid'";
     $res = mysqli_query($conn, $qur);
     if ($res) {
-        domail($row['StudentEmail'],$row['StudentFirstName']." ".$row['StudentLastName'],"You have a reply from ".$row['FacultyFirstName']." ".$row['FacultyLastName']." for your query -> ".$row['QueryTopic'],"<h5>Reply -></h5><br>".$reply);
+        domail($row['StudentEmail'], $row['StudentFirstName'] . " " . $row['StudentLastName'], "You have a reply from " . $row['FacultyFirstName'] . " " . $row['FacultyLastName'] . " for your query -> " . $row['QueryTopic'], "<h5>Reply -></h5><br>" . $reply);
         echo "<script>alert('Reply Successfully Sent .. !');</script>";
         echo "<script>window.location.href='query_profile.php?qid=$qid';</script>";
     } else {

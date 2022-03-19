@@ -22,11 +22,9 @@ if ($_SESSION['role'] != "Lagos") {
                 <div class="header-body">
                     <div class="row align-items-end">
                         <div class="col">
-                            <!-- Pretitle -->
-                            <h5 class="header-pretitle mb-5">
-                                <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i
-                                            class="fe uil-angle-double-left"></i>Back</a>
-                            </h5>
+                            <h5 class="header-pretitle">
+									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+								</h5>
                             <h6 class="header-pretitle">
                                 Update
                             </h6>

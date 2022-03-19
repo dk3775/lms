@@ -39,7 +39,9 @@ if ($_SESSION['role'] != "Abuja") {
 						<div class="header-body">
 							<div class="row align-items-center">
 								<div class="col">
-									<!-- Pretitle -->
+									<h5 class="header-pretitle">
+										<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+									</h5>
 									<h6 class="header-pretitle">
 										View
 									</h6>
@@ -173,19 +175,19 @@ if ($_SESSION['role'] != "Abuja") {
 														</span>
 													</td>
 													<td>
-														<a href="assignment_view.php?updateid=<?php echo $row['AssignmentId']; ?>" class=" btn btn-sm btn-white">
+														<a href="assignment_view.php?updateid=<?php echo $row['AssignmentId']; ?>" class=" btn btn-sm btn-info">
 															View
 														</a>
 														&nbsp;
 														<?php
 														if ($ssrow['SAssignmentStatus'] == 1) { ?>
-															<a href="../src/uploads/studentAssignment/<?php echo $ssrow['SAssignmentFile']; ?>" download="<?php echo $ssrow['SAssignmentFile']; ?>" class="btn btn-sm btn-white" name="Download">
+															<a href="../src/uploads/studentAssignment/<?php echo $ssrow['SAssignmentFile']; ?>" download="<?php echo $ssrow['SAssignmentFile']; ?>" class="btn btn-sm btn-outline-success" name="Download">
 																Download
 															</a>
 															<?php
 														} else if ($ssrow['SAssignmentStatus'] == 0 || $ssrow['SAssignmentStatus'] == 2) {
 															if ($row['AssignmentSubmissionDate'] > gmdate("Y-m-d")) { ?>
-																<a href="assignment_view.php?updateid=<?php echo $row['AssignmentId']; ?>&action=sub" class="btn btn-sm btn-white" onclick="assSubmit();">
+																<a href="assignment_view.php?updateid=<?php echo $row['AssignmentId']; ?>&action=sub" class="btn btn-sm btn-primary" onclick="assSubmit();">
 																	Submit
 																</a>
 														<?php

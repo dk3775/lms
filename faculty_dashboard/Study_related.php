@@ -34,7 +34,9 @@ if ($_SESSION['role'] != "Lagos") {
 						<div class="header-body">
 							<div class="row align-items-center">
 								<div class="col">
-									<!-- Pretitle -->
+									<h5 class="header-pretitle">
+										<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+									</h5>
 									<h6 class="header-pretitle">
 										View
 									</h6>
@@ -142,9 +144,9 @@ if ($_SESSION['role'] != "Lagos") {
 																	</td>
 																	<td>
 																		<!-- Badge -->
-																		<a href="query_profile.php?qid=<?php echo $urow['QueryId']; ?>" type="button" class="btn btn-sm btn-white">View</a>
-																		<a download="<?php echo $urow['QueryDocument']; ?>" href="../src/uploads/querydocument/<?php echo $urow['QueryDocument']; ?>" type="button" class="btn btn-sm btn-white">Download</a>
-																		<a href="qrystatus.php?qid=<?php echo $urow['QueryId']; ?>" type="button" class="btn btn-sm btn-white">Close</a>
+																		<a href="query_profile.php?qid=<?php echo $urow['QueryId']; ?>" type="button" class="btn btn-sm btn-info">View</a>&nbsp;
+																		<a download="<?php echo $urow['QueryDocument']; ?>" href="../src/uploads/querydocument/<?php echo $urow['QueryDocument']; ?>" type="button" class="btn btn-sm btn-success">Download</a>&nbsp;
+																		<a href="qrystatus.php?qid=<?php echo $urow['QueryId']; ?>" type="button" class="btn btn-sm btn-danger">Close</a>&nbsp;
 																	</td>
 																<tr id="demo<?php echo $j++; ?>" class="collapse">
 																	<td colspan="6" class="hiddenRow">
