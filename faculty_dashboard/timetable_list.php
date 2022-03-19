@@ -131,16 +131,16 @@ if ($_SESSION['role'] != "Lagos") {
 														<span class="item-phone text-reset"><?php echo $row['TimetableUploadTime']; ?></span>
 													</td>
 													<td>
-														<a href="edit_timetable.php?ttid=<?php echo $row['TimetableId']; ?>" class="btn btn-sm btn-white">
+														<a href="edit_timetable.php?ttid=<?php echo $row['TimetableId']; ?>" class="btn btn-sm btn-warning">
 															Edit
 														</a>
 														&nbsp;
-														<a href="ttdelete.php?ttid=<?php echo $row['TimetableId']; ?>" class="btn btn-sm btn-white" onclick="if (! confirm('Are You Sure, You want to Delete this Time-Table ?')) return false;">
+														<a href="ttdelete.php?ttid=<?php echo $row['TimetableId']; ?>" class="btn btn-sm btn-danger" onclick="if (! confirm('Are You Sure, You want to Delete this Time-Table ?')) return false;">
 															Delete
 															<!--changes-->
 														</a>
 														&nbsp;
-														<a href="timetable_view.php?ttid=<?php echo $row['TimetableId']; ?>" class="btn btn-sm btn-white">
+														<a href="timetable_view.php?ttid=<?php echo $row['TimetableId']; ?>" class="btn btn-sm btn-info">
 															View
 														</a>
 													</td>

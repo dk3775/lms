@@ -70,7 +70,7 @@
 							</div>
 							<div class="d-flex justify col-3 mt-3">
 								<!-- Button -->
-								<a href="../src/uploads/assignments/<?php echo $row['AssignmentFile']; ?>" download="<?php echo $row['AssignmentFile']; ?>" class="btn btn-primary" name="Download">
+								<a href="../src/uploads/assignments/<?php echo $row['AssignmentFile']; ?>" download="<?php echo $row['AssignmentFile']; ?>" class="btn btn-success" name="Download">
 								Download
 								</a>
 							</div>
@@ -182,16 +182,16 @@
 													<span type="text" class="text-reset item-phone" name="bsem" required><?php echo $row['SAssignmentUploadDate']; ?></span>
 												</td>
 												<td>
-													<a href="assign_status.php?upid=<?php echo $row['SAssignmentUploaderId']; ?>&asid=<?php echo $ttid; ?>&a=<?php echo 1; ?>" class="btn btn-sm btn-white">
+													<a href="assign_status.php?upid=<?php echo $row['SAssignmentUploaderId']; ?>&asid=<?php echo $ttid; ?>&a=<?php echo 1; ?>" class="btn btn-sm btn-danger">
 													Reject
 													</a>
 													&nbsp;
-													<a class="btn btn-sm btn-white" href="assign_status.php?upid=<?php echo $row['SAssignmentUploaderId']; ?>&asid=<?php echo $ttid; ?>&a=<?php echo 2; ?>">
+													<a class="btn btn-sm btn-success" href="assign_status.php?upid=<?php echo $row['SAssignmentUploaderId']; ?>&asid=<?php echo $ttid; ?>&a=<?php echo 2; ?>">
 														Complete
 														<!--changes-->
 													</a>
 													&nbsp;
-													<a href="../src/uploads/studentAssignment/<?php echo $row['SAssignmentFile']; ?>" download="<?php echo $row['SAssignmentFile']; ?>" class="btn btn-sm btn-white" name="Download">
+													<a href="../src/uploads/studentAssignment/<?php echo $row['SAssignmentFile']; ?>" download="<?php echo $row['SAssignmentFile']; ?>" class="btn btn-sm btn-info" name="Download">
 													Download
 													</a>
 												</td>

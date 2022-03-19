@@ -134,15 +134,15 @@ if ($_SESSION['role'] != "Lagos") {
 															<span class="item-phone text-reset"><?php echo $row['AssignmentSubmissionDate']; ?></span>
 														</td>
 														<td>
-															<a href="edit_assignment.php?assid=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-white">
+															<a href="edit_assignment.php?assid=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-warning">
 																Edit
 															</a>
 															&nbsp;
-															<a href="assdelete.php?assid=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-white" onclick="if (! confirm('Are you sure to delete Assignment ?')) return false;">
+															<a href="assdelete.php?assid=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-danger" onclick="if (! confirm('Are you sure to delete Assignment ?')) return false;">
 																Delete
 															</a>
 															&nbsp;
-															<a href="assignment_view.php?updateid=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-white">
+															<a href="assignment_view.php?updateid=<?php echo $row['AssignmentId']; ?>" class="btn btn-sm btn-info">
 																View
 															</a>
 														</td>
