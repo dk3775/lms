@@ -6,7 +6,6 @@ if ($_SESSION['role'] != "Lagos") {
     include_once("../config.php");
     $_SESSION["userrole"] = "Faculty";
     $subcode = $_GET['subcode'];
-    $subid = $_GET['subid'];
     $subsql = "SELECT * FROM subjectmaster WHERE SubjectCode = '$subcode'";
     $subrow = mysqli_fetch_assoc(mysqli_query($conn, $subsql));
     $brid = $_GET['brid'];
@@ -99,7 +98,7 @@ if ($_SESSION['role'] != "Lagos") {
                                 </div>
                                 <div class="col-auto">
                                     <!-- Button -->
-                                    <input type="file" name="engmaterial" id="file" onchange="showPreview(event);" class="btn btn-sm" accept="application/pdf">
+                                    <input type="file" name="engmaterial" class="btn btn-sm" accept="application/pdf">
                                 </div>
                             </div>
                             <hr class="my-3">
@@ -121,7 +120,7 @@ if ($_SESSION['role'] != "Lagos") {
                                 </div>
                                 <div class="col-auto">
                                     <!-- Button -->
-                                    <input type="file" name="gujmaterial" id="file1" onchange="showPreview(event);" class="btn btn-sm" accept="application/pdf">
+                                    <input type="file" name="gujmaterial" class="btn btn-sm" accept="application/pdf">
                                 </div>
                             </div>
                             <hr class="mt-4 mb-5">
@@ -142,32 +141,6 @@ if ($_SESSION['role'] != "Lagos") {
         <?php include("context.php");
         ?>
         <!-- Map JS -->
-        <script>
-            function showPreview(event) {
-                var file = document.getElementById('file');
-                if (file.files.length > 0) {
-                    // RUN A LOOP TO CHECK EACH SELECTED FILE.
-                    for (var i = 0; i <= file.files.length - 1; i++) {
-                        var fsize = file.files.item(i).size; // THE SIZE OF THE FILE.	
-                    }
-                    if (fsize >= 5000000) {
-                        alert("Only allowed less then 5MB.. !");
-                        file.value = '';
-                    }
-                }
-                var file1 = document.getElementById('file1');
-                if (file1.files.length > 0) {
-                    // RUN A LOOP TO CHECK EACH SELECTED FILE.
-                    for (var i = 0; i <= file1.files.length - 1; i++) {
-                        var fsize1 = file1.files.item(i).size; // THE SIZE OF THE FILE.	
-                    }
-                    if (fsize1 >= 5000000) {
-                        alert("Only allowed less then 5MB.. !");
-                        file1.value = '';
-                    }
-                }
-            }
-        </script>
         <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
         <!-- Vendor JS -->
         <script src="../assets/js/vendor.bundle.js"></script>
@@ -195,7 +168,7 @@ if ($_SESSION['role'] != "Lagos") {
         $gujmaterial = $materialcode . "_" .  "GUJ" . ".pdf";
 
         $sql = "INSERT INTO `studymaterialmaster`(`SubjectCode`, `SubjectUnitNo`, `MaterialCode`, `SubjectUnitName`, `EngMaterialFile`, `GujMaterialFile`, `MaterialUploadDate`) 
-        VALUES ('$subcode','$unitno','$materialcode','$unitname','$engmaterial','$gujmaterial','$dt')";
+        VALUES ('$subcode','$unitno','$unitname','$materialcode','$engmaterial','$gujmaterial','$dt')";
 
         $run = mysqli_query($conn, $sql);
         if ($run == true) {
@@ -221,7 +194,7 @@ if ($_SESSION['role'] != "Lagos") {
             }
 
             echo "<script>alert('Study Material Added Successfully');</script>";
-            echo "<script>window.open('/subject_profile.php?subid=$subid','_self');</script>";
+            echo "<script>window.open('branch_profile.php','_self');</script>";
         } else {
             echo "<script>alert('Error Occured, Study Material Not Added');</script>";
             echo "<script>window.open('add_material.php','_self');</script>";

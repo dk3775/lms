@@ -48,9 +48,6 @@ if ($_SESSION['role'] != "Abuja") {
 									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
 								</h5>
 								<h5 class="header-pretitle">
-									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-								</h5>
-								<h5 class="header-pretitle">
 									Student
 								</h5>
 								<!-- Title -->
