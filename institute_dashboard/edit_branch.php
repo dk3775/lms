@@ -46,7 +46,7 @@ if ($_SESSION['role'] != "Texas") {
 						<?php
 						include_once("../config.php");
 						$bid = $_GET['brid'];
-						$_SESSION["userrole"] = "institute";
+						$_SESSION["userrole"] = "Institute";
 						if (isset($bid)) {
 							$sql = "SELECT * FROM branchmaster WHERE BranchId = '$bid'";
 							$result = mysqli_query($conn, $sql);
@@ -60,7 +60,7 @@ if ($_SESSION['role'] != "Texas") {
 											<label class="form-label">
 												Branch Code
 											</label>
-											<input type="text" class="form-control" name="bcode" value="<?php echo $row['BranchCode']; ?>" required>
+											<input type="number"  class="form-control" name="bcode" value="<?php echo $row['BranchCode']; ?>" required>
 										</div>
 									</div>
 									<div class="col-12 col-md-6">

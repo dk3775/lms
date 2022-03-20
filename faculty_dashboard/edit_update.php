@@ -49,7 +49,7 @@ $row = mysqli_fetch_assoc($updateresult);
                   </div>
                </div>
                <!-- Form -->
-               <form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+               <form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" >
                   <div class="card">
                      <div class="card-body text-center">
                         <div class="row justify-content-center">

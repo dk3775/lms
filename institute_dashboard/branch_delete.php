@@ -29,7 +29,7 @@
             $res = mysqli_query($conn, $qur);
             if($res){
                 echo "<script>alert('Branch Deleted Successfully');</script>";
-                echo "<script>window.location.href='../institute_dashboard/branch_view.php';</script>";
+                echo "<script>window.location.href='../institute_dashboard/branch_list.php';</script>";
             }
         } catch (Exception $e) {
             echo "<script>alert('Branch Deletion Failed, Because This Branch is Not Empty');</script>";

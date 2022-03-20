@@ -51,7 +51,7 @@ if ($_SESSION['role'] != "Lagos") {
                         </div>
                         <!-- Form -->
                         <br>
-                        <form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+                        <form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" >
 
                             <div class="row">
                                 <div class="col-md-2">

@@ -47,7 +47,7 @@ $branchresult = mysqli_query($conn, $branchsel);
 						</div>
 					</div>
 					<!-- Form -->
-					<form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+					<form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" >
 						<div class="row justify-content-between align-items-center">
 							<div class="col">
 								<div class="row align-items-center">

@@ -6,7 +6,7 @@ if ($_SESSION['role'] != "Lagos") {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Faculty";
 	$fid = $_SESSION['fid'];
-	$qur = "SELECT * FROM assignmentmaster INNER JOIN facultymaster INNER JOIN subjectmaster ON assignmentmaster.AssignmentUploadedBy = facultymaster.FacultyId AND assignmentmaster.AssignmentSubject=subjectmaster.SubjectCode WHERE AssignmentUploadedBy = '$fid'";
+	$qur = "SELECT * FROM assignmentmaster INNER JOIN facultymaster INNER JOIN subjectmaster ON assignmentmaster.AssignmentUploadedBy = facultymaster.FacultyId AND assignmentmaster.AssignmentSubject=subjectmaster.SubjectCode WHERE AssignmentUploadedBy = '$fid' ORDER BY AssignmentUploaddate DESC;";
 	$res = mysqli_query($conn, $qur);
 }
 ?>

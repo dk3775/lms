@@ -61,7 +61,7 @@ if ($_SESSION['role'] != "Abuja") {
 							<!-- / .row -->
 						</div>
 					</div>
-					<form method="POST" class="row g-3 needs-validation" novalidate>
+					<form method="POST" class="row g-3 needs-validation" >
 						<div class="form-group">
 							<!-- Label  -->
 							<label class="form-label">

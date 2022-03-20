@@ -7,7 +7,7 @@ if ($_SESSION['role'] != "Lagos") {
     include_once "../config.php";
     $_SESSION["userrole"] = "faculty";
 
-    $uqur = "SELECT * FROM updatemaster";
+    $uqur = "SELECT * FROM updatemaster Order by UpdateUploadDate DESC";
     $ures = mysqli_query($conn, $uqur);
 }
 ?>
