@@ -49,39 +49,59 @@
 				<p class="text-muted text-center mb-5">
 					access to your dashboard.
 				</p>
-				<!-- Form -->
-				<form method="post" name="myform">
-					<!-- Email address -->
-					<div class="form-group ">
-						<!-- Label -->
-						<label class="form-label">
-							Username
-						</label>
-						<input type="text" class="form-control" placeholder="Username" id="ffname" name="name" value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>" required>
+				<div class="btn-toolbar text-center justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+					<div class="btn-group mr-2" role="group" aria-label="First group">
+						<button type="button" onclick="myfunction()" class="btn btn-primary btn-lg">Institute</button>
+						<button type="button" onclick="myfunction()" class="btn btn-primary btn-lg">Faculty</button>
+						<button type="button" onclick="myfunction()" class="btn btn-primary btn-lg">Student</button>
 					</div>
-					<label class="form-label">
-						Password
-					</label>
-					<!-- Password -->
-					<div class="col-12 logo_outer">
-						<div class="input-group mb-4">
-							<input name="password" type="password" value="" class="input form-control" id="password" placeholder="Password" required aria-label="password" aria-describedby="basic-addon1" />
-							<div class="input-group-append ">
-								<span class="input-group-text" style="border-radius: 1px 5px 5px 1px;" onclick="password_show_hide();">
-									<i class="fe uil-eye-slash" id="show_eye"></i>
-									<i class="fe uil-eye d-none" id="hide_eye"></i>
-								</span>
+				</div>
+				<br>
+				<!-- Form -->
+				<div id="logindiv" style="display: none;">
+					<form method="post" name="myform">
+						<!-- Email address -->
+						<div class="form-group ">
+							<!-- Label -->
+							<label class="form-label">
+								Username
+							</label>
+							<input type="text" class="form-control" placeholder="Username" id="ffname" name="name" value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>" required>
+						</div>
+						<label class="form-label">
+							Password
+						</label>
+						<!-- Password -->
+						<div class="col-12 logo_outer">
+							<div class="input-group mb-4">
+								<input name="password" type="password" value="" class="input form-control" id="password" placeholder="Password" required aria-label="password" aria-describedby="basic-addon1" />
+								<div class="input-group-append ">
+									<span class="input-group-text" style="border-radius: 1px 5px 5px 1px;" onclick="password_show_hide();">
+										<i class="fe uil-eye-slash" id="show_eye"></i>
+										<i class="fe uil-eye d-none" id="hide_eye"></i>
+									</span>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="alert alert-danger" id="test" role="alert" style="display: none;">
-						Incorrect username or password!!
-					</div>
-					<!-- Submit -->
-					<input type="submit" class="btn btn-lg btn-block btn-primary mb-3" name="login" value="Login">
-				</form>
+						<div class="alert alert-danger" id="test" role="alert" style="display: none;">
+							Incorrect username or password!!
+						</div>
+						<!-- Submit -->
+						<input type="submit" class="btn btn-lg btn-block btn-primary mb-3" name="login" value="Login">
+					</form>
+				</div>
 
 
+				<script>
+					function myfunction() {
+						var x = document.getElementById("logindiv");
+						if (x.style.display === "none") {
+							x.style.display = "block";
+						} else {
+							x.style.display = "none";
+						}
+					}
+				</script>
 				<script>
 					function password_show_hide() {
 						const x = document.getElementById("password");
