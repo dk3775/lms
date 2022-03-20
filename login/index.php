@@ -26,7 +26,70 @@
 
 	<?php } ?>
 </head>
-
+<?php
+require_once("../config.php");
+if (isset($_POST['login'])) {
+	$na = $_POST['name'];
+	$pass = $_POST['password'];
+	$na2 = $_POST['loginSelectedType'];
+	$u = $na2 . mysqli_real_escape_string($conn, trim($na));
+	$hp = mysqli_real_escape_string($conn, trim($pass));
+	// echo "<script>alert('$u');</script>";
+	if ($na2 == "IN") {
+		$sql = "SELECT * FROM institutemaster WHERE InstituteUserName = '$u'";
+		$result = mysqli_query($conn, $sql);
+		$row = mysqli_fetch_assoc($result);
+		// echo "<pre>";
+		// echo $u . " " . $hp . "HELLLO JO " . $sql;
+		// echo "</pre>";
+		if ($row['InstituteUserName'] == $u and $row['InstitutePassword'] === $hp) {
+			session_start();
+			$_SESSION['id'] = $u;
+			$_SESSION['name'] = $row['InstituteId'];
+			$_SESSION['role'] = "Texas";
+			echo "<script>window.location.href='../institute_dashboard/';</script>";
+			// header("location:../institute_dashboard/");
+		} else {
+			echo "<script>document.getElementById('test').style.display = 'block';</script>";
+			echo "<script>display(); log();</script>";
+		}
+	} else if ($na2 == "FA") {
+		$sql = "SELECT * FROM facultymaster WHERE FacultyUserName = '$u'";
+		$result = mysqli_query($conn, $sql);
+		$row = mysqli_fetch_assoc($result);
+		if ($row['FacultyUserName'] == $u and $row['FacultyPassword'] == $hp) {
+			session_start();
+			$_SESSION['fid'] = $row['FacultyId'];
+			$_SESSION['id'] = $u;
+			$_SESSION['role'] = "Lagos";
+			echo "<script>window.location.href='../faculty_dashboard/';</script>";
+			// header("location:../faculty_dashboard/");
+		} else {
+			echo "<script>document.getElementById('test').style.display = 'block';</script>";
+			echo "<script>display(); log1();</script>";
+		}
+	} else if ($na2 == "ST") {
+		$sql = "SELECT * FROM studentmaster WHERE StudentUserName = '$u'";
+		$result = mysqli_query($conn, $sql);
+		$row = mysqli_fetch_assoc($result);
+		if ($row['StudentUserName'] == $u and $row['StudentPassword'] === $hp) {
+			session_start();
+			$_SESSION['cred'] = $u . "_" . $pass;
+			//echo $_SESSION['cred'];
+			$_SESSION['id'] = $u;
+			$_SESSION['role'] = "Abuja";
+			echo "<script>window.location.href='../student_dashboard/';</script>";
+			// header("location:../student_dashboard/");
+		} else {
+			echo "<script>document.getElementById('test').style.display = 'block';</script>";
+			echo "<script>display(); log2();</script>";
+		}
+	} else {
+		echo "<script>document.getElementById('test').style.display = 'block';</>";
+	}
+}
+include_once("context.php");
+?>
 <body class="d-flex align-items-center bg-auth border-top border-top-2 border-primary">
 	<!-- CONTENT
 			================================================== -->
@@ -42,30 +105,51 @@
 			</div>
 			<div class="col-12 col-md-5 col-xl-4 my-5">
 				<!-- Heading -->
-				<h1 class="display-4 text-center mb-3">
+				<h1 class="display-3 text-center mb-3">
 					Sign in
 				</h1>
 				<!-- Subheading -->
 				<p class="text-muted text-center mb-5">
-					access to your dashboard.
+					access to
+					<span id="selectedType">your</span> dashboard.
 				</p>
-				<div class="btn-toolbar text-center justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
-					<div class="btn-group mr-2" role="group" aria-label="First group">
-						<button type="button" onclick="myfunction()" class="btn btn-primary btn-lg">Institute</button>
-						<button type="button" onclick="myfunction()" class="btn btn-primary btn-lg">Faculty</button>
-						<button type="button" onclick="myfunction()" class="btn btn-primary btn-lg">Student</button>
+				<form method="POST">
+					<div id="loginType" class="row row-cols-1 row-cols-md-3 g-2">
+						<div class="col">
+							<div class="card" id="IN_Login" onclick="display(); log();">
+								<img src="../assets/img/ins.png" class="card-img">
+								<div class="card-body">
+									<h5 class="card-title">INSTITUTE</h3>
+										<input type="hidden" id="type" value="IN">
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card" id="FA_Login" onclick="display(); log1();">
+								<img src="../assets/img/fac.png" class="card-img">
+								<div class="card-body">
+									<h5 class="card-title">FACULTY</h3>
+										<input type="hidden" id="type1" value="FA">
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card" onclick="display(); log2();">
+								<img src="../assets/img/stu.png" class="card-img">
+								<div class="card-body">
+									<h5 class="card-title">STUDENT</h3>
+										<input type="hidden" id="type2" value="ST">
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-				<br>
-				<!-- Form -->
-				<div id="logindiv" style="display: none;">
-					<form method="post" name="myform">
-						<!-- Email address -->
-						<div class="form-group ">
+					<div id="loginForm" class="d-none">
+						<div class="form-group">
 							<!-- Label -->
 							<label class="form-label">
 								Username
 							</label>
+							<input type="hidden" id="loginSelectedType" name="loginSelectedType">
 							<input type="text" class="form-control" placeholder="Username" id="ffname" name="name" value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>" required>
 						</div>
 						<label class="form-label">
@@ -74,7 +158,7 @@
 						<!-- Password -->
 						<div class="col-12 logo_outer">
 							<div class="input-group mb-4">
-								<input name="password" type="password" value="" class="input form-control" id="password" placeholder="Password" required aria-label="password" aria-describedby="basic-addon1" />
+								<input name="password" type="password" value="" class="input form-control" id="password" placeholder="Password" required aria-label="password" value="<?php if (isset($_POST['password'])) echo $_POST['password']; ?>" aria-describedby="basic-addon1" />
 								<div class="input-group-append ">
 									<span class="input-group-text" style="border-radius: 1px 5px 5px 1px;" onclick="password_show_hide();">
 										<i class="fe uil-eye-slash" id="show_eye"></i>
@@ -88,18 +172,45 @@
 						</div>
 						<!-- Submit -->
 						<input type="submit" class="btn btn-lg btn-block btn-primary mb-3" name="login" value="Login">
-					</form>
-				</div>
-
-
+					</div>
+				</form>
 				<script>
-					function myfunction() {
-						var x = document.getElementById("logindiv");
-						if (x.style.display === "none") {
-							x.style.display = "block";
+					function display() {
+						var type = document.getElementById("loginType");
+						if (type.classList.contains("d-none")) {
+							type.classList.remove("d-none");
 						} else {
-							x.style.display = "none";
+							type.classList.add("d-none");
 						}
+						// type.classList.add("d-none");
+						var form = document.getElementById("loginForm");
+						if (form.classList.contains("d-none")) {
+							form.classList.remove("d-none");
+						} else {
+							form.classList.add("d-none");
+						}
+						// form.classList.remove("d-none");
+					}
+
+					function log() {
+						var loginType = document.getElementById("type").value;
+						document.getElementById("selectedType").innerHTML = "INSTITUTE";
+						document.getElementById("loginSelectedType").value = loginType;
+						// alert(loginType);
+					}
+
+					function log1() {
+						var loginType = document.getElementById("type1").value;
+						document.getElementById("selectedType").innerHTML = "FACULTY";
+						document.getElementById("loginSelectedType").value = loginType;
+						// alert(loginType);
+					}
+
+					function log2() {
+						var loginType = document.getElementById("type2").value;
+						document.getElementById("selectedType").innerHTML = "STUDENT";
+						document.getElementById("loginSelectedType").value = loginType;
+						// alert(loginType);
 					}
 				</script>
 				<script>
@@ -121,69 +232,11 @@
 				</script>
 			</div>
 		</div>
-		<!-- / .row -->
 	</div>
-	<!-- / .container -->
-	<!-- JAVASCRIPT -->
-	<!-- Vendor JS -->
+
 	<script src="../assets/js/vendor.bundle.js"></script>
 	<!-- Theme JS -->
 	<script src="../assets/js/theme.bundle.js"></script>
 </body>
 
 </html>
-<?php
-require_once("../config.php");
-if (isset($_POST['login'])) {
-	$na = $_POST['name'];
-	$pass = $_POST['password'];
-	//$hash_pass = password_hash($pass, PASSWORD_BCRYPT);
-	$u = mysqli_real_escape_string($conn, trim($na));
-	$hp = mysqli_real_escape_string($conn, trim($pass));
-	$na2 = substr($u, 0, 2);
-	if ($na2 == "IN") {
-		$sql = "SELECT * FROM institutemaster WHERE InstituteUserName = '$u'";
-		$result = mysqli_query($conn, $sql);
-		$row = mysqli_fetch_assoc($result);
-		if ($row['InstituteUserName'] == $u and $row['InstitutePassword'] === $hp) {
-			session_start();
-			$_SESSION['id'] = $u;
-			$_SESSION['name'] = $row['InstituteId'];
-			$_SESSION['role'] = "Texas";
-			header("location:../institute_dashboard/");
-		} else {
-			echo "<script>document.getElementById('test').style.display = 'block';</script>";
-		}
-	} else if ($na2 == "FA") {
-		$sql = "SELECT * FROM facultymaster WHERE FacultyUserName = '$u'";
-		$result = mysqli_query($conn, $sql);
-		$row = mysqli_fetch_assoc($result);
-		if ($row['FacultyUserName'] == $u and $row['FacultyPassword'] == $hp) {
-			session_start();
-			$_SESSION['fid'] = $row['FacultyId'];
-			$_SESSION['id'] = $u;
-			$_SESSION['role'] = "Lagos";
-			header("location:../faculty_dashboard/");
-		} else {
-			echo "<script>document.getElementById('test').style.display = 'block';</script>";
-		}
-	} else if ($na2 == "ST") {
-		$sql = "SELECT * FROM studentmaster WHERE StudentUserName = '$u'";
-		$result = mysqli_query($conn, $sql);
-		$row = mysqli_fetch_assoc($result);
-		if ($row['StudentUserName'] == $u and $row['StudentPassword'] === $hp) {
-			session_start();
-			$_SESSION['cred'] = $u . "_" . $pass;
-			//echo $_SESSION['cred'];
-			$_SESSION['id'] = $u;
-			$_SESSION['role'] = "Abuja";
-			header("location:../student_dashboard/");
-		} else {
-			echo "<script>document.getElementById('test').style.display = 'block';</script>";
-		}
-	} else {
-		echo "<script>document.getElementById('test').style.display = 'block';</script>";
-	}
-}
-include_once("context.php");
-?>
