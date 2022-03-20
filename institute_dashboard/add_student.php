@@ -34,9 +34,6 @@ $sqldata = "";
 						<div class="header-body">
 							<div class="row align-items-center">
 								<div class="col">
-                                    <h5 class="header-pretitle mb-5">
-                                        <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-                                    </h5>
 									<h5 class="header-pretitle">
 									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
 								</h5>
@@ -141,7 +138,7 @@ $sqldata = "";
 								<label for="validationCustom01" class="form-label">
 									Student Contact Number
 								</label>
-								<input type="number" pattern="[0-9]{10}" maxlength="10" id="validationCustom01" class="form-control" name="scontact" required>
+								<input type="tel" pattern="[0-9]{10}" maxlength="10" id="validationCustom01" class="form-control" name="scontact" required>
 							</div>
 						</div>
 						<div class="row">

@@ -51,7 +51,7 @@ if ($_SESSION['role'] != "Texas") {
                 $studentenr = $_GET['studentenr'];
                 $_SESSION["userrole"] = "Institute";
                 if (isset($studentenr)) {
-                    $sql = "SELECT * FROM studentmaster WHERE StudentEnrollmentNo = '$studentenr'";
+                    $sql = "SELECT * FROM studentmaster join branchmaster on studentmaster.StudentBranchCode = branchmaster.BranchCode WHERE StudentEnrollmentNo = '$studentenr';";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_assoc($result);
 
@@ -115,7 +115,7 @@ if ($_SESSION['role'] != "Texas") {
                                         <span class="input-group-text col-2 ">Enrollment No.</span>
                                         <input type="text" value="<?php echo $row['StudentEnrollmentNo']; ?>" aria-label="First name" class="form-control" disabled>
                                         <span class="input-group-text col-2 ">Branch</span>
-                                        <input type="text" value="<?php echo $row['StudentBranchCode']; ?>" aria-label="Last name" class="form-control" disabled>
+                                        <input type="text" value="<?php echo $row['BranchName']; ?>" aria-label="Last name" class="form-control" disabled>
                                     </div>
                                     <br>
                                     <div class="input-group">
