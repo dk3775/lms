@@ -35,8 +35,8 @@ $sqldata = "";
 							<div class="row align-items-center">
 								<div class="col">
 									<h5 class="header-pretitle">
-									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-								</h5>
+										<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+									</h5>
 									<h6 class="header-pretitle">
 										Add New
 									</h6>
@@ -50,7 +50,7 @@ $sqldata = "";
 						</div>
 					</div>
 					<!-- Form -->
-					<form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" >
+					<form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation">
 						<div class="row justify-content-between align-items-center">
 							<div class="col">
 								<div class="row align-items-center">
@@ -405,13 +405,18 @@ if (isset($_POST['subbed'])) {
 	}
 	$sql = "INSERT INTO studentmaster (StudentUserName, StudentDOB, StudentEnrollmentNo, StudentPassword, StudentFirstName, StudentMiddleName, StudentLastName, StudentProfilePic, StudentBranchCode, StudentSemester, StudentEmail, StudentContactNo, StudentAddress, ParentEmail, ParentContactNo, StudentRollNo) 
 		VALUES ('$ec','$dob','$senr','$spassword','$fname','$mname','$lname','$fs_name','$sbranch','$ssem','$semail','$scontact','$add','$pmail','$pcontact','$sroll');";
-	$run = mysqli_query($conn, $sql);
-	if ($run == true) {
-		echo "<script>alert('Student Added Successfully')</script>";
-		echo "<script>window.open('student_list.php','_self')</script>";
-	} else {
-		echo "<script>alert('Student Not Added')</script>";
-		echo "<script>window.open('add_student.php','_self')</script>";
+	try {
+		$run = mysqli_query($conn, $sql);
+		if ($run == true) {
+			echo "<script>alert('Student Added Successfully')</script>";
+			echo "<script>window.open('student_list.php','_self')</script>";
+		} else {
+			echo "<script>alert('Student Not Added')</script>";
+			echo "<script>window.open('add_student.php','_self')</script>";
+		}
+	} catch (Exception $e) {
+		$err = $e->getMessage();
+		echo "<script>console.log($err)</script>";
 	}
 }
 ?>
