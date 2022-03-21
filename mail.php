@@ -41,7 +41,7 @@ function domail( $to,$toname, $subject, $body, $attachment = '', $cc = '', $bcc 
         // Content
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = $subject;
-        $mail->Body    = $body."<br><br>Thanks & Regards,<br><a href='lms.titanslab.in'>Learning Management System<br></a><h5>This was automatically generated email, Please do not reply.</h5>";
+        $mail->Body    = $body."<br><br>Thanks & Regards,<br><a href='https://lms.titanslab.in'>Learning Management System<br></a><h5>This was automatically generated email, Please do not reply.</h5>";
         $mail->AltBody = strip_tags($body);
 
         $mail->send();
