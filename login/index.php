@@ -90,6 +90,7 @@ if (isset($_POST['login'])) {
 }
 include_once("context.php");
 ?>
+
 <body class="d-flex align-items-center bg-auth border-top border-top-2 border-primary">
 	<!-- CONTENT
 			================================================== -->
@@ -115,27 +116,30 @@ include_once("context.php");
 				</p>
 				<form method="POST">
 					<div id="loginType" class="row row-cols-1 row-cols-md-3 g-2">
-						<div class="col">
-							<div class="card" id="IN_Login" onclick="display(); log();">
-								<img src="../assets/img/ins.png" class="card-img">
+						<div class="col-sm-6 justify-content-center">
+							<div class="card border shadow bg-body rounded" id="IN_Login" onclick="display(); log();">
+								<img id="imgcard" src="../assets/img/admin.png" style="width: 100px;" class="card-img rounded mx-auto d-block">
+								<!-- <i class="fe fe-home" style="width: 100px;"></i> -->
 								<div class="card-body">
 									<h5 class="card-title">INSTITUTE</h3>
 										<input type="hidden" id="type" value="IN">
 								</div>
 							</div>
 						</div>
-						<div class="col">
-							<div class="card" id="FA_Login" onclick="display(); log1();">
-								<img src="../assets/img/fac.png" class="card-img">
+						<div class="col-sm-6">
+							<div class="card border shadow bg-body rounded" id="FA_Login" onclick="display(); log1();">
+								<img id="imgcard2" src="../assets/img/faculty.png" style="width: 108px;" class="card-img rounded mx-auto d-block">
+								<!-- <i class="fe fe-user"></i> -->
 								<div class="card-body">
 									<h5 class="card-title">FACULTY</h3>
 										<input type="hidden" id="type1" value="FA">
 								</div>
 							</div>
 						</div>
-						<div class="col">
-							<div class="card" onclick="display(); log2();">
-								<img src="../assets/img/stu.png" class="card-img">
+						<div class="col-sm-6">
+							<div class="card border shadow bg-body rounded" onclick="display(); log2();">
+								<img id="imgcard3" src="../assets/img/student.png" style="width: 100px;" class="card-img rounded mx-auto d-block">
+								<!-- <i class="fe uil-graduation-cap"></i> -->
 								<div class="card-body">
 									<h5 class="card-title">STUDENT</h3>
 										<input type="hidden" id="type2" value="ST">
