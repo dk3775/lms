@@ -152,7 +152,7 @@ $branchresult = mysqli_query($conn, $branchsel);
 								<label class="form-label">
 									Faculty Contact Number
 								</label>
-								<input type="number" pattern="[0-9]{10}" class="form-control" maxlength="10" name="fcontact" required>
+								<input type="text" pattern="[0-9]{10}" class="form-control" maxlength="10" name="fcontact" required>
 							</div>
 						</div>
 						<div class="row">

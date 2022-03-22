@@ -57,15 +57,15 @@ if ($_SESSION['role'] != "Texas") {
                                         <label class="form-label">
                                             Branch Code
                                         </label>
-                                        <input type="number" class="form-control " name="icode" placeholder="001" required
-                                               maxlength="3">
+                                        <input type="text" class="form-control " name="icode" placeholder="001" required
+                                        pattern="[0-9]{3}" onkeypress="return event.charCode>=48 && event.charCode<=57" maxlength="3">
                                     </div>
                                     <div class="col-12 col-md-6">
                                         <label class="form-label">
                                             Branch Name
                                         </label>
                                         <input type="text" class="form-control" name="iname"
-                                               placeholder="Computer Engineering" required>
+                                               placeholder="Computer Engineering" required >
                                     </div>
                                 </div>
                                 <div class="row">
