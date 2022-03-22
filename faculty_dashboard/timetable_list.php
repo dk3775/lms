@@ -5,11 +5,11 @@ if ($_SESSION['role'] != "Lagos") {
 } else {
 	include_once "../config.php";
 	$_SESSION["userrole"] = "Faculty";
-	$fqur = "SELECT * FROM facultymaster";
+	$fqur = "SELECT * FROM facultymaster WHERE FacultyId = '" . $_SESSION["fid"] . "'";
 	$fres = mysqli_query($conn, $fqur);
 	$frow = mysqli_fetch_assoc($fres);
 	$bcode = $frow['FacultyBranchCode'];
-	$qur = "SELECT * FROM timetablemaster WHERE TimetableBranchCode = '$bcode'";
+	$qur = "SELECT * FROM timetablemaster INNER JOIN branchmaster ON branchmaster.BranchCode = timetablemaster.TimetableBranchCode WHERE TimetableBranchCode = '$bcode' ORDER BY `timetablemaster`.`TimetableSemester` ASC";
 	$res = mysqli_query($conn, $qur);
 }
 ?>
@@ -119,7 +119,7 @@ if ($_SESSION['role'] != "Lagos") {
 												<tr>
 													<td>
 														<!-- Email -->
-														<span class="item-name text-reset"><?php echo $row['TimetableBranchCode']; ?></span>
+														<span class="item-name text-reset"><?php echo $row['BranchName']; ?></span>
 													</td>
 													<td>
 														<!-- Email -->
