@@ -4,16 +4,17 @@ if ($_SESSION['role'] != "Texas") {
     header("Location: ../index.php");
 } else {
     include_once "../config.php";
-    $_SESSION["userrole"] = "Faculty";
+    $_SESSION["userrole"] = "Institute";
+    $u = $_SESSION["id"];
 }
 
 #fetching tables
-$branchsel = "SELECT * FROM branchmaster";
-$branchresult = mysqli_query($conn, $branchsel);
+// $branchsel = "SELECT * FROM branchmaster";
+// $branchresult = mysqli_query($conn, $branchsel);
 
 // $ttid = "4";
 $ttid = $_GET['ttid'];
-$timetablesel = "SELECT * FROM timetablemaster WHERE TimetableId='$ttid'";
+$timetablesel = "SELECT * FROM timetablemaster INNER JOIN branchmaster ON branchmaster.BranchCode = timetablemaster.TimetableBranchCode WHERE TimetableId='$ttid'";
 $timetableresult = mysqli_query($conn, $timetablesel);
 $row = mysqli_fetch_assoc($timetableresult);
 ?>
@@ -25,10 +26,9 @@ $row = mysqli_fetch_assoc($timetableresult);
 </head>
 
 <body>
+    <?php $nav_role = "Time Table"; ?>
     <!-- NAVIGATION -->
-    <?php
-    $nav_role = "Time Table";
-    include_once "../nav.php"; ?>
+    <?php include_once "../nav.php"; ?>
     <!-- MAIN CONTENT -->
     <div class="main-content">
         <div class="container-fluid">
@@ -42,7 +42,6 @@ $row = mysqli_fetch_assoc($timetableresult);
                                     <h5 class="header-pretitle">
                                         <a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
                                     </h5>
-                                    <!-- Pretitle -->
                                     <h6 class="header-pretitle">
                                         Edit
                                     </h6>
@@ -56,7 +55,7 @@ $row = mysqli_fetch_assoc($timetableresult);
                         </div>
                     </div>
                     <!-- Form -->
-                    <form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" >
+                    <form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation">
                         <div class="card">
                             <div class="card-body text-center">
                                 <div class="row justify-content-center">
@@ -116,17 +115,8 @@ $row = mysqli_fetch_assoc($timetableresult);
                                     <label class="form-label">
                                         Time Table Branch
                                     </label>
-                                    <!-- Input -->
-                                    <select class="form-control" id="validationCustom01" name="tbranch" required>
-                                        <option value="" hidden="">Select Branch</option>
-                                        <?php
-                                        while ($brrow = mysqli_fetch_assoc($branchresult)) { ?>
-                                            <option <?php if ($brrow['BranchCode'] == $row['TimetableBranchCode']) { ?> selected <?php } ?> value="<?php echo $brrow['BranchCode']; ?>">
-                                                <?php echo $brrow['BranchName']; ?>
-                                            </option>
-                                        <?php
-                                        } ?>
-                                    </select>
+                                    <input type="hidden" class="form-control" id="validationCustom02" name="tbranch" value="<?php echo $row['TimetableBranchCode']; ?>" readonly>
+                                    <input type="text" class="form-control" id="validationCustom02" value="<?php echo $row['BranchName']; ?>" readonly>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
@@ -137,39 +127,10 @@ $row = mysqli_fetch_assoc($timetableresult);
                                         Time Table Semester
                                     </label>
                                     <!-- Input -->
-                                    <select class="form-control" aria-label="Default select example" name="tsem" required>
-                                        <option hidden>Select Semester</option>
-                                        <?php
-                                        for ($a = 1; $a <= 6; $a++) { ?>
-
-                                            <option <?php if ($a == $row['TimetableSemester']) { ?> selected <?php } ?> value="<?php echo $a; ?>"><?php echo $a; ?>
-                                            </option>
-                                        <?php }
-                                        ?>
-                                    </select>
+                                    <input type="text" class="form-control" id="validationCustom02" name="tsem" value="<?php echo $row['TimetableSemester']; ?>" readonly>
                                 </div>
                             </div>
                         </div>
-                        <!-- / .row   Only For Faculty Profile-->
-                        <!-- <div class="row">
-                           <div class="col-12 col-md-6">
-
-                               <div class="form-group">
-
-                                   <label class="form-label">
-                                       Time Table Uploaded By
-                                   </label>
-
-                                   <input type="text" class="form-control" name="tuploaded" required>
-                               </div>
-                           </div>
-                           <div class="col-12 col-md-6">
-                               <label class="form-label">
-                                   Time Table Upload Time
-                               </label>
-                               <input type="datetime-local" class="form-control" name="ttime" required>
-                           </div>
-                           </div> -->
                         <hr>
                         <div class="d-flex justify">
                             <!-- Button -->
@@ -185,7 +146,7 @@ $row = mysqli_fetch_assoc($timetableresult);
             <!-- / .row -->
         </div>
     </div>
-
+    <?php include_once("context.php"); ?>
     <!-- Map JS -->
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
     <!-- Vendor JS -->
@@ -229,34 +190,40 @@ if (isset($_POST['subbed'])) {
 
     $tbranch = $_POST['tbranch'];
     $tsem = $_POST['tsem'];
-    $tupd = "Institute";
+    $updsql = "SELECT `FacultyFirstName`,`FacultyLastName` FROM `facultymaster` WHERE `FacultyUserName` = '$u'";
+    $updqry = mysqli_fetch_assoc(mysqli_query($conn, $updsql));
+    $tupd = $updqry['FacultyFirstName'] . " " . $updqry['FacultyLastName'];
+    // $tupd = "Institute";
     $tupdtime = date("Y-m-d H:i:s");
 
     $tt_name = $tbranch . "_" . $tsem . ".png";
 
-    if ($f_error === 0) {
-        if ($f_size <= 2000000) {
-            move_uploaded_file($f_tmp_name, "../src/uploads/timetables/" . $tt_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ...
+    try {
+        $sql = "UPDATE `timetablemaster` SET
+       `TimetableUploadedBy`='Institute',
+       `TimetableUploadTime`='$tupdtime',
+       `TimetableImage`='$tt_name' WHERE `TimetableId` = '$ttid'";
+        // echo $sql;
+        $run = mysqli_query($conn, $sql);
+        if ($run == true) {
+            if ($f_error === 0) {
+                if ($f_size <= 2000000) {
+                    move_uploaded_file($f_tmp_name, "../src/uploads/timetables/" . $tt_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ...
+                } else {
+                    echo "<script>alert(File size is to big .. !);</script>";
+                }
+            } else {
+                echo "Something went wrong .. !";
+            }
+            echo "<script>alert('Time Table Edited Successfully')</script>";
+            echo "<script>window.open('timetable_list.php','_self')</script>";
         } else {
-            echo "<script>alert(File size is to big .. !);</script>";
+            echo "<script>alert('Time Table Not Edited')</script>";
+            // echo "<script>window.open('add_faculty.php','_self')</script>";
         }
-    } else {
-        echo "Something went wrong .. !";
-    }
-    $sql = "UPDATE `timetablemaster` SET
-    `TimetableBranchCode`='$tbranch',
-    `TimetableSemester`='$tsem',
-    `TimetableUploadedBy`='$tupd',
-    `TimetableUploadTime`='$tupdtime',
-    `TimetableImage`='$tt_name' WHERE `TimetableId` = '$ttid'";
-
-    $run = mysqli_query($conn, $sql);
-    if ($run == true) {
-        echo "<script>alert('Time Table Edited Successfully')</script>";
-        echo "<script>window.open('timetable_list.php','_self')</script>";
-    } else {
+    } catch (Exception $e) {
         echo "<script>alert('Time Table Not Edited')</script>";
-        // echo "<script>window.open('add_faculty.php','_self')</script>";
+        // echo "Error: " . $e;
     }
 }
 
