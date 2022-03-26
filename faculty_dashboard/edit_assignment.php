@@ -52,7 +52,7 @@ if ($_SESSION['role'] != "Lagos") {
 						</div>
 						<!-- Form -->
 						<br>
-						<form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" >
+						<form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation" >
 							<div class="row justify-content-between align-items-center">
 								<div class="col">
 									<div class="row align-items-center">

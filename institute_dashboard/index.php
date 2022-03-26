@@ -273,7 +273,7 @@ if ($_SESSION['role'] != "Texas") {
 									<div class="row align-items-center">
 										<div class="col">
 											<!-- Form -->
-											<form>
+											<form  autocomplete="off">
 												<div class="input-group input-group-flush input-group-merge input-group-reverse">
 													<input class="form-control list-search" type="search" placeholder="Search by Date">
 													<span class="input-group-text">
@@ -381,7 +381,7 @@ if ($_SESSION['role'] != "Texas") {
 								<div class="row align-items-center mb-4">
 									<div class="col">
 										<!-- Form -->
-										<form>
+										<form  autocomplete="off">
 											<div class="input-group input-group-lg input-group-merge input-group-reverse">
 												<input class="form-control list-search" type="search" placeholder="Search">
 												<span class="input-group-text">
@@ -392,7 +392,7 @@ if ($_SESSION['role'] != "Texas") {
 									</div>
 									<div class="col-auto mr-n3">
 										<!-- Select -->
-										<form>
+										<form  autocomplete="off">
 											<div class="choices" data-type="select-one" tabindex="0" role="listbox" aria-haspopup="true" aria-expanded="false">
 												<div class="form-select form-select-sm form-control-flush">
 													<select class="form-select form-select-sm form-control-flush form-control" data-choices="{&quot;searchEnabled&quot;: false}" hidden="" tabindex="-1" data-choice="active">

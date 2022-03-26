@@ -30,8 +30,8 @@ if ($_SESSION['role'] != "Texas") {
 							<div class="row align-items-center">
 								<div class="col">
 									<h5 class="header-pretitle">
-									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-								</h5>
+										<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+									</h5>
 									<h6 class="header-pretitle">
 										Add New
 									</h6>
@@ -45,7 +45,7 @@ if ($_SESSION['role'] != "Texas") {
 						</div>
 					</div>
 					<!-- Form -->
-					<form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" >
+					<form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
 						<div class="card">
 							<div class="card-body text-center">
 								<div class="row justify-content-center">
@@ -123,18 +123,24 @@ if ($_SESSION['role'] != "Texas") {
 								<!-- Last name -->
 								<div class="form-group">
 									<!-- Label -->
-									<label class="form-label">
+									<label class="form-label" for="validationCustom01">
 										Update Title
 									</label>
 									<!-- Input -->
 									<input type="text" class="form-control" id="validationCustom01" name="updtitle" required>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
 								<!-- Middle name -->
 								<div class="form-group">
 									<!-- Label -->
-									<label class="form-label">
+									<label class="form-label" for="validationCustom01">
 										Update Type
 									</label>
 									<!-- Input -->
@@ -143,30 +149,41 @@ if ($_SESSION['role'] != "Texas") {
 										<option value="GTU">GTU</option>
 										<option value="Campus">Campus</option>
 									</select>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="form-group">
-								<!-- Label -->
-								<label class="form-label">
-									Update Description
-								</label>
-								<div class="col-12 col-md-12">
-									<div class="input-group input-group-sm mb-3 ">
-										<textarea id="demo" rows="4" class="form-control fs-2" name="upddescription"></textarea>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
 									</div>
 								</div>
 							</div>
 						</div>
-						<hr>
-						<div class="d-flex justify">
-							<!-- Button -->
-							<button class="btn btn-primary" type="submit" value="sub" name="subbed">
-								Add Update
-							</button>
-						</div>
-						<!-- / .row -->
+						<div class="row">
+
+							<div class="col-12 col-md-12">
+								<div class="form-group">
+									<!-- Label -->
+									<label for="validationCustom01" class="form-label">
+										Update Description
+									</label>
+									<!-- Input -->
+									<textarea id="validationCustom01" class="form-control sm" name="upddescription" required></textarea>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
+								</div>
+							</div>
+							<hr>
+							<div class="d-flex justify">
+								<!-- Button -->
+								<button class="btn btn-primary" type="submit" value="sub" name="subbed">
+									Add Update
+								</button>
+							</div>
+							<!-- / .row -->
 					</form>
 					<br>
 				</div>

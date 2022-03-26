@@ -27,12 +27,9 @@ if ($_SESSION['role'] != "Texas") {
                   <div class="header-body">
                      <div class="row align-items-center">
                         <div class="col">
-                            <h5 class="header-pretitle mb-5">
-                                <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-                            </h5>
                            <h5 class="header-pretitle">
-									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-								</h5>
+                              <a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                           </h5>
                            <h6 class="header-pretitle">
                               Add New
                            </h6>
@@ -46,7 +43,7 @@ if ($_SESSION['role'] != "Texas") {
                   </div>
                </div>
                <!-- Form -->
-               <form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" >
+               <form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                   <div class="row justify-content-between align-items-center">
                      <div class="col">
                         <div class="row align-items-center">
@@ -105,14 +102,26 @@ if ($_SESSION['role'] != "Texas") {
                            <label for="validationCustom01" class="form-label">
                               Institute User Name <small class="text-muted"> ( For Login ) </small>
                            </label>
-                           <input oninput="cp()" type="text" class="form-control" id="inusername" name="inusername" required>
+                           <input oninput="cp()" type="text" class="form-control" id="validationCustom01" id="inusername" name="inusername" required>
+                           <div class="valid-feedback">
+                              Looks good!
+                           </div>
+                           <div class="invalid-feedback">
+                              Incorrect Format or Field is Empty!
+                           </div>
                         </div>
                      </div>
                      <div class="col-12 col-md-6">
                         <label for="validationCustom01" class="form-label">
                            Password
                         </label>
-                        <input oninput="cp()" type="password" class="form-control" id="inpass" name="inpass" required>
+                        <input oninput="cp()" type="password" class="form-control" id="validationCustom01" id="inpass" name="inpass" required>
+                        <div class="valid-feedback">
+                           Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                           Incorrect Format or Field is Empty!
+                        </div>
                      </div>
                   </div>
                   <hr class="md-5">
@@ -122,7 +131,13 @@ if ($_SESSION['role'] != "Texas") {
                            <label for="validationCustom01" class="form-label">
                               User Full Name
                            </label>
-                           <input type="text" class="form-control" id="validationCustom01" name="inname" required>
+                           <input type="text" class="form-control" id="validationCustom01" id="validationCustom01" name="inname" required>
+                           <div class="valid-feedback">
+                              Looks good!
+                           </div>
+                           <div class="invalid-feedback">
+                              Incorrect Format or Field is Empty!
+                           </div>
                         </div>
                      </div>
 
@@ -137,14 +152,26 @@ if ($_SESSION['role'] != "Texas") {
                               User Email address
                            </label>
                            <!-- Input -->
-                           <input type="email" class="form-control" id="validationCustom01" name="inemail" required>
+                           <input type="email" class="form-control" id="validationCustom01" id="validationCustom01" name="inemail" required>
+                           <div class="valid-feedback">
+                              Looks good!
+                           </div>
+                           <div class="invalid-feedback">
+                              Incorrect Format or Field is Empty!
+                           </div>
                         </div>
                      </div>
                      <div class="col-12 col-md-6">
                         <label for="validationCustom01" class="form-label">
                            User Contact Number
                         </label>
-                        <input type="tel" pattern="[0-9]{10}" maxlength="10" id="validationCustom01" class="form-control" name="incontact" required>
+                        <input type="text" pattern="[0-9]{10}" onkeypress="return event.charCode>=48 && event.charCode<=57" maxlength="10" id="validationCustom01" class="form-control" name="incontact" required>
+                        <div class="valid-feedback">
+                           Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                           required Number Only!
+                        </div>
                      </div>
                   </div>
                   <div class="row">
@@ -156,14 +183,26 @@ if ($_SESSION['role'] != "Texas") {
                               User Role
                            </label>
                            <!-- Input -->
-                           <input type="text" class="form-control" id="validationCustom01" name="inrole" required>
+                           <input type="text" class="form-control" id="validationCustom01" id="validationCustom01" name="inrole" required>
+                           <div class="valid-feedback">
+                              Looks good!
+                           </div>
+                           <div class="invalid-feedback">
+                              Incorrect Format or Field is Empty!
+                           </div>
                         </div>
                      </div>
                      <div class="col-12 col-md-6">
                         <label for="validationCustom01" class="form-label">
                            User Office
                         </label>
-                        <input type="text" maxlength="10" id="validationCustom01" class="form-control" name="inoffice" required>
+                        <input type="text" maxlength="10" id="validationCustom01" class="form-control" id="validationCustom01" name="inoffice" required>
+                        <div class="valid-feedback">
+                           Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                           Incorrect Format or Field is Empty!
+                        </div>
                      </div>
                   </div>
                   <div class="row">
@@ -175,7 +214,13 @@ if ($_SESSION['role'] != "Texas") {
                               User Address
                            </label>
                            <!-- Input -->
-                           <textarea id="validationCustom01" rows="2" maxlength="200" class="form-control" name="add" required></textarea>
+                           <textarea id="validationCustom01" rows="2" maxlength="200" class="form-control" id="validationCustom01" name="add" required></textarea>
+                           <div class="valid-feedback">
+                              Looks good!
+                           </div>
+                           <div class="invalid-feedback">
+                              Incorrect Format or Field is Empty!
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -203,7 +248,7 @@ if ($_SESSION['role'] != "Texas") {
                      </div>
                      <div class="col-auto col-6">
                         <div class="input-group input-group-sm mb-3">
-                           <textarea type="text" class="form-control" readonly name="spassword" id="myInput2"></textarea>
+                           <textarea type="text" class="form-control" id="validationCustom01" readonly name="spassword" id="myInput2"></textarea>
                            <button class="btn btn-primary" onclick="cp2()"><i class="fe fe-copy"></i></button>
                         </div>
                      </div>

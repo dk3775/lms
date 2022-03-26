@@ -33,9 +33,6 @@
 							<div class="header-body">
 								<div class="row align-items-center">
 									<div class="col">
-                                        <h5 class="header-pretitle mb-5">
-                                            <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-                                        </h5>
 										<h5 class="header-pretitle">
 									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
 								</h5>
@@ -53,7 +50,7 @@
 						</div>
 						<!-- Form -->
 						<br>
-						<form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" >
+						<form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation" >
 							<div class="row justify-content-between align-items-center">
 								<div class="col">
 									<div class="row align-items-center">

@@ -32,8 +32,8 @@ $branchresult = mysqli_query($conn, $branchsel);
 							<div class="row align-items-center">
 								<div class="col">
 									<h5 class="header-pretitle">
-									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-								</h5>
+										<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+									</h5>
 									<h6 class="header-pretitle">
 										Add New
 									</h6>
@@ -47,7 +47,7 @@ $branchresult = mysqli_query($conn, $branchsel);
 						</div>
 					</div>
 					<!-- Form -->
-					<form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" >
+					<form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
 						<div class="row justify-content-between align-items-center">
 							<div class="col">
 								<div class="row align-items-center">
@@ -105,33 +105,51 @@ $branchresult = mysqli_query($conn, $branchsel);
 								<!-- First name -->
 								<div class="form-group">
 									<!-- Label -->
-									<label class="form-label">
+									<label class="form-label" for="validationCustom01">
 										First name
 									</label>
 									<!-- Input -->
-									<input type="text" class="form-control" name="fname" required>
+									<input type="text" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))' maxlength="20" class="form-control" id="validationCustom01" name="fname" required>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
 								</div>
 							</div>
 							<div class="col-12 col-md-4">
 								<!-- Middle name -->
 								<div class="form-group">
 									<!-- Label -->
-									<label class="form-label">
+									<label class="form-label" for="validationCustom01">
 										Middle name
 									</label>
 									<!-- Input -->
-									<input type="text" class="form-control" name="mname" required>
+									<input type="text" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))' maxlength="20" class="form-control" id="validationCustom01" name="mname" required>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
 								</div>
 							</div>
 							<div class="col-12 col-md-4">
 								<!-- Last name -->
 								<div class="form-group">
 									<!-- Label -->
-									<label class="form-label">
+									<label class="form-label" for="validationCustom01">
 										Last name
 									</label>
 									<!-- Input -->
-									<input type="text" class="form-control" name="lname" required>
+									<input type="text" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))' maxlength="20" class="form-control" id="validationCustom01" name="lname" required>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
 								</div>
 							</div>
 						</div>
@@ -141,18 +159,30 @@ $branchresult = mysqli_query($conn, $branchsel);
 								<!-- Email address -->
 								<div class="form-group">
 									<!-- Label -->
-									<label class="form-label">
+									<label class="form-label" for="validationCustom01">
 										Faculty Email address
 									</label>
 									<!-- Input -->
-									<input type="email" class="form-control" name="femail" required>
+									<input type="email" class="form-control" maxlength="25" id="validationCustom01" name="femail" required>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
-								<label class="form-label">
+								<label class="form-label" for="validationCustom01">
 									Faculty Contact Number
 								</label>
-								<input type="text" pattern="[0-9]{10}" class="form-control" maxlength="10" name="fcontact" required>
+								<input type="text" pattern="[0-9]{10}" onkeypress="return event.charCode>=48 && event.charCode<=57" maxlength="10" id="validationCustom01" class="form-control" name="fcontact" required>
+								<div class="valid-feedback">
+									Looks good!
+								</div>
+								<div class="invalid-feedback">
+									Incorrect Format or Field is Empty!
+								</div>
 							</div>
 						</div>
 						<div class="row">
@@ -160,22 +190,28 @@ $branchresult = mysqli_query($conn, $branchsel);
 								<!-- Email address -->
 								<div class="form-group">
 									<!-- Label -->
-									<label class="form-label">
+									<label class="form-label" for="validationCustom01">
 										Faculty Office
 									</label>
 									<!-- Input -->
-									<input type="text" class="form-control" name="foffice" required>
+									<input type="text" class="form-control" id="validationCustom01" name="foffice" required>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
 								<!-- Email address -->
 								<div class="form-group">
 									<!-- Label -->
-									<label class="form-label">
+									<label class="form-label" for="validationCustom01">
 										Branch
 									</label>
 									<!-- Input -->
-									<select id="validationCustom01" class="form-control" name="fbranch" required>
+									<select id="validationCustom01" class="form-control" id="validationCustom01" name="fbranch" required>
 										<option value="" hidden="">Select Branch</option>
 										<?php
 										while ($brrow = mysqli_fetch_assoc($branchresult)) { ?>
@@ -185,6 +221,12 @@ $branchresult = mysqli_query($conn, $branchsel);
 										<?php
 										} ?>
 									</select>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Select Option!
+									</div>
 								</div>
 							</div>
 						</div>
@@ -193,18 +235,30 @@ $branchresult = mysqli_query($conn, $branchsel);
 						<div class="row">
 							<div class="col-12 col-md-6">
 								<div class="form-group">
-									<label class="form-label">
+									<label class="form-label" for="validationCustom01">
 										Faculty Qualification
 									</label>
-									<input type="text" class="form-control" name="fqualification" required>
+									<input type="text" class="form-control" id="validationCustom01" name="fqualification" required>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
 								<div class="form-group">
-									<label class="form-label">
+									<label class="form-label" for="validationCustom01">
 										Faculty Code
 									</label>
-									<input type="text" id="myInput" oninput="cp()" class="form-control" name="fcode" required>
+									<input type="text" id="myInput" oninput="cp()" class="form-control" id="validationCustom01" name="fcode" required>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
 								</div>
 							</div>
 						</div>
@@ -213,7 +267,7 @@ $branchresult = mysqli_query($conn, $branchsel);
 						<div class="row">
 							<div class="col-12 col-md-6">
 								<div class="form-group">
-									<p class="form-label">
+									<p class="form-label" for="validationCustom01">
 										Faculty Login ID
 									</p>
 								</div>
@@ -233,7 +287,7 @@ $branchresult = mysqli_query($conn, $branchsel);
 							</div>
 							<div class="col-auto col-6">
 								<div class="input-group input-group-sm mb-3">
-									<textarea type="text" class="form-control" name="fpass" id="myInput2"></textarea>
+									<textarea type="text" class="form-control" id="validationCustom01" name="fpass" id="myInput2"></textarea>
 									<button class="btn btn-primary" onclick="cp2()"><i class="fe fe-copy"></i></button>
 								</div>
 							</div>
@@ -306,7 +360,6 @@ $branchresult = mysqli_query($conn, $branchsel);
 							event.preventDefault()
 							event.stopPropagation()
 						}
-
 						form.classList.add('was-validated')
 					}, false)
 				})
@@ -315,7 +368,7 @@ $branchresult = mysqli_query($conn, $branchsel);
 	<script>
 		function cp() {
 			var x = document.getElementById("myInput").value;
-			document.getElementById("demo").innerHTML = "FA" + x;
+			document.getElementById("demo").innerHTML = x;
 		}
 	</script>
 </body>
@@ -374,20 +427,25 @@ if (isset($_POST['subbed'])) {
 			'$foffice',
 			'$fcode'
 	);";
-	$run = mysqli_query($conn, $sql);
-	if ($run == true) {
-		if ($f_error === 0) {
-			if ($f_size <= 1000000) {
-				move_uploaded_file($f_tmp_name, "../src/uploads/facprofile/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
+	try {
+		$run = mysqli_query($conn, $sql);
+		if ($run == true) {
+			if ($f_error === 0) {
+				if ($f_size <= 1000000) {
+					move_uploaded_file($f_tmp_name, "../src/uploads/facprofile/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ... 
+				} else {
+					echo "<script>alert(File size is to big .. !);</script>";
+				}
 			} else {
-				echo "<script>alert(File size is to big .. !);</script>";
+				echo "Something went wrong .. !";
 			}
+			echo "<script>alert('Faculty Added Successfully')</script>";
+			echo "<script>window.open('faculty_list.php','_self')</script>";
 		} else {
-			echo "Something went wrong .. !";
+			echo "<script>alert('Faculty Not Added')</script>";
+			echo "<script>window.open('add_faculty.php','_self')</script>";
 		}
-		echo "<script>alert('Faculty Added Successfully')</script>";
-		echo "<script>window.open('faculty_list.php','_self')</script>";
-	} else {
+	} catch (Exception $e) {
 		echo "<script>alert('Faculty Not Added')</script>";
 		echo "<script>window.open('add_faculty.php','_self')</script>";
 	}

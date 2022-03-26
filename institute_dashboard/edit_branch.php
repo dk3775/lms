@@ -53,7 +53,7 @@ if ($_SESSION['role'] != "Texas") {
 							$row = mysqli_fetch_assoc($result);
 
 						?>
-							<form method="POST" enctype="multipart/form-data">
+							<form method="POST" autocomplete="off" enctype="multipart/form-data">
 								<div class="row">
 									<div class="col-12 col-md-6">
 										<div class="form-group">

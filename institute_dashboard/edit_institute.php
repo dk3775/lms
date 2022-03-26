@@ -54,7 +54,7 @@ if ($_SESSION['role'] != "Texas") {
                      $row = mysqli_fetch_assoc($result);
 
                   ?>
-                     <form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" >
+                     <form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation" >
                         <div class="row justify-content-between align-items-center">
                            <div class="col">
                               <div class="row align-items-center">

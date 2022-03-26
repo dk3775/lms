@@ -8,14 +8,14 @@ if ($_SESSION['role'] != "Texas") {
     $_SESSION["userrole"] = "Faculty";
 }
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <?php include_once("../head.php"); ?>
-    </head>
+<head>
+    <?php include_once("../head.php"); ?>
+</head>
 
-    <body>
+<body>
     <!-- NAVIGATION -->
     <?php
     $nav_role = "Branch";
@@ -31,8 +31,7 @@ if ($_SESSION['role'] != "Texas") {
                             <div class="row align-items-center">
                                 <div class="col">
                                     <h5 class="header-pretitle">
-                                        <a class="btn-link btn-outline" onclick="history.back()"><i
-                                                    class="fe uil-angle-double-left"></i>Back</a>
+                                        <a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
                                     </h5>
                                     <h6 class="header-pretitle">
                                         Add New
@@ -49,36 +48,52 @@ if ($_SESSION['role'] != "Texas") {
                     <!-- Form -->
                     <br>
                     <div class="form-group">
-                        <form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation">
+                        <form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation" autocomplete="off" novalidate>
                             <div class="row justify-content-between align-items-center">
                                 <div class="row">
                                     <div class="col-12 col-md-6">
                                         <!-- First name -->
-                                        <label class="form-label">
+                                        <label for="validationCustom01" class="form-label">
                                             Branch Code
                                         </label>
-                                        <input type="text" class="form-control " name="icode" placeholder="001" required
-                                        pattern="[0-9]{3}" onkeypress="return event.charCode>=48 && event.charCode<=57" maxlength="3">
+                                        <input type="text" placeholder="123" pattern="[0-9]{0-3}" onkeypress="return event.charCode>=48 && event.charCode<=57" maxlength="3" minlength="3" id="validationCustom01" class="form-control" name="icode" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Incorrect Format or Field is Empty!
+                                        </div>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <label class="form-label">
+                                        <label for="validationCustom01" class="form-label">
                                             Branch Name
                                         </label>
-                                        <input type="text" class="form-control" name="iname"
-                                               placeholder="Computer Engineering" required >
+                                        <input id="validationCustom01" type="text" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))' maxlength="20" class="form-control" name="iname" placeholder="Computer Engineering" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Incorrect Format or Field is Empty!
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 col-md-6">
-                                        <label class="form-label">
+                                        <label for="validationCustom01" class="form-label">
                                             No of Semesters
                                         </label>
-                                        <select class="form-control" name="isem" required>
+                                        <select id="validationCustom01" class="form-control" name="isem" required>
                                             <option value="" hidden="">Select Semesters</option>
                                             <?php for ($count = 1; $count < 9; $count++) { ?>
                                                 <option value="<?php echo $count; ?>"><?php echo $count; ?></option>
                                             <?php } ?>
                                         </select>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Incorrect Format or Field is Empty!
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +123,7 @@ if ($_SESSION['role'] != "Texas") {
     <script src="../assets/js/theme.bundle.js"></script>
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
-        (function () {
+        (function() {
             'use strict'
 
             // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -116,8 +131,8 @@ if ($_SESSION['role'] != "Texas") {
 
             // Loop over them and prevent submission
             Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                    form.addEventListener('submit', function (event) {
+                .forEach(function(form) {
+                    form.addEventListener('submit', function(event) {
                         if (!form.checkValidity()) {
                             event.preventDefault()
                             event.stopPropagation()
@@ -128,9 +143,9 @@ if ($_SESSION['role'] != "Texas") {
                 })
         })()
     </script>
-    </body>
+</body>
 
-    </html>
+</html>
 
 <?php
 if (isset($_POST['subbed'])) {
@@ -138,7 +153,7 @@ if (isset($_POST['subbed'])) {
     extract($_POST);
 
     $sql = "INSERT INTO branchmaster (BranchName,BranchCode,BranchSemesters) VALUES ('$iname', '$icode','$isem' );";
-    try{
+    try {
         $run = mysqli_query($conn, $sql);
         if ($run) {
             echo "<script>alert('Branch Added Successfully');</script>";
@@ -147,7 +162,7 @@ if (isset($_POST['subbed'])) {
             echo "<script>alert('Branch Not Added');</script>";
             echo "<script>window.open('add_branch.php','_self');</script>";
         }
-    }catch (Exception $e){
+    } catch (Exception $e) {
         echo "<script>alert('Branch Not Added');</script>";
         echo "<script>window.open('add_branch.php','_self');</script>";
     }

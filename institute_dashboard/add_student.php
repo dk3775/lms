@@ -9,8 +9,6 @@ if ($_SESSION['role'] != "Texas") {
 
 $branchsel = "SELECT * FROM branchmaster";
 $branchresult = mysqli_query($conn, $branchsel);
-$sqlsem = "SELECT * FROM branchmaster WHERE BranchCode = ";
-$sqldata = "";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +48,7 @@ $sqldata = "";
 						</div>
 					</div>
 					<!-- Form -->
-					<form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation">
+					<form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
 						<div class="row justify-content-between align-items-center">
 							<div class="col">
 								<div class="row align-items-center">
@@ -106,18 +104,37 @@ $sqldata = "";
 						<div class="row">
 							<div class="col-md-4">
 								<label for="validationCustom01" class="form-label">First name</label>
-								<input type="text" class="form-control" id="validationCustom01" name="fname" required>
-							</div>
-							<div class="col-md-4">
-								<div class="form-group">
-									<label for="validationCustom01" class="form-label">Middle name</label>
-									<input type="text" class="form-control" id="validationCustom01" name="mname" required>
+								<input type="text" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))' maxlength="20" class="form-control" id="validationCustom01" name="fname" required>
+								<div class="valid-feedback">
+									Looks good!
+								</div>
+								<div class="invalid-feedback">
+									Incorrect Format or Field is Empty!
 								</div>
 							</div>
 							<div class="col-md-4">
 								<div class="form-group">
-									<label for="validationCustom01" class="form-label">Last name</label>
-									<input type="text" class="form-control" id="validationCustom01" name="lname" required>
+									<label for="validationCustom02" class="form-label">Middle name</label>
+									<input type="text" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))' maxlength="20" class="form-control" id="validationCustom02" name="mname" required>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
+								</div>
+
+							</div>
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="validationCustom03" class="form-label">Last name</label>
+									<input type="text" onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122))' maxlength="20" class="form-control" id="validationCustom03" name="lname" required>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
 								</div>
 							</div>
 						</div>
@@ -131,14 +148,26 @@ $sqldata = "";
 										Student Email address
 									</label>
 									<!-- Input -->
-									<input type="email" class="form-control" id="validationCustom01" name="semail" required>
+									<input type="email" maxlength="25" class="form-control" id="validationCustom01" name="semail" required>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
 								<label for="validationCustom01" class="form-label">
 									Student Contact Number
 								</label>
-								<input type="tel" pattern="[0-9]{10}" maxlength="10" id="validationCustom01" class="form-control" name="scontact" onkeypress="return event.charCode>=48 && event.charCode<=57" required>
+								<input type="text" pattern="[0-9]{10}" onkeypress="return event.charCode>=48 && event.charCode<=57" maxlength="10" id="validationCustom01" class="form-control" name="scontact" required>
+								<div class="valid-feedback">
+									Looks good!
+								</div>
+								<div class="invalid-feedback">
+									Incorrect Format or Field is Empty!
+								</div>
 							</div>
 						</div>
 						<div class="row">
@@ -150,7 +179,13 @@ $sqldata = "";
 										Student Address
 									</label>
 									<!-- Input -->
-									<input type="text" id="validationCustom01" class="form-control" name="add" required>
+									<textarea id="validationCustom01" class="form-control sm" name="add" required></textarea>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
@@ -162,6 +197,12 @@ $sqldata = "";
 									</label>
 									<!-- Input -->
 									<input type="date" id="validationCustom01" class="form-control" name="dob" required data-flatpickr placeholder="YYYY-MM-DD">
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
 								</div>
 							</div>
 						</div>
@@ -173,14 +214,26 @@ $sqldata = "";
 									<label for="validationCustom01" class="form-label">
 										Parent's Contact Number
 									</label>
-									<input type="text" onkeypress="return event.charCode>=48 && event.charCode<=57" id="validationCustom01" maxlength="10" class="form-control" pattern="[0-9]{10}" name="pcontact" required>
+									<input type="text" pattern="[0-9]{10}" onkeypress="return event.charCode>=48 && event.charCode<=57" maxlength="10" id="validationCustom01" class="form-control" name="pcontact" required>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
 								<label for="validationCustom01" class="form-label">
 									Parent's Email
 								</label>
-								<input type="email" id="validationCustom01" class="form-control" name="pmail" required>
+								<input type="email" maxlength="25" id="validationCustom01" class="form-control" name="pmail" required>
+								<div class="valid-feedback">
+									Looks good!
+								</div>
+								<div class="invalid-feedback">
+									Incorrect Format or Field is Empty!
+								</div>
 							</div>
 						</div>
 						<hr class="my-5">
@@ -191,7 +244,13 @@ $sqldata = "";
 									<label for="validationCustom01" class="form-label">
 										Student Enrollment No
 									</label>
-									<input id="myInput" oninput="cp()" type="text" onkeypress="return event.charCode>=48 && event.charCode<=57" maxlength="12" pattern="[0-9]{12}" id="validationCustom01" class="form-control" name="senr" required>
+									<input type="text" pattern="[0-9]{12}" oninput="cp()" onkeypress="return event.charCode>=48 && event.charCode<=57" maxlength="12" id="validationCustom01" class="form-control" name="senr" required>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
 								</div>
 							</div>
 							<div class="col-12 col-md-6">
@@ -199,7 +258,13 @@ $sqldata = "";
 									<label class="form-label">
 										Student Roll No
 									</label>
-									<input type="text" id="validationCustom01" class="form-control" name="sroll" onkeypress="return event.charCode>=48 && event.charCode<=57" maxlength="3" pattern="[0-9]{3}" required placeholder="001">
+									<input type="text" pattern="[0-9]{3}" onkeypress="return event.charCode>=48 && event.charCode<=57" maxlength="3" id="validationCustom01" class="form-control" name="sroll" required>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Incorrect Format or Field is Empty!
+									</div>
 								</div>
 							</div>
 						</div>
@@ -219,6 +284,12 @@ $sqldata = "";
 										<?php
 										} ?>
 									</select>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Select Option!
+									</div>
 								</div>
 							</div>
 
@@ -237,6 +308,12 @@ $sqldata = "";
 										<option value="5">5</option>
 										<option value="6">6</option>
 									</select>
+									<div class="valid-feedback">
+										Looks good!
+									</div>
+									<div class="invalid-feedback">
+										Select Option!
+									</div>
 								</div>
 							</div>
 						</div>
@@ -251,7 +328,7 @@ $sqldata = "";
 							</div>
 							<div class="col-auto col-6">
 								<div class="input-group input-group-sm mb-3 ">
-									<textarea id="demo" class="form-control fs-2" name="ec" readonly maxlength="4"></textarea>
+									<textarea id="demo" class="form-control fs-2" name="ec" id="myInput1" readonly maxlength="4"></textarea>
 									<button class="btn btn-primary" onclick="cp1()"><i class="fe fe-copy"></i></button>
 								</div>
 							</div>
@@ -347,11 +424,10 @@ $sqldata = "";
 	</script>
 	<script>
 		function cp() {
-			var x = document.getElementById("myInput").value;
-			document.getElementById("demo").innerHTML = "ST" + x;
+			var x = document.getElementsByName("senr")[0].value;
+			document.getElementById("demo").innerHTML = x;
 
-			let num = document.getElementById("myInput").value;
-			let s = num.toString();
+			let s = x.toString();
 			let str = s.toString().split('').reverse().join('');
 			let rev = str.substr(0, 4);
 
@@ -415,8 +491,8 @@ if (isset($_POST['subbed'])) {
 			echo "<script>window.open('add_student.php','_self')</script>";
 		}
 	} catch (Exception $e) {
-		$err = $e->getMessage();
-		echo "<script>console.log($err)</script>";
+		echo "<script>alert('Student Not Added')</script>";
+		echo "<script>window.open('add_student.php','_self')</script>";
 	}
 }
 ?>

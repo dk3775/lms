@@ -114,7 +114,7 @@ include_once("context.php");
 					access to
 					<span id="selectedType">your</span> dashboard.
 				</p>
-				<form method="POST">
+				<form method="POST" autocomplete="off">
 					<div id="loginType" class="row row-cols-1 row-cols-md-3 g-2">
 						<div class="col-sm-6 justify-content-center">
 							<div class="card border shadow bg-body rounded" id="IN_Login" onclick="display(); log();">

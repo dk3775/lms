@@ -51,7 +51,7 @@ if ($_SESSION['role'] != "Lagos") {
                         </div>
                         <!-- Form -->
                         <br>
-                        <form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation" >
+                        <form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation" >
 
                             <div class="row">
                                 <div class="col-md-2">
@@ -221,7 +221,7 @@ if ($_SESSION['role'] != "Lagos") {
             }
 
             echo "<script>alert('Study Material Added Successfully');</script>";
-            echo "<script>window.open('/subject_profile.php?subid=$subid','_self');</script>";
+            echo "<script>window.open('subject_profile.php?subid=$subid','_self');</script>";
         } else {
             echo "<script>alert('Error Occured, Study Material Not Added');</script>";
             echo "<script>window.open('add_material.php','_self');</script>";
