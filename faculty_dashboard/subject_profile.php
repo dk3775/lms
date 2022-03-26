@@ -39,7 +39,7 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 						<?php
 						if ($row['SubjectFacultyId'] == $_SESSION['fid']) { ?>
 							<div class="col-auto">
-								<a href="add_material.php?subcode=<?php echo $row['SubjectCode']; ?>&brid=<?php echo $row['BranchCode']; ?>&subid=<?php echo $xbrid; ?>" class="btn btn-primary ml-2">
+								<a href="add_material.php?subcode=<?php echo $row['SubjectCode']; ?>" class="btn btn-primary ml-2">
 									Add Material
 								</a>
 							</div>
@@ -142,7 +142,9 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 															<a class="list-sort text-muted" data-sort="item-company">Unit Name</a>
 														</th>
 														<th></th>
-														<th></th>
+														<th>
+															<a class="list-sort text-muted justify-content-center">Action</a>
+														</th>
 														<th>
 															<a class="list-sort text-muted justify-content-center">Download</a>
 														</th>
@@ -160,7 +162,11 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 																<span class="item-company text-reset"><?php echo $roww['SubjectUnitName']; ?></span>
 															</td>
 															<td></td>
-															<td></td>
+															<td>
+																<a href="edit_material.php?subcode=<?php echo $row['SubjectCode']; ?>&matid=<?php echo $roww['MaterialCode']; ?>" class="btn btn-sm btn-warning">
+																	Edit
+																</a>
+															</td>
 															<td>
 																<a href="../src/uploads/studymaterial/<?php echo $roww['EngMaterialFile']; ?>" download="<?php echo $roww['EngMaterialFile']; ?>" class="btn btn-sm btn-success">
 																	English

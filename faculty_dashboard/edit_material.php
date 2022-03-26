@@ -6,11 +6,14 @@ if ($_SESSION['role'] != "Lagos") {
     include_once("../config.php");
     $_SESSION["userrole"] = "Faculty";
     $subcode = $_GET['subcode'];
+    $matid = $_GET['matid'];
     // $brid = $_GET['brid'];
     // $subid = $_GET['subid'];
     $subsql = "SELECT * FROM subjectmaster INNER JOIN branchmaster ON branchmaster.BranchId = subjectmaster.SubjectBranch WHERE SubjectCode = '$subcode'";
     $subrow = mysqli_fetch_assoc(mysqli_query($conn, $subsql));
     $subid = $subrow['SubjectId'];
+    $matsql =  "SELECT * FROM `studymaterialmaster` WHERE `MaterialCode` = '$matid'";
+    $matrow = mysqli_fetch_assoc(mysqli_query($conn, $matsql));
     // $brsql = "SELECT * FROM branchmaster WHERE BranchCode = '$brid'";
     // $brrow = mysqli_fetch_assoc(mysqli_query($conn, $brsql));
 ?>
@@ -39,7 +42,7 @@ if ($_SESSION['role'] != "Lagos") {
                                             <a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
                                         </h5>
                                         <h6 class="header-pretitle">
-                                            Add New
+                                            Edit
                                         </h6>
                                         <!-- Title -->
                                         <h1 class="header-title">
@@ -52,7 +55,7 @@ if ($_SESSION['role'] != "Lagos") {
                         </div>
                         <!-- Form -->
                         <br>
-                        <form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation">
+                        <form method="POST" enctype="multipart/form-data" class="row g-3 needs-validation">
 
                             <div class="row">
                                 <div class="col-md-2">
@@ -60,15 +63,15 @@ if ($_SESSION['role'] != "Lagos") {
                                     <select class="form-control" aria-label="Default select example" name="uno" required>
                                         <option value="" hidden>Select</option>
                                         <?php
-                                        for ($i = 1; $i <= 6; $i++) {
-                                            echo "<option value='$i'>$i</option>";
-                                        }
+                                        for ($i = 1; $i <= 6; $i++) { ?>
+                                            "<option <?php if ($i == $matrow['SubjectUnitNo']) { ?> selected <?php } ?> value="<?php echo $i; ?>"><?php echo $i; ?></option>";
+                                        <?php }
                                         ?>
                                     </select>
                                 </div>
                                 <div class="col-md-10">
                                     <label for="validationCustom01" class="form-label">Unit Name</label>
-                                    <input type="text" class="form-control" id="validationCustom01" name="uname" required><br>
+                                    <input type="text" class="form-control" id="validationCustom01" name="uname" value="<?php echo $matrow['SubjectUnitName']; ?>" required><br>
                                 </div>
                             </div>
                             <div class="row">
@@ -100,7 +103,7 @@ if ($_SESSION['role'] != "Lagos") {
                                 </div>
                                 <div class="col-auto">
                                     <!-- Button -->
-                                    <input type="file" name="engmaterial" id="file" onchange="showPreview(event);" class="btn btn-sm" accept="application/pdf" required>
+                                    <input type="file" name="engmaterial" value="<?php echo $matrow['EngMaterialFile']; ?>" id="file" onchange="showPreview(event);" class="btn btn-sm" accept="application/pdf" required>
                                 </div>
                             </div>
                             <hr class="my-3">
@@ -122,14 +125,14 @@ if ($_SESSION['role'] != "Lagos") {
                                 </div>
                                 <div class="col-auto">
                                     <!-- Button -->
-                                    <input type="file" name="gujmaterial" id="file1" onchange="showPreview(event);" class="btn btn-sm" accept="application/pdf" required>
+                                    <input type="file" name="gujmaterial" id="file1" value="<?php echo $matrow['GujMaterialFile']; ?>" onchange="showPreview(event);" class="btn btn-sm" accept="application/pdf" required>
                                 </div>
                             </div>
                             <hr class="mt-4 mb-5">
                             <div class="d-flex justify">
                                 <!-- Button -->
                                 <button class="btn btn-primary" type="submit" value="sub" name="subbed">
-                                    Add Material
+                                    Save Changes
                                 </button>
                             </div>
                             <!-- / .row -->
@@ -195,9 +198,9 @@ if ($_SESSION['role'] != "Lagos") {
         $engmaterial = $materialcode . "_" .  "ENG" . ".pdf";
         $gujmaterial = $materialcode . "_" .  "GUJ" . ".pdf";
         try {
-            $sql = "INSERT INTO `studymaterialmaster`(`SubjectCode`, `SubjectUnitNo`, `MaterialCode`, `SubjectUnitName`, `EngMaterialFile`, `GujMaterialFile`, `MaterialUploadDate`) 
-            VALUES ('$subcode','$unitno','$materialcode','$unitname','$engmaterial','$gujmaterial','$dt')";
-
+            // $sql = "INSERT INTO `studymaterialmaster`(`SubjectCode`, `SubjectUnitNo`, `MaterialCode`, `SubjectUnitName`, `EngMaterialFile`, `GujMaterialFile`, `MaterialUploadDate`) 
+            // VALUES ('$subcode','$unitno','$materialcode','$unitname','$engmaterial','$gujmaterial','$dt')";
+            $sql = "UPDATE `studymaterialmaster` SET `SubjectUnitNo`='$unitno',`MaterialCode`='$unitname',`SubjectUnitName`='$materialcode',`MaterialUploadDate`='$dt' WHERE `MaterialId`=''";
             $run = mysqli_query($conn, $sql);
             if ($run == true) {
                 // Eng Matrial
@@ -221,15 +224,15 @@ if ($_SESSION['role'] != "Lagos") {
                     echo "Something went wrong .. !";
                 }
 
-                echo "<script>alert('Study Material Added Successfully');</script>";
+                echo "<script>alert('Study Material Edited Successfully');</script>";
                 echo "<script>window.open('subject_profile.php?subid=$subid','_self');</script>";
             } else {
-                echo "<script>alert('Error Occured, Study Material Not Added');</script>";
-                echo "<script>window.open('add_material.php?subcode=$subcode','_self');</script>";
+                echo "<script>alert('Error Occured, Study Material Not Edited');</script>";
+                echo "<script>window.open('edit_material.php?subcode=$subcode&matid=$matid','_self');</script>";
             }
         } catch (Exception $e) {
-            echo "<script>alert('Error Occured, Study Material Not Added');</script>";
-            echo "<script>window.open('add_material.php?subcode=$subcode','_self');</script>";
+            echo "<script>alert('Error Occured, Study Material Not Edited');</script>";
+            echo "<script>window.open('edit_material.php?subcode=$subcode&matid=$matid','_self');</script>";
         }
     }
 }
