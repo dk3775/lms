@@ -41,7 +41,7 @@ if ($_SESSION['role'] != "Lagos") {
 						$ttid = $_GET['updateid'];
 						$_SESSION["userrole"] = "Faculty";
 						if (isset($ttid)) {
-							$sql = "SELECT * FROM assignmentmaster WHERE AssignmentId = '$ttid'";
+							$sql = "SELECT * FROM assignmentmaster INNER JOIN subjectmaster ON assignmentmaster.AssignmentSubject = subjectmaster.SubjectCode WHERE AssignmentId = '$ttid'";
 							$result = mysqli_query($conn, $sql);
 							$row = mysqli_fetch_assoc($result);
 
@@ -59,7 +59,7 @@ if ($_SESSION['role'] != "Lagos") {
 										<span class="input-group-text col-3 ">Title</span>
 										<input type="text" value="<?php echo $row['AssignmentTitle']; ?>" aria-label="First name" class="form-control" disabled>
 										<span class="input-group-text col-3 ">Subject</span>
-										<input type="text" value="<?php echo $row['AssignmentSubject']; ?>" aria-label="Last name" class="form-control disable" disabled>
+										<input type="text" value="<?php echo $row['SubjectName']; ?>" aria-label="Last name" class="form-control disable" disabled>
 									</div>
 									<br>
 									<div class="input-group">
@@ -114,7 +114,7 @@ if ($_SESSION['role'] != "Lagos") {
 											<div class="row align-items-center">
 												<div class="col">
 													<!-- Form -->
-													<form  autocomplete="off">
+													<form autocomplete="off">
 														<div class="input-group input-group-flush input-group-merge input-group-reverse">
 															<input class="form-control list-search" type="search" placeholder="Search">
 															<span class="input-group-text">

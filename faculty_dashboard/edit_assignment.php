@@ -34,7 +34,7 @@ if ($_SESSION['role'] != "Lagos") {
 							<div class="header-body">
 								<div class="row align-items-center">
 									<div class="col">
-										
+
 										<h5 class="header-pretitle">
 											<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
 										</h5>
@@ -52,7 +52,7 @@ if ($_SESSION['role'] != "Lagos") {
 						</div>
 						<!-- Form -->
 						<br>
-						<form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation" >
+						<form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation">
 							<div class="row justify-content-between align-items-center">
 								<div class="col">
 									<div class="row align-items-center">
@@ -112,14 +112,12 @@ if ($_SESSION['role'] != "Lagos") {
 								<div class="col-md-6">
 									<label for="validationCustom01" class="form-label">Assignment Subject</label>
 									<select class="form-control" aria-label="Default select example" name="asssubject" required>
-										<option hidden><?php echo $xxrow['AssignmentSubject']; ?></option>
 										<?php
 										while ($subrow = mysqli_fetch_assoc($subresult)) { ?>
-											<option value="<?php echo $subrow['SubjectName']; ?>">
+											<option <?php if ($xxrow['AssignmentSubject'] == $subrow['SubjectCode']) { ?>selected<?php } ?> value="<?php echo $subrow['SubjectName']; ?>">
 												<?php echo $subrow['SubjectName']; ?>
 											</option>
 										<?php
-											$assupd = $subrow['SubjectFacultyId'];
 										}
 										?>
 									</select>
@@ -168,10 +166,11 @@ if ($_SESSION['role'] != "Lagos") {
 		$asssubject = $_POST['asssubject'];
 		$assldate = $_POST['assldate'];
 		$dt = date('Y-m-d');
-		$xsql = "SELECT SubjectSemester from subjectmaster where SubjectName='$asssubject'";
+		$xsql = "SELECT SubjectSemester,SubjectCode from subjectmaster where SubjectName='$asssubject'";
 		$xresult = mysqli_query($conn, $xsql);
 		$xrow = mysqli_fetch_assoc($xresult);
 		$sem = $xrow['SubjectSemester'];
+		$subcode = $xrow['SubjectCode'];
 		$assfile = $assname . $dt . ".pdf";
 
 		if ($fs_error === 0) {
@@ -189,7 +188,7 @@ if ($_SESSION['role'] != "Lagos") {
 		SET
 		AssignmentTitle = '$assname',
 		AssignmentDesc = '$assdesc',
-		AssignmentSubject = '$asssubject',
+		AssignmentSubject = '$subcode',
 		AssignmentFile = '$assfile',
 		AssignmentForSemester = '$sem',
 		AssignmentSubmissionDate = '$assldate'

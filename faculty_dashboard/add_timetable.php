@@ -71,7 +71,7 @@ $brrow = mysqli_fetch_assoc($branchresult);
                                  </small>
                               </div>
                               <div class="col-12 col-md-6">
-                                 <input type="file" id="img" name="tpic" class="btn btn-sm" onchange="showPreview(event);" accept="image/jpg, image/jpeg, image/png">
+                                 <input type="file" id="img" name="tpic" class="btn btn-sm" onchange="showPreview(event);" accept="image/jpg, image/jpeg, image/png" required>
                               </div>
                            </div>
                         </div>

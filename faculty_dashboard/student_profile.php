@@ -27,8 +27,8 @@ if ($_SESSION['role'] != "Lagos") {
 							<div class="row align-items-end">
 								<div class="col">
 									<h5 class="header-pretitle">
-									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-								</h5>
+										<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+									</h5>
 									<h6 class="header-pretitle">
 										Student
 									</h6>
@@ -49,7 +49,7 @@ if ($_SESSION['role'] != "Lagos") {
 				$studentenr = $_GET['studentenr'];
 				$_SESSION["userrole"] = "Faculty";
 				if (isset($studentenr)) {
-					$sql = "SELECT * FROM studentmaster WHERE StudentEnrollmentNo = '$studentenr'";
+					$sql = "SELECT * FROM studentmaster INNER JOIN branchmaster ON studentmaster.StudentBranchCode = branchmaster.BranchCode WHERE StudentEnrollmentNo = '$studentenr'";
 					$result = mysqli_query($conn, $sql);
 					$row = mysqli_fetch_assoc($result);
 
@@ -113,7 +113,7 @@ if ($_SESSION['role'] != "Lagos") {
 										<span class="input-group-text col-2 ">Enrollment No.</span>
 										<input type="text" value="<?php echo $row['StudentEnrollmentNo']; ?>" aria-label="First name" class="form-control" disabled>
 										<span class="input-group-text col-2 ">Branch</span>
-										<input type="text" value="<?php echo $row['StudentBranchCode']; ?>" aria-label="Last name" class="form-control" disabled>
+										<input type="text" value="<?php echo $row['BranchName']; ?>" aria-label="Last name" class="form-control" disabled>
 									</div>
 									<br>
 									<div class="input-group">
