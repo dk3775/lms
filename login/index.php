@@ -118,7 +118,7 @@ include_once("context.php");
 					<div id="loginType" class="row row-cols-1 row-cols-md-3 g-2">
 						<div class="col-sm-6 justify-content-center">
 							<div class="card border shadow bg-body rounded" id="IN_Login" onclick="display(); log();">
-								<img id="imgcard" src="../assets/img/admin.png" style="width: 100px;" class="card-img rounded mx-auto d-block">
+								<img id="imgcard" src="../assets/img/admin.png" class="card-img rounded mx-auto d-block avatar avatar-xl">
 								<!-- <i class="fe fe-home" style="width: 100px;"></i> -->
 								<div class="card-body">
 									<h5 class="card-title">INSTITUTE</h3>
@@ -128,7 +128,7 @@ include_once("context.php");
 						</div>
 						<div class="col-sm-6">
 							<div class="card border shadow bg-body rounded" id="FA_Login" onclick="display(); log1();">
-								<img id="imgcard2" src="../assets/img/faculty.png" style="width: 108px;" class="card-img rounded mx-auto d-block">
+								<img id="imgcard2" src="../assets/img/faculty.png" class="card-img rounded mx-auto d-block avatar avatar-xl">
 								<!-- <i class="fe fe-user"></i> -->
 								<div class="card-body">
 									<h5 class="card-title">FACULTY</h3>
@@ -138,7 +138,7 @@ include_once("context.php");
 						</div>
 						<div class="col-sm-6">
 							<div class="card border shadow bg-body rounded" onclick="display(); log2();">
-								<img id="imgcard3" src="../assets/img/student.png" style="width: 100px;" class="card-img rounded mx-auto d-block">
+								<img id="imgcard3" src="../assets/img/student.png" class="card-img rounded mx-auto d-block avatar avatar-xl">
 								<!-- <i class="fe uil-graduation-cap"></i> -->
 								<div class="card-body">
 									<h5 class="card-title">STUDENT</h3>

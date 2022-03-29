@@ -160,9 +160,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@DhyeyHk](https://twitter.com/DhyeyHk) - dk@titanslab.in
+Dhyey K - [@DhyeyHk](https://twitter.com/DhyeyHk) - dk@titanslab.in
 
 Project Link: [https://github.com/dk3775/lms](https://github.com/dk3775/lms)
+
+Anjan P - anjan@titanslab.in
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

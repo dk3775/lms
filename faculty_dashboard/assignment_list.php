@@ -6,7 +6,7 @@ if ($_SESSION['role'] != "Lagos") {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Faculty";
 	$fid = $_SESSION['fid'];
-	$qur = "SELECT * FROM assignmentmaster INNER JOIN facultymaster INNER JOIN subjectmaster ON assignmentmaster.AssignmentUploadedBy = facultymaster.FacultyId AND assignmentmaster.AssignmentSubject=subjectmaster.SubjectCode WHERE AssignmentUploadedBy = '$fid' ORDER BY AssignmentUploaddate DESC;";
+	$qur = "SELECT * FROM assignmentmaster INNER JOIN facultymaster INNER JOIN subjectmaster ON assignmentmaster.AssignmentUploadedBy = facultymaster.FacultyId AND assignmentmaster.AssignmentSubject=subjectmaster.SubjectCode WHERE AssignmentUploadedBy = '$fid' ORDER BY AssignmentForSemester, AssignmentUploaddate DESC";
 	$res = mysqli_query($conn, $qur);
 }
 ?>
@@ -75,7 +75,7 @@ if ($_SESSION['role'] != "Lagos") {
 										<div class="row align-items-center">
 											<div class="col">
 												<!-- Form -->
-												<form  autocomplete="off">
+												<form autocomplete="off">
 													<div class="input-group input-group-flush input-group-merge input-group-reverse">
 														<input class="form-control list-search" type="search" placeholder="Search">
 														<span class="input-group-text">
@@ -118,7 +118,7 @@ if ($_SESSION['role'] != "Lagos") {
 												while ($row = mysqli_fetch_assoc($res)) { ?>
 													<tr>
 														<td>
-															<a class="item-name text-reset"><?php echo $row['AssignmentTitle']; ?></a>
+															<span class="item-name text-reset"><?php echo $row['AssignmentTitle']; ?></span>
 														</td>
 														<td>
 															<!-- Email -->

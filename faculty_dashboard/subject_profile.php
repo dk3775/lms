@@ -117,7 +117,7 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 											<div class="row align-items-center">
 												<div class="col">
 													<!-- Form -->
-													<form  autocomplete="off">
+													<form autocomplete="off">
 														<div class="input-group input-group-flush input-group-merge input-group-reverse">
 															<input class="form-control list-search" type="search" placeholder="Search">
 															<span class="input-group-text">
@@ -163,7 +163,7 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 															</td>
 															<td></td>
 															<td>
-																<a href="edit_material.php?subcode=<?php echo $row['SubjectCode']; ?>&matid=<?php echo $roww['MaterialCode']; ?>" class="btn btn-sm btn-warning">
+																<a href="edit_material.php?matid=<?php echo $roww['MaterialId']; ?>" class="btn btn-sm btn-warning">
 																	Edit
 																</a>
 															</td>

@@ -47,7 +47,7 @@ if ($_SESSION['role'] != "Lagos") {
 						</div>
 						<!-- Form -->
 						<br>
-						<form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation" >
+						<form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation">
 							<div class="row justify-content-between align-items-center">
 								<div class="col">
 									<div class="row align-items-center">
@@ -66,7 +66,7 @@ if ($_SESSION['role'] != "Lagos") {
 								</div>
 								<div class="col-auto">
 									<!-- Button -->
-									<input type="file" id="img" name="assfile" class="btn btn-sm" onchange="showPreview(event);" accept="application/pdf">
+									<input type="file" id="img" name="assfile" class="btn btn-sm" onchange="showPreview(event);" accept="application/pdf" required>
 								</div>
 							</div>
 							<!-- Priview Profile pic  -->
@@ -122,7 +122,7 @@ if ($_SESSION['role'] != "Lagos") {
 								</div>
 								<div class="col-md-6">
 									<label for="validationCustom01" class="form-label">Assignment Submission Date</label>
-									<input type="date" id="validationCustom01" class="form-control" name="assldate" required data-flatpickr placeholder="YYYY-MM-DD"><br>
+									<input type="date" id="validationCustom01" class="form-control" name="assldate" required data-flatpickr placeholder="YYYY-MM-DD" required><br>
 								</div>
 							</div>
 							<!-- Divider -->
@@ -164,15 +164,16 @@ if ($_SESSION['role'] != "Lagos") {
 		$asssubject = $_POST['asssubject'];
 		$assldate = $_POST['assldate'];
 		$dt = date('Y-m-d');
-		$xsql = "SELECT SubjectSemester,SubjectBranch from subjectmaster where SubjectName='$asssubject'";
+		$xsql = "SELECT * from subjectmaster where SubjectId='$asssubject'";
 		$xresult = mysqli_query($conn, $xsql);
 		$xrow = mysqli_fetch_assoc($xresult);
 		$sem = $xrow['SubjectSemester'];
 		$branch = $xrow['SubjectBranch'];
+		$subcode = $xrow['SubjectCode'];
 		$assfile = $assname . $dt . ".pdf";
 
 		$sql = "INSERT INTO assignmentmaster (AssignmentStatus,AssignmentBranch,AssignmentTitle, AssignmentDesc, AssignmentSubject, AssignmentUploadedBy, AssignmentFile, AssignmentUploaddate, AssignmentForSemester, AssignmentSubmissionDate) 
-		VALUES (1,'$branch','$assname', '$assdesc', '$asssubject', '$assupd', '$assfile', '$dt', '$sem', '$assldate')";
+		VALUES (1,'$branch','$assname', '$assdesc', '$subcode', '$assupd', '$assfile', '$dt', '$sem', '$assldate')";
 		$run = mysqli_query($conn, $sql);
 		if ($run == true) {
 			if ($fs_error === 0) {
@@ -190,6 +191,7 @@ if ($_SESSION['role'] != "Lagos") {
 			echo "<script>alert('Error Occured, Assignment Not Added');</script>";
 			echo "<script>window.open('add_assignment.php','_self');</script>";
 		}
+		// echo $sql;
 	}
 }
 ?>

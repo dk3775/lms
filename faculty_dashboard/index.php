@@ -75,13 +75,14 @@ if ($_SESSION['role'] != "Lagos") {
 					</div>
 					<div class="col-auto my-auto">
 						<div class="h-100">
-							<h3 class="mb-1 text-sm">
-								<?php echo $frow['BranchName']; ?>
-							</h3>
-							<h1 class="mb-0 font-weight-bold text-sm">
+							<h1 class="mb-2 font-weight-bold text-sm">
 								<?php echo $frow['FacultyFirstName'] . " " . $frow['FacultyLastName']; ?>
 							</h1>
-							<p class="mb-0 font-weight-bold text-sm">
+							<h3 class="mb-2 text-sm">
+								<?php echo $frow['BranchName']; ?> |
+								<a type="button" class="btn-link font-weight-bold" href="change_profile_pic.php">Change Image</a>
+							</h3>
+							<p class="mb-2 font-weight-bold text-sm">
 								<?php echo $frow['FacultyOffice']; ?>
 							</p>
 						</div>
@@ -265,7 +266,7 @@ if ($_SESSION['role'] != "Lagos") {
 										<div class="row align-items-center">
 											<div class="col">
 												<!-- Form -->
-												<form  autocomplete="off">
+												<form autocomplete="off">
 													<div class="input-group input-group-flush input-group-merge input-group-reverse">
 														<input class="form-control list-search" type="search" placeholder="Search by Date">
 														<span class="input-group-text">
@@ -373,7 +374,7 @@ if ($_SESSION['role'] != "Lagos") {
 									<div class="row align-items-center mb-4">
 										<div class="col">
 											<!-- Form -->
-											<form  autocomplete="off">
+											<form autocomplete="off">
 												<div class="input-group input-group-lg input-group-merge input-group-reverse">
 													<input class="form-control list-search" type="search" placeholder="Search">
 													<span class="input-group-text">
@@ -384,7 +385,7 @@ if ($_SESSION['role'] != "Lagos") {
 										</div>
 										<div class="col-auto mr-n3">
 											<!-- Select -->
-											<form  autocomplete="off">
+											<form autocomplete="off">
 												<div class="choices" data-type="select-one" tabindex="0" role="listbox" aria-haspopup="true" aria-expanded="false">
 													<div class="form-select form-select-sm form-control-flush">
 														<select class="form-select form-select-sm form-control-flush form-control" data-choices="{&quot;searchEnabled&quot;: false}" hidden="" tabindex="-1" data-choice="active">

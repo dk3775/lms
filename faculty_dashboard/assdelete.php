@@ -14,6 +14,7 @@
         }
     </style>
 </head>
+
 <body>
     <?php
     session_start();
@@ -23,11 +24,19 @@
         include_once("../config.php");
         $_SESSION["userrole"] = "faculty";
         $assid = $_GET['assid'];
-        $qur = "DELETE FROM assignmentmaster WHERE AssignmentId = '$assid'";
-        $res = mysqli_query($conn, $qur);
-        if ($res) {
-            echo "<script>alert('Assignment Deleted Successfully');</script>";
-            header("Location: ../faculty_dashboard/assignment_list.php");
+        try {
+            $qur = "DELETE FROM assignmentmaster WHERE AssignmentId = '$assid'";
+            $res = mysqli_query($conn, $qur);
+            if ($res) {
+                echo "<script>alert('Assignment Deleted Successfully');</script>";
+                echo "<script>window.open('assignment_list.php','_self');</script>";
+            } else {
+                echo "<script>alert('This Assignment Has Submissions, So Can not Delete .. !');</script>";
+                echo "<script>window.open('assignment_list.php','_self');</script>";
+            }
+        } catch (Exception $e) {
+            echo "<script>alert('This Assignment Has Submissions, So Can not Delete .. !');</script>";
+            echo "<script>window.open('assignment_list.php','_self');</script>";
         }
     }
     ?>
