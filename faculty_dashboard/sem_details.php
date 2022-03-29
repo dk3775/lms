@@ -47,7 +47,9 @@ if ($_SESSION['role'] != "Lagos") {
 				<?php
 				include_once("../config.php");
 				$xbrid = $_GET['brid'];
+				$xbrid = mysqli_real_escape_string($conn, $xbrid);
 				$semid = $_GET['semid'];
+				$semid = mysqli_real_escape_string($conn, $semid);
 				$_SESSION["userrole"] = "Faculty";
 				if (isset($xbrid)) {
 					$sql = "SELECT * FROM branchmaster WHERE BranchCode = '$xbrid'";
@@ -98,6 +100,7 @@ if ($_SESSION['role'] != "Lagos") {
 				<div class="row">
 					<?php
 					$C = $_GET['semid'];
+					$C = mysqli_real_escape_string($conn, $C);
 					//$ssql = "SELECT * FROM semestermaster WHERE SemCode = '$C'";
 					$subsql = "SELECT * FROM subjectmaster INNER JOIN facultymaster ON subjectmaster.SubjectFacultyId=facultymaster.FacultyId WHERE SemCode = '$C'";
 					//$sresult = mysqli_query($conn, $ssql);
@@ -134,6 +137,7 @@ if ($_SESSION['role'] != "Lagos") {
 			<?php
 				} else {
 					$er = $_GET['brid'];
+					$er = mysqli_real_escape_string($conn, $er);
 					$qur = "SELECT * FROM branchmaster WHERE BranchCode = '$er';";
 					$res = mysqli_query($conn, $qur);
 					$row = mysqli_fetch_assoc($res);

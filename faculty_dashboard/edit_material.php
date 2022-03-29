@@ -6,6 +6,7 @@ if ($_SESSION['role'] != "Lagos") {
     include_once("../config.php");
     $_SESSION["userrole"] = "Faculty";
     $matid = $_GET['matid'];
+    $matid = mysqli_real_escape_string($conn, $matid);
     $matsql =  "SELECT * FROM `studymaterialmaster` WHERE `MaterialId` = '$matid'";
     $matrow = mysqli_fetch_assoc(mysqli_query($conn, $matsql));
     $subcode = $matrow['SubjectCode'];

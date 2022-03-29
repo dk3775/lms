@@ -6,6 +6,7 @@ if ($_SESSION['role'] != "Lagos") {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Faculty";
 	$assid = $_GET['assid'];
+	$assid = mysqli_real_escape_string($conn, $assid);
 	$username = $_SESSION['id'];
 	$xxsql = "SELECT * FROM assignmentmaster WHERE AssignmentId='$assid'";
 	$xxresult = mysqli_query($conn, $xxsql);

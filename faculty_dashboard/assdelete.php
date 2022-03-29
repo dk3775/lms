@@ -22,8 +22,9 @@
         header("Location: ../index.php");
     } else {
         include_once("../config.php");
-        $_SESSION["userrole"] = "faculty";
+        $_SESSION["userrole"] = "Faculty";
         $assid = $_GET['assid'];
+        $assid = mysqli_real_escape_string($conn, $assid);
         try {
             $qur = "DELETE FROM assignmentmaster WHERE AssignmentId = '$assid'";
             $res = mysqli_query($conn, $qur);

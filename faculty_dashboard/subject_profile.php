@@ -6,6 +6,7 @@ if ($_SESSION['role'] != "Lagos" or !isset($_GET['subid'])) {
 	header("Location: ../index.php");
 } else {
 	$xbrid = $_GET['subid'];
+	$xbrid = mysqli_real_escape_string($conn, $xbrid);
 	$qur = "SELECT *,BranchName,FacultyFirstName,FacultyLastName FROM ((subjectmaster INNER JOIN branchmaster ON subjectmaster.SubjectBranch = branchmaster.BranchId) INNER JOIN facultymaster ON subjectmaster.SubjectFacultyId = facultymaster.FacultyId) WHERE SubjectId = '$xbrid'";
 	$res = mysqli_query($conn, $qur);
 	$row = mysqli_fetch_assoc($res);

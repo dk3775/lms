@@ -13,6 +13,7 @@ if ($_SESSION['role'] != "Lagos") {
     include_once "../config.php";
     $_SESSION["userrole"] = "Institute";
     $ttid = $_GET['ttid'];
+    $ttid = mysqli_real_escape_string($conn, $ttid);
     $qur = "DELETE FROM timetablemaster WHERE TimetableId = '$ttid'";
     $res = mysqli_query($conn, $qur);
     if ($res) {

@@ -47,6 +47,7 @@ if ($_SESSION['role'] != "Lagos") {
 				<?php
 				include_once("../config.php");
 				$studentenr = $_GET['studentenr'];
+				$studentenr = mysqli_real_escape_string($conn, $studentenr);
 				$_SESSION["userrole"] = "Faculty";
 				if (isset($studentenr)) {
 					$sql = "SELECT * FROM studentmaster INNER JOIN branchmaster ON studentmaster.StudentBranchCode = branchmaster.BranchCode WHERE StudentEnrollmentNo = '$studentenr'";

@@ -39,6 +39,7 @@ if ($_SESSION['role'] != "Lagos") {
 						<?php
 						include_once "../config.php";
 						$ttid = $_GET['updateid'];
+						$ttid = mysqli_real_escape_string($conn, $ttid);
 						$_SESSION["userrole"] = "Faculty";
 						if (isset($ttid)) {
 							$sql = "SELECT * FROM assignmentmaster INNER JOIN subjectmaster ON assignmentmaster.AssignmentSubject = subjectmaster.SubjectCode WHERE AssignmentId = '$ttid'";

@@ -7,6 +7,7 @@ if ($_SESSION['role'] != "Lagos") {
     header("Location: ../index.php");
 } else {
     $qid = $_GET['qid'];
+    $qid = mysqli_real_escape_string($conn, $qid);
     $query = "SELECT * FROM studentmaster INNER JOIN studyquerymaster INNER JOIN facultymaster INNER JOIN subjectmaster ON studyquerymaster.QueryToId = facultymaster.FacultyId AND studyquerymaster.QueryFromId = studentmaster.StudentId AND subjectmaster.SubjectCode = studyquerymaster.QuerySubject WHERE QueryId = '$qid'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_assoc($result);

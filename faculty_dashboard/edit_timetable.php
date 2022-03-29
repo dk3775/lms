@@ -14,6 +14,7 @@ if ($_SESSION['role'] != "Lagos") {
 
 // $ttid = "4";
 $ttid = $_GET['ttid'];
+$ttid = mysqli_real_escape_string($conn, $ttid);
 $timetablesel = "SELECT * FROM timetablemaster INNER JOIN branchmaster ON branchmaster.BranchCode = timetablemaster.TimetableBranchCode WHERE TimetableId='$ttid'";
 $timetableresult = mysqli_query($conn, $timetablesel);
 $row = mysqli_fetch_assoc($timetableresult);

@@ -42,6 +42,7 @@ if ($_SESSION['role'] != "Lagos") {
                         <?php
                         include_once "../config.php";
                         $ttid = $_GET['ttid'];
+                        $ttid = mysqli_real_escape_string($conn, $ttid);
                         $_SESSION["userrole"] = "Faculty";
                         if (isset($ttid)) {
                             $sql = "SELECT * FROM timetablemaster INNER JOIN branchmaster ON branchmaster.BranchCode = timetablemaster.TimetableBranchCode WHERE TimetableId = '$ttid'";
