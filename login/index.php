@@ -154,7 +154,7 @@ include_once("context.php");
 								Username
 							</label>
 							<input type="hidden" id="loginSelectedType" name="loginSelectedType">
-							<input type="text" class="form-control" placeholder="Username" id="ffname" name="name" value="<?php if (isset($_POST['name'])) echo $_POST['name']; ?>" required>
+							<input type="text" class="form-control" placeholder="Username" id="ffname" name="name" required>
 						</div>
 						<label class="form-label">
 							Password
@@ -162,7 +162,7 @@ include_once("context.php");
 						<!-- Password -->
 						<div class="col-12 logo_outer">
 							<div class="input-group mb-4">
-								<input name="password" type="password" value="" class="input form-control" id="password" placeholder="Password" required aria-label="password" value="<?php if (isset($_POST['password'])) echo $_POST['password']; ?>" aria-describedby="basic-addon1" />
+								<input name="password" type="password" value="" class="input form-control" id="password" placeholder="Password" required aria-label="password" aria-describedby="basic-addon1" />
 								<div class="input-group-append ">
 									<span class="input-group-text" style="border-radius: 1px 5px 5px 1px;" onclick="password_show_hide();">
 										<i class="fe uil-eye-slash" id="show_eye"></i>
