@@ -21,8 +21,9 @@
         header("Location: ../index.php");
     } else {
         include_once("../config.php");
-        $_SESSION["userrole"] = "institute";
+        $_SESSION["userrole"] = "Institute";
         $fid = $_GET['subcode'];
+        $fid = mysqli_real_escape_string($conn, $fid);
         echo $sid;
         $qur = "DELETE FROM subjectmaster WHERE SubjectCode = '$fid'";
         $res = mysqli_query($conn, $qur);

@@ -11,7 +11,7 @@ if ($_SESSION['role'] != "Lagos") {
     header("Location: ../index.php");
 } else {
     include_once "../config.php";
-    $_SESSION["userrole"] = "institute";
+    $_SESSION["userrole"] = "Institute";
     $ttid = $_GET['updid'];
     $qur = "DELETE FROM updatemaster WHERE UpdateId = '$ttid'";
     $res = mysqli_query($conn, $qur);

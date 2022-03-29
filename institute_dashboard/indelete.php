@@ -21,8 +21,9 @@
         header("Location: ../index.php");
     } else {
         include_once("../config.php");
-        $_SESSION["userrole"] = "institute";
+        $_SESSION["userrole"] = "Institute";
         $id = $_GET['insid'];
+        $id = mysqli_real_escape_string($conn, $id);
         $qur = "DELETE FROM institutemaster WHERE InstituteId = '$id'";
         $res = mysqli_query($conn, $qur);
         if ($res) {

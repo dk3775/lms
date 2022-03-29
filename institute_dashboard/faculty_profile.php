@@ -48,7 +48,8 @@ if ($_SESSION['role'] != "Texas") {
 				<?php
 				include_once("../config.php");
 				$studentenr = $_GET['facultycode'];
-				$_SESSION["userrole"] = "institute";
+				$studentenr = mysqli_real_escape_string($conn, $studentenr);
+				$_SESSION["userrole"] = "Institute";
 				if (isset($studentenr)) {
 					$sql = "SELECT * FROM facultymaster WHERE FacultyId = '$studentenr'";
 					$result = mysqli_query($conn, $sql);

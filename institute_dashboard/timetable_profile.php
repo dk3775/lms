@@ -42,6 +42,7 @@ if ($_SESSION['role'] != "Texas") {
                         <?php
                         include_once "../config.php";
                         $ttid = $_GET['ttid'];
+                        $ttid = mysqli_real_escape_string($conn, $ttid);
                         $_SESSION["userrole"] = "Institute";
                         if (isset($ttid)) {
                             $sql = "SELECT * FROM timetablemaster WHERE TimetableId = '$ttid'";

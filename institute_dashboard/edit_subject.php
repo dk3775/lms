@@ -8,8 +8,11 @@ if ($_SESSION['role'] != "Texas") {
 	$_SESSION["userrole"] = "Institute";
 	if (isset($_GET['subcode'])) {
 		$subcode = $_GET['subcode'];
+		$subcode = mysqli_real_escape_string($conn, $subcode);
 		$semid = $_GET['semid'];
+		$semid = mysqli_real_escape_string($conn, $semid);
 		$brid = $_GET['brid'];
+		$brid = mysqli_real_escape_string($conn, $brid);
 		$facsel = "SELECT * FROM facultymaster WHERE FacultyBranchCode = '$subcode'";
 		$facresult = mysqli_query($conn, $facsel);
 		$branchsel = "SELECT * FROM branchmaster where BranchCode = '$brid'";
@@ -55,7 +58,7 @@ if ($_SESSION['role'] != "Texas") {
 							<?php
 							include_once("../config.php");
 							$sid = $_GET['subcode'];
-							$_SESSION["userrole"] = "institute";
+							$_SESSION["userrole"] = "Institute";
 							if (isset($sid)) {
 								$sql = "SELECT * FROM subjectmaster WHERE SubjectCode = '$sid'";
 								$result = mysqli_query($conn, $sql);

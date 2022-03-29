@@ -6,6 +6,7 @@ if ($_SESSION['role'] != "Texas") {
     header("Location: ../index.php");
 } else {
     $qid = $_GET['qid'];
+    $qid = mysqli_real_escape_string($conn, $qid);
     $qur = "SELECT * FROM accountquerymaster INNER JOIN studentmaster ON accountquerymaster.QueryFromId = studentmaster.StudentId WHERE QueryId = '$qid'";
     $res = mysqli_query($conn, $qur);
     $row = mysqli_fetch_assoc($res);

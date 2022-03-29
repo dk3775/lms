@@ -22,8 +22,9 @@
         header("Location: ../index.php");
     } else {
         include_once("../config.php");
-        $_SESSION["userrole"] = "institute";
+        $_SESSION["userrole"] = "Institute";
         $fid = $_GET['brid'];
+        $fid = mysqli_real_escape_string($conn, $fid);
         $qur = "DELETE FROM branchmaster WHERE BranchId = '$fid'";
         try{
             $res = mysqli_query($conn, $qur);

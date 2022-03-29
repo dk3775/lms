@@ -40,7 +40,7 @@ if ($_SESSION['role'] != "Lagos") {
                     <?php
                     include_once "../config.php";
                     $ttid = $_GET['updateid'];
-                    $_SESSION["userrole"] = "institute";
+                    $_SESSION["userrole"] = "Institute";
                     if (isset($ttid)) {
                     $sql = "SELECT * FROM updatemaster WHERE UpdateId = '$ttid'";
                     $result = mysqli_query($conn, $sql);

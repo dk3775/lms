@@ -13,6 +13,7 @@
         include_once("../config.php");
         $_SESSION["userrole"] = "Faculty";
         $id = $_GET['qid'];
+        $id = mysqli_real_escape_string($conn, $id);
         $qur = "UPDATE accountquerymaster SET Querystatus = '2' WHERE QueryId = '$id'";
         $res = mysqli_query($conn, $qur);
         if ($res) {

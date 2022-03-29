@@ -46,6 +46,7 @@ if ($_SESSION['role'] != "Texas") {
 						<?php
 						include_once("../config.php");
 						$bid = $_GET['brid'];
+						$bid = mysqli_real_escape_string($conn, $bid);
 						$_SESSION["userrole"] = "Institute";
 						if (isset($bid)) {
 							$sql = "SELECT * FROM branchmaster WHERE BranchId = '$bid'";

@@ -50,7 +50,8 @@ if ($_SESSION['role'] != "Texas") {
             <?php
             include_once("../config.php");
             $insid = $_GET['insid'];
-            $_SESSION["userrole"] = "institute";
+            $insid = mysqli_real_escape_string($conn, $insid);
+            $_SESSION["userrole"] = "Institute";
             if (isset($insid)) {
             $sql = "SELECT * FROM institutemaster WHERE InstituteId = '$insid'";
             $result = mysqli_query($conn, $sql);

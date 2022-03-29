@@ -48,6 +48,7 @@ if ($_SESSION['role'] != "Texas") {
 				<?php
 				require_once("../config.php");
 				$studentenr = $_GET['brid'];
+				$studentenr = mysqli_real_escape_string($conn, $studentenr);
 				$_SESSION["userrole"] = "Institute";
 				if (isset($studentenr)) {
 					$sql = "SELECT BranchName, BranchCode, BranchSemesters, StudentId FROM branchmaster INNER JOIN studentmaster ON branchmaster.BranchCode = studentmaster.StudentBranchCode WHERE BranchId = '$studentenr'";
