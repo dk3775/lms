@@ -31,25 +31,28 @@ if ($_SESSION['role'] != "Abuja") {
 			<div class="container-fluid">
 				<div class="row justify-content-center">
 					<div class="col-12	">
-						<br>
+						<div class="header">
+							<div class="header-body">
+								<div class="row align-items-center">
+									<div class="col">
+										<h5 class="header-pretitle">
+											<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+										</h5>
+										<h6 class="header-pretitle">
+											View
+										</h6>
+										<!-- Title -->
+										<h1 class="header-title text-truncate">
+											Assignment
+										</h1>
+									</div>
+								</div>
+								<!-- / .row -->
+							</div>
+						</div>
 						<!-- Card -->
 						<div class="card">
 							<div class="card-body">
-								<!-- Header -->
-								<div class="mb-3">
-									<div class="row align-items-center">
-										<div class="col ml-n2">
-											<!-- Title -->
-											<h5 class="header-pretitle">
-												<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-											</h5>
-											<h1 class="mb-1">
-												Assignment
-											</h1>
-										</div>
-									</div>
-									<!-- / .row -->
-								</div>
 								<?php
 								include_once "../config.php";
 								$ttid = $_GET['updateid'];
@@ -69,49 +72,77 @@ if ($_SESSION['role'] != "Abuja") {
 										<div class="row">
 											<div class="col-12">
 												<!-- Files -->
-												<div class="card" data-list='{"valueNames": ["name"]}'>
-													<div class="card-body">
-														<h3 class="header-title">
-															<?php echo $row['AssignmentTitle']; ?> Info:
-														</h3>
-														<br>
-														<div class="input-group">
-															<span class="input-group-text col-3 ">Title</span>
-															<input type="text" value="<?php echo $row['AssignmentTitle']; ?>" aria-label="First name" class="form-control" disabled>
-															<span class="input-group-text col-3 ">Subject</span>
-															<input type="text" value="<?php echo $row['AssignmentSubject']; ?>" aria-label="Last name" class="form-control disable" disabled>
-														</div>
-														<br>
-														<div class="input-group">
-															<span class="input-group-text col-3 ">Upload date</span>
-															<input type="text" value="<?php echo $row['AssignmentUploaddate']; ?>" aria-label="First name" class="form-control" disabled>
-															<span class="input-group-text col-3 ">Submission Date</span>
-															<input type="text" value="<?php echo $row['AssignmentSubmissionDate']; ?>" aria-label="Last name" class="form-control disable" disabled>
-														</div>
-														<br>
-														<div class="input-group">
-															<span class="input-group-text col-3 ">Description</span>
-															<textarea aria-label="First name" class="form-control" disabled><?php echo $row['AssignmentDesc']; ?></textarea>
-														</div>
-													</div>
+												<!-- <div class="card" data-list='{"valueNames": ["name"]}'>
+													<div class="card-body"> -->
+												<h3 class="header-title">
+													<?php echo $row['AssignmentTitle']; ?> Info:
+												</h3>
+												<br>
+												<div class="input-group">
+													<span class="input-group-text col-3 ">Title</span>
+													<input type="text" value="<?php echo $row['AssignmentTitle']; ?>" aria-label="First name" class="form-control" disabled>
+													<span class="input-group-text col-3 ">Subject</span>
+													<input type="text" value="<?php echo $row['AssignmentSubject']; ?>" aria-label="Last name" class="form-control disable" disabled>
+												</div>
+												<br>
+												<div class="input-group">
+													<span class="input-group-text col-3 ">Upload date</span>
+													<input type="text" value="<?php echo $row['AssignmentUploaddate']; ?>" aria-label="First name" class="form-control" disabled>
+													<span class="input-group-text col-3 ">Submission Date</span>
+													<input type="text" value="<?php echo $row['AssignmentSubmissionDate']; ?>" aria-label="Last name" class="form-control disable" disabled>
+												</div>
+												<br>
+												<div class="input-group">
+													<span class="input-group-text col-3 ">Description</span>
+													<textarea aria-label="First name" class="form-control" disabled><?php echo $row['AssignmentDesc']; ?></textarea>
 												</div>
 											</div>
+											<!-- </div>
+											</div> -->
 										</div>
-										<div class="d-flex justify">
+										<div class="d-flex justify mt-5">
 											<!-- Button -->
 											<a href="../src/uploads/assignments/<?php echo $row['AssignmentFile']; ?>" download="<?php echo $row['AssignmentFile']; ?>" class="btn btn-primary" name="Download">
 												Download
 											</a>
-											<form enctype="multipart/form-data" method="POST" style="display: none;">
-												<input type="file" id="assignmentupload" name="upload" accept="application/pdf" onchange="clickSubmit();" />
-												<input type="submit" id="submit" name="submit" />
-											</form>
-											<a class="btn btn-primary ml-5" name="btnsub" id="btnsub" onclick="assSubmit();">
+											<a class="btn btn-primary ml-5" id="btnsub">
 												Submit
 											</a>
 										</div>
+										<form id="replyform" class="d-none" method="POST">
+											<hr class="md-5">
+											<h2 class="header-title my-5">
+												Assignment Submission :
+											</h2>
+											<div class="input-group">
+												<div class="row justify-content-between align-items-center">
+													<div class="col">
+														<div class="row align-items-center">
+															<div class="col ml-n2">
+																<!-- Heading -->
+																<h4 class="mb-1">
+																	Assignment Submission File
+																</h4>
+																<!-- Text -->
+																<small class="text-muted">
+																	Only allowed PDF less than 10MB
+																</small>
+															</div>
+														</div>
+														<!-- / .row -->
+													</div>
+													<div class="col-auto">
+														<!-- Button -->
+														<input type="file" name="gujmaterial" id="file1" onchange="showPreview(event);" class="btn btn-sm" accept="application/pdf" required>
+													</div>
+												</div>
+												<hr class="mt-4 mb-5">
+											</div>
+											<div class="d-flex justify mt-5">
+												<input type="submit" class="btn btn-primary" value="Submit Assignment" name="sub">
+											</div>
+										</form>
 									</div>
-									<hr>
 							</div>
 						</div>
 					</div>
@@ -131,14 +162,26 @@ if ($_SESSION['role'] != "Abuja") {
 	<!-- Theme JS -->
 	<script src="../assets/js/theme.bundle.js"></script>
 	<script>
-		function assSubmit() {
-			document.getElementById('assignmentupload').click();
-		}
+		const btnreply = document.getElementById('btnsub');
+		const replyform = document.getElementById('replyform');
 
-		function clickSubmit() {
-			var file = document.getElementById('assignmentupload');
+		btnreply.onclick = () => {
+			btnreply.classList.add('d-none');
+			replyform.classList.remove('d-none');
+		}
+	</script>
+	<script>
+		function showPreview(event) {
+			var file = document.getElementById('file');
 			if (file.files.length > 0) {
-				document.getElementById('submit').click();
+				// RUN A LOOP TO CHECK EACH SELECTED FILE.
+				for (var i = 0; i <= file.files.length - 1; i++) {
+					var fsize = file.files.item(i).size; // THE SIZE OF THE FILE.	
+				}
+				if (fsize >= 10000000) {
+					alert("Only allowed less then 10MB.. !");
+					file.value = '';
+				}
 			}
 		}
 	</script>
@@ -146,7 +189,7 @@ if ($_SESSION['role'] != "Abuja") {
 
 	</html>
 <?php }
-if (isset($_POST['submit'])) {
+if (isset($_POST['sub'])) {
 
 	$f_tmp_name = $_FILES['upload']['tmp_name'];
 	$f_size = $_FILES['upload']['size'];

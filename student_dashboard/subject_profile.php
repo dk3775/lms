@@ -109,7 +109,7 @@ if ($_SESSION['role'] != "Abuja" or !isset($_GET['subid'])) {
 											<div class="row align-items-center">
 												<div class="col">
 													<!-- Form -->
-													<form  autocomplete="off">
+													<form autocomplete="off">
 														<div class="input-group input-group-flush input-group-merge input-group-reverse">
 															<input class="form-control list-search" type="search" placeholder="Search">
 															<span class="input-group-text">
@@ -149,7 +149,7 @@ if ($_SESSION['role'] != "Abuja" or !isset($_GET['subid'])) {
 															</td>
 															<td colspan="3">
 																<!-- Email -->
-																<span class="item-company text-reset"><?php echo $roww['MaterialCode']; ?></span>
+																<span class="item-company text-reset"><?php echo $roww['SubjectUnitName']; ?></span>
 															</td>
 															<td></td>
 															<td></td>

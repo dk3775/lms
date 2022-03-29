@@ -5,17 +5,14 @@ if ($_SESSION['role'] != "Lagos") {
 } else {
     include_once("../config.php");
     $_SESSION["userrole"] = "Faculty";
-    $subcode = $_GET['subcode'];
     $matid = $_GET['matid'];
-    // $brid = $_GET['brid'];
-    // $subid = $_GET['subid'];
+    $matsql =  "SELECT * FROM `studymaterialmaster` WHERE `MaterialId` = '$matid'";
+    $matrow = mysqli_fetch_assoc(mysqli_query($conn, $matsql));
+    $subcode = $matrow['SubjectCode'];
+
     $subsql = "SELECT * FROM subjectmaster INNER JOIN branchmaster ON branchmaster.BranchId = subjectmaster.SubjectBranch WHERE SubjectCode = '$subcode'";
     $subrow = mysqli_fetch_assoc(mysqli_query($conn, $subsql));
     $subid = $subrow['SubjectId'];
-    $matsql =  "SELECT * FROM `studymaterialmaster` WHERE `MaterialCode` = '$matid'";
-    $matrow = mysqli_fetch_assoc(mysqli_query($conn, $matsql));
-    // $brsql = "SELECT * FROM branchmaster WHERE BranchCode = '$brid'";
-    // $brrow = mysqli_fetch_assoc(mysqli_query($conn, $brsql));
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -103,7 +100,7 @@ if ($_SESSION['role'] != "Lagos") {
                                 </div>
                                 <div class="col-auto">
                                     <!-- Button -->
-                                    <input type="file" name="engmaterial" value="<?php echo $matrow['EngMaterialFile']; ?>" id="file" onchange="showPreview(event);" class="btn btn-sm" accept="application/pdf" required>
+                                    <input type="file" name="engmaterial" value="<?php echo $matrow['EngMaterialFile']; ?>" id="file" onchange="showPreview(event);" class="btn btn-sm" accept="application/pdf">
                                 </div>
                             </div>
                             <hr class="my-3">
@@ -125,7 +122,7 @@ if ($_SESSION['role'] != "Lagos") {
                                 </div>
                                 <div class="col-auto">
                                     <!-- Button -->
-                                    <input type="file" name="gujmaterial" id="file1" value="<?php echo $matrow['GujMaterialFile']; ?>" onchange="showPreview(event);" class="btn btn-sm" accept="application/pdf" required>
+                                    <input type="file" name="gujmaterial" id="file1" value="<?php echo $matrow['GujMaterialFile']; ?>" onchange="showPreview(event);" class="btn btn-sm" accept="application/pdf">
                                 </div>
                             </div>
                             <hr class="mt-4 mb-5">
@@ -197,12 +194,13 @@ if ($_SESSION['role'] != "Lagos") {
         $materialcode = $subcode . "_" . $unitno;
         $engmaterial = $materialcode . "_" .  "ENG" . ".pdf";
         $gujmaterial = $materialcode . "_" .  "GUJ" . ".pdf";
+        // echo $sql;
         try {
-            // $sql = "INSERT INTO `studymaterialmaster`(`SubjectCode`, `SubjectUnitNo`, `MaterialCode`, `SubjectUnitName`, `EngMaterialFile`, `GujMaterialFile`, `MaterialUploadDate`) 
-            // VALUES ('$subcode','$unitno','$materialcode','$unitname','$engmaterial','$gujmaterial','$dt')";
-            $sql = "UPDATE `studymaterialmaster` SET `SubjectUnitNo`='$unitno',`MaterialCode`='$unitname',`SubjectUnitName`='$materialcode',`MaterialUploadDate`='$dt' WHERE `MaterialId`=''";
+            $sql = "UPDATE `studymaterialmaster` SET `SubjectUnitNo`='$unitno',`SubjectUnitName`='$unitname',`MaterialCode`='$materialcode',`MaterialUploadDate`='$dt',`EngMaterialFile`='$engmaterial',`GujMaterialFile`='$gujmaterial' WHERE `MaterialId`='$matid'";
             $run = mysqli_query($conn, $sql);
             if ($run == true) {
+                rename("../src/uploads/studymaterial/" . $matrow['EngMaterialFile'], "../src/uploads/studymaterial/" . $engmaterial);
+                rename("../src/uploads/studymaterial/" . $matrow['GujMaterialFile'], "../src/uploads/studymaterial/" . $gujmaterial);
                 // Eng Matrial
                 if ($fs_error_eng === 0) {
                     if ($fs_size_eng <= 5000000) {
