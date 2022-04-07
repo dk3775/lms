@@ -26,11 +26,11 @@ if ($_SESSION['role'] != "Texas") {
                         <div class="row align-items-center">
                            <div class="col">
                               <h5 class="header-pretitle">
-									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-								</h5>
-                               <h5 class="header-pretitle mb-5">
-                                   <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-                               </h5>
+                                 <a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                              </h5>
+                              <h5 class="header-pretitle mb-5">
+                                 <a class="btn btn-sm btn-outline-info" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+                              </h5>
                               <h6 class="header-pretitle">
                                  Edit
                               </h6>
@@ -55,7 +55,7 @@ if ($_SESSION['role'] != "Texas") {
                      $row = mysqli_fetch_assoc($result);
 
                   ?>
-                     <form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation" >
+                     <form method="POST" autocomplete="off" enctype="multipart/form-data" class="row g-3 needs-validation">
                         <div class="row justify-content-between align-items-center">
                            <div class="col">
                               <div class="row align-items-center">
@@ -114,7 +114,7 @@ if ($_SESSION['role'] != "Texas") {
                                  <label for="validationCustom01" class="form-label">
                                     Institute User Name <small class="text-muted"> ( For Login ) </small>
                                  </label>
-                                 <input oninput="cp()" type="text" class="form-control" id="inusername" name="inusername" value="<?php echo $row['InstituteUserName']; ?>" required>
+                                 <input oninput="cp()" type="text" class="form-control" id="inusername" name="inusername" value="<?php echo substr($row['InstituteUserName'], 2,); ?>" required>
                               </div>
                            </div>
                            <div class="col-12 col-md-6">
@@ -365,13 +365,13 @@ if ($_SESSION['role'] != "Texas") {
       $incontact = $_POST['incontact'];
 
       $add = $_POST['add'];
-      $inusername = $_POST['inusername'];
+      $inusername = "IN" . $_POST['inusername'];
       $inpass = $_POST['inpass'];
       // $spass = password_hash($spassword,PASSWORD_BCRYPT); //hashing the $spassword 
       $inrole = $_POST['inrole'];
       $inoffice = $_POST['inoffice'];
 
-      $fs_name = $inusername.".png";
+      $fs_name = $inusername . ".png";
 
       $sql = "UPDATE `institutemaster` SET `InstituteUserName`='$inusername',
         `InstitutePassword`='$inpass',

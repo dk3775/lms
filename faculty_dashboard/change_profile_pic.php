@@ -149,7 +149,7 @@ if (isset($_POST['subbed'])) {
     $f_size = $_FILES['profilePic']['size'];
     $f_error = $_FILES['profilePic']['error'];
 
-    $tt_name = $row['InstituteUserName'] . ".png";
+    $tt_name = $row['FacultyCode'] . ".png";
 
     if ($f_error === 0) {
         if ($f_size <= 2000000) {

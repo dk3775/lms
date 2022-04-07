@@ -466,7 +466,7 @@ if (isset($_POST['subbed'])) {
 	// $slid = $_POST['slid'];
 	$add = $_POST['add'];
 	$dob = $_POST['dob'];
-	$ec = $_POST['ec'];
+	$ec = "ST" . $_POST['ec'];
 
 	$fs_name = $senr . ".png";
 

@@ -278,7 +278,7 @@ if ($_SESSION['role'] != "Texas") {
    <script>
       function cp() {
          var x = document.getElementById("inusername").value;
-         document.getElementById("demo").innerHTML = "IN" + x;
+         document.getElementById("demo").innerHTML = x;
 
          let num = document.getElementById("inpass").value;
          document.getElementById("myInput2").innerHTML = num;
@@ -353,7 +353,7 @@ if (isset($_POST['subbed'])) {
    $incontact = $_POST['incontact'];
    $dob = $_POST['dob'];
    $add = $_POST['add'];
-   $inusername = $_POST['inusername'];
+   $inusername = "IN" . $_POST['inusername'];
    $inpass = $_POST['inpass'];
    // $spass = password_hash($spassword,PASSWORD_BCRYPT); //hashing the $spassword 
    $inrole = $_POST['inrole'];

@@ -230,7 +230,7 @@ if ($_SESSION['role'] != "Texas") {
 									</div>
 									<div class="col-auto col-6">
 										<div class="input-group input-group-sm mb-3 ">
-											<textarea id="demo" class="form-control fs-2" name="ec" readonly maxlength="4"><?php echo "FA" . $row['FacultyCode']; ?></textarea>
+											<textarea id="demo" class="form-control fs-2" name="ec" readonly maxlength="4"><?php echo $row['FacultyCode']; ?></textarea>
 											<button class="btn btn-primary" onclick="cp1()"><i class="fe fe-copy"></i></button>
 										</div>
 									</div>
@@ -243,7 +243,7 @@ if ($_SESSION['role'] != "Texas") {
 									</div>
 									<div class="col-auto col-6">
 										<div class="input-group input-group-sm mb-3">
-											<textarea type="text" class="form-control" name="fpassword" id="myInput2"></textarea>
+											<textarea type="text" class="form-control" name="fpassword" id="myInput2"><?php echo $row['FacultyPassword']; ?></textarea>
 											<button class="btn btn-primary" onclick="cp2()"><i class="fe fe-copy"></i></button>
 										</div>
 									</div>
@@ -361,14 +361,14 @@ if ($_SESSION['role'] != "Texas") {
 		}
 
 		$fcode = $_POST['fcode'];
-		$fuid = $_POST['ec'];
+		$fuid = "FA" . $_POST['ec'];
 		$fid = $row['FacultyId'];
 
 		$fs_name = $fcode . ".png";
 
 		if ($f_error === 0) {
 			if ($f_size <= 2000000) {
-				move_uploaded_file($f_tmp_name, "../src/uploads/stuprofile/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ...
+				move_uploaded_file($f_tmp_name, "../src/uploads/facprofile/" . $fs_name); // Moving Uploaded File to Server ... to uploades folder by file name f_name ...
 			} else {
 				echo "<script> alert(File size is to big .. !);</script>";
 			}

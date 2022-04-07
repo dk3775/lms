@@ -287,7 +287,7 @@ $branchresult = mysqli_query($conn, $branchsel);
 							</div>
 							<div class="col-auto col-6">
 								<div class="input-group input-group-sm mb-3">
-									<textarea type="text" class="form-control" id="validationCustom01" name="fpass" id="myInput2"></textarea>
+									<textarea type="text" class="form-control" id="validationCustom01" name="fpass" id="myInput2">1234</textarea>
 									<button class="btn btn-primary" onclick="cp2()"><i class="fe fe-copy"></i></button>
 								</div>
 							</div>
@@ -394,7 +394,7 @@ if (isset($_POST['subbed'])) {
 	$fquali = $_POST['fqualification'];
 	$fpassword = $_POST['fpassword'];
 	$fcode = $_POST['fcode'];
-	$fid = $_POST['fid'];
+	$fid = "FA" . $_POST['fid'];
 	$fpass = $_POST['fpass'];
 	// $fpass = password_hash($fpass, PASSWORD_BCRYPT);
 	$fs_name = $fcode . ".png";

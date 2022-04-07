@@ -274,7 +274,7 @@ if ($_SESSION['role'] != "Texas") {
                                     </div>
                                     <div class="col-auto col-6">
                                         <div class="input-group input-group-sm mb-3 ">
-                                            <textarea id="demo" class="form-control fs-2" name="slogin" readonly maxlength="4">ST<?php echo $row['StudentEnrollmentNo']; ?></textarea>
+                                            <textarea id="demo" class="form-control fs-2" name="slogin" readonly maxlength="4"><?php echo $row['StudentEnrollmentNo']; ?></textarea>
                                             <button class="btn btn-primary" onclick="cp1()"><i class="fe fe-copy"></i></button>
                                         </div>
                                     </div>
@@ -378,7 +378,7 @@ if ($_SESSION['role'] != "Texas") {
         <script>
             function cp() {
                 var xx = document.getElementById("myInput").value;
-                document.getElementById("demo").innerHTML = "ST" + xx;
+                document.getElementById("demo").innerHTML = xx;
 
                 let nnum = document.getElementById("myInput").value;
                 let ss = nnum.toString();
@@ -407,7 +407,7 @@ if ($_SESSION['role'] != "Texas") {
         $f_tmp_name = $_FILES['stuprofile']['tmp_name'];
         $f_size = $_FILES['stuprofile']['size'];
         $f_error = $_FILES['stuprofile']['error'];
-        $ec = $_POST['slogin'];
+        $ec = "ST" . $_POST['slogin'];
         $fname = $_POST['fname'];
         $mname = $_POST['mname'];
         $lname = $_POST['lname'];
@@ -443,7 +443,7 @@ if ($_SESSION['role'] != "Texas") {
             echo "<script>window.open('student_list.php','_self')</script>";
         } else {
             echo "<script>alert('Error Occured')</script>";
-            echo "<script>window.open('edit_student.php','_self')</script>";
+            echo "<script>window.open('edit_student.php?studentenr=$studentenr','_self')</script>";
         }
     }
     ?>

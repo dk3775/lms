@@ -6,7 +6,7 @@ if ($_SESSION['role'] != "Texas") {
 } else {
 	include_once("../config.php");
 	$_SESSION["userrole"] = "Institute";
-	$qur = "SELECT * FROM subjectmaster";
+	$qur = "SELECT * FROM subjectmaster INNER JOIN branchmaster ON branchmaster.BranchId = subjectmaster.SubjectBranch ORDER BY `branchmaster`.`BranchId` ,`subjectmaster`.`SubjectSemester`";
 	$res = mysqli_query($conn, $qur);
 }
 ?>
@@ -19,7 +19,9 @@ if ($_SESSION['role'] != "Texas") {
 
 <body>
 	<!-- NAVIGATION -->
-	<?php include_once("../nav.php"); ?>
+	<?php
+	$nav_role = "Branch";
+	include_once("../nav.php"); ?>
 	<!-- MAIN CONTENT -->
 	<div class="main-content">
 		<div class="container-fluid">
@@ -31,8 +33,8 @@ if ($_SESSION['role'] != "Texas") {
 							<div class="row align-items-center">
 								<div class="col">
 									<h5 class="header-pretitle">
-									<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
-								</h5>
+										<a class="btn-link btn-outline" onclick="history.back()"><i class="fe uil-angle-double-left"></i>Back</a>
+									</h5>
 									<h6 class="header-pretitle">
 										View
 									</h6>
@@ -41,11 +43,11 @@ if ($_SESSION['role'] != "Texas") {
 										Subject List
 									</h1>
 								</div>
-								<div class="col-auto">
+								<!-- <div class="col-auto">
 									<a href="add_subject.php" class="btn btn-primary ml-2">
 										Add Subject
 									</a>
-								</div>
+								</div> -->
 							</div>
 							<!-- / .row -->
 							<div class="row align-items-center">
@@ -71,7 +73,7 @@ if ($_SESSION['role'] != "Texas") {
 									<div class="row align-items-center">
 										<div class="col">
 											<!-- Form -->
-											<form  autocomplete="off">
+											<form autocomplete="off">
 												<div class="input-group input-group-flush input-group-merge input-group-reverse">
 													<input class="form-control list-search" type="search" placeholder="Search">
 													<span class="input-group-text">
@@ -96,7 +98,7 @@ if ($_SESSION['role'] != "Texas") {
 													<a class="list-sort text-muted" data-sort="item-phone">Subject Code</a>
 												</th>
 												<th>
-													<a class="list-sort text-muted" data-sort="item-name">Branch ID</a>
+													<a class="list-sort text-muted" data-sort="item-name">Branch Name</a>
 												</th>
 												<th>
 													<a class="list-sort text-muted" data-sort="item-name">Semester</a>
@@ -122,7 +124,7 @@ if ($_SESSION['role'] != "Texas") {
 													</td>
 													<td>
 														<!-- Email -->
-														<span type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['SubjectBranch']; ?></span>
+														<span type="text" class="text-reset item-phone" name="bcode" required><?php echo $row['BranchName']; ?></span>
 
 													</td>
 													<td>
@@ -131,16 +133,16 @@ if ($_SESSION['role'] != "Texas") {
 
 													</td>
 													<td>
-														<a href="edit_subject.php?subcode=<?php echo $row['SubjectCode']; ?>" class="btn btn-sm btn-white">
+														<a href="edit_subject.php?subcode=<?php echo $row['SubjectCode']; ?>" class="btn btn-sm btn-warning">
 															Edit
 														</a>
 														&nbsp;
-														<a class="btn btn-sm btn-white" href="subdelete.php?subcode=<?php echo $row['SubjectCode']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
+														<a class="btn btn-sm btn-danger" href="subdelete.php?subcode=<?php echo $row['SubjectCode']; ?>" onclick="if (! confirm('are you sure ?')) return false;">
 															Delete
 															<!--changes-->
 														</a>
 														&nbsp;
-														<a href="#!" class="btn btn-sm btn-white">
+														<a href="sem_details.php?semid=<?php echo $row['SemCode']; ?>&brid=<?php echo $row['BranchCode']; ?>" class="btn btn-sm btn-info">
 															View
 														</a>
 													</td>
@@ -182,7 +184,7 @@ if ($_SESSION['role'] != "Texas") {
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- / .main-content -->
 	<!-- JAVASCRIPT -->
 	<!-- Map JS -->

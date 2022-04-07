@@ -43,8 +43,8 @@ error_reporting(E_ALL ^ E_WARNING);
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                        <img class="card-img-top" src="../assets/favicon/Change.jpg" alt="Card image cap">
-                            <h3 class="card-title">Change the main logo</h3>
+                            <img class="card-img-top" src="../assets/favicon/Change.jpg" alt="Card image cap">
+                            <h3 class="mt-3 card-title">Change the main logo</h3>
                             <!-- add text or remove it -->
                             <p class="card-text">To change the main logo of the university click the button below.</p>
                             <a href="change_logo.php" class="btn btn-sm btn-primary">
@@ -56,8 +56,8 @@ error_reporting(E_ALL ^ E_WARNING);
                 <div class="col-sm-6">
                     <div class="card">
                         <div class="card-body">
-                        <img class="card-img-top" src="../assets/favicon/manager.jpg"  alt="Card image cap">
-                            <h3 class="card-title">Manage institute administrators</h3>
+                            <img class="card-img-top" src="../assets/favicon/manager.jpg" alt="Card image cap">
+                            <h3 class="mt-3 card-title">Manage institute administrators</h3>
                             <!-- add text or remove it -->
                             <p class="card-text">Various functionalities that can be used to manage admins.</p>
                             <a href="add_institute.php" class="btn btn-sm btn-primary">
@@ -89,7 +89,7 @@ error_reporting(E_ALL ^ E_WARNING);
             return new bootstrap.Tooltip(tooltipTriggerEl)
         })
     </script>
-    
+
 </body>
 
 </html>
