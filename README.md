@@ -97,7 +97,6 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple steps.
 
 ### Installation
@@ -106,7 +105,7 @@ To get a local copy up and running follow these simple steps.
    ```sh
    git clone https://github.com/dk3775/lms.git
    ```
-2. Install NPM packages
+2. Install dependencies
    ```sh
    composer install
    ```
