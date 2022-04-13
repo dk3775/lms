@@ -25,33 +25,69 @@
 		</style>
 
 	<?php } ?>
+	<script>
+		function display() {
+			var type = document.getElementById("loginType");
+			if (type.classList.contains("d-none")) {
+				type.classList.remove("d-none");
+			} else {
+				type.classList.add("d-none");
+			}
+			var form = document.getElementById("loginForm");
+			if (form.classList.contains("d-none")) {
+				form.classList.remove("d-none");
+			} else {
+				form.classList.add("d-none");
+			}
+		}
+
+		function password_show_hide() {
+			const x = document.getElementById("password");
+			var show_eye = document.getElementById("show_eye");
+			var hide_eye = document.getElementById("hide_eye");
+			hide_eye.classList.remove("d-none");
+			if (x.type === "password") {
+				x.type = "text";
+				show_eye.style.display = "none";
+				hide_eye.style.display = "block";
+			} else {
+				x.type = "password";
+				show_eye.style.display = "block";
+				hide_eye.style.display = "none";
+			}
+		}
+	</script>
 </head>
 <?php
 require_once("../config.php");
 if (isset($_POST['login'])) {
-	$na = $_POST['name'];
+	$na = strtoupper($_POST['name']);
 	$pass = $_POST['password'];
-	$na2 = $_POST['loginSelectedType'];
+	$na2 = $_POST['SelectedType'];
 	$u = $na2 . mysqli_real_escape_string($conn, trim($na));
 	$hp = mysqli_real_escape_string($conn, trim($pass));
-	// echo "<script>alert('$u');</script>";
+
+	$html =
+		'<div class="alert alert-danger alert-dismissible fade show mt-3 mx-5" role="alert">
+			<strong>Incorrect Username or Password !!</strong>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>';
+
 	if ($na2 == "IN") {
 		$sql = "SELECT * FROM institutemaster WHERE InstituteUserName = '$u'";
 		$result = mysqli_query($conn, $sql);
 		$row = mysqli_fetch_assoc($result);
-		// echo "<pre>";
-		// echo $u . " " . $hp . "HELLLO JO " . $sql;
-		// echo "</pre>";
 		if ($row['InstituteUserName'] == $u and $row['InstitutePassword'] === $hp) {
 			session_start();
 			$_SESSION['id'] = $u;
 			$_SESSION['name'] = $row['InstituteId'];
 			$_SESSION['role'] = "Texas";
 			echo "<script>window.location.href='../institute_dashboard/';</script>";
-			// header("location:../institute_dashboard/");
 		} else {
-			echo "<script>document.getElementById('test').style.display = 'block';</script>";
-			echo "<script>display(); log();</script>";
+			$_POST['SelectedLoginType'] = "INSTITUTE";
+			echo $html;
 		}
 	} else if ($na2 == "FA") {
 		$sql = "SELECT * FROM facultymaster WHERE FacultyUserName = '$u'";
@@ -63,10 +99,9 @@ if (isset($_POST['login'])) {
 			$_SESSION['id'] = $u;
 			$_SESSION['role'] = "Lagos";
 			echo "<script>window.location.href='../faculty_dashboard/';</script>";
-			// header("location:../faculty_dashboard/");
 		} else {
-			echo "<script>document.getElementById('test').style.display = 'block';</script>";
-			echo "<script>display(); log1();</script>";
+			$_POST['SelectedLoginType'] = "FACULTY";
+			echo $html;
 		}
 	} else if ($na2 == "ST") {
 		$sql = "SELECT * FROM studentmaster WHERE StudentUserName = '$u'";
@@ -79,168 +114,107 @@ if (isset($_POST['login'])) {
 			$_SESSION['id'] = $u;
 			$_SESSION['role'] = "Abuja";
 			echo "<script>window.location.href='../student_dashboard/';</script>";
-			// header("location:../student_dashboard/");
 		} else {
-			echo "<script>document.getElementById('test').style.display = 'block';</script>";
-			echo "<script>display(); log2();</script>";
+			$_POST['SelectedLoginType'] = "STUDENT";
+			echo $html;
 		}
 	} else {
-		echo "<script>document.getElementById('test').style.display = 'block';</>";
+		echo $html;
 	}
 }
-include_once("context.php");
 ?>
 
-<body class="d-flex align-items-center bg-auth border-top border-top-2 border-primary">
-	<!-- CONTENT
-			================================================== -->
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-12 col-md-6 offset-xl-2 offset-md-1 order-md-2 mb-5 mb-md-0">
-
-				<!-- Image -->
-				<div class="text-center">
-					<img src="../assets/img/illustrations/login.png" alt="..." class="img-fluid">
+<body class="border-top border-top-2 border-primary bg-auth" style="overflow: hidden;">
+	<div class="d-flex align-items-center my-auto" style="height: 100vh;">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-6 offset-xl-2 offset-md-1 order-md-2 mb-5 mb-md-0">
+					<div class="text-center">
+						<img src="../assets/img/illustrations/login.png" alt="..." class="img-fluid">
+					</div>
 				</div>
-
-			</div>
-			<div class="col-12 col-md-5 col-xl-4 my-5">
-				<!-- Heading -->
-				<h1 class="display-3 text-center mb-3">
-					Sign in
-				</h1>
-				<!-- Subheading -->
-				<p class="text-muted text-center mb-5">
-					access to
-					<span id="selectedType">your</span> dashboard.
-				</p>
-				<form method="POST" autocomplete="off">
-					<div id="loginType" class="row row-cols-1 row-cols-md-3 g-2">
-						<div class="col-sm-6 justify-content-center">
-							<div class="card border shadow bg-body rounded" id="IN_Login" onclick="display(); log();">
-								<img id="imgcard" src="../assets/img/admin.png" class="card-img rounded mx-auto d-block avatar avatar-xl">
-								<!-- <i class="fe fe-home" style="width: 100px;"></i> -->
-								<div class="card-body">
-									<h5 class="card-title">INSTITUTE</h3>
-										<input type="hidden" id="type" value="IN">
+				<div class="col-12 col-md-5 col-xl-4 my-5">
+					<h1 class="display-3 text-center mb-3">
+						Sign in
+					</h1>
+					<p class="text-muted text-center mb-5">
+						access to
+						<span <?php
+								if (isset($_POST['SelectedLoginType'])) { ?> class="font-weight-bold text-secondary">
+							<?php echo $_POST['SelectedLoginType']; ?></span>
+					<?php } else { ?>
+						<span>your</span>
+					<?php } ?> dashboard.
+					</p>
+					<?php if (!isset($_POST['SelectedLoginType'])) { ?>
+						<form method="POST">
+							<div id="loginType" class="d-flex justify-content-between">
+								<div class="mx-2">
+									<button type="submit" class="card border shadow bg-body rounded text-secondary" value="INSTITUTE" name="SelectedLoginType">
+										<img id="imgcard3" src="../assets/img/admin.png" class="card-img rounded mx-auto d-block avatar avatar-xl">
+										<div class="card-body">
+											<h5 class="card-title">INSTITUTE</h3>
+										</div>
+									</button>
+								</div>
+								<div class="mx-2">
+									<button type="submit" class="card border shadow bg-body rounded text-secondary" value="FACULTY" name="SelectedLoginType">
+										<img id="imgcard3" src="../assets/img/faculty.png" class="card-img rounded mx-auto d-block avatar avatar-xl">
+										<div class="card-body">
+											<h5 class="card-title">FACULTY</h3>
+										</div>
+									</button>
+								</div>
+								<div class="mx-2">
+									<button type="submit" class="card border shadow bg-body rounded text-secondary" value="STUDENT" name="SelectedLoginType">
+										<img id="imgcard3" src="../assets/img/student.png" class="card-img rounded mx-auto d-block avatar avatar-xl">
+										<div class="card-body">
+											<h5 class="card-title">STUDENT</h3>
+										</div>
+									</button>
 								</div>
 							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="card border shadow bg-body rounded" id="FA_Login" onclick="display(); log1();">
-								<img id="imgcard2" src="../assets/img/faculty.png" class="card-img rounded mx-auto d-block avatar avatar-xl">
-								<!-- <i class="fe fe-user"></i> -->
-								<div class="card-body">
-									<h5 class="card-title">FACULTY</h3>
-										<input type="hidden" id="type1" value="FA">
-								</div>
+						</form>
+					<?php
+					} else {
+					?>
+						<form method="POST" autocomplete="off" id="loginForm">
+							<div class="form-group">
+								<label class="form-label">
+									Username
+								</label>
+								<input type="hidden" name="SelectedType" value="<?php echo substr($_POST['SelectedLoginType'], 0, 2); ?>">
+								<input type="text" class="form-control" placeholder="Username" name="name" value="<?php if (isset($_POST['name'])) {
+																														echo $_POST['name'];
+																													} ?>" required>
 							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="card border shadow bg-body rounded" onclick="display(); log2();">
-								<img id="imgcard3" src="../assets/img/student.png" class="card-img rounded mx-auto d-block avatar avatar-xl">
-								<!-- <i class="fe uil-graduation-cap"></i> -->
-								<div class="card-body">
-									<h5 class="card-title">STUDENT</h3>
-										<input type="hidden" id="type2" value="ST">
-								</div>
-							</div>
-						</div>
-					</div>
-					<div id="loginForm" class="d-none">
-						<div class="form-group">
-							<!-- Label -->
 							<label class="form-label">
-								Username
+								Password
 							</label>
-							<input type="hidden" id="loginSelectedType" name="loginSelectedType">
-							<input type="text" class="form-control" placeholder="Username" id="ffname" name="name" required>
-						</div>
-						<label class="form-label">
-							Password
-						</label>
-						<!-- Password -->
-						<div class="col-12 logo_outer">
-							<div class="input-group mb-4">
-								<input name="password" type="password" value="" class="input form-control" id="password" placeholder="Password" required aria-label="password" aria-describedby="basic-addon1" />
-								<div class="input-group-append ">
-									<span class="input-group-text" style="border-radius: 1px 5px 5px 1px;" onclick="password_show_hide();">
-										<i class="fe uil-eye-slash" id="show_eye"></i>
-										<i class="fe uil-eye d-none" id="hide_eye"></i>
-									</span>
+							<div class="col-12 logo_outer">
+								<div class="input-group mb-4">
+									<input name="password" id="password" type="password" class="input form-control" placeholder="Password" required aria-label="password" aria-describedby="basic-addon1" />
+									<div class="input-group-append ">
+										<span class="input-group-text" style="border-radius: 1px 5px 5px 1px;" onclick="password_show_hide();">
+											<i class="fe uil-eye-slash" id="show_eye"></i>
+											<i class="fe uil-eye d-none" id="hide_eye"></i>
+										</span>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="alert alert-danger" id="test" role="alert" style="display: none;">
-							Incorrect username or password!!
-						</div>
-						<!-- Submit -->
-						<input type="submit" class="btn btn-lg btn-block btn-primary mb-3" name="login" value="Login">
-					</div>
-				</form>
-				<script>
-					function display() {
-						var type = document.getElementById("loginType");
-						if (type.classList.contains("d-none")) {
-							type.classList.remove("d-none");
-						} else {
-							type.classList.add("d-none");
-						}
-						// type.classList.add("d-none");
-						var form = document.getElementById("loginForm");
-						if (form.classList.contains("d-none")) {
-							form.classList.remove("d-none");
-						} else {
-							form.classList.add("d-none");
-						}
-						// form.classList.remove("d-none");
-					}
-
-					function log() {
-						var loginType = document.getElementById("type").value;
-						document.getElementById("selectedType").innerHTML = "INSTITUTE";
-						document.getElementById("loginSelectedType").value = loginType;
-						// alert(loginType);
-					}
-
-					function log1() {
-						var loginType = document.getElementById("type1").value;
-						document.getElementById("selectedType").innerHTML = "FACULTY";
-						document.getElementById("loginSelectedType").value = loginType;
-						// alert(loginType);
-					}
-
-					function log2() {
-						var loginType = document.getElementById("type2").value;
-						document.getElementById("selectedType").innerHTML = "STUDENT";
-						document.getElementById("loginSelectedType").value = loginType;
-						// alert(loginType);
-					}
-				</script>
-				<script>
-					function password_show_hide() {
-						const x = document.getElementById("password");
-						var show_eye = document.getElementById("show_eye");
-						var hide_eye = document.getElementById("hide_eye");
-						hide_eye.classList.remove("d-none");
-						if (x.type === "password") {
-							x.type = "text";
-							show_eye.style.display = "none";
-							hide_eye.style.display = "block";
-						} else {
-							x.type = "password";
-							show_eye.style.display = "block";
-							hide_eye.style.display = "none";
-						}
-					}
-				</script>
+							<input type="submit" class="btn btn-lg btn-block btn-primary mb-3" name="login" value="Login">
+						</form>
+					<?php } ?>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<script src="../assets/js/vendor.bundle.js"></script>
-	<!-- Theme JS -->
-	<script src="../assets/js/theme.bundle.js"></script>
+		<script src="../assets/js/vendor.bundle.js"></script>
+		<script src="../assets/js/theme.bundle.js"></script>
+	</div>
 </body>
 
 </html>
+<?php
+include_once 'context.php';
+?>
