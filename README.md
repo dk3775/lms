@@ -110,7 +110,7 @@ To get a local copy up and running follow these simple steps.
    composer install
    ```
 3. Download database template file from here -->
-    <a href="https://ln5.sync.com/dl/e7e815ac0/jckhxvds-rj3ibhb5-4tv7qtj6-swxgi8fw"> lms.sql </a>
+    <a href="https://ln5.sync.com/dl/98f230710/a3ct86ip-yisxxud3-uuqdz9pj-q2xzgzd9"> lms.sql </a>
 4. Open phpmyadmin and create a database named "lms" and import database template from downloaded file.
 
 5. Create a .env file in root directory of your and paste this code in it
