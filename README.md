@@ -108,7 +108,7 @@ To get a local copy up and running follow these simple steps.
    ```
 2. Install NPM packages
    ```sh
-   npm install
+   composer install
    ```
 3. Download database template file from here:
     ```sh
