@@ -11,7 +11,7 @@ if ($_SESSION['role'] != "Lagos") {
     header("Location: ../index.php");
 } else {
     include_once "../config.php";
-    $_SESSION["userrole"] = "Institute";
+    $_SESSION["userrole"] = "Faculty";
     $ttid = $_GET['ttid'];
     $ttid = mysqli_real_escape_string($conn, $ttid);
     $qur = "DELETE FROM timetablemaster WHERE TimetableId = '$ttid'";

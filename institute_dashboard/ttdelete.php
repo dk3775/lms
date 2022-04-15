@@ -18,10 +18,10 @@ if ($_SESSION['role'] != "Texas") {
     $res = mysqli_query($conn, $qur);
     if ($res) {
         echo "<script>alert('Timetable Deleted Successfully');</script>";
-        header("Location: ../institute_dashboard/timetable_list.php");
+        header("Location: timetable_list.php");
     } else {
         echo "<script>alert('Timetable Deletion Failed');</script>";
-        header("Location: ../institute_dashboard/timetable_list.php");
+        header("Location: timetable_list.php");
     }
 }
 ?>
