@@ -54,7 +54,7 @@ if ($_SESSION['role'] != "Abuja") {
 									</h6>
 									<!-- Title -->
 									<h1 class="header-title">
-										Account Related Help
+										Account Query
 									</h1>
 								</div>
 							</div>

@@ -75,21 +75,21 @@
 					<a href="account_related.php" class="nav-link <?php if ($nav_role == "Account related Details") {
 																		echo "active";
 																	} ?>">
-						<i class="fe fe-user"></i>Account related Details
+						<i class="fe fe-user"></i>Account Queries
 					</a>
 				</li>
 				<li class="nav-item">
 					<a href="study_related.php" class="nav-link <?php if ($nav_role == "Study related querys") {
 																	echo "active";
 																} ?>">
-						<i class="fe fe-book"></i>Study related querys
+						<i class="fe fe-book"></i>Study Queries
 					</a>
 				</li>
 				<li class="nav-item">
 					<a href="query_list.php" class="nav-link <?php if ($nav_role == "All querys") {
 																	echo "active";
 																} ?>">
-						<i class="fe uil-file-question-alt"></i>All querys
+						<i class="fe uil-file-question-alt"></i>All Queries
 					</a>
 				</li>
 			</ul>

@@ -61,7 +61,7 @@ if ($_SESSION['role'] != "Abuja") {
                               <div class="card-header">
                                  <!-- Title -->
                                  <h2 class="card-header-title ">
-                                    Study Related Queries
+                                    Study Query
                                  </h2>
                               </div>
                               <div class="container-fluid">
@@ -202,7 +202,7 @@ if ($_SESSION['role'] != "Abuja") {
                   </div>
                <?php } else { ?>
                   <div class="col-12">
-                     <h1 class="card header-title m-5 p-5"> Oops, No Study Queries To Show</h1>
+                     <h1 class="card header-title m-5 p-5"> Oops, No Study Queries to show</h1>
                   </div>
                <?php
                }
@@ -217,7 +217,7 @@ if ($_SESSION['role'] != "Abuja") {
                               <div class="card-header">
                                  <!-- Title -->
                                  <h2 class="card-header-title ">
-                                    Account Related Queries
+                                    Account Queries
                                  </h2>
                               </div>
                               <div class="container-fluid">
@@ -358,7 +358,7 @@ if ($_SESSION['role'] != "Abuja") {
                   </div>
                <?php } else { ?>
                   <div class="col-12">
-                     <h1 class="card header-title m-5 p-5"> Oops, No Account Related Queries To Show</h1>
+                     <h1 class="card header-title m-5 p-5"> Oops, No Account Queries to show</h1>
                   </div>
                <?php
                }
