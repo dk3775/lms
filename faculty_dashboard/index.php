@@ -79,8 +79,7 @@ if ($_SESSION['role'] != "Lagos") {
 								<?php echo $frow['FacultyFirstName'] . " " . $frow['FacultyLastName']; ?>
 							</h1>
 							<h3 class="mb-2 text-sm">
-								<?php echo $frow['BranchName']; ?> |
-								<a type="button" class="btn-link font-weight-bold" href="change_profile_pic.php">Change Image</a>
+								<?php echo $frow['BranchName']; ?>
 							</h3>
 							<p class="mb-2 font-weight-bold text-sm">
 								<?php echo $frow['FacultyOffice']; ?>

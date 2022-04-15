@@ -180,7 +180,7 @@ if ($_SESSION['role'] != "Lagos") {
 
 					<?php } else { ?>
 						<div class="col-12">
-							<h1 class="card header-title m-5 p-5"> Oops, No Student Registered In Your Branch</h1>
+							<h1 class="card header-title m-5 p-5"> Oops, No students registered in your branch</h1>
 						</div>
 					<?php
 					} ?>
