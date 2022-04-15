@@ -54,8 +54,8 @@ if ($_SESSION['role'] != "Lagos") {
             <div class="row">
                 <?php
                 $C = $row['StudentBranchCode'] . "_" . $row['StudentSemester'];
-                //$subsql = "SELECT *, FacultyFirstName, FacultyLastname FROM subjectmaster INNER JOIN facultymaster ON subjectmaster.SubjectFacultyId=facultymaster.FacultyId WHERE SemCode = '$C'";
-                $subsql = "SELECT * FROM `subjectmaster` WHERE `SubjectFacultyId`= '$fid';";
+                $subsql = "SELECT *, FacultyFirstName, FacultyLastname FROM subjectmaster INNER JOIN facultymaster ON subjectmaster.SubjectFacultyId=facultymaster.FacultyId WHERE `SubjectFacultyId`= '$fid';";
+                // $subsql = "SELECT * FROM `subjectmaster` WHERE `SubjectFacultyId`= '$fid';";
                 $subresult = mysqli_query($conn, $subsql);
                 if (mysqli_num_rows($subresult) > 0) {
                     while ($roww = mysqli_fetch_assoc($subresult)) { ?>
