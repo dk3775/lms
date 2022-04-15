@@ -91,7 +91,7 @@
 					<a href="Study_related.php" class="nav-link <?php if ($nav_role == "Study related querys") {
 																	echo "active";
 																} ?>">
-						<i class="fe fe-book"></i>Study related querys
+						<i class="fe fe-book"></i>Study Queries
 					</a>
 				</li>
 			</ul>
