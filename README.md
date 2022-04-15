@@ -101,7 +101,7 @@ To get a local copy up and running follow these simple steps.
 
 ### Installation
 
-1. Clone the repo
+1. Clone the repo in server folder(eg. htdocs, public_html)
    ```sh
    git clone https://github.com/dk3775/lms.git
    ```
@@ -109,10 +109,29 @@ To get a local copy up and running follow these simple steps.
    ```sh
    composer install
    ```
-3. Download database template file from here:
-    ```sh
-    wget #download-url
-    ```
+3. Download database template file from here -->
+    <a href="https://ln5.sync.com/dl/98f230710/a3ct86ip-yisxxud3-uuqdz9pj-q2xzgzd9"> lms.sql </a>
+4. Open phpmyadmin and create a database named "lms" and import database template from downloaded file.
+
+5. Create a .env file in root directory of your and paste this code in it
+   ```sh
+   DB_HOST="localhost"
+   DB_USER="root"
+   DB_PASS=""
+   DB_NAME="lms"
+   SMTP_HOST="your smtp host"
+   SMTP_USER="your smtp username"
+   SMTP_PASS="your password"
+   SMTP_PORT="your smtp port"
+   ```
+   
+6. Modify .env file contents as per your needs.
+
+7. Open project's root directory in server it will automatically open login page if above steps will be followed properly.
+
+8. Login as Institute with following credentials Username - "AJ" and Password - "1234".
+
+9. Play around the system and if you need any help contact me. 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
