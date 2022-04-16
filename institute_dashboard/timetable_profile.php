@@ -45,7 +45,7 @@ if ($_SESSION['role'] != "Texas") {
                         $ttid = mysqli_real_escape_string($conn, $ttid);
                         $_SESSION["userrole"] = "Institute";
                         if (isset($ttid)) {
-                            $sql = "SELECT * FROM timetablemaster WHERE TimetableId = '$ttid'";
+                            $sql = "SELECT * FROM `timetablemaster` INNER JOIN branchmaster ON branchmaster.BranchCode = branchmaster.BranchCode WHERE TimetableId = '$ttid'";
                             $result = mysqli_query($conn, $sql);
                             $row = mysqli_fetch_assoc($result);
                         ?>
@@ -60,8 +60,8 @@ if ($_SESSION['role'] != "Texas") {
                                             </h3>
                                             <br>
                                             <div class="input-group">
-                                                <span class="input-group-text col-3 ">Time Table Branch Code</span>
-                                                <input type="text" value="<?php echo $row['TimetableBranchCode']; ?>" aria-label="First name" class="form-control" disabled>
+                                                <span class="input-group-text col-3 ">Time Table Branch</span>
+                                                <input type="text" value="<?php echo $row['BranchName']; ?>" aria-label="First name" class="form-control" disabled>
                                                 <span class="input-group-text col-3 ">Time Table Semester</span>
                                                 <input type="text" value="<?php echo $row['TimetableSemester']; ?>" aria-label="Last name" class="form-control disable" disabled>
                                             </div>

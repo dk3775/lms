@@ -124,7 +124,7 @@ if (isset($_POST['login'])) {
 }
 ?>
 
-<body class="border-top border-top-2 border-primary bg-auth" style="overflow: hidden;">
+<body class="border-top border-top-2 border-primary bg-auth" style="overflow-x: hidden;">
 	<div class="d-flex align-items-center my-auto" style="height: 100vh;">
 		<div class="container">
 			<div class="row justify-content-center">
