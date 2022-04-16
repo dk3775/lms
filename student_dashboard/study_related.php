@@ -99,7 +99,7 @@ if ($_SESSION['role'] != "Abuja") {
                                     Topic
                                 </label>
                                 <!-- Input -->
-                                <input type="text" name="srtopic" class="form-control">
+                                <input type="text" name="srtopic" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <!-- Label  -->
@@ -119,7 +119,7 @@ if ($_SESSION['role'] != "Abuja") {
                                 <!-- Textarea -->
                                 <div>
                                     <div class="form-group shadow-textarea">
-                                        <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="4" name="srdetail" placeholder="Write Something Here..."></textarea>
+                                        <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="4" name="srdetail" required placeholder="Write Something Here..."></textarea>
                                     </div>
                                 </div>
                             </div>
