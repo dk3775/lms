@@ -370,4 +370,4 @@ if ($_SESSION['role'] != "Abuja") {
 	</body>
 
 	</html>
-<?php  ?>
+<?php } ?>
