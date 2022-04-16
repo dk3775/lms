@@ -59,7 +59,7 @@
 					<a href="timetable_view.php" class="nav-link <?php if ($nav_role == "Time Table") {
 																		echo "active";
 																	} ?>">
-						<i class="fe uil-calendar-alt"></i>Time Table
+						<i class="fe uil-calendar-alt"></i>Time Tables
 					</a>
 				</li>
 			</ul>

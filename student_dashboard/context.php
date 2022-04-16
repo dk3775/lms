@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
     <style>
         @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 
@@ -70,9 +62,7 @@
         }
     </style>
     <?php include_once("../head.php"); ?>
-</head>
 
-<body>
     <div id="context-menu">
         <div class="list">
             <div class="item" onclick="javascript:history.go(0);">
@@ -100,24 +90,24 @@
             <div class="item" onclick="window.location.href='assignment_list.php';">
                 <a class="nav-item" style="color: #6F6F6F;">
                     <i class="fe uil-book"></i>
-                    Assignment list</a>
+                    Assignments</a>
             </div>
             <div class="item" onclick="window.location.href='timetable_view.php';">
                 <a class="nav-item" style="color: #6F6F6F;">
                     <i class="fe uil-calendar-alt"></i>
-                    Time Table</a>
+                    Time Tables</a>
             </div>
         </div>
         <div class="list">
             <div class="item" onclick="window.location.href='account_related.php';">
                 <a class="nav-item" style="color: #6F6F6F;">
                     <i class="fa uil-user"></i>
-                    Account related Details</a>
+                    Account Queries</a>
             </div>
             <div class="item" onclick="window.location.href='study_related.php';">
                 <a class="nav-item" style="color: #6F6F6F;">
                     <i class="fa uil-question-circle"></i>
-                    Study related querys</a>
+                    Study Queries</a>
             </div>
         </div>
     </div>
@@ -198,6 +188,3 @@
             }
         });
     </script>
-</body>
-
-</html>

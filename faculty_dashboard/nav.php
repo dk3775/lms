@@ -39,7 +39,7 @@
 					<a href="student_list.php" class="nav-link <?php if ($nav_role == "Student") {
 																	echo "active";
 																} ?>">
-						<i class="fe uil-user"></i> Student
+						<i class="fe uil-user"></i> Students
 					</a>
 				</li>
 				<li class="nav-item">
@@ -53,7 +53,7 @@
 					<a href="subjects.php" class="nav-link <?php if ($nav_role == "Subjects") {
 																echo "active";
 															} ?>">
-						<i class="fe uil-code-branch"></i> Subject
+						<i class="fe uil-code-branch"></i> Subjects
 					</a>
 				</li>
 
@@ -61,7 +61,7 @@
 					<a href="assignment_list.php" class="nav-link <?php if ($nav_role == "Assignment") {
 																		echo "active";
 																	} ?>">
-						<i class="fe uil-file"></i> Assignment
+						<i class="fe uil-file"></i> Assignments
 					</a>
 				</li>
 				<li class="nav-item">
@@ -75,7 +75,7 @@
 					<a href="timetable_list.php" class="nav-link <?php if ($nav_role == "Time Table") {
 																		echo "active";
 																	} ?>">
-						<i class="fe uil-calendar-alt"></i>Time Table
+						<i class="fe uil-calendar-alt"></i>Time Tables
 					</a>
 				</li>
 			</ul>

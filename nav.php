@@ -40,21 +40,21 @@
 					<a href="student_list.php" class="nav-link <?php if ($nav_role == "Student") {
 																	echo "active";
 																} ?>">
-						<i class="fe uil-user"></i> Student
+						<i class="fe uil-user"></i> Students
 					</a>
 				</li>
 				<li class="nav-item">
 					<a href="faculty_list.php" class="nav-link <?php if ($nav_role == "Faculty") {
 																	echo "active";
 																} ?>">
-						<i class="fe uil-graduation-cap"></i> Faculty
+						<i class="fe uil-graduation-cap"></i> Faculties
 					</a>
 				</li>
 				<li class="nav-item">
 					<a href="branch_list.php" class="nav-link <?php if ($nav_role == "Branch") {
 																	echo "active";
 																} ?>">
-						<i class="fe uil-code-branch"></i> Branch
+						<i class="fe uil-code-branch"></i> Branches
 					</a>
 				</li>
 				<li class="nav-item">
@@ -68,7 +68,7 @@
 					<a href="timetable_list.php" class="nav-link <?php if ($nav_role == "Time Table") {
 																		echo "active";
 																	} ?>">
-						<i class="fe uil-calendar-alt"></i>Time Table
+						<i class="fe uil-calendar-alt"></i>Time Tables
 					</a>
 
 				</li>
